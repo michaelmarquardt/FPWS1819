@@ -1,0 +1,10 @@
+*.log
+*.png
+*.pdf
+*.aux
+*.pyc
+*.out
+*.toc
+*.bcf
+*.blg
+*.swp
