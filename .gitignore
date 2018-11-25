@@ -8,3 +8,5 @@
 *.bcf
 *.blg
 *.swp
+*.run.xml
+*.synctex.gz
