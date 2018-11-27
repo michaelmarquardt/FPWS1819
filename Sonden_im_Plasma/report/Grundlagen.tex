@@ -13,7 +13,7 @@ wobei T die Temperatur und n die Teilchenzahldichte ist. Die Kugel mit der Debye
 Die Erzeugung eines Plasmas kann auf unterschiedliche Arten erfolgen. Eine erzwungene Ionisation von außen, zum Beispiel durch eine Glimmentladung, wird als unselbstständige Gasentladung bezeichnet. Der schematische Aufbau einer Glimmentladung und der Spannungsverlauf ist in der Abbildung \ref{fig:Glimmentladung} dargestellt.  Dabei wird an zwei Elektroden ein elektrisches Feld angelegt. Der Spannungsabfall zischen der Kathode und dem negativem Glimmlicht wird als Kathodenfall bezeichnet. Durch das elektrische Feld wird den Gasteilchen Energie zugeführt und diese dadurch ionisiert.  Die ionisierten Gasteilchen haben dadurch ausreichend Energie,  um  durch Stöße weitere Gasteilchen zu  Ionisieren. Dieser Vorgang wird als Stoßionisation bezeichnet. Eine Stoßionisation ist eine selbständige Gasentladung, da dieser Vorgang unabhängig von äußeren Einflüssen stattfinden kann. Die durchschnittliche Strecke die ein Teilchen zwischen zwei Stößen zurücklegen kann, wird als mittlere freie Weglänge bezeichnet. 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.4]{Glimmentladung.png}
+\includegraphics[scale=0.4]{Glimmentladung}
 \caption{Schematischer Aufbau und Spannungsverlauf einer Glimmentladung.\cite{wiki:Glimmentladung}}
 \label{fig:Glimmentladung}
 \end{figure}
@@ -22,7 +22,7 @@ Bei den Ladungsträgern in einem Plasma handelt es sich um Elektronen und positi
 Eine Möglichkeit ein Plasma zu untersuchen ist die Verwendung von einer Langmuir-Sonde \cite{anleitung}. Damit können Eigenschaften des Plasmas wie Elektronendichte, Elektronentemperatur und Plasmapotential bestimmt werden. Die Schaltung zur Erzeugung eines Plasmas mit einer Glimmentladung und der Messung mit einer Langmuir-Sonde ist in der Abbildung \ref{fig:Schaltung_Sonde} dargestellt. 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.4]{Schaltung_Sonde.PNG}
+\includegraphics[scale=0.4]{Schaltung_Sonde.png}
 \caption{Schaltung zur Erzeugung eines Plasmas mit einer Glimmentladung und der Messung mit einer Langmuir-Sonde. \cite{anleitung}}
 \label{fig:Schaltung_Sonde}
 \end{figure}
@@ -33,7 +33,7 @@ Die Spitze einer Langmuir-Sonde besteht aus einer Elektrode, die wiederum meiste
  wobei $T_{\mathrm{e}}$ die Elektronentemperatur, $S$ die effektive Sondenoberfläche und $m_{\mathrm{i}}$ die Ionenmasse ist, berechnet werden. Analog zum Ionensättigungsstrom kann auch ein Elektronensättigungsstrom gemessen werden. Dazu muss die Sonde ausreichen positiv geladen sein, damit alle Elektronen aus der Umgebung der Sonde von dieser angezogen worden sind. Im Idealfall einer unendlich ausgedehnten, ebenen Sonde wird der Elektronensättigungsstrom konstant. In dem Diagramm der Kennlinie ist dies der Bereich, mit dem konstantem negativem Strom. Berechnet werden kann der Elektronensättigungsstrom mit
 \begin{align}
 I_{\mathrm{e},\mathrm{sat}}=-enS \sqrt{\frac{T_{\mathrm{e}}}{2\pi m_{\mathrm{e}}}}.
-\label{eq:Ionensaettigungsstrom}
+\label{eq:Ionensättigungsstrom}
 \end{align}
 Der Idealfall lässt sich experimentell nicht realisieren, das heißt das die Stromstärke nicht konstant bleibt, wenn die Spannung steigt. An der Stelle, an der die reale Kennlinie größer wird als der Elektronensättigungsstrom, gibt es einen Knick in der Kennlinie. Die Stelle, an der der Knick ist, wird als Plasmapotential bezeichnet. Das heißt, der Elektronenlaufbereich endet am Plasmapotential. Der Verlauf der Kennlinie für größere Stromstärken als der Elektronensättigungsstrom, ist von der Geometrie der Sonde anhängig. Der Bereich zwischen den Sättigungsströmen wird Elektronenlaufbereich genannt. In diesem Bereich können nur die Elektronen die Sonde erreichen, die  ausreichend thermische Energie haben. Die Elektronenstrom im Elektronenlaufbereich ist gegeben durch
 \begin{align}
@@ -51,7 +51,7 @@ Dies lässt sich umformen in
 Aus der Kennlinie kann der Ionensättigungsstrom abgelesen werden. Durch die Korrektur des Gesamtstromes durch den Ionensättigungsstrom, kann man im einem halb-logarithmischem Diagramm aus dem Offset die  Dichte und aus der Steigung die Elektronentemperatur bestimmen. 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.4]{Kennlinie_Sonde.PNG}
+\includegraphics[scale=0.4]{Kennlinie_Sonde.png}
 \caption{Kennlinie einer Langmuir-Sonde. \cite{anleitung}}
 \label{fig:Kennlinie_Sonde}
 \end{figure}
@@ -60,14 +60,14 @@ Für die Messung mit einer einzelnen Langmuir-Sonde wird ein Referenzpotential b
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.4]{Schaltung_Doppel_Sonde.PNG}
+\includegraphics[scale=0.4]{Schaltung_Doppel_Sonde.png}
 \caption{Schaltung zur Erzeugung eines Plasmas mit einer Glimmentladung und der Messung mit einer Doppel-Sonde. \cite{anleitung}}
 \label{fig:Schaltung_Doppel_Sonde}
 \end{figure}
 Für die Messung wird wie bei der Langmuir-Sonde die Spannung variiert und der Strom gemessen.  Die Kennlinie einer Doppelsonde ist in der Abbildung \ref{fig:Kennlinie_Doppel_Sonde} dargestellt. Wird an die Doppelsonde keine Spannung angelegt, fließt auch kein Strom. Das bedeutet der Nulldurchgang der Kennlinie ist im Ursprung.  In diesem Fall ist das System im Gleichgewicht und analog zur Langmuir-Sonde wird das Potential der beiden Sonden als Floatingpotential bezeichnet. Bei sehr großen Spannungen, sowohl negativ als auch positiv, geht der Strom in den Ionensättigungsbereich über. Der Verlauf der Kennlinie im Sättigungsbereich hängt von der Geometrie der beiden Sonden ab. Bei identischen Sonden, ist die Kennlinie punktsymmetrisch zum Ursprung. Zwischen den Bereichen mit der Elektronensättigung ist der Elektronenlaufbereich. 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.4]{Kennlinie_Doppel_Sonde.PNG}
+\includegraphics[scale=0.4]{Kennlinie_Doppel_Sonde.png}
 \caption{Kennlinie einer Doppel-Sonde. \cite{anleitung}}
 \label{fig:Kennlinie_Doppel_Sonde}
 \end{figure}
@@ -82,7 +82,7 @@ I_{\mathrm{e}1} &=I_{\mathrm{e}1,\mathrm{sat}}\ \mathrm{exp} \left( -\frac{e(\Ph
 I_{\mathrm{e}2} &=I_{\mathrm{e}2,\mathrm{sat}}\ \mathrm{exp} \left( -\frac{e(\Phi_{\mathrm{p}}-U_2)}{T_{\mathrm{e}}} \right). 
 \label{eq:ELektronenlaufbereich_Doppel_sonde2}
 \end{align}
-Mit den Gleichung \eqref{eq:Gesamter_strom} und  \eqref{eq:Ionensaettigungsstrom} und der Spannung $U=U_1-U_2$ lässt sich der Ausdruck
+Mit den Gleichung \eqref{eq:Gesamter_strom} und  \eqref{eq:Ionensättigungsstrom} und der Spannung $U=U_1-U_2$ lässt sich der Ausdruck
 \begin{align}
 \frac{I_{\mathrm{S}} + I_{\mathrm{i}1}}{ I_{\mathrm{i}2} - I_{\mathrm{S}}}= \frac{I_{\mathrm{e}1}}{I_{\mathrm{e}2}}= \frac{S_1}{S_2} \mathrm{exp} \left( \frac{e U_{\mathrm{S}}}{T_{\mathrm{e}}} \right)
 \end{align}
