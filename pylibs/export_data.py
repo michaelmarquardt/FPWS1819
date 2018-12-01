@@ -130,6 +130,9 @@ def val(name, val, dig=None, e=None):
         prstr   = "\\newcommand{{\\val"+PRE+"{0:s}}}{{{1:."+str(dig)+"f}e{2:d}}}\n"
         texfile.write(prstr.format(name,round(val*10**-e,dig),e))
 
+def ceil(val,dig):
+    return np.ceil(val*10**dig)*10**-dig
+
 def si(name, val, err=None, unit="", dig=None, e=None):
     r'''
     Write out data as si number with error if err != None.
@@ -155,24 +158,45 @@ def si(name, val, err=None, unit="", dig=None, e=None):
         dig = DIG
     if err == None:
         if e == None:
-            prstr   = "\\newcommand{{\\si{0:s}}}{{\\SI{{{1:."+str(dig)+"f}}}{{{2:s}}}}}\n"
+            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}}}{{{2:s}}}}}\n"
             texfile.write(prstr.format(name,round(val,dig),siunits.unit(unit)))
         elif e == 0:
-            E   = int(np.floor(np.log10(val)))
-            prstr   = "\\newcommand{{\\si{0:s}}}{{\\SI{{{1:."+str(dig)+"f}e{2:d}}}{{{3:s}}}}}\n"
+            E   = int(np.floor(np.log10(np.abs(val))))
+            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}e{2:d}}}{{{3:s}}}}}\n"
             texfile.write(prstr.format(name,round(val*10**-E,dig),E,siunits.unit(unit)))
         else:
-            prstr   = "\\newcommand{{\\si{0:s}}}{{\\SI{{{1:."+str(dig)+"f}e{2:d}}}{{{3:s}}}}}\n"
+            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}e{2:d}}}{{{3:s}}}}}\n"
             texfile.write(prstr.format(name,round(val*10**-e,dig),e,siunits.unit(unit)))
     else:
         if e == None:
-            prstr   = "\\newcommand{{\\sierr{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}}}{{{3:s}}}}}\n"
-            texfile.write(prstr.format(name,round(val,dig),round(err,dig),siunits.unit(unit)))
+            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}}}{{{3:s}}}}}\n"
+            texfile.write(prstr.format(name,round(val,dig),ceil(err,dig),siunits.unit(unit)))
         elif e == 0:
-            E   = int(np.floor(np.log10(val)))
-            prstr   = "\\newcommand{{\\sierr{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}e{3:d}}}{{{4:s}}}}}\n"
-            texfile.write(prstr.format(name,round(val*10**-E,dig),round(err*10**-E,dig),E,siunits.unit(unit)))
+            E   = int(np.floor(np.log10(np.abs(val))))
+            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}e{3:d}}}{{{4:s}}}}}\n"
+            texfile.write(prstr.format(name,round(val*10**-E,dig),ceil(err*10**-E,dig),E,siunits.unit(unit)))
         else:
-            prstr   = "\\newcommand{{\\sierr{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}e{3:d}}}{{{4:s}}}}}\n"
-            texfile.write(prstr.format(name,round(val*10**-e,dig),round(err*10**-e,dig),e,siunits.unit(unit)))
+            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}e{3:d}}}{{{4:s}}}}}\n"
+            texfile.write(prstr.format(name,round(val*10**-e,dig),ceil(err*10**-e,dig),e,siunits.unit(unit)))
     texfile.close()
+
+#   Strings for iteration usage
+#######################################################################################
+alphabet    = ['a','b','c','d','e','f','g','h','i','j','k','l','m',
+               'n','o','p','q','r','s','t','u','v','w','x','y','z']
+Alphabet    = ['A','B','C','D','E','F','G','H','I','J','K','L','M'
+               'N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+
+#   Change a color in '#rrggbb' mode
+#######################################################################################
+def changecolor(color, rgb=(1,1,1)):
+    R   = int(color[1:3],16)
+    G   = int(color[3:5],16)
+    B   = int(color[5:7],16)
+    R   = min(255,R+rgb[0])
+    R   = max(R,0)
+    G   = min(255,G+rgb[1])
+    G   = max(G,0)
+    B   = min(255,B+rgb[2])
+    B   = max(B,0)
+    return "#{:02x}{:02x}{:02x}".format(R,G,B)
