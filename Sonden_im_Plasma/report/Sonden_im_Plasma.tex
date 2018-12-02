@@ -2,10 +2,10 @@
 \documentclass[aps,amsmath,amssymb,amsfont]{revtex4-1}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[english]{babel}
+\usepackage[german]{babel}
 \usepackage{float}
 \usepackage{graphicx}
-\usepackage{siunitx}
+%\usepackage{siunitx}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \usepackage{lmodern}
 \usepackage{physics}
@@ -20,8 +20,6 @@
 \usepackage{placeins}
 \usepackage{braket}
 \numberwithin{equation}{section}
-
-
 
 \makeatletter
 \AtBeginDocument{
@@ -57,15 +55,14 @@
 
 %\usepackage[T1]{fontenc}
 %\usepackage[utf8]{inputenc}
-%\usepackage[english]{babel,varioref}
+\usepackage[german]{varioref}
 
 %%% GRAPHIKEN %%%
 %\usepackage{graphicx}
-%\graphicspath{{../plots/}{../plots/measurement4/}}
-%\usepackage[labelfont=bf,justification=justified,format=plain]{caption}
-%\usepackage{subcaption}
-%\usepackage{placeins}
-%\usepackage{wrapfig}
+\usepackage[labelfont=bf,justification=justified,format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{wrapfig}
 %\usepackage{floatrow}
 %% DREHUNG VON GRAFIKEN
 %\usepackage{rotating}
@@ -81,15 +78,15 @@
 %\usepackage{physics}
 %\usepackage{upgreek}
 %\usepackage{amssymb}
-%\usepackage[separate-uncertainty=true,
-%            list-units = single,
-%            list-separator = {;\,},
-%            exponent-product=\cdot,%
-%            ]{siunitx}
+\usepackage[%separate-uncertainty=true,
+            list-units = single,
+            list-separator = {;\,},
+            exponent-product=\cdot,%
+            ]{siunitx}
 %\DeclareSIUnit\molar{\mole\per\l}
 
 %%% ZEICHENUMGEBUNG %%%
-%\usepackage{pgf}
+\usepackage{pgf}
 
 
 %%% BIBLIOGRAPHIE %%%

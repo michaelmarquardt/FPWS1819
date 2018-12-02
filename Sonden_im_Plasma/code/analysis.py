@@ -126,11 +126,12 @@ for p, data, U_max, a in zip(ps, datas, U_maxs, alphabet):
     si("p"+a,p,dp,"mbar",1)
     si("Te"+a,popt[0],perr[0],"eV",2)
     si("Iisat"+a,np.abs(popt[1]),perr[1],"muA",2)
-    si("A"+a,popt[2]/1000.,perr[2]/1000.,"mA",2)
+    si("A"+a,popt[2]/1000.,perr[2]/1000.,"mA",0)
     Tes.append(popt[0])
     dTes.append(perr[0])
     Iisats.append(popt[1])
     dIisats.append(perr[1])
+    siline("popt"+a,[p, dp, popt[0], perr[0], popt[1], perr[1], popt[2]/1000., perr[2]/1000.],[1,2,2,0])
     
     # Calculate electron density
     ne  = -popt[1]*np.sqrt(mAr/con.e/popt[0])/0.61/con.e/S   #1_m3

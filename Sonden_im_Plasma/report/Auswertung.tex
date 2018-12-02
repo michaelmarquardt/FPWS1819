@@ -1,0 +1,58 @@
+\section{Auswertung}
+\subsection{Langmuir-Sonde}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/single_KL.pgf}
+    \caption{
+        Kennlinie der Langmuir-Sonde im Plasma f\"ur verschiedene Gasdr\"ucke $p$.
+        Die Stromst\"arke ist f\"ur stark negative Spannungen konstant steigt dann exponentiell an und geht dann in eine linearen Anstieg \"uber.
+        Die durchgezogenen Kurven sind exponentielle Fits und die gestrichelten Linien zeigen, bis zu welcher Spannung die Punkte f\"ur den Fit verwendet werden.
+        }
+    \label{single_KL}
+\end{figure}
+
+Abbildung \vref{single_KL} zeigt die Kennlinien der Langmuir-Sonde f\"ur verschiedene Gasdr\"ucke.
+An den Exponentiellen Teil der Kennlinien werden Exponentialfunktionen nach
+\begin{equation}
+I
+    = A\exp(-\frac{U}{T_e})-I_{i,\text{sat}}
+\end{equation}
+gefittet, wobei die Elektronentemperatur $T_e$, der Ionens\"attigungsstrom $I_{i,\text{sat}}$ und die Konstante $A$ angepasst werden.
+Die Ergebnisse sind in Tabelle \vref{single_tab} aufgelistet.
+\begin{table}[h]
+    \centering
+    \caption{
+        Fitparameter f\"ur die Kennlinien.
+        }
+    \label{single_tab}
+    \begin{tabular}{S[table-format=2.8]S[table-format=2.8]S[table-format=3.8]S[table-format=5.8]}
+        {$p$ [\si{\milli\bar}]} &{$T_e$ [\si{\electronvolt}]} &{$I_{i,\text{sat}}$ [\si{\micro\ampere}]} &{$A$ [\si{\milli\ampere}]}\\\hline
+        \silineApopta\\
+        \silineApoptb\\
+        \silineApoptc\\
+        \silineApoptd\\
+        \silineApopte
+    \end{tabular}
+\end{table}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/single_Te.pgf}
+    \caption{
+        Elektronentemperatur $Te$ in Abh\"angigkeit des Gasdruckes $p$.
+        Es ist kein Trend zu erkennen, vor allem da die Ungenauigkeit f\"ur den Druck sehr gro\ss\ ist.
+    }
+    \label{single_Te}
+\end{figure}
+
+In Abbildung \vref{single_Te} ist zu sehen, dass die Elektronentemperatur keinen klaren Trend bei einer \"Anderung des Gasdruckes zeigt.
+Dies ist wohl vor allem dem geschuldet, dass das verwendete Barometer sehr alt und bereits sehr unpr\"azise ist.
+Allerdings kann man erkennen, dass die Elektronentemperatur im Bereich von \SI{10}{\electronvolt} liegt.
+Dies entspricht einer Temperatur von $eT_e/k_\text{B}=\SI{116045}{\kelvin}$.
+
+Aus der Elektronentemperatur und dem Ionens\"attigungsstrom l\"asst sich die Elektronendichte im Plasma
+\begin{align}
+n_e
+    =I_{i,\text{sat}}\sqrt{\frac{m_i}{T_e}}\frac{1}{0.61eS}
+\end{align}
+bestimmen, wobei $m_i=\simAr$ die Masse eines Argon Atoms ist.
+

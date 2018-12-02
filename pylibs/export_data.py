@@ -44,12 +44,14 @@ global DIG
 global PRE
 global VAL
 global SI
+global SILINE
 global USEPGF
 
 DIG = 3
 PRE = ""
 VAL     = []
 SI      = []
+SILINE  = []
 USEPGF  = False
 
 #   Matplotlib and pgf settings
@@ -178,6 +180,30 @@ def si(name, val, err=None, unit="", dig=None, e=None):
         else:
             prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}e{3:d}}}{{{4:s}}}}}\n"
             texfile.write(prstr.format(name,round(val*10**-e,dig),ceil(err*10**-e,dig),e,siunits.unit(unit)))
+    texfile.close()
+
+#   sitabular
+#######################################################################################
+def siline(name, varlist, paramlist):
+    global TEX
+    global PRE
+    global SILINE
+    
+    # Test if name already used
+    if any(PRE+name == Si for Si in SILINE):
+        raise NameError(r"Identifier \si"+PRE+name+" already used!")
+    SILINE.append(PRE+name)
+    
+    # Write to TEX
+    texfile = open(TEX, "a")
+    texfile.write(r"\newcommand{\siline"+PRE+name+"}{")
+    for i in range(len(paramlist)-1):
+        prstr   = "{0:."+str(paramlist[i])+"f}\\pm {1:."+str(paramlist[i])+"f}"
+        texfile.write(prstr.format(round(varlist[2*i],paramlist[i]),ceil(varlist[2*i+1],paramlist[i])))
+        texfile.write(" &")
+    prstr   = "{0:."+str(paramlist[-1])+"f}\\pm {1:."+str(paramlist[-1])+"f}"
+    texfile.write(prstr.format(round(varlist[-2],paramlist[-1]),ceil(varlist[-1],paramlist[-1])))
+    texfile.write("}\n")
     texfile.close()
 
 #   Strings for iteration usage
