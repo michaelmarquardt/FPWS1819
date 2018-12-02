@@ -16,6 +16,7 @@ An den Exponentiellen Teil der Kennlinien werden Exponentialfunktionen nach
 \begin{equation}
 I
     = A\exp(-\frac{U}{T_e})-I_{i,\text{sat}}
+    \label{sI}
 \end{equation}
 gefittet, wobei die Elektronentemperatur $T_e$, der Ionens\"attigungsstrom $I_{i,\text{sat}}$ und die Konstante $A$ angepasst werden.
 Die Ergebnisse sind in Tabelle \vref{single_tab} aufgelistet.
@@ -38,7 +39,7 @@ Die Ergebnisse sind in Tabelle \vref{single_tab} aufgelistet.
     \centering
     \input{../figures/single_Te.pgf}
     \caption{
-        Elektronentemperatur $Te$ in Abh\"angigkeit des Gasdruckes $p$.
+        Elektronentemperatur $T_e$ in Abh\"angigkeit des Gasdruckes $p$.
         Es ist kein Trend zu erkennen, vor allem da die Ungenauigkeit f\"ur den Druck sehr gro\ss\ ist.
     }
     \label{single_Te}
@@ -47,12 +48,125 @@ Die Ergebnisse sind in Tabelle \vref{single_tab} aufgelistet.
 In Abbildung \vref{single_Te} ist zu sehen, dass die Elektronentemperatur keinen klaren Trend bei einer \"Anderung des Gasdruckes zeigt.
 Dies ist wohl vor allem dem geschuldet, dass das verwendete Barometer sehr alt und bereits sehr unpr\"azise ist.
 Allerdings kann man erkennen, dass die Elektronentemperatur im Bereich von \SI{10}{\electronvolt} liegt.
-Dies entspricht einer Temperatur von $eT_e/k_\text{B}=\SI{116045}{\kelvin}$.
+Dies entspricht einer Temperatur von $T_e/k_\text{B}=\SI{116045}{\kelvin}$ (mit der Boltzmann-Konstante $k_\text{B}=\sik$).
 
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/single_ne.pgf}
+    \caption{
+        Elektronendichte $n_e$ in Abh\"angigkeit des Gasdruckes $p$.
+        F\"ur einen h\"oheren Druck ist auch die Elektronendichte h\"oher, da mehr Teilchen im Gasrohr mit vordefiniertem Volumen sind.
+    }
+    \label{single_ne}
+\end{figure}
 Aus der Elektronentemperatur und dem Ionens\"attigungsstrom l\"asst sich die Elektronendichte im Plasma
 \begin{align}
 n_e
-    =I_{i,\text{sat}}\sqrt{\frac{m_i}{T_e}}\frac{1}{0.61eS}
+    &=I_{i,\text{sat}}\sqrt{\frac{m_\text{Ar}}{T_e}}\frac{1}{0.61eS}\label{sne}\\
+    &=\siAIisata\sqrt{\frac{\simAr}{\siATea}}\frac{1}{0.61\cdot \sie \cdot\siS}\nonumber\\
+    &=\siAnea\nonumber
 \end{align}
-bestimmen, wobei $m_i=\simAr$ die Masse eines Argon Atoms ist.
+bestimmen, wobei $m_\text{Ar}=\simAr$ die Masse eines Argon Atoms und $S=\siS$ die Fl\"ache der Sonde ist.
+Die Atomare Masseneinheit betr\"agt $u=\siu$.
+Es wird erwartet, dass sich die Elektronendichte f\"ur h\"ohere Gasdr\"ucke erh\"oht, da Volumen $V$ und Temperatur $T$ des Gases gleich bleiben.
+Der Druck ist \"uber die ideale Gasgleichung
+\begin{equation}
+pV = nk_\text{B}T\label{idgas}
+\end{equation}
+mit diesen verkn\"upft, wobei $n$ die Anzahl der Gasatome ist.
+Abbildung \vref{single_ne} zeigt jedoch, dass dies nicht unbedingt der Fall zu sein scheint.
+Zwar hat der gr\"o\ss te Druck die gr\"o\ss te Elektronendichte, aber darunter ist kein Trend zu sehen.
 
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/single_alpha.pgf}
+    \caption{
+        Ionisationsgrad $\alpha$ in Abh\"angigkeit des Gasdruckes $p$.
+        Der Ionisationsgrad sinkt mit steigendem Druck und ist allgemein relativ niedrig.
+    }
+    \label{single_alpha}
+\end{figure}
+
+Dies liegt zum teil daran, dass der Ionisationsgrad
+\begin{equation}
+\alpha=\frac{n_e}{n N_e}\label{defalpha}
+\end{equation}
+des Plasmas auch vom Druck abh\"angt.
+$N_e$ ist der Grad, bis zu welchem ein Atom ionisiert werden kann.
+Bei Argon ist er $N_e=1$.
+Dies f\"uhrt mit der Idealen Gasgleichung \vref{idgas} auf
+\begin{align}
+\alpha
+    &= \frac{n_e k_\text{B} T}{p}\label{salpha}\\
+    &= \frac{\siAnea\cdot\sik\cdot\siTroom}{\siApa}\nonumber\\
+    &= \siAalphaa\nonumber,
+\end{align}
+wobei Raumtemperatur $T=\siTroom$ verwendet wird, da das Gas bei Raumtemperatur in die Gasr\"ohre gepumpt wird, bevor es gez\"undet wird.
+
+Abbildung \vref{single_alpha} zeigt eine doppelt logarithmische Auftragung des Ionisationsgrads \"uber dem Druck.
+Der Ionisationsgrad sinkt mit steigendem Druck und lie\ss e einen Abfall mit $p^{-x}$ erahnen, wenn die Fehler nicht so gro\ss\ w\"aren.
+Allgemein ist zu erkennen, dass der Ionisationsgrad relativ gering ist.
+Er betr\"agt nur etwa \SI{0.001}{\percent} bis \SI{0.00001}{\percent}.
+
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/single_deb.pgf}
+    \caption{
+        Debye-L\"ange $\lambda_\text{D}$ in Abh\"angigkeit des Gasdruckes $p$.
+    }
+    \label{single_deb}
+\end{figure}
+
+Im Plasma werden elektrische Felder durch die Ionen abgeschirmt.
+Die L\"ange auf der die Feldst\"arke exponentiell abklingt ist die Debye-L\"ange
+\begin{align}
+\lambda_\text{Debye}
+    &=\sqrt{\frac{\varepsilon_0 T_e}{n_e e^2}}
+    \label{sdeb}\\
+    &=\sqrt{\frac{\sieO \cdot\siATea}{\siAnea\cdot(\sie)^2}} \nonumber\\
+    &=\siAdeba\nonumber,
+\end{align}
+wobei $\varepsilon_0=\sieO$ die elektrische Feldkonstante ist.
+Wie in Abbildung \vref{single_deb} zu erkennen ist liegt die Debye-L\"ange bei ungef\"ahr $\lambda =\SI{130}{\nano\metre}$, allerdings ist auch hier wieder kein klarer Trend zu erkennen.
+Dies bedeutet, dass das Elektrische Feld an der Sonde keinen \si{\micro\metre} in das Plasma eindringt.
+
+\begin{figure}[htbp]
+\centering
+\input{../figures/single_wpe.pgf}
+\caption{
+    Plasmafrequenz der Elektronen $\omega_e$ in Abh\"angigkeit des Gasdruckes $p$.
+}
+\label{single_wpe}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\input{../figures/single_wpi.pgf}
+\caption{
+    Plasmafrequenz der Elektronen $\omega_i$ in Abh\"angigkeit des Gasdruckes $p$.
+}
+\label{single_wpi}
+\end{figure}
+
+Zuletzt kann noch die Plasmafrequenz betrachtet werden.
+Da Elektronen und Atomr\"umpfe eine unterschiedliche Masse haben schwingen sie mit unterschiedlichen Frequenzen.
+F\"ur Elektronen wird sie
+\begin{align}
+\omega_e
+    &=\sqrt{\frac{4\pi n_e e^2}{m_e}}
+    \label{swpe}\\
+    &=\sqrt{\frac{4\pi \siAnea \cdot(\sie)^2}{\sime}}\nonumber\\
+    &=\siAwpea .\nonumber
+\end{align}
+Da Argon Atome einfach Ionisiert werden ist die Anzahl an ionisierten Atomr\"umpfen $n_i=n_e$ und die Plasmafrequenz wird
+\begin{align}
+\omega_i
+    &=\sqrt{\frac{4\pi n_e e^2}{m_\text{Ar}}}
+    \label{swpe}\\
+    &=\sqrt{\frac{4\pi \siAnea \cdot(\sie)^2}{\simAr}}\nonumber\\
+    &=\siAwpia .\nonumber
+\end{align}
+Die Plasmafrequenzen sind in den Abbildungen \vref{single_wpe} und \vref{single_wpi} aufgetragen.
+Sie scheinen f\"ur h\"ohere Gasdr\"ucke h\"oher zu werden, allerdings l\"asst sich dies Aufgrund der gro\ss en Abweichung nicht genau sagen.
+Die Plasmafrequenzen liegen bei $\omega_e=\SI{100}{\mega\hertz}$ und $\omega_i=\SI{400}{\kilo\hertz}$.
+Elektronen schwingen also wie erwartet deutlich schneller als Ionen.

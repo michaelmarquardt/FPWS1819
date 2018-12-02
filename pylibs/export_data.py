@@ -191,7 +191,7 @@ def siline(name, varlist, paramlist):
     
     # Test if name already used
     if any(PRE+name == Si for Si in SILINE):
-        raise NameError(r"Identifier \si"+PRE+name+" already used!")
+        raise NameError(r"Identifier \siline"+PRE+name+" already used!")
     SILINE.append(PRE+name)
     
     # Write to TEX
