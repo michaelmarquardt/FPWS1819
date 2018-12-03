@@ -366,6 +366,14 @@ for p, data, U_min, U_max, a in zip(ps, datas, U_mins, U_maxs, alphabet):
     dI21sats.append(dI2)
     dIdUs.append(dIdU)
     ddIdUs.append(ddIdU)
+    siline("popt"+a,[p, dp, 
+                     I1, dI1, 
+                     popt0[1], perr0[1],
+                     I2, dI2, 
+                     popt2[1], perr2[1],
+                     popt1[0], perr1[0], 
+                     popt1[1], perr1[1],
+                     ],[1,2,3,2,3,2,2])
     
     # Calculate electron temperature
     Te  = I1*I2/(I1+I2)/dIdU        # eV
@@ -409,19 +417,23 @@ for p, data, U_min, U_max, a in zip(ps, datas, U_mins, U_maxs, alphabet):
     dwpis.append(dwpi)
     
     # Plot of all characteristic curves
-    x0  = np.array([-130.,  10.])
-    x1  = np.array([-130., 130.])
-    x2  = np.array([ -10., 130.])
-    p1  = plt.plot(x0, linear(x0, *popt0), zorder=3)
-    plt.plot(x1, linear(x1, *popt1), zorder=2, color=p1[0].get_color())
-    plt.plot(x2, linear(x2, *popt2), zorder=1, color=p1[0].get_color())
-    plt.errorbar(U, I, xerr=dU, yerr=dI, 
-        fmt='.', 
-        label=r"$p=\SI{{{:.1f}}}{{\milli\bar}}$".format(p), 
-        color=changecolor(p1[0].get_color(),rgb=(40,40,40)),
-        zorder=0
-        )
+    if a == "a" or a == "c" or a == "e":
+        x0  = np.array([-130.,  10.])
+        x1  = np.array([-130., 130.])
+        x2  = np.array([ -10., 130.])
+        p1  = plt.plot(x0, linear(x0, *popt0), zorder=3)
+        plt.plot(x1, linear(x1, *popt1), zorder=2, color=p1[0].get_color())
+        plt.plot(x2, linear(x2, *popt2), zorder=1, color=p1[0].get_color())
+        plt.errorbar(U, I, xerr=dU, yerr=dI, 
+            fmt='.', 
+            label=r"$p=\SI{{{:.1f}}}{{\milli\bar}}$".format(p), 
+            color=changecolor(p1[0].get_color(),rgb=(40,40,40)),
+            zorder=0
+            )
 
+plt.annotate(r"$S_1 U -I_{i,1,\text{sat}}$", xy=(-100, -35))
+plt.annotate(r"$\frac{\dd I}{\dd U}\Big\lvert_\text{fl} U -I_\text{off}$", xy=(20, 5))
+plt.annotate(r"$S_2 U +I_{i,2,\text{sat}}$", xy=(55, 35))
 plt.xlabel(r"$U$ [\si{\volt}]")
 plt.ylabel(r"$I$ [\si{\micro\ampere}]")
 plt.xlim((-130,130))
@@ -442,7 +454,7 @@ plt.errorbar(ps, Tes, yerr=dTes, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
 plt.ylabel(r"$T_e$ [\si{\electronvolt}]")
 plt.xscale("log")
-plt.xlim((0.2,40))
+plt.xlim((0.4,20))
 #plt.ylim((-50,1050))
 #plt.legend()
 plt.tight_layout()
@@ -455,7 +467,7 @@ plt.errorbar(ps, nes, yerr=dnes, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
 plt.ylabel(r"$n_e$ [\si{\per\metre\tothe{3}}]")
 plt.xscale("log")
-plt.xlim((0.2,40))
+plt.xlim((0.4,20))
 #plt.ylim((-50,1050))
 #plt.legend()
 plt.tight_layout()
@@ -470,7 +482,7 @@ plt.errorbar(ps, alphas, yerr=aerr, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
 plt.ylabel(r"$\alpha")
 plt.xscale("log")
-plt.xlim((0.2,40))
+plt.xlim((0.4,20))
 plt.ylim((10**-8,10**-4))
 plt.yscale("log")
 #plt.legend()
@@ -484,7 +496,7 @@ plt.errorbar(ps, debs, yerr=ddebs, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
 plt.ylabel(r"$\lambda_\text{D}$ [\si{\nano\metre}]")
 plt.xscale("log")
-plt.xlim((0.2,40))
+plt.xlim((0.4,20))
 #plt.ylim((-50,1050))
 #plt.legend()
 plt.tight_layout()
@@ -497,7 +509,7 @@ plt.errorbar(ps, wpes, yerr=dwpes, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
 plt.ylabel(r"$\omega_{e}$ [\si{\mega\hertz}]")
 plt.xscale("log")
-plt.xlim((0.2,40))
+plt.xlim((0.4,20))
 #plt.ylim((-50,1050))
 #plt.legend()
 plt.tight_layout()
@@ -510,7 +522,7 @@ plt.errorbar(ps, wpis, yerr=dwpis, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
 plt.ylabel(r"$\omega_{i}$ [\si{\kilo\hertz}]")
 plt.xscale("log")
-plt.xlim((0.2,40))
+plt.xlim((0.4,20))
 #plt.ylim((-50,1050))
 #plt.legend()
 plt.tight_layout()

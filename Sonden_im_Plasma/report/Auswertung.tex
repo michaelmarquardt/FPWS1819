@@ -1,5 +1,5 @@
 \section{Auswertung}
-\subsection{Langmuir-Sonde}
+\subsection{Langmuir-Sonde}\label{single}
 \begin{figure}[htbp]
     \centering
     \input{../figures/single_KL.pgf}
@@ -26,7 +26,7 @@ Die Ergebnisse sind in Tabelle \vref{single_tab} aufgelistet.
         Fitparameter f\"ur die Kennlinien.
         }
     \label{single_tab}
-    \begin{tabular}{S[table-format=2.8]S[table-format=2.8]S[table-format=3.8]S[table-format=5.8]}
+    \begin{tabular}{S[table-format=4.6]|S[table-format=4.6]S[table-format=5.6]S[table-format=7.6]}
         {$p$ [\si{\milli\bar}]} &{$T_e$ [\si{\electronvolt}]} &{$I_{i,\text{sat}}$ [\si{\micro\ampere}]} &{$A$ [\si{\milli\ampere}]}\\\hline
         \silineApopta\\
         \silineApoptb\\
@@ -55,7 +55,6 @@ Dies entspricht einer Temperatur von $T_e/k_\text{B}=\SI{116045}{\kelvin}$ (mit 
     \input{../figures/single_ne.pgf}
     \caption{
         Elektronendichte $n_e$ in Abh\"angigkeit des Gasdruckes $p$.
-        F\"ur einen h\"oheren Druck ist auch die Elektronendichte h\"oher, da mehr Teilchen im Gasrohr mit vordefiniertem Volumen sind.
     }
     \label{single_ne}
 \end{figure}
@@ -143,7 +142,7 @@ Dies bedeutet, dass das Elektrische Feld an der Sonde keinen \si{\micro\metre} i
 \centering
 \input{../figures/single_wpi.pgf}
 \caption{
-    Plasmafrequenz der Elektronen $\omega_i$ in Abh\"angigkeit des Gasdruckes $p$.
+    Plasmafrequenz der Ionen $\omega_i$ in Abh\"angigkeit des Gasdruckes $p$.
 }
 \label{single_wpi}
 \end{figure}
@@ -169,4 +168,154 @@ Da Argon Atome einfach Ionisiert werden ist die Anzahl an ionisierten Atomr\"ump
 Die Plasmafrequenzen sind in den Abbildungen \vref{single_wpe} und \vref{single_wpi} aufgetragen.
 Sie scheinen f\"ur h\"ohere Gasdr\"ucke h\"oher zu werden, allerdings l\"asst sich dies Aufgrund der gro\ss en Abweichung nicht genau sagen.
 Die Plasmafrequenzen liegen bei $\omega_e=\SI{100}{\mega\hertz}$ und $\omega_i=\SI{400}{\kilo\hertz}$.
-Elektronen schwingen also wie erwartet deutlich schneller als Ionen.
+Elektronen schwingen also wie erwartet deutlich schneller als Ionen weil sie leichter sind.
+
+\FloatBarrier
+\subsection{Doppel-Sonde}\label{double}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/double_KL.pgf}
+    \caption{
+        Kennlinie der Doppel-Sonde im Plasma f\"ur verschiedene Gasdr\"ucke $p$.
+        Es zeichnen sich drei Bereiche ab, in denen die Kennlinie etwa einer Geraden folgt.
+        An diese Bereiche sind lineare Fits gem\"a\ss\ den angegebenen Formeln angepasst.
+        Man erkennt, wie sich die Steigung in Abh\"angigkeit des Drucks entwickelt und dass die Spannungen, wo die Kurve ihre Steigung wechselt f\"ur alle Dr\"ucke etwa gleich sind.
+        Aus Gr\"unden der \"Ubersichtlichkeit sind nicht alle gemessenen Kurven dargestellt.
+    }
+    \label{double_KL}
+\end{figure}
+
+Abbildung \vref{duoble_KL} zeigt die Kennlinien der Doppel-Sonde f\"ur verschiedene Gasdr\"ucke.
+Die Form entspricht der, die auch in Abbildung \vref{fig:Kennlinie_Doppel_Sonde} abgebildet ist.
+Die Kurve verl\"auft umgekehrt, weil Spannung oder Strom in die umgekehrte Richtung gemessen werden und hat keine physikalische Bedeutung.
+Es zeigt sich, dass f\"ur h\"ohere Dichten die Steigung im Elektronenanlaufbereich gr\"o\ss er ist.
+In den Ionenstroms\"attigungsbereichen ist es genau umgekehrt.
+
+An die drei Linearen Teile der Kurve wird jeweils ein Polynom erster Ordnung gefittet.
+Die zugeh\"origen Fitparameter sind in der Graphik angegeben und in Tabelle \vref{double_tab} aufgelistet.
+\begin{table}[h]
+    \centering
+    \caption{
+        Fitparameter f\"ur die Kennlinien.
+    }
+    \label{double_tab}
+    \begin{tabular}{S[table-format=4.6]|S[table-format=4.6]S[table-format=3.6]S[table-format=4.6]S[table-format=3.6]S[table-format=3.6]S[table-format=3.6]}
+        {$p$ [\si{\milli\bar}]} 
+            &{$I_{i,1,\text{sat}}$ [\si{\micro\ampere}]}
+            &{$S_1$ [\si{\micro\ampere\per\volt}]}
+            &{$I_{i,2,\text{sat}}$ [\si{\micro\ampere}]}
+            &{$S_2$ [\si{\micro\ampere\per\volt}]}
+            &{$I_\text{off}$ [\si{\micro\ampere}]}
+            &{$\frac{\dd I}{\dd U}\big\lvert_\text{fl}$ [\si{\micro\ampere\per\volt}]}\\\hline
+        \silineBpopta\\
+        \silineBpoptb\\
+        \silineBpoptc\\
+        \silineBpoptd\\
+        \silineBpopte
+    \end{tabular}
+\end{table}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/double_Te.pgf}
+    \caption{
+        Elektronentemperatur $T_e$ in Abh\"angigkeit des Gasdruckes $p$.
+        Die Elektronentemperatur scheint f\"ur h\"ohere dr\"ucke h\"oher er zu sein.
+    }
+    \label{double_Te}
+\end{figure}
+Dabei sind $I_\text{i,1/2,\text{sat}}$ die Ionens\"atigungsstr\"ome der ersten beziehungsweise zweiten Langmuir-Sonde.
+Die Steigung f\"ur den Fall das kein Strom flie\ss t (Floatingpotential) ist $\frac{\dd I}{\dd U}\Big\lvert_\text{fl}$.
+Die Elektronentemperatur
+\begin{align}
+T_e
+    &=e\frac{I_{i,1,\text{sat}}I_{i,1,\text{sat}}}{I_{i,2,\text{sat}}+I_{i,2,\text{sat}}}\left(\frac{\dd I}{\dd U}\Big\lvert_\text{fl}\right)^{-1}
+    \label{dTe}\\
+    &=\sie \frac{\siBIiasata\cdot\siBIibsata}{\siBIiasata+\siBIibsata}\left(\siBdIdUa\right)^{-1}\nonumber\\
+    &=\siBTea\nonumber
+\end{align}
+kann aus den Fitparametern bestimmt werden.
+In Abbildung \vref{double_Te} ist zu sehen, dass die Elektronentemperatur im Bereich von \SI{3.5}{\electronvolt} liegt, was kleiner ist als bei der Langmuir-Sonde zuvor ($ T_e=\SI{10}{\electronvolt}$).
+
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/double_ne.pgf}
+    \caption{
+        Elektronendichte $n_e$ in Abh\"angigkeit des Gasdruckes $p$.
+    }
+    \label{double_ne}
+\end{figure}
+
+Vergleicht man die Ionens\"attigungsstr\"ome mit den Ergebnissen f\"ur die Langmuir-Sonde aus Sektion \ref{single}, erkennt man, dass Sonde 2 die Sonde aus dem vorigen Versuch ist.
+F\"ur diese ist die Fl\"ache $S=\siS$ bekannt und die Elektronendichte kann analog zu \eqref{sne} bestimmt werden.
+Es ergibt sich
+\begin{align}
+n_e
+    &=I_{i,2,\text{sat}}\sqrt{\frac{m_\text{Ar}}{T_e}}\frac{1}{0.61eS}\label{sne}\\
+    &=\siBIibsata\sqrt{\frac{\simAr}{\siBTea}}\frac{1}{0.61\cdot \sie \cdot\siS}\nonumber\\
+    &=\siBnea .\nonumber
+\end{align}
+Abbildung \vref{double_ne} zeigt eine etwas h\"ohere Elektronendichte f\"ur den h\"ochsten Druck.
+
+Nun k\"onnen der Ionisationsgrad $\alpha$, die Debye-L\"ange $\lambda_\text{D}$ und die Plasmafrequenzen $\omega_e$ und $\omega_i$ analog zu Sektion \ref{single} berechnet werden.
+Die Gr\"o\ss en sind in den Plots \vref{double_alpha} bis \vref{double_wpi} \"uber dem Druck aufgetragen.
+
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/double_alpha.pgf}
+    \caption{
+        Ionisationsgrad $\alpha$ in Abh\"angigkeit des Gasdruckes $p$.
+        Der Ionisationsgrad sinkt mit steigendem Druck und ist allgemein relativ niedrig.
+        Wenn man die Fehlerbalken nicht ber\"ucksichtigt kann man die Beziehung $\alpha\propto p^{-x}$ erahnen.
+        Dies wird dadurch gest\"utzt, dass f\"ur die Einzel-Sonde bereits ein \"ahnliches Bild gesehen wird (siehe Abbildung \vref{single_alpha}).
+    }
+    \label{double_alpha}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/double_deb.pgf}
+    \caption{
+        Debye-L\"ange $\lambda_\text{D}$ in Abh\"angigkeit des Gasdruckes $p$.
+        Man erkennt lediglich, dass die Debye-L"ange f\"ur einen hohen Druck kleiner wird, das elektrische Feld also st\"arker abgeschirmt wird.
+        Die Debye-L\"angen sind nur noch etwa halb so gro\ss\ wie bei der Einzel-Sonde.
+    }
+    \label{double_deb}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/double_wpe.pgf}
+    \caption{
+        Plasmafrequenz der Elektronen $\omega_e$ in Abh\"angigkeit des Gasdruckes $p$.
+        Ein H\"oherer Druckl sorgt f\"ur eine h\"ohere Plasmafrequenz.
+        Die Frequenz ist \"ahnlich zur Einzel-Sonde.
+    }
+    \label{double_wpe}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/double_wpi.pgf}
+    \caption{
+        Plasmafrequenz der Ionen $\omega_i$ in Abh\"angigkeit des Gasdruckes $p$.
+        Ein H\"oherer Druckl sorgt f\"ur eine h\"ohere Plasmafrequenz.
+        Die Frequenz ist \"ahnlich zur Einzel-Sonde.
+    }
+    \label{double_wpi}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/double_KL_1.pgf}
+    \caption{
+        Kennlinie der Doppel-Sonde f\"ur einen wesentlich gr\"o\ss eren Spannungsbereich.
+        Der Gasdruck betr\"agt dabei $p=\SI{20\pm 5}{\milli\bar}$.
+    }
+    \label{double_KL_1}
+\end{figure}
+
+Zuletzt ist noch die Kennlinie \"uber einen wesentlich gr\"o\ss eren Spannungsbereich aufgetragen.
+In Abbildung \vref{double_KL_1} erkennt man, dass der lineare Anstieg des Stroms wieder in einen exponentiellen \"ubergeht.
+
+\FloatBarrier
+\subsection{Radialprofil}\label{radial}
