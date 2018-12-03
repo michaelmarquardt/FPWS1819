@@ -5,14 +5,14 @@
     \input{../figures/single_KL.pgf}
     \caption{
         Kennlinie der Langmuir-Sonde im Plasma f\"ur verschiedene Gasdr\"ucke $p$.
-        Die Stromst\"arke ist f\"ur stark negative Spannungen konstant steigt dann exponentiell an und geht dann in eine linearen Anstieg \"uber.
+        Die Stromst\"arke ist f\"ur stark negative Spannungen konstant steigt exponentiell an und geht dann in einen linearen Anstieg \"uber.
         Die durchgezogenen Kurven sind exponentielle Fits und die gestrichelten Linien zeigen, bis zu welcher Spannung die Punkte f\"ur den Fit verwendet werden.
         }
     \label{single_KL}
 \end{figure}
 
 Abbildung \vref{single_KL} zeigt die Kennlinien der Langmuir-Sonde f\"ur verschiedene Gasdr\"ucke.
-An den Exponentiellen Teil der Kennlinien werden Exponentialfunktionen nach
+An den exponentiellen Teil der Kennlinien werden Exponentialfunktionen nach
 \begin{equation}
 I
     = A\exp(-\frac{U}{T_e})-I_{i,\text{sat}}
@@ -191,7 +191,7 @@ Die Kurve verl\"auft umgekehrt, weil Spannung oder Strom in die umgekehrte Richt
 Es zeigt sich, dass f\"ur h\"ohere Dichten die Steigung im Elektronenanlaufbereich gr\"o\ss er ist.
 In den Ionenstroms\"attigungsbereichen ist es genau umgekehrt.
 
-An die drei Linearen Teile der Kurve wird jeweils ein Polynom erster Ordnung gefittet.
+An die drei linearen Teile der Kurve wird jeweils ein Polynom erster Ordnung gefittet.
 Die zugeh\"origen Fitparameter sind in der Graphik angegeben und in Tabelle \vref{double_tab} aufgelistet.
 \begin{table}[h]
     \centering
@@ -259,6 +259,9 @@ Abbildung \vref{double_ne} zeigt eine etwas h\"ohere Elektronendichte f\"ur den 
 Nun k\"onnen der Ionisationsgrad $\alpha$, die Debye-L\"ange $\lambda_\text{D}$ und die Plasmafrequenzen $\omega_e$ und $\omega_i$ analog zu Sektion \ref{single} berechnet werden.
 Die Gr\"o\ss en sind in den Plots \vref{double_alpha} bis \vref{double_wpi} \"uber dem Druck aufgetragen.
 
+Zuletzt ist noch die Kennlinie \"uber einen wesentlich gr\"o\ss eren Spannungsbereich aufgetragen.
+In Abbildung \vref{double_KL_1} erkennt man, dass der lineare Anstieg des Stroms wieder in einen exponentiellen \"ubergeht.
+
 \begin{figure}[htbp]
     \centering
     \input{../figures/double_alpha.pgf}
@@ -313,9 +316,6 @@ Die Gr\"o\ss en sind in den Plots \vref{double_alpha} bis \vref{double_wpi} \"ub
     }
     \label{double_KL_1}
 \end{figure}
-
-Zuletzt ist noch die Kennlinie \"uber einen wesentlich gr\"o\ss eren Spannungsbereich aufgetragen.
-In Abbildung \vref{double_KL_1} erkennt man, dass der lineare Anstieg des Stroms wieder in einen exponentiellen \"ubergeht.
 
 \FloatBarrier
 \subsection{Radialprofil}\label{radial}
@@ -417,17 +417,17 @@ Es zeigt sich, dass sich die Kennlinien f\"ur verschiedene radiale Positionen op
 Die Elektronentemperatur $T_e$, die Elektronendichte $n_e$, der Ionisationsgrad $\alpha$, die Debye-L\"ange $\lambda_\text{D}$, sowie die Plasmafrequenzen $\omega_e$ und $\omega_i$ sind in den Abbildungen \vref{radial_Te} bis \vref{radial_wpi} \"uber der Radialposition aufgetragen.
 Zusammenfassend l\"asst sich sagen, dass keine der genannten Gr\"o\ss en einen klaren Trend in $\Delta r$ zeigt.
 Dies kann daran liegen, dass der Anfang willk\"urlich gew\"ahlt wird.
-Die Sonde ist wohl zu nahe an der Mitte des Plasmas geblieben und vermutlich sogar durch die Mitte geschoben worden, wie der symmetrische leichte Anstieg und Abfall auf zu $\Delta r\searrow 0$ und $\Delta r\nearrow 7$ andeutet.
+Die Sonde ist wohl zu nahe an der Mitte des Plasmas geblieben und vermutlich sogar durch die Mitte geschoben worden, wie der symmetrische leichte Anstieg und Abfall auf zu $\Delta r\searrow \SI{0}{\milli\metre}$ und $\Delta r\nearrow \SI{7}{\milli\metre}$ andeutet.
 Allerdings ist die Ungenauigkeit zu gro\ss\ um hier eine sichere Aussage treffen zu k\"onnen.
 
-Allerdings l\"asst sich eine deutliche Abh\"angigkeit vom Entladungsstrom feststellen.
+Dar\"uber hinaus l\"asst sich eine deutliche Abh\"angigkeit vom Entladungsstrom feststellen.
 
 Es gilt:
 \begin{tabular}{ll@{\hskip 0.5cm}l@{\hskip 0.5cm}l@{\hskip 0.5cm}l@{\hskip 0.5cm}l@{\hskip 0.5cm}l}
 $I_E\uparrow$ $\Rightarrow$ &$T_e\downarrow$ &$n_e\uparrow$ &$\alpha\uparrow$ &$\lambda_\text{D}\downarrow$ &$\omega_e\uparrow$ &$\omega_i\uparrow$
 \end{tabular}
 
-Wenn der Entladungsstrom gr\"o\ss er werden mehr Teilchen ionisiert, was die Elektronendichte und den Ionisationsgrad erh\"oht.
+Wenn der Entladungsstrom gr\"o\ss er wird werden mehr Teilchen ionisiert, was die Elektronendichte und den Ionisationsgrad erh\"oht.
 Infolgedessen wird die Abschirmung elektrischer Felder st\"arker und die Debye-L\"ange wird kleiner.
 Dar\"uber hinaus scheint der erh\"ohte Strom die Bewegungsfreiheit der Elektronen einzuschr\"anken, da die Elektronentemperatur sinkt.
 Dies kann auch von der erh\"ohten Plasmafrequenz herr\"uhren, die von der h\"oheren Elektronendichte erzeugt wird.
