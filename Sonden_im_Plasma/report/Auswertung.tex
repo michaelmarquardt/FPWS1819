@@ -319,3 +319,164 @@ In Abbildung \vref{double_KL_1} erkennt man, dass der lineare Anstieg des Stroms
 
 \FloatBarrier
 \subsection{Radialprofil}\label{radial}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/radial_KL_I5.pgf}
+    \caption{
+        Kennlinie der Langmuir-Sonde im Plasma f\"ur verschiedene radiale Positionen im Plasma $\Delta r$.
+        Der Entladungsstrom betr\"agt $I_\text{E}=\SI{5}{\milli\ampere}$.
+        Die Kennlinien unterscheiden sich kaum merklich f\"ur die verschiedenen Positionen.
+    }
+    \label{radial_KL_I5}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/radial_KL_I10.pgf}
+    \caption{
+        Kennlinie der Langmuir-Sonde im Plasma f\"ur verschiedene radiale Positionen im Plasma $\Delta r$.
+        Der Entladungsstrom betr\"agt $I_\text{E}=\SI{10}{\milli\ampere}$.
+        Die Kennlinien unterscheiden sich kaum merklich f\"ur die verschiedenen Positionen.
+    }
+    \label{radial_KL_I10}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/radial_KL_I20.pgf}
+    \caption{
+        Kennlinie der Langmuir-Sonde im Plasma f\"ur verschiedene radiale Positionen im Plasma $\Delta r$.
+        Der Entladungsstrom betr\"agt $I_\text{E}=\SI{20}{\milli\ampere}$.
+        Die Kennlinien unterscheiden sich kaum merklich f\"ur die verschiedenen Positionen.
+    }
+    \label{radial_KL_I20}
+\end{figure}
+
+Die Abh\"angigkeit von der radialen Position der Langmuir-Sonde im Plasma wird nun untersucht.
+Hierf\"ur wird willk\"urlich eine Position nahe der Mitte des Plasmas gew\"ahlt.
+Die radiale Position wird dann als Abstand $\Delta r$ von dieser Position angegeben.
+Die Messungen werden bei konstantem Druck $p=\SI{3}{\milli\bar}$ und verschiedenen Entladungsstr\"omen $I_\text{E}$ durchgef\"uhrt.
+Die Auswertung verl\"auft analog zu Sektion \ref{single}.
+
+Die Kennlinien f\"ur Entladungsstr\"ome von \SIlist{5;10;20}{\milli\ampere} sind in den Abbildungen \vref{radial_KL_I5} bis \vref{radial_KL_I20} abgebildet.
+Die Fitparameter zu den exponentiellen Fits sind in den Tabellen \vref{radial_tab_I5} bis \vref{radial_tab_I20} nachzusehen.
+Es zeigt sich, dass sich die Kennlinien f\"ur verschiedene radiale Positionen optisch nicht unterscheiden.
+\begin{table}[h]
+    \centering
+    \caption{
+        Fitparameter f\"ur die Kennlinien f\"ur $I_\text{E}=\SI{5}{\milli\ampere}$.
+    }
+    \label{radial_tab_I5}
+    \begin{tabular}{S[table-format=4.6]|S[table-format=4.6]S[table-format=5.6]S[table-format=7.6]}
+        {$\Delta r$ [\si{\milli\metre}]} &{$T_e$ [\si{\electronvolt}]} &{$I_{i,\text{sat}}$ [\si{\micro\ampere}]} &{$A$ [\si{\milli\ampere}]}\\\hline
+        \silineCpopta\\
+        \silineCpoptb\\
+        \silineCpoptc\\
+        \silineCpoptd\\
+        \silineCpopte\\
+        \silineCpoptf\\
+        \silineCpoptg\\
+        \silineCpopth
+    \end{tabular}
+\end{table}
+\begin{table}[h]
+    \centering
+    \caption{
+        Fitparameter f\"ur die Kennlinien f\"ur $I_\text{E}=\SI{10}{\milli\ampere}$.
+    }
+    \label{radial_tab_I10}
+    \begin{tabular}{S[table-format=4.6]|S[table-format=4.6]S[table-format=5.6]S[table-format=7.6]}
+        {$\Delta r$ [\si{\milli\metre}]} &{$T_e$ [\si{\electronvolt}]} &{$I_{i,\text{sat}}$ [\si{\micro\ampere}]} &{$A$ [\si{\milli\ampere}]}\\\hline
+        \silineDpopta\\
+        \silineDpoptb\\
+        \silineDpoptc\\
+        \silineDpoptd\\
+        \silineDpopte\\
+        \silineDpoptf\\
+        \silineDpoptg\\
+        \silineDpopth
+    \end{tabular}
+\end{table}
+\begin{table}[h]
+    \centering
+    \caption{
+        Fitparameter f\"ur die Kennlinien f\"ur $I_\text{E}=\SI{20}{\milli\ampere}$.
+    }
+    \label{radial_tab_I20}
+    \begin{tabular}{S[table-format=4.6]|S[table-format=4.6]S[table-format=5.6]S[table-format=7.6]}
+        {$\Delta r$ [\si{\milli\metre}]} &{$T_e$ [\si{\electronvolt}]} &{$I_{i,\text{sat}}$ [\si{\micro\ampere}]} &{$A$ [\si{\milli\ampere}]}\\\hline
+        \silineEpopta\\
+        \silineEpoptb\\
+        \silineEpoptc\\
+        \silineEpoptd\\
+        \silineEpopte\\
+        \silineEpoptf\\
+        \silineEpoptg\\
+        \silineEpopth
+    \end{tabular}
+\end{table}
+
+Die Elektronentemperatur $T_e$, die Elektronendichte $n_e$, der Ionisationsgrad $\alpha$, die Debye-L\"ange $\lambda_\text{D}$, sowie die Plasmafrequenzen $\omega_e$ und $\omega_i$ sind in den Abbildungen \vref{radial_Te} bis \vref{radial_wpi} \"uber der Radialposition aufgetragen.
+Zusammenfassend l\"asst sich sagen, dass keine der genannten Gr\"o\ss en einen klaren Trend in $\Delta r$ zeigt.
+Dies kann daran liegen, dass der Anfang willk\"urlich gew\"ahlt wird.
+Die Sonde ist wohl zu nahe an der Mitte des Plasmas geblieben und vermutlich sogar durch die Mitte geschoben worden, wie der symmetrische leichte Anstieg und Abfall auf zu $\Delta r\searrow 0$ und $\Delta r\nearrow 7$ andeutet.
+Allerdings ist die Ungenauigkeit zu gro\ss\ um hier eine sichere Aussage treffen zu k\"onnen.
+
+Allerdings l\"asst sich eine deutliche Abh\"angigkeit vom Entladungsstrom feststellen.
+
+Es gilt:
+\begin{tabular}{ll@{\hskip 0.5cm}l@{\hskip 0.5cm}l@{\hskip 0.5cm}l@{\hskip 0.5cm}l@{\hskip 0.5cm}l}
+$I_E\uparrow$ $\Rightarrow$ &$T_e\downarrow$ &$n_e\uparrow$ &$\alpha\uparrow$ &$\lambda_\text{D}\downarrow$ &$\omega_e\uparrow$ &$\omega_i\uparrow$
+\end{tabular}
+
+Wenn der Entladungsstrom gr\"o\ss er werden mehr Teilchen ionisiert, was die Elektronendichte und den Ionisationsgrad erh\"oht.
+Infolgedessen wird die Abschirmung elektrischer Felder st\"arker und die Debye-L\"ange wird kleiner.
+Dar\"uber hinaus scheint der erh\"ohte Strom die Bewegungsfreiheit der Elektronen einzuschr\"anken, da die Elektronentemperatur sinkt.
+Dies kann auch von der erh\"ohten Plasmafrequenz herr\"uhren, die von der h\"oheren Elektronendichte erzeugt wird.
+
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/radial_Te.pgf}
+    \caption{
+        Elektronentemperatur $T_e$ in Abh\"angigkeit der Radialposition $\Delta r$.
+    }
+    \label{radial_Te}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/radial_ne.pgf}
+    \caption{
+        Elektronendichte $n_e$ in Abh\"angigkeit der Radialposition $\Delta r$.
+    }
+    \label{radial_ne}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/radial_alpha.pgf}
+    \caption{
+        Ionisationsgrad $\alpha$ in Abh\"angigkeit der Radialposition $\Delta r$.
+    }
+    \label{radial_alpha}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/radial_deb.pgf}
+    \caption{
+        Debye-L\"ange $\lambda_\text{D}$ in Abh\"angigkeit der Radialposition $\Delta r$.
+    }
+    \label{radial_deb}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/radial_wpe.pgf}
+    \caption{
+        Plasmafrequenz der Elektronen $\omega_e$ in Abh\"angigkeit der Radialposition $\Delta r$.
+    }
+    \label{radial_wpe}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \input{../figures/radial_wpi.pgf}
+    \caption{
+        Plasmafrequenz der Ionen $\omega_i$ in Abh\"angigkeit der Radialposition $\Delta r$.
+    }
+    \label{radial_wpi}
+\end{figure}

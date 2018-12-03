@@ -559,9 +559,7 @@ datass   = [["radial_Ar_17.dat",
              "radial_Ar_6.dat",
              "radial_Ar_7.dat",
              "radial_Ar_8.dat"]]
-U_maxss  = [[-70., -70., -70., -70., -70., -70., -70., -70.],
-            [-50., -50., -50., -50., -50., -50., -50., -50.],
-            [-50., -50., -50., -50., -50., -50., -50., -50.]]
+U_maxs   = [-60., -45., -45.]
 aTes     = []
 adTes    = []
 aIisats  = []
@@ -576,7 +574,7 @@ awpes    = []
 adwpes   = []
 awpis    = []
 adwpis   = []
-for IE, datas, U_maxs, A in zip(IEs, datass, U_maxss, Alphabet[2:]): 
+for IE, datas, U_max, A in zip(IEs, datass, U_maxs, Alphabet[2:]): 
     set_pre(A)
     Tes     = []
     dTes    = []
@@ -595,7 +593,7 @@ for IE, datas, U_maxs, A in zip(IEs, datass, U_maxss, Alphabet[2:]):
 
     # Start main loop
     f   = plt.figure()
-    for data, U_max, a, dr in zip(datas, U_maxs, alphabet, drs):
+    for data, a, dr in zip(datas, alphabet, drs):
         U, I    = getdata_cut(data)
         # Exponential fit to the curves
         popt, perr  = fit_single(U, I, dI, U_max=U_max)
@@ -607,6 +605,7 @@ for IE, datas, U_maxs, A in zip(IEs, datass, U_maxss, Alphabet[2:]):
         dTes.append(perr[0])
         Iisats.append(popt[1])
         dIisats.append(perr[1])
+        siline("popt"+a,[dr, None, popt[0], perr[0], popt[1], perr[1], popt[2]/1000., perr[2]/1000.],[0,2,2,0])
         
         # Calculate electron density
         ne  = -popt[1]*np.sqrt(mAr/con.e/popt[0])/0.61/con.e/S   #1_m3
@@ -648,7 +647,7 @@ for IE, datas, U_maxs, A in zip(IEs, datass, U_maxss, Alphabet[2:]):
         plt.errorbar(U, I, xerr=dU, yerr=dI, 
             fmt='.', 
             label=r"$\Delta r=\SI{{{:.0f}}}{{\milli\metre}}$".format(dr), 
-            #color=changecolor(p1[0].get_color(),rgb=(40,40,40)),
+            color=changecolor(p1[0].get_color(),rgb=(40,40,40)),
             zorder=2
             )
         plt.axvline(U_max,linestyle='--',color=changecolor(p1[0].get_color(),rgb=(40,40,40)))
@@ -687,9 +686,9 @@ for k in [0,1,2]:
 plt.xlabel(r"$\Delta r$ [\si{\milli\metre}]")
 plt.ylabel(r"$T_e$ [\si{\electronvolt}]")
 #plt.xscale("log")
-plt.xlim((-1,8))
+plt.xlim((-1,10))
 #plt.ylim((-50,1050))
-plt.legend()
+plt.legend(loc="upper right")
 plt.tight_layout()
 plt.savefig(PLOT+"radial_Te.pgf", bbox_inches="tight")
 plt.savefig(PLOT+"radial_Te.pdf", bbox_inches="tight")
@@ -701,9 +700,9 @@ for k in [0,1,2]:
 plt.xlabel(r"$\Delta r$ [\si{\milli\metre}]")
 plt.ylabel(r"$n_e$ [\si{\per\metre\tothe{3}}]")
 #plt.xscale("log")
-plt.xlim((-1,8))
+plt.xlim((-1,10))
 #plt.ylim((-50,1050))
-plt.legend()
+plt.legend(loc="upper right")
 plt.tight_layout()
 plt.savefig(PLOT+"radial_ne.pgf", bbox_inches="tight")
 plt.savefig(PLOT+"radial_ne.pdf", bbox_inches="tight")
@@ -717,11 +716,12 @@ for k in [0,1,2]:
 plt.xlabel(r"$\Delta r$ [\si{\milli\metre}]")
 plt.ylabel(r"$\alpha")
 #plt.xscale("log")
-plt.xlim((-1,8))
+plt.xlim((-1,10))
 #plt.ylim((10**-7,10**-5))
 plt.ylim((0,225*10**-8))
 #plt.yscale("log")
-plt.legend()
+plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+plt.legend(loc="upper right")
 plt.tight_layout()
 plt.savefig(PLOT+"radial_alpha.pgf", bbox_inches="tight")
 plt.savefig(PLOT+"radial_alpha.pdf", bbox_inches="tight")
@@ -733,9 +733,9 @@ for k in [0,1,2]:
 plt.xlabel(r"$\Delta r$ [\si{\milli\metre}]")
 plt.ylabel(r"$\lambda_\text{D}$ [\si{\nano\metre}]")
 #plt.xscale("log")
-plt.xlim((-1,8))
+plt.xlim((-1,10))
 #plt.ylim((-50,1050))
-plt.legend()
+plt.legend(loc="upper right")
 plt.tight_layout()
 plt.savefig(PLOT+"radial_deb.pgf", bbox_inches="tight")
 plt.savefig(PLOT+"radial_deb.pdf", bbox_inches="tight")
@@ -747,9 +747,9 @@ for k in [0,1,2]:
 plt.xlabel(r"$\Delta r$ [\si{\milli\metre}]")
 plt.ylabel(r"$\omega_{e}$ [\si{\mega\hertz}]")
 #plt.xscale("log")
-plt.xlim((-1,8))
+plt.xlim((-1,10))
 #plt.ylim((-50,1050))
-plt.legend()
+plt.legend(loc="upper right")
 plt.tight_layout()
 plt.savefig(PLOT+"radial_wpe.pgf", bbox_inches="tight")
 plt.savefig(PLOT+"radial_wpe.pdf", bbox_inches="tight")
@@ -761,9 +761,9 @@ for k in [0,1,2]:
 plt.xlabel(r"$\Delta r$ [\si{\milli\metre}]")
 plt.ylabel(r"$\omega_{i}$ [\si{\kilo\hertz}]")
 #plt.xscale("log")
-plt.xlim((-1,8))
+plt.xlim((-1,10))
 #plt.ylim((-50,1050))
-plt.legend()
+plt.legend(loc="upper right")
 plt.tight_layout()
 plt.savefig(PLOT+"radial_wpi.pgf", bbox_inches="tight")
 plt.savefig(PLOT+"radial_wpi.pdf", bbox_inches="tight")

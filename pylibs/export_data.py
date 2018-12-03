@@ -198,11 +198,20 @@ def siline(name, varlist, paramlist):
     texfile = open(TEX, "a")
     texfile.write(r"\newcommand{\siline"+PRE+name+"}{")
     for i in range(len(paramlist)-1):
-        prstr   = "{0:."+str(paramlist[i])+"f}\\pm {1:."+str(paramlist[i])+"f}"
-        texfile.write(prstr.format(round(varlist[2*i],paramlist[i]),ceil(varlist[2*i+1],paramlist[i])))
-        texfile.write(" &")
-    prstr   = "{0:."+str(paramlist[-1])+"f}\\pm {1:."+str(paramlist[-1])+"f}"
-    texfile.write(prstr.format(round(varlist[-2],paramlist[-1]),ceil(varlist[-1],paramlist[-1])))
+        if varlist[2*i+1] == None:
+            prstr   = "{0:."+str(paramlist[i])+"f}"
+            texfile.write(prstr.format(round(varlist[2*i],paramlist[i])))
+            texfile.write(" &")
+        else:
+            prstr   = "{0:."+str(paramlist[i])+"f}\\pm {1:."+str(paramlist[i])+"f}"
+            texfile.write(prstr.format(round(varlist[2*i],paramlist[i]),ceil(varlist[2*i+1],paramlist[i])))
+            texfile.write(" &")
+    if varlist[-1] == None:
+        prstr   = "{0:."+str(paramlist[-1])+"f}"
+        texfile.write(prstr.format(round(varlist[-2],paramlist[-1])))
+    else:
+        prstr   = "{0:."+str(paramlist[-1])+"f}\\pm {1:."+str(paramlist[-1])+"f}"
+        texfile.write(prstr.format(round(varlist[-2],paramlist[-1]),ceil(varlist[-1],paramlist[-1])))
     texfile.write("}\n")
     texfile.close()
 
