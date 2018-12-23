@@ -15,7 +15,7 @@ Abbildung \vref{single_KL} zeigt die Kennlinien der Langmuir-Sonde f\"ur verschi
 An den exponentiellen Teil der Kennlinien werden Exponentialfunktionen nach
 \begin{equation}
 I
-    = A\exp(-\frac{U}{T_e})-I_{i,\text{sat}}
+    = A\exp(-\frac{eU}{T_e})-I_{i,\text{sat}}
     \label{sI}
 \end{equation}
 gefittet, wobei die Elektronentemperatur $T_e$, der Ionens\"attigungsstrom $I_{i,\text{sat}}$ und die Konstante $A$ angepasst werden.
@@ -152,17 +152,17 @@ Da Elektronen und Atomr\"umpfe eine unterschiedliche Masse haben schwingen sie m
 F\"ur Elektronen wird sie
 \begin{align}
 \omega_e
-    &=\sqrt{\frac{4\pi n_e e^2}{m_e}}
+    &=\sqrt{\frac{n_e e^2}{\varepsilon_0 m_e}}
     \label{swpe}\\
-    &=\sqrt{\frac{4\pi \siAnea \cdot(\sie)^2}{\sime}}\nonumber\\
+    &=\sqrt{\frac{\siAnea \cdot(\sie)^2}{\sieO\cdot\sime}}\nonumber\\
     &=\siAwpea .\nonumber
 \end{align}
 Da Argon Atome einfach Ionisiert werden ist die Anzahl an ionisierten Atomr\"umpfen $n_i=n_e$ und die Plasmafrequenz wird
 \begin{align}
 \omega_i
-    &=\sqrt{\frac{4\pi n_e e^2}{m_\text{Ar}}}
+    &=\sqrt{\frac{n_e e^2}{\varepsilon_0 m_\text{Ar}}}
     \label{swpe}\\
-    &=\sqrt{\frac{4\pi \siAnea \cdot(\sie)^2}{\simAr}}\nonumber\\
+    &=\sqrt{\frac{\siAnea \cdot(\sie)^2}{\sieO\cdot\simAr}}\nonumber\\
     &=\siAwpia .\nonumber
 \end{align}
 Die Plasmafrequenzen sind in den Abbildungen \vref{single_wpe} und \vref{single_wpi} aufgetragen.

@@ -572,7 +572,7 @@
 \pgftext[x=0.248063in,y=2.069645in,,bottom,rotate=90.000000]{\rmfamily\fontsize{10.000000}{12.000000}\selectfont \(\displaystyle n_e\) [\si{\per\metre\tothe{3}}]}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=0.647755in,y=3.666668in,left,base]{\rmfamily\fontsize{10.000000}{12.000000}\selectfont \(\displaystyle \times10^{22}\)}%
+\pgftext[x=0.647755in,y=3.666668in,left,base]{\rmfamily\fontsize{10.000000}{12.000000}\selectfont \(\displaystyle \times10^{16}\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfpathrectangle{\pgfqpoint{0.647755in}{0.514288in}}{\pgfqpoint{4.664842in}{3.110713in}}%

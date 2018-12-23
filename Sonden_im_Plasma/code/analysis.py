@@ -107,7 +107,7 @@ datas   = ["single_Ar_7.dat",
            "single_Ar_4.dat",
            "single_Ar_8.dat",
            "single_Ar_6.dat"]
-U_maxs  = [-39., -55., -42., -70., -65.]
+U_maxs  = [-39., -55., -42., -62., -65.]
 Tes     = []
 dTes    = []
 Iisats  = []
@@ -140,7 +140,7 @@ for p, data, U_max, a in zip(ps, datas, U_maxs, alphabet):
     siline("popt"+a,[p, dp, popt[0], perr[0], popt[1], perr[1], popt[2]/1000., perr[2]/1000.],[1,2,2,0])
     
     # Calculate electron density
-    ne  = -popt[1]*np.sqrt(mAr/con.e/popt[0])/0.61/con.e/S   #1_m3
+    ne  = -popt[1]*np.sqrt(mAr/con.e/popt[0])/0.61/con.e/S*10**-6       #1_m3
     dne = np.abs(perr[1]/popt[1]*ne) + np.abs(0.5*perr[0]/popt[0]*ne)
     si("ne"+a,ne,dne,"1_m3",2,e=0)
     nes.append(ne)
@@ -162,12 +162,12 @@ for p, data, U_max, a in zip(ps, datas, U_maxs, alphabet):
     si("deb"+a,deb,ddeb,"nm",0)
     debs.append(deb)
     ddebs.append(ddeb)
-    wpe     = np.sqrt(4*np.pi*ne*con.e**2/con.m_e)*10**-6   # MHz
+    wpe     = np.sqrt(ne*con.e**2/con.epsilon_0/con.m_e)*10**-6   # MHz
     dwpe    = np.abs(0.5*wpe*dne/ne)
     si("wpe"+a,wpe,dwpe,"MHz",0)
     wpes.append(wpe)
     dwpes.append(dwpe)
-    wpi     = np.sqrt(4*np.pi*ne*con.e**2/mAr)*10**-3   # kHz
+    wpi     = np.sqrt(ne*con.e**2/con.epsilon_0/mAr)*10**-3   # kHz
     dwpi    = np.abs(0.5*wpi*dne/ne)
     si("wpi"+a,wpi,dwpi,"kHz",0)
     wpis.append(wpi)
@@ -227,13 +227,14 @@ plt.close()
 
 f   = plt.figure()
 aerr   = np.array([dalphas,dalphas])
+print(alphas)
 aerr[0,aerr[0,:]>=alphas] = alphas[aerr[0,:]>=alphas]*0.99999999
 plt.errorbar(ps, alphas, yerr=aerr, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
 plt.ylabel(r"$\alpha")
 plt.xscale("log")
 plt.xlim((0.2,40))
-plt.ylim((10**-8,10**-4))
+plt.ylim((10**-14,10**-10))
 plt.yscale("log")
 #plt.legend()
 plt.tight_layout()
@@ -383,7 +384,7 @@ for p, data, U_min, U_max, a in zip(ps, datas, U_mins, U_maxs, alphabet):
     dTes.append(dTe)
     
     # Calculate electron density
-    ne  = I2*np.sqrt(mAr/con.e/Te)/0.61/con.e/S   #1_m3
+    ne  = I2*np.sqrt(mAr/con.e/Te)/0.61/con.e/S*10**-6   #1_m3
     dne = np.abs(dI2/I2*ne) + np.abs(0.5*dTe/Te*ne)
     si("ne"+a,ne,dne,"1_m3",2,e=0)
     nes.append(ne)
@@ -405,12 +406,12 @@ for p, data, U_min, U_max, a in zip(ps, datas, U_mins, U_maxs, alphabet):
     si("deb"+a,deb,ddeb,"nm",0)
     debs.append(deb)
     ddebs.append(ddeb)
-    wpe     = np.sqrt(4*np.pi*ne*con.e**2/con.m_e)*10**-6   # MHz
+    wpe     = np.sqrt(ne*con.e**2/con.epsilon_0/con.m_e)*10**-6   # MHz
     dwpe    = np.abs(0.5*wpe*dne/ne)
     si("wpe"+a,wpe,dwpe,"MHz",0)
     wpes.append(wpe)
     dwpes.append(dwpe)
-    wpi     = np.sqrt(4*np.pi*ne*con.e**2/mAr)*10**-3   # kHz
+    wpi     = np.sqrt(ne*con.e**2/con.epsilon_0/mAr)*10**-3   # kHz
     dwpi    = np.abs(0.5*wpi*dne/ne)
     si("wpi"+a,wpi,dwpi,"kHz",0)
     wpis.append(wpi)
@@ -483,7 +484,7 @@ plt.xlabel(r"$p$ [\si{\milli\bar}]")
 plt.ylabel(r"$\alpha")
 plt.xscale("log")
 plt.xlim((0.4,20))
-plt.ylim((10**-8,10**-4))
+plt.ylim((10**-13,5*10**-11))
 plt.yscale("log")
 #plt.legend()
 plt.tight_layout()
@@ -608,7 +609,7 @@ for IE, datas, U_max, A in zip(IEs, datass, U_maxs, Alphabet[2:]):
         siline("popt"+a,[dr, None, popt[0], perr[0], popt[1], perr[1], popt[2]/1000., perr[2]/1000.],[0,2,2,0])
         
         # Calculate electron density
-        ne  = -popt[1]*np.sqrt(mAr/con.e/popt[0])/0.61/con.e/S   #1_m3
+        ne  = -popt[1]*np.sqrt(mAr/con.e/popt[0])/0.61/con.e/S*10**-6   #1_m3
         dne = np.abs(perr[1]/popt[1]*ne) + np.abs(0.5*perr[0]/popt[0]*ne)
         si("ne"+a,ne,dne,"1_m3",2,e=0)
         nes.append(ne)
@@ -630,12 +631,12 @@ for IE, datas, U_max, A in zip(IEs, datass, U_maxs, Alphabet[2:]):
         si("deb"+a,deb,ddeb,"nm",0)
         debs.append(deb)
         ddebs.append(ddeb)
-        wpe     = np.sqrt(4*np.pi*ne*con.e**2/con.m_e)*10**-6   # MHz
+        wpe     = np.sqrt(ne*con.e**2/con.epsilon_0/con.m_e)*10**-6   # MHz
         dwpe    = np.abs(0.5*wpe*dne/ne)
         si("wpe"+a,wpe,dwpe,"MHz",0)
         wpes.append(wpe)
         dwpes.append(dwpe)
-        wpi     = np.sqrt(4*np.pi*ne*con.e**2/mAr)*10**-3   # kHz
+        wpi     = np.sqrt(ne*con.e**2/con.epsilon_0/mAr)*10**-3   # kHz
         dwpi    = np.abs(0.5*wpi*dne/ne)
         si("wpi"+a,wpi,dwpi,"kHz",0)
         wpis.append(wpi)
@@ -718,7 +719,7 @@ plt.ylabel(r"$\alpha")
 #plt.xscale("log")
 plt.xlim((-1,10))
 #plt.ylim((10**-7,10**-5))
-plt.ylim((0,225*10**-8))
+#plt.ylim((0,225*10**-8))
 #plt.yscale("log")
 plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
 plt.legend(loc="upper right")
