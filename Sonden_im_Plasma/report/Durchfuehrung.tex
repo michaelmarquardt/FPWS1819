@@ -1,6 +1,52 @@
 \section{Versuchsdurchführung}
 \subsection{Aufbau}
-Der Hauptbestandteil des Versuchsaufbaus ist eine Glasröhre, in dem das Plasma erzeugt werden kann. In der Glasröhre befinden sich die Elektroden zur Erzeugung des Plasmas mittels einer Glimmentladung, wie im Kapitel \ref{sec:plasma} beschrieben. In der Röhre befinden sich auch die beiden Langmuir-Sonden, die je nach Bedarf als Doppel- oder Einzelsonde benutzt werden können. Die Sonden sind beweglich an der Glasröhre befestigt, um die radiale Position verändern zu können. Der Gasdruck wird durch ein Flussgleichgewicht kontrolliert. An einem Ende der Glasröhre ist die Gaszufuhr angeschlossen und am anderen Ende eine Vakuumpumpe. Bei dem verwendetem Gas handelt es sich um Argon. Durch eine Änderung de Menge des einströmenden Gases kann der Druck eingestellt werden. Zur Druckmessung ist ein Druckmessgerät angeschlossen. Durch den ständigen Fluss des Gases kann die Menge an Verunreinigungen in der Glasröhre reduziert werden. Die Spannung zur Erzeugung des Plasmas und die Spannung die an der Langmuir-Sonde angeschlossen ist, wird durch zwei Spannungsgeräte manuell kontrolliert. Zur Messung der Kennlinie wird ein LabView Programm benutzt. 
+Der Hauptbestandteil des Versuchsaufbaus ist eine Glasröhre, in dem das Plasma erzeugt werden kann. In der Glasröhre befinden sich die Elektroden zur Erzeugung des Plasmas mittels einer Glimmentladung, wie im Kapitel \ref{sec:plasma} beschrieben. In der Röhre befinden sich auch die beiden Langmuir-Sonden, die je nach Bedarf als Doppel- oder Einzelsonde benutzt werden können. Die Sonden sind beweglich an der Glasröhre befestigt, um die radiale Position verändern zu können. Der Gasdruck wird durch ein Flussgleichgewicht kontrolliert. An einem Ende der Glasröhre ist die Gaszufuhr angeschlossen und am anderen Ende eine Vakuumpumpe. Bei dem verwendetem Gas handelt es sich um Argon. Durch eine Änderung de Menge des einströmenden Gases kann der Druck eingestellt werden. Zur Druckmessung ist ein Druckmessgerät angeschlossen. Durch den ständigen Fluss des Gases kann die Menge an Verunreinigungen in der Glasröhre reduziert werden. Die Spannung zur Erzeugung des Plasmas und die Spannung die an der Langmuir-Sonde angeschlossen ist, wird durch zwei Spannungsgeräte manuell kontrolliert. Zur Messung der Kennlinie wird ein LabView Programm benutzt. Der Schaltplan zur experimentellen Bestimmung der Plasmaparameter ist in der folgende Abbildung dargestellt. Der orange markierte Bereich ist die Glasröhre mit dem Plasma, $L_1$ und $L_2$ sind die beiden Langmuir-Sonden. Die gestrichelte Linie zeigt den Teil der Schaltung, der verändert werden muss, wenn zwischen der Messung mit einer einzelnen Langmuir-Sonde und der Doppelsonde gewechselt wird. In dem Schaltplan ist auch ein RC-Glied dargestellt. Bei diesem handelt es sich um einen Teifpassfilter. Die Zeitkonstante $\tau$ hat den Wert
+\begin{align}
+  \tau = R C = 22\ \mathrm{k} \Omega \cdot 16\ \mu \mathrm{F} = 0.352\ \mathrm{s}.
+\end{align}
+
+\begin{center}
+\begin{circuitikz}
+
+\draw
+(4.5,0) to [short, *-] (6,0)
+to [short] (6,-2)
+to [short] node[ground] {} (7,-2)
+(6,-2) to [short] (5,-2);
+\draw [fill=orange] (3,-1.5) rectangle (5,-2.5);
+\draw
+(4,0) to [short, *-]  (2,0)
+to [short] (2,-2)
+to [short] (3,-2);
+\draw[dotted] (5.5,-2) to [short] (5.5,-4)
+to [short] (4.6,-4)
+to [short] (4.6,-3);
+\draw (4.6,-3) to [generic, l=$L_2$] (4.6,-2.2)
+(3.4,-3) to [generic, l=$L_1$] (3.4,-2.2)
+(4.6,-5.5) to [short, *-] (4.6,-4)
+(4.6,-4.5) to [short] (10,-4.5)
+to [short] (10,-5)
+to [C, l=$16\ \mu \mathrm{F}$] (10,-5.5)
+to [short] (10,-7)
+to  [short] (4,-7)
+to [generic, l=$ 22\ \mathrm{k} \Omega $] (3.5,-7)
+to [short] (2.5,-7)
+(2,-7) to [ammeter] (2.5,-7)
+(3.4,-3) to [short] (3.4,-4.5)
+to [short] (1,-4.5)
+to [short] (1,-7)
+to [short] (2,-7)
+(4.6,-6) to [short, *-] (4.6,-7)
+(6,-4.5) to [short] (6,-5.5)
+to [voltmeter] (6,-6)
+to [short] (6,-7)
+(8,-4.5) to [short] (8,-5.5)
+to [R, l=$700\ \Omega$] (8,-6)
+to [short] (8,-7)
+;
+\end{circuitikz}
+\end{center}
+
 \subsection{Durchführung}
 Im erstem Versuchsteil soll das Plasma mit einer Langmuir-Sonde untersucht werden. Die Kennlinie der Langmuir-Sonde soll für fünf unterschiedliche Gasdrücke gemessen  werden. Aus den Kennlinien k\"onnen dann Elektronentemperatur, Dichte, Ionisationsgrad, Debye-Länge und Plasmafrequenz bestimmt werden. Aufgetragen werden sollen die Ergebnisse in Diagramme in Abhängigkeit vom gemessenem Druck.
 Im zweitem Versuchsteil soll das Plasma mit einer Doppel-Sonde untersucht werden. Dazu wird, analog zum erstem Versuchsteil, für fünf unterschiedliche Drücke die Kennlinie gemessen. Aus der Kennlinie sollen die gleichen Parameter wie aus der Kennlinie der Langmuir-Sonde bestimmt werden. Im drittem Versuchsteil sollen die Radialprofile der Dichte und der Temperatur untersucht werden. Dazu wird mit einer Langmuir-Sonde an unterschiedlichen radialen Positionen die Kennlinie gemessen. Aus den Kennlinien sollen die Elektronentemperatur und die Dichte ermittelt werden. Dieser Versuchsteil wird für mehrere Endladungsströme durchgeführt.
