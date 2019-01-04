@@ -57,3 +57,106 @@ Die Plasmadichte in Abhängigkeit des Druckesist in de Abbildung \ref{fig:3_2_Dr
 \label{fig:3_2_Druck}
 \end{figure}
 In allen drei Diagrammen für die Plasmadichte  \ref{fig:3_2_Spannung}, \ref{fig:3_2_Strom} und  \ref{fig:3_2_Druck} liegt die Plasmadicht immer im Bereich von $n=10^{14}\ \frac{1}{\mathrm{m}^3}$ bis  $n=10^{15}\ \frac{1}{\mathrm{m}^3}$.
+\subsection{Ionen Akustikwellen}
+Die Dispersionsrelation einer Ionen Akustikwelle kann durch eine Anregung mit einer sinusförmige Spannung am Gitter gemessen werden. Gemessen wird mittels einer Langmuir Sonde die Wellenlänge $\lambda$ und die dazugehörige Frequenz $f$. Aus der Wellenlänge kann der Wellenvektor $k$ und aus der Frequnz die Kreisfrequenz  $\omega$ berechnet werden.
+\begin{align}
+  \omega & = 2 \pi f \\
+  k & = \frac{2 \pi}{\lambda}
+\end{align}
+Der Fehler $\Delta k$ wird mittels Fehlerfotpfanltung berechnet, wobei für die Wellenlänge $\Delta \lambda=0.1$ cm angenommen wird.
+\begin{align}
+  \Delta k = \bigl| \frac{\mathrm{d} k}{\mathrm{d} \lambda} \bigl| \Delta \lambda = \frac{2\pi}{\lambda^2} \Delta \lambda
+\end{align}
+Für die Bestimmung der Schallgeschwindigkeit kann die  Funtkion 
+\begin{align}
+  \omega(k) = \sqrt{\frac{T_{\mathrm{e}} + 3 T_{\mathrm{i}}}{m_{\mathrm{i}}}} k = c_{\mathrm{s}} k
+  \label{eq:Dispersion_3_3}
+\end{align}
+zum fitten benutzt werden, wobei $T_{\mathrm{e}}$ die Temperatur der Elektronen, $T_{\mathrm{i}}$ die Temperatur der Ionen, $m_{\mathrm{i}}$ die Masse der Ionen ist und $c_{\mathrm{s}}$ die Schallgeschwindigkeit. Das bedeutet durch das Fitten mir einer Geraden
+\begin{align}
+  f(x)= a x +b
+  \label{eq:fit_Dispersion}
+\end{align}
+kann die Schallgeschwindigkeit und daraus dann die Elektronentemperatur bestimmt werden. Die Messung wurde für drei unterschiedliche Drücke durchgeführt und die Ergebisse sind in der Abbildung \ref{fig:3_3_Dispersion} dargestellt.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{3_3_Dispersion.pdf}
+\caption{Die Dispersionsrelation für Ionen Akustikwellen für unterschiedliche Drücke mit eingezeichneten Fitfunktionen.}
+\label{fig:3_3_Dispersion}
+\end{figure}
+Die Schallgeschwindigkeit entspricht in der Gleichung \eqref{eq:fit_Dispersion} dem Parameter a. Für die drei unterschiedlichen Drücke in Abbildung \ref{fig:3_3_Dispersion} ergeben sich die folgenden Werte:
+\begin{align}
+  a_1 & = 3236.29\  \mathrm{m s}^{-1} \\
+  a_2 & = 2443.43\  \mathrm{m s}^{-1} \\
+  a_3 & = 2544.33\  \mathrm{m s}^{-1}
+\end{align}
+Der Mittelwert dieser drei Werte ergibt die Schallgeschwindigkeit
+\begin{align}
+  c_{\mathrm{s}}= 2741.35\  \mathrm{m s}^{-1}.
+  \label{eq:Wert_Schallgeschwindigkeit}
+\end{align}
+Aus der Schallgeschwindigkeit kann mit der Gleichung \eqref{eq:Dispersion_3_3} die Elekronentemperatur berechnet werden. Durch Vervendung von  $T_{\mathrm{e}} \gg T_{\mathrm{i}}$ vereinfacht sich die Gleichung  \eqref{eq:Dispersion_3_3} zu
+\begin{align}
+  T_{\mathrm{e}} \approx m_{\mathrm{i}} c_{\mathrm{s}}^2,
+  \end{align}
+wobei $ m_{\mathrm{i}}=6.6334 \cdot 10^{-26}$ kg die Atommasse von Argon ist. Mit dieser Masse und der Schallgeschwindigkeit aus \eqref{eq:Wert_Schallgeschwindigkeit} ergibt sich
+\begin{align}
+   T_{\mathrm{e}} \approx m_{\mathrm{i}} c_{\mathrm{s}}^2= 3.1108\ \mathrm{eV}.
+  \end{align} 
+Daraus lässt sich die tatsächliche Temperatur $T=T_{\mathrm{e}}/k_{\mathrm{B}}=3.809 \cdot 10^4$ K bestimmen.  Um die Dämpfung zu bestimmen, kann die Amplitude für unterschiedliche Positionen untersucht werden. Die Amplitude nehemn exponentiell mit dem Abstand ab
+\begin{align}
+  A(x) = A(x=0) \mathrm{exp}\ \left(- \frac{x}{\lambda_{\mathrm{damp}}}  \right),
+  \label{eq:Damp_allgemein}
+\end{align}
+wobei $\lambda_{\mathrm{damp}}$ die Dämpfungslänge ist. Ermittelt werden kann diese durch Fitten der Gleichung \eqref{eq:Damp_allgemein} an die Messwerte. Dies ist für drei unterschiedliche Drücke gemacht worden und die Ergebniss sind in der Abbildung \ref {fig:3_3_Daempfung} dargestellt. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{3_3_Daempfung.pdf}
+\caption{Die Dämpfung für Ionen Akustikwellen für unterschiedliche Drücke mit eingezeichneten Fitfunktionen.}
+\label{fig:3_3_Daempfung}
+\end{figure}
+Die durch fitten ermittelten Dämpfungslängen sind
+\begin{align}
+  \lambda_{\mathrm{damp} 1} &= 20.348\ \mathrm{cm} \\
+  \lambda_{\mathrm{damp} 2} &=  7.962\  \mathrm{cm} \\
+  \lambda_{\mathrm{damp} 3} &= 10.059\  \mathrm{cm}. 
+\end{align}  
+\subsection{Schock Wellen}
+Wird die Amplitude der Spannung am Gitter erhöht, kommt es zu einem Übergang von linearen Ionen Akustikwellen zu nicht linieraren Schockwellen.  Dieser Übergang ist mit einem Oszilloskop gemessen worden. Die gemessen Daten sind in den Abbildungen \ref{fig:oszi_2}, \ref{fig:oszi_1} und \ref{fig:oszi_3} dargestellt. Die blaue Kurve ist jeweils das gemessene Signal und die andere Kurve die am Gitter angelegte Spannung. Gut zu erkennen ist, das mit steigender Amplitude der Spannung am Gitter, das gemessene Siganl immer weniger wie eine Sinus-Funtion aussieht. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{oszi_2.pdf}
+\caption{Die angelegte Spannung am Gitter und das gemessene Signal mit der Langmuir-Sonde.}
+\label{fig:oszi_2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{oszi_1.pdf}
+\caption{Die angelegte Spannung am Gitter und das gemessene Signal mit der Langmuir-Sonde.}
+\label{fig:oszi_1}
+\end{figure}
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{oszi_3.pdf}
+\caption{Die angelegte Spannung am Gitter und das gemessene Signal mit der Langmuir-Sonde.}
+\label{fig:oszi_3}
+\end{figure}
+\subsection{Plasma Kriterien}
+In diesem Kapitel soll geprüft werden, ob die Plasma Kriterien mit den berechnetern Werten erfüllt werden. Ein Kriterium ist, dass das gesamte System viel größer als die Debye-Länge $\lambda_{\mathrm{D}}$
+\begin{align}
+\lambda_{\mathrm{D}} = \sqrt{\frac{\epsilon_0 T}{e^2 n}}
+\end{align}
+ist, wobei $T$ die Temepratur und $n$ die Teilchendichte ist. Diese größen sind in den vorangegangen Kapiteln berechnet worden. Für die Werte $n \approx 10^{15} $ und $T=3.1108\ \mathrm{eV} $ ergibt sich
+\begin{align}
+\lambda_{\mathrm{D}} = 2.351 \cdot 10^{-4}\ \mathrm{m}.
+\end{align}
+Diese Länge ist klein im Vergleich zur Größe des Doppel Plasma Apparates. Dieses Kriterium ist somit erfüllt.  Ein weiteres Kriterium ist, das die Teilchenanzahl in der Debye-Kugel groß sein muss. Diese Teilchenanzahl  $N$ kann aus der Debye-Länge $\lambda_{\mathrm{D}}= 2.351 \cdot 10^{-4}\ \mathrm{m}$ und der Dichte $n \approx 10^{15}$ berechnet werden
+\begin{align}
+N = V n= \frac{4}{3}\pi \lambda_{\mathrm{D}}^3 n = 54431.023 ,
+\end{align}
+wobei $V$ das Volumen der Deybe-Kugel ist. Das bedeutet, dass in der Debye Kugel ungefähr 54431 Teilchen sind. Das zweite Kriterium ist somit auch erfüllt. 
+
