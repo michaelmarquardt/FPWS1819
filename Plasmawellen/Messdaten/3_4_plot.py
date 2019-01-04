@@ -2,10 +2,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 rawdata_1_1=np.genfromtxt("Oszilloskop_1_1.dat", delimiter=",")
 rawdata_1_2=np.genfromtxt("Oszilloskop_1_2.dat", delimiter=",")
-rawdata_2_1=np.genfromtxt("Oszilloskop_1_1.dat", delimiter=",")
-rawdata_2_2=np.genfromtxt("Oszilloskop_1_2.dat", delimiter=",")
-rawdata_3_1=np.genfromtxt("Oszilloskop_1_1.dat", delimiter=",")
-rawdata_3_2=np.genfromtxt("Oszilloskop_1_2.dat", delimiter=",")
+rawdata_2_1=np.genfromtxt("Oszilloskop_2_1.dat", delimiter=",")
+rawdata_2_2=np.genfromtxt("Oszilloskop_2_2.dat", delimiter=",")
+rawdata_3_1=np.genfromtxt("Oszilloskop_3_1.dat", delimiter=",")
+rawdata_3_2=np.genfromtxt("Oszilloskop_3_2.dat", delimiter=",")
 
 
 plt.figure()
