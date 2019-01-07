@@ -4,7 +4,7 @@ from export_data import *
 texfile("../report/values.tex")
 set_dig(3)
 set_pre("")
-usepgf()
+usepgf(size=(1.3,3.))
 import matplotlib.pyplot as plt
 
 import numpy as np
@@ -157,19 +157,19 @@ for p, data, U_max, a in zip(ps, datas, U_maxs, alphabet):
     dalphas.append(dalpha)
     
     # Calculate debye length and plasma frequency
-    deb     = np.sqrt(con.epsilon_0*popt[0]/ne/con.e)*10**9    # nm
+    deb     = np.sqrt(con.epsilon_0*popt[0]/ne/con.e)*10**6    # mum
     ddeb    = np.abs(0.5*deb*perr[0]/popt[0]) + np.abs(0.5*deb*dne/ne)
-    si("deb"+a,deb,ddeb,"nm",0)
+    si("deb"+a,deb,ddeb,"mum",0)
     debs.append(deb)
     ddebs.append(ddeb)
-    wpe     = np.sqrt(ne*con.e**2/con.epsilon_0/con.m_e)*10**-6   # MHz
+    wpe     = np.sqrt(ne*con.e**2/con.epsilon_0/con.m_e)*10**-9   # GHz
     dwpe    = np.abs(0.5*wpe*dne/ne)
-    si("wpe"+a,wpe,dwpe,"MHz",0)
+    si("wpe"+a,wpe,dwpe,"GHz",2)
     wpes.append(wpe)
     dwpes.append(dwpe)
-    wpi     = np.sqrt(ne*con.e**2/con.epsilon_0/mAr)*10**-3   # kHz
+    wpi     = np.sqrt(ne*con.e**2/con.epsilon_0/mAr)*10**-6   # MHz
     dwpi    = np.abs(0.5*wpi*dne/ne)
-    si("wpi"+a,wpi,dwpi,"kHz",0)
+    si("wpi"+a,wpi,dwpi,"MHz",2)
     wpis.append(wpi)
     dwpis.append(dwpi)
     
@@ -227,7 +227,7 @@ plt.close()
 
 f   = plt.figure()
 aerr   = np.array([dalphas,dalphas])
-print(alphas)
+#print(alphas)
 aerr[0,aerr[0,:]>=alphas] = alphas[aerr[0,:]>=alphas]*0.99999999
 plt.errorbar(ps, alphas, yerr=aerr, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
@@ -245,7 +245,7 @@ plt.close()
 f   = plt.figure()
 plt.errorbar(ps, debs, yerr=ddebs, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
-plt.ylabel(r"$\lambda_\text{D}$ [\si{\nano\metre}]")
+plt.ylabel(r"$\lambda_\text{D}$ [\si{\micro\metre}]")
 plt.xscale("log")
 plt.xlim((0.2,40))
 #plt.ylim((-50,1050))
@@ -258,7 +258,7 @@ plt.close()
 f   = plt.figure()
 plt.errorbar(ps, wpes, yerr=dwpes, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
-plt.ylabel(r"$\omega_{e}$ [\si{\mega\hertz}]")
+plt.ylabel(r"$\omega_{e}$ [\si{\giga\hertz}]")
 plt.xscale("log")
 plt.xlim((0.2,40))
 #plt.ylim((-50,1050))
@@ -271,7 +271,7 @@ plt.close()
 f   = plt.figure()
 plt.errorbar(ps, wpis, yerr=dwpis, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
-plt.ylabel(r"$\omega_{i}$ [\si{\kilo\hertz}]")
+plt.ylabel(r"$\omega_{i}$ [\si{\mega\hertz}]")
 plt.xscale("log")
 plt.xlim((0.2,40))
 #plt.ylim((-50,1050))
@@ -401,19 +401,19 @@ for p, data, U_min, U_max, a in zip(ps, datas, U_mins, U_maxs, alphabet):
     dalphas.append(dalpha)
     
     # Calculate debye length and plasma frequency
-    deb     = np.sqrt(con.epsilon_0*Te/ne/con.e)*10**9    # nm
+    deb     = np.sqrt(con.epsilon_0*Te/ne/con.e)*10**6    # mum
     ddeb    = np.abs(0.5*deb*dTe/Te) + np.abs(0.5*deb*dne/ne)
-    si("deb"+a,deb,ddeb,"nm",0)
+    si("deb"+a,deb,ddeb,"mum",0)
     debs.append(deb)
     ddebs.append(ddeb)
-    wpe     = np.sqrt(ne*con.e**2/con.epsilon_0/con.m_e)*10**-6   # MHz
+    wpe     = np.sqrt(ne*con.e**2/con.epsilon_0/con.m_e)*10**-9   # GHz
     dwpe    = np.abs(0.5*wpe*dne/ne)
-    si("wpe"+a,wpe,dwpe,"MHz",0)
+    si("wpe"+a,wpe,dwpe,"GHz",2)
     wpes.append(wpe)
     dwpes.append(dwpe)
-    wpi     = np.sqrt(ne*con.e**2/con.epsilon_0/mAr)*10**-3   # kHz
+    wpi     = np.sqrt(ne*con.e**2/con.epsilon_0/mAr)*10**-6   # MHz
     dwpi    = np.abs(0.5*wpi*dne/ne)
-    si("wpi"+a,wpi,dwpi,"kHz",0)
+    si("wpi"+a,wpi,dwpi,"MHz",2)
     wpis.append(wpi)
     dwpis.append(dwpi)
     
@@ -495,7 +495,7 @@ plt.close()
 f   = plt.figure()
 plt.errorbar(ps, debs, yerr=ddebs, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
-plt.ylabel(r"$\lambda_\text{D}$ [\si{\nano\metre}]")
+plt.ylabel(r"$\lambda_\text{D}$ [\si{\micro\metre}]")
 plt.xscale("log")
 plt.xlim((0.4,20))
 #plt.ylim((-50,1050))
@@ -508,7 +508,7 @@ plt.close()
 f   = plt.figure()
 plt.errorbar(ps, wpes, yerr=dwpes, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
-plt.ylabel(r"$\omega_{e}$ [\si{\mega\hertz}]")
+plt.ylabel(r"$\omega_{e}$ [\si{\giga\hertz}]")
 plt.xscale("log")
 plt.xlim((0.4,20))
 #plt.ylim((-50,1050))
@@ -521,7 +521,7 @@ plt.close()
 f   = plt.figure()
 plt.errorbar(ps, wpis, yerr=dwpis, xerr=perr, fmt='x')
 plt.xlabel(r"$p$ [\si{\milli\bar}]")
-plt.ylabel(r"$\omega_{i}$ [\si{\kilo\hertz}]")
+plt.ylabel(r"$\omega_{i}$ [\si{\mega\hertz}]")
 plt.xscale("log")
 plt.xlim((0.4,20))
 #plt.ylim((-50,1050))
@@ -626,19 +626,19 @@ for IE, datas, U_max, A in zip(IEs, datass, U_maxs, Alphabet[2:]):
         dalphas.append(dalpha)
         
         # Calculate debye length and plasma frequency
-        deb     = np.sqrt(con.epsilon_0*popt[0]/ne/con.e)*10**9    # nm
+        deb     = np.sqrt(con.epsilon_0*popt[0]/ne/con.e)*10**6    # mum
         ddeb    = np.abs(0.5*deb*perr[0]/popt[0]) + np.abs(0.5*deb*dne/ne)
-        si("deb"+a,deb,ddeb,"nm",0)
+        si("deb"+a,deb,ddeb,"mum",0)
         debs.append(deb)
         ddebs.append(ddeb)
-        wpe     = np.sqrt(ne*con.e**2/con.epsilon_0/con.m_e)*10**-6   # MHz
+        wpe     = np.sqrt(ne*con.e**2/con.epsilon_0/con.m_e)*10**-9   # GHz
         dwpe    = np.abs(0.5*wpe*dne/ne)
-        si("wpe"+a,wpe,dwpe,"MHz",0)
+        si("wpe"+a,wpe,dwpe,"GHz",2)
         wpes.append(wpe)
         dwpes.append(dwpe)
-        wpi     = np.sqrt(ne*con.e**2/con.epsilon_0/mAr)*10**-3   # kHz
+        wpi     = np.sqrt(ne*con.e**2/con.epsilon_0/mAr)*10**-6   # MHz
         dwpi    = np.abs(0.5*wpi*dne/ne)
-        si("wpi"+a,wpi,dwpi,"kHz",0)
+        si("wpi"+a,wpi,dwpi,"MHz",2)
         wpis.append(wpi)
         dwpis.append(dwpi)
         
@@ -732,7 +732,7 @@ f   = plt.figure()
 for k in [0,1,2]:
     plt.errorbar(drs, adebs[k], yerr=addebs[k], fmt='x', label=r"$I_\text{{E}}=\SI{{{:.0f}}}{{\milli\ampere}}$".format(IEs[k]))
 plt.xlabel(r"$\Delta r$ [\si{\milli\metre}]")
-plt.ylabel(r"$\lambda_\text{D}$ [\si{\nano\metre}]")
+plt.ylabel(r"$\lambda_\text{D}$ [\si{\micro\metre}]")
 #plt.xscale("log")
 plt.xlim((-1,10))
 #plt.ylim((-50,1050))
@@ -746,7 +746,7 @@ f   = plt.figure()
 for k in [0,1,2]:
     plt.errorbar(drs, awpes[k], yerr=adwpes[k], fmt='x', label=r"$I_\text{{E}}=\SI{{{:.0f}}}{{\milli\ampere}}$".format(IEs[k]))
 plt.xlabel(r"$\Delta r$ [\si{\milli\metre}]")
-plt.ylabel(r"$\omega_{e}$ [\si{\mega\hertz}]")
+plt.ylabel(r"$\omega_{e}$ [\si{\giga\hertz}]")
 #plt.xscale("log")
 plt.xlim((-1,10))
 #plt.ylim((-50,1050))
@@ -760,7 +760,7 @@ f   = plt.figure()
 for k in [0,1,2]:
     plt.errorbar(drs, awpis[k], yerr=adwpis[k], fmt='x', label=r"$I_\text{{E}}=\SI{{{:.0f}}}{{\milli\ampere}}$".format(IEs[k]))
 plt.xlabel(r"$\Delta r$ [\si{\milli\metre}]")
-plt.ylabel(r"$\omega_{i}$ [\si{\kilo\hertz}]")
+plt.ylabel(r"$\omega_{i}$ [\si{\mega\hertz}]")
 #plt.xscale("log")
 plt.xlim((-1,10))
 #plt.ylim((-50,1050))

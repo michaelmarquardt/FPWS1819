@@ -12,21 +12,29 @@
 \end{figure}
 
 Abbildung \vref{single_KL} zeigt die Kennlinien der Langmuir-Sonde f\"ur verschiedene Gasdr\"ucke.
-An den exponentiellen Teil der Kennlinien werden Exponentialfunktionen nach
-\begin{equation}
+An den exponentiellen Teil der Kennlinien werden Exponentialfunktionen gefittet.
+Hierf\"ur wird Gleichung \eqref{eq:Isingle} nach
+\begin{align}
 I
-    = A\exp(-\frac{eU}{T_e})-I_{i,\text{sat}}
+    &= I_{e1,\text{sat}}\exp(-\frac{e\Phi_\text{p}}{T_e})\exp(\frac{eU}{T_e})+I_{i,\text{sat}}\\
+    &= A\exp(\frac{eU}{T_e})+I_{i,\text{sat}}
     \label{sI}
-\end{equation}
-gefittet, wobei die Elektronentemperatur $T_e$, der Ionens\"attigungsstrom $I_{i,\text{sat}}$ und die Konstante $A$ angepasst werden.
-Die Ergebnisse sind in Tabelle \vref{single_tab} aufgelistet.
+\end{align}
+umgeformt sodass sich die Elektronentemperatur $T_e$, der Ionens\"attigungsstrom $I_{i,\text{sat}}$ und die Konstante $A$ als Fitparameter ergeben.
+Die Ergebnisse der Fits sind in Tabelle \vref{single_tab} aufgelistet.
+Die Fehler f\"ur die Fitparameter werden aus der Diagonalen der Kovarianzmatrix der Fitparameter abgelesen.
+Der Fehler f\"ur den Druck wird aufgrund des alten, stark schwankenden Barometers angenommen.
 \begin{table}[h]
     \centering
     \caption{
         Fitparameter f\"ur die Kennlinien.
         }
     \label{single_tab}
-    \begin{tabular}{S[table-format=4.6]|S[table-format=4.6]S[table-format=5.6]S[table-format=7.6]}
+    \begin{tabular}{S[table-format=3.1(4)]|
+                    S[table-format=3.2(4)]
+                    S[table-format=4.2(5)]
+                    S[table-format=6.0(6)]}
+    %\begin{tabular}{S[table-format=4.6]|S[table-format=4.6]S[table-format=5.6]S[table-format=7.6]}
         {$p$ [\si{\milli\bar}]} &{$T_e$ [\si{\electronvolt}]} &{$I_{i,\text{sat}}$ [\si{\micro\ampere}]} &{$A$ [\si{\milli\ampere}]}\\\hline
         \silineApopta\\
         \silineApoptb\\
@@ -61,12 +69,20 @@ Dies entspricht einer Temperatur von $T_e/k_\text{B}=\SI{116045}{\kelvin}$ (mit 
 Aus der Elektronentemperatur und dem Ionens\"attigungsstrom l\"asst sich die Elektronendichte im Plasma
 \begin{align}
 n_e
-    &=I_{i,\text{sat}}\sqrt{\frac{m_\text{Ar}}{T_e}}\frac{1}{0.61eS}\label{sne}\\
+    &=-I_{i,\text{sat}}\sqrt{\frac{m_\text{Ar}}{T_e}}\frac{1}{0.61eS}\label{sne}\\
     &=\siAIisata\sqrt{\frac{\simAr}{\siATea}}\frac{1}{0.61\cdot \sie \cdot\siS}\nonumber\\
     &=\siAnea\nonumber
 \end{align}
 bestimmen, wobei $m_\text{Ar}=\simAr$ die Masse eines Argon Atoms und $S=\siS$ die Fl\"ache der Sonde ist.
 Die Atomare Masseneinheit betr\"agt $u=\siu$.
+Die Unsicherheit kann mittels Fehlerfortpflanzung \eqref{eq:err} bestimmt werden.
+Beispielhaft ergibt sich f\"ur die vorige Rechnung
+\begin{align}
+\Delta n_e
+    &=\abs{\frac{n_e}{I_{i,\text{sat}}}}\Delta I_{i,\text{sat}}+\abs{0.5\frac{n_e}{T_e}}\Delta T_e\\
+    &=\abs{\frac{\siAnea}{\siAIisata}}\sierrAIisata+\abs{0.5\frac{\siAnea}{\siATea}}\sierrATea\nonumber\\
+    &=\sierrAnea .\nonumber
+\end{align}
 Es wird erwartet, dass sich die Elektronendichte f\"ur h\"ohere Gasdr\"ucke erh\"oht, da Volumen $V$ und Temperatur $T$ des Gases gleich bleiben.
 Der Druck ist \"uber die ideale Gasgleichung
 \begin{equation}
@@ -93,7 +109,7 @@ Dies liegt zum teil daran, dass der Ionisationsgrad
 des Plasmas auch vom Druck abh\"angt.
 $N_e$ ist der Grad, bis zu welchem ein Atom ionisiert werden kann.
 Bei Argon ist er $N_e=1$.
-Dies f\"uhrt mit der Idealen Gasgleichung \vref{idgas} auf
+Dies f\"uhrt mit der Idealen Gasgleichung \eqref{idgas} auf
 \begin{align}
 \alpha
     &= \frac{n_e k_\text{B} T}{p}\label{salpha}\\
@@ -101,7 +117,13 @@ Dies f\"uhrt mit der Idealen Gasgleichung \vref{idgas} auf
     &= \siAalphaa\nonumber,
 \end{align}
 wobei Raumtemperatur $T=\siTroom$ verwendet wird, da das Gas bei Raumtemperatur in die Gasr\"ohre gepumpt wird, bevor es gez\"undet wird.
-
+Der fortgepflanzte Fehler berechnet sich zu
+\begin{align}
+\Delta\alpha
+    &=\abs{\frac{\alpha}{p}}\Delta p + \abs{\frac{\alpha}{n_e}}\Delta n_e\\
+    &=\abs{\frac{\siAalphaa}{\siApa}}\sierrApa + \abs{\frac{\siAalphaa}{\siAnea}}\sierrAnea\nonumber\\
+    &=\sierrAalphaa .\nonumber
+\end{align}
 Abbildung \vref{single_alpha} zeigt eine doppelt logarithmische Auftragung des Ionisationsgrads \"uber dem Druck.
 Der Ionisationsgrad sinkt mit steigendem Druck und lie\ss e einen Abfall mit $p^{-x}$ erahnen, wenn die Fehler nicht so gro\ss\ w\"aren.
 Allgemein ist zu erkennen, dass der Ionisationsgrad relativ gering ist.
@@ -117,7 +139,7 @@ Er betr\"agt nur etwa \SI{0.001}{\percent} bis \SI{0.00001}{\percent}.
 \end{figure}
 
 Im Plasma werden elektrische Felder durch die Ionen abgeschirmt.
-Die L\"ange auf der die Feldst\"arke exponentiell abklingt ist die Debye-L\"ange
+Die L\"ange auf der die Feldst\"arke exponentiell abklingt ist die Debye-L\"ange \eqref{eq:Debye}
 \begin{align}
 \lambda_\text{Debye}
     &=\sqrt{\frac{\varepsilon_0 T_e}{n_e e^2}}
@@ -126,6 +148,13 @@ Die L\"ange auf der die Feldst\"arke exponentiell abklingt ist die Debye-L\"ange
     &=\siAdeba\nonumber,
 \end{align}
 wobei $\varepsilon_0=\sieO$ die elektrische Feldkonstante ist.
+Der Fehler betr\"agt
+\begin{align}
+\Delta \lambda_\text{Debye}
+    &=\abs{0.5\frac{\lambda_\text{Debye}}{T_e}}\Delta T_e + \abs{0.5\frac{\lambda_\text{Debye}}{n_e}}\Delta n_e\\
+    &=\abs{0.5\frac{\siAdeba}{\siATea}}\sierrATea + \abs{0.5\frac{\siAdeba}{\siAnea}}\sierrAnea\nonumber\\
+    &=\sierrAdeba .\nonumber
+\end{align}
 Wie in Abbildung \vref{single_deb} zu erkennen ist liegt die Debye-L\"ange bei ungef\"ahr $\lambda =\SI{130}{\nano\metre}$, allerdings ist auch hier wieder kein klarer Trend zu erkennen.
 Dies bedeutet, dass das Elektrische Feld an der Sonde keinen \si{\micro\metre} in das Plasma eindringt.
 
@@ -147,7 +176,7 @@ Dies bedeutet, dass das Elektrische Feld an der Sonde keinen \si{\micro\metre} i
 \label{single_wpi}
 \end{figure}
 
-Zuletzt kann noch die Plasmafrequenz betrachtet werden.
+Zuletzt kann noch die Plasmafrequenz \eqref{eq:omega} betrachtet werden.
 Da Elektronen und Atomr\"umpfe eine unterschiedliche Masse haben schwingen sie mit unterschiedlichen Frequenzen.
 F\"ur Elektronen wird sie
 \begin{align}
@@ -157,13 +186,21 @@ F\"ur Elektronen wird sie
     &=\sqrt{\frac{\siAnea \cdot(\sie)^2}{\sieO\cdot\sime}}\nonumber\\
     &=\siAwpea .\nonumber
 \end{align}
+Fehlerfortpflanzung liefert
+\begin{align}
+\Delta \omega_e
+    &=\abs{0.5\frac{\omega_e}{n_e}}\
+    \Delta n_e\\
+    &=\abs{0.5f\frac{\siAwpea}{\siAnea}}\sierrAnea\nonumber\\
+    &=\sierrAwpea .\nonumber
+\end{align}
 Da Argon Atome einfach Ionisiert werden ist die Anzahl an ionisierten Atomr\"umpfen $n_i=n_e$ und die Plasmafrequenz wird
 \begin{align}
 \omega_i
     &=\sqrt{\frac{n_e e^2}{\varepsilon_0 m_\text{Ar}}}
     \label{swpe}\\
     &=\sqrt{\frac{\siAnea \cdot(\sie)^2}{\sieO\cdot\simAr}}\nonumber\\
-    &=\siAwpia .\nonumber
+    &=\sifullAwpia .\nonumber
 \end{align}
 Die Plasmafrequenzen sind in den Abbildungen \vref{single_wpe} und \vref{single_wpi} aufgetragen.
 Sie scheinen f\"ur h\"ohere Gasdr\"ucke h\"oher zu werden, allerdings l\"asst sich dies Aufgrund der gro\ss en Abweichung nicht genau sagen.
@@ -199,7 +236,13 @@ Die zugeh\"origen Fitparameter sind in der Graphik angegeben und in Tabelle \vre
         Fitparameter f\"ur die Kennlinien.
     }
     \label{double_tab}
-    \begin{tabular}{S[table-format=4.6]|S[table-format=4.6]S[table-format=3.6]S[table-format=4.6]S[table-format=3.6]S[table-format=3.6]S[table-format=3.6]}
+    \begin{tabular}{S[table-format=3.1(3)]|
+                    S[table-format=2.2(4)]
+                    S[table-format=2.3(5)]
+                    S[table-format=3.2(4)]
+                    S[table-format=2.3(5)]
+                    S[table-format=2.2(4)]
+                    S[table-format=2.2(4)]}
         {$p$ [\si{\milli\bar}]} 
             &{$I_{i,1,\text{sat}}$ [\si{\micro\ampere}]}
             &{$S_1$ [\si{\micro\ampere\per\volt}]}
@@ -231,7 +274,7 @@ T_e
     &=e\frac{I_{i,1,\text{sat}}I_{i,1,\text{sat}}}{I_{i,2,\text{sat}}+I_{i,2,\text{sat}}}\left(\frac{\dd I}{\dd U}\Big\lvert_\text{fl}\right)^{-1}
     \label{dTe}\\
     &=\sie \frac{\siBIiasata\cdot\siBIibsata}{\siBIiasata+\siBIibsata}\left(\siBdIdUa\right)^{-1}\nonumber\\
-    &=\siBTea\nonumber
+    &=\sifullBTea\nonumber
 \end{align}
 kann aus den Fitparametern bestimmt werden.
 In Abbildung \vref{double_Te} ist zu sehen, dass die Elektronentemperatur im Bereich von \SI{3.5}{\electronvolt} liegt, was kleiner ist als bei der Langmuir-Sonde zuvor ($ T_e=\SI{10}{\electronvolt}$).
@@ -252,7 +295,7 @@ Es ergibt sich
 n_e
     &=I_{i,2,\text{sat}}\sqrt{\frac{m_\text{Ar}}{T_e}}\frac{1}{0.61eS}\label{sne}\\
     &=\siBIibsata\sqrt{\frac{\simAr}{\siBTea}}\frac{1}{0.61\cdot \sie \cdot\siS}\nonumber\\
-    &=\siBnea .\nonumber
+    &=\sifullBnea .\nonumber
 \end{align}
 Abbildung \vref{double_ne} zeigt eine etwas h\"ohere Elektronendichte f\"ur den h\"ochsten Druck.
 
@@ -365,7 +408,11 @@ Es zeigt sich, dass sich die Kennlinien f\"ur verschiedene radiale Positionen op
         Fitparameter f\"ur die Kennlinien f\"ur $I_\text{E}=\SI{5}{\milli\ampere}$.
     }
     \label{radial_tab_I5}
-    \begin{tabular}{S[table-format=4.6]|S[table-format=4.6]S[table-format=5.6]S[table-format=7.6]}
+    \begin{tabular}{
+            S[table-format=2.1]|
+            S[table-format=2.2(4)]
+            S[table-format=4.2(4)]
+            S[table-format=4.0(3)]}
         {$\Delta r$ [\si{\milli\metre}]} &{$T_e$ [\si{\electronvolt}]} &{$I_{i,\text{sat}}$ [\si{\micro\ampere}]} &{$A$ [\si{\milli\ampere}]}\\\hline
         \silineCpopta\\
         \silineCpoptb\\
@@ -383,7 +430,10 @@ Es zeigt sich, dass sich die Kennlinien f\"ur verschiedene radiale Positionen op
         Fitparameter f\"ur die Kennlinien f\"ur $I_\text{E}=\SI{10}{\milli\ampere}$.
     }
     \label{radial_tab_I10}
-    \begin{tabular}{S[table-format=4.6]|S[table-format=4.6]S[table-format=5.6]S[table-format=7.6]}
+    \begin{tabular}{S[table-format=2.1]|
+            S[table-format=2.2(4)]
+            S[table-format=4.2(4)]
+            S[table-format=4.0(3)]}
         {$\Delta r$ [\si{\milli\metre}]} &{$T_e$ [\si{\electronvolt}]} &{$I_{i,\text{sat}}$ [\si{\micro\ampere}]} &{$A$ [\si{\milli\ampere}]}\\\hline
         \silineDpopta\\
         \silineDpoptb\\
@@ -401,7 +451,10 @@ Es zeigt sich, dass sich die Kennlinien f\"ur verschiedene radiale Positionen op
         Fitparameter f\"ur die Kennlinien f\"ur $I_\text{E}=\SI{20}{\milli\ampere}$.
     }
     \label{radial_tab_I20}
-    \begin{tabular}{S[table-format=4.6]|S[table-format=4.6]S[table-format=5.6]S[table-format=7.6]}
+    \begin{tabular}{S[table-format=2.1]|
+            S[table-format=2.2(4)]
+            S[table-format=4.2(4)]
+            S[table-format=5.0(3)]}
         {$\Delta r$ [\si{\milli\metre}]} &{$T_e$ [\si{\electronvolt}]} &{$I_{i,\text{sat}}$ [\si{\micro\ampere}]} &{$A$ [\si{\milli\ampere}]}\\\hline
         \silineEpopta\\
         \silineEpoptb\\

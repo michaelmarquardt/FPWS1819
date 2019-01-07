@@ -4,12 +4,14 @@ Ein Gas, das teilweise oder vollständig ionisiert ist, wird als Plasma \cite{Pl
 Die Debye-Länge $\lambda_{\mathrm{D}}$ ist die Länge, nach der das Feld auf das $1/e$ fache seines ursprünglichen Wertes abgefallen ist. Sie ist definiert als
 \begin{align}
 \lambda_{\mathrm{D}}=\sqrt{\frac{\epsilon_0 T_{\mathrm{e}}}{e^2 n_\mathrm{e}}},
+\label{eq:Debye}
 \end{align}
 wobei $T_{\mathrm{e}}$ die Temperatur der Elektronen, $n_\mathrm{e}$ die Teilchenzahldichte der freien Elektronen, $e$ die Elementarladung und $\epsilon_0$ die Dielektrizitätskonstante ist.
 Die Kugel mit der Debye-Länge als Radius wird als Debye-Kugel bezeichnet.
 Bevor ein ionisiertes Gas als Plasma bezeichnet werden kann, gibt es Bedingungen die erfüllt sein müssen.  Eine Bedingung ist, dass die Ausdehnung des ionisierten Gases deutlich größer ist als die Debye-Länge. Zusätzlich muss es eine hinreichend große Anzahl Teilchen geben, die sich innerhalb der Debye-Kugel befinden. Des weiteren muss die Zeit zwischen den Stößen zweier Gasteilchen viel größer als die Periodendauer der Plasmaoszillation sein. Bei der Plasmaoszillation handelt es sich um eine periodische Oszillation der Ladungsdichte. Die Ursache dafür ist, dass die Elektronen in den Potentialen der positiven Ionen schwingen. Die Frequenz der Oszillation ist die Plasmafrequenz
 \begin{align}
 \omega_{\mathrm{p}}=\sqrt{\frac{n_{\mathrm{e}}e^2}{\epsilon_0 m_{\mathrm{e}}}},
+\label{eq:omega}
 \end{align}
 wobei $m_{\mathrm{e}}$ die Elektronenmasse ist. 
 In der Mitte der Kugel befindet sich ein geladenes Teilchen. Um dieses Teilchen befinden sich aufgrund der Coulomb-Wechselwirkung mehr entgegengesetzt geladenen Teilchen, als gleich geladene Teilchen. Folglich entsteht um das geladene Teilchen ein entgegengesetzt geladener Bereich. Dieser Bereich schirmt die Ladung nach außen hin ab.
@@ -50,6 +52,7 @@ I_{\mathrm{e}}=I_{\mathrm{e},\mathrm{sat}}\ \mathrm{exp} \left( -\frac{e(\Phi_{\
 wobei $\Phi_{\mathrm{p}}$ das Plasmapotential und $U$ die angelegte Spannung an der Sonde ist. Der gesamte Strom im Elektronenlaufbereich ist die Summe aus Elektronenstrom und Ionenstrom
 \begin{align}
 I=I_{\mathrm{e}} +  I_{\mathrm{i},\mathrm{sat}}=  I_{\mathrm{e},\mathrm{sat}}\ \mathrm{exp} \left( -\frac{e(\Phi_{\mathrm{p}}-U)}{T_{\mathrm{e}}} \right) + I_{\mathrm{i},\mathrm{sat}}.
+\label{eq:Isingle}
 \end{align}
 Dies lässt sich umformen in
 \begin{align}
@@ -114,6 +117,7 @@ Aus den Gleichungen \eqref{eq.Ableitung_strom} und \eqref{eq:Ableitung_2} kann d
 bestimmt werden. Gilt für die angelegte Spannung $U_1=U_{\mathrm{fl}}$, folgt damit
 \begin{align}
 I_{\mathrm{i}1,\mathrm{sat}} =I_{\mathrm{e}1,\mathrm{sat}}\ \mathrm{exp} \left( -\frac{e(\Phi_{\mathrm{p}}-U_\text{fl})}{T_{\mathrm{e}}} \right).
+\label{eq:Idouble}
 \end{align}
 Daraus ergibt sich
 \begin{align}

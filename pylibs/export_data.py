@@ -67,7 +67,7 @@ def figsize(hnumber,vnumber,linewidth=441.01733,textheight=660.10394):
         fig_height = textheight / 72.27 / vnumber
         return [fig_width,fig_height]
 
-def usepgf(grid=False):
+def usepgf(size=(1.1,2.3), grid=False):
     global USEPGF
     USEPGF = True
     
@@ -84,7 +84,7 @@ def usepgf(grid=False):
         "font.serif"        : [],          # blank entries should cause plots to inherit fonts from the document
         "font.sans-serif"   : [],
         "font.monospace"    : [],
-        "figure.figsize"    : figsize(1.1,2.3),
+        "figure.figsize"    : figsize(size[0],size[1]),
         "pgf.preamble"      : [
              r"\usepackage[utf8]{inputenc}",
              r"\usepackage[T1]{fontenc}",
@@ -158,28 +158,47 @@ def si(name, val, err=None, unit="", dig=None, e=None):
     texfile = open(TEX, "a")
     if dig == None:
         dig = DIG
-    if err == None:
-        if e == None:
-            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}}}{{{2:s}}}}}\n"
-            texfile.write(prstr.format(name,round(val,dig),siunits.unit(unit)))
-        elif e == 0:
-            E   = int(np.floor(np.log10(np.abs(val))))
-            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}e{2:d}}}{{{3:s}}}}}\n"
-            texfile.write(prstr.format(name,round(val*10**-E,dig),E,siunits.unit(unit)))
-        else:
-            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}e{2:d}}}{{{3:s}}}}}\n"
-            texfile.write(prstr.format(name,round(val*10**-e,dig),e,siunits.unit(unit)))
+    
+    # Without error
+    if e == None:
+        prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}}}{{{2:s}}}}}\n"
+        texfile.write(prstr.format(name,round(val,dig),siunits.unit(unit)))
+    elif e == 0:
+        E   = int(np.floor(np.log10(np.abs(val))))
+        prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}e{2:d}}}{{{3:s}}}}}\n"
+        texfile.write(prstr.format(name,round(val*10**-E,dig),E,siunits.unit(unit)))
     else:
+        prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}e{2:d}}}{{{3:s}}}}}\n"
+        texfile.write(prstr.format(name,round(val*10**-e,dig),e,siunits.unit(unit)))
+    
+    # With error
+    if err != None:
+        
+        # Value with error
         if e == None:
-            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}}}{{{3:s}}}}}\n"
+            prstr   = "\\newcommand{{\\sifull"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}}}{{{3:s}}}}}\n"
             texfile.write(prstr.format(name,round(val,dig),ceil(err,dig),siunits.unit(unit)))
         elif e == 0:
             E   = int(np.floor(np.log10(np.abs(val))))
-            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}e{3:d}}}{{{4:s}}}}}\n"
+            prstr   = "\\newcommand{{\\sifull"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}e{3:d}}}{{{4:s}}}}}\n"
             texfile.write(prstr.format(name,round(val*10**-E,dig),ceil(err*10**-E,dig),E,siunits.unit(unit)))
         else:
-            prstr   = "\\newcommand{{\\si"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}e{3:d}}}{{{4:s}}}}}\n"
+            prstr   = "\\newcommand{{\\sifull"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}\\pm {2:."+str(dig)+"f}e{3:d}}}{{{4:s}}}}}\n"
             texfile.write(prstr.format(name,round(val*10**-e,dig),ceil(err*10**-e,dig),e,siunits.unit(unit)))
+        
+        # Only error
+        if e == None:
+            prstr   = "\\newcommand{{\\sierr"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}}}{{{2:s}}}}}\n"
+            texfile.write(prstr.format(name,ceil(err,dig),siunits.unit(unit)))
+        elif e == 0:
+            E   = int(np.floor(np.log10(np.abs(val))))
+            prstr   = "\\newcommand{{\\sierr"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}e{2:d}}}{{{3:s}}}}}\n"
+            texfile.write(prstr.format(name,ceil(err*10**-E,dig),E,siunits.unit(unit)))
+        else:
+            prstr   = "\\newcommand{{\\sierr"+PRE+"{0:s}}}{{\\SI{{{1:."+str(dig)+"f}e{2:d}}}{{{3:s}}}}}\n"
+            texfile.write(prstr.format(name,ceil(err*10**-e,dig),e,siunits.unit(unit)))
+        
+        
     texfile.close()
 
 #   sitabular

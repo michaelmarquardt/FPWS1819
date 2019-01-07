@@ -12,6 +12,7 @@ silist = OrderedDict()
 
 silist[""]              = r""
 silist["m"]             = r"\metre"
+silist["mum"]           = r"\micro\metre"
 silist["nm"]            = r"\nano\metre"
 silist["1_m3"]          = r"\per\metre\tothe{3}"
 silist["m_s"]           = r"\metre\per\second"
