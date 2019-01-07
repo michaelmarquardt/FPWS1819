@@ -1,0 +1,135 @@
+% Alex header 
+\documentclass[aps,amsmath,amssymb,amsfont]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+\usepackage{float}
+\usepackage{graphicx}
+%\usepackage{siunitx}
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\usepackage{lmodern}
+\usepackage{physics}
+\usepackage{mathpazo}
+\usepackage{here}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{braket}
+\numberwithin{equation}{section}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\makeatletter
+\AtBeginDocument{
+\def\tocname{Inhalt}
+	\def\andname{and}
+	\def\Dated@name{Dated: }
+	\def\figurename{Abb.}
+	\def\tablename{Tab.}
+}
+\makeatother
+
+
+\newcommand{\subfig}[1]{\begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.1\textwidth]{#1}
+        \caption{}	
+    \end{subfigure}}
+\newcommand{\pictures}[1]{\begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.1\textwidth]{#1}
+        \caption{}
+    \end{subfigure}}
+
+
+%Michael header
+%\documentclass[
+%    captions=nooneline
+%    ,headinclude
+%    ,headsepline
+%    ,bibliography=totocnumbered
+%]{scrartcl}
+%\usepackage[twoside,paper=a4paper,left=35mm,right=20mm,top=30mm,bottom=35mm]{geometry} 
+
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[german]{varioref}
+
+%%% GRAPHIKEN %%%
+%\usepackage{graphicx}
+\usepackage[labelfont=bf,justification=justified,format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{wrapfig}
+%\usepackage{floatrow}
+%% DREHUNG VON GRAFIKEN
+%\usepackage{rotating}
+%\usepackage{pdflscape}
+
+%%% Tabellen %%%
+%\usepackage{threeparttable}
+%\usepackage{booktabs}
+%\usepackage{multirow}
+
+%%% MATHE %%%
+%\usepackage{mathtools}
+%\usepackage{physics}
+%\usepackage{upgreek}
+%\usepackage{amssymb}
+\usepackage[separate-uncertainty=true,
+            list-units = single,
+            list-separator = {;\,},
+            exponent-product=\cdot,%
+            ]{siunitx}
+%\DeclareSIUnit\molar{\mole\per\l}
+
+%%% ZEICHENUMGEBUNG %%%
+\usepackage{pgf}
+
+
+%%% BIBLIOGRAPHIE %%%
+%\usepackage[style=numeric-comp,backend=biber,sortlocale=de_DE,natbib=true]{biblatex}
+%\addbibresource{Quellen.bib}
+%\usepackage[babel,german]{csquotes}
+
+%%% EIGENE DEFINITIONEN %%%
+%\newcommand{\iu}{{i\mkern1mu}}
+%\usepackage{txfonts} % |R, |C
+
+%\usepackage{hyperref}
+
+%%% INCLUDE VALUES %%%
+%\input{values}
+
+%\includeonly{}
+
+\begin{document}
+	\begin{titlepage}
+	\centering
+	\par\vspace{1cm}
+	{\scshape\LARGE Universität Stuttgart \par}
+	\vspace{1cm}
+	{\scshape\Large  Fortgeschrittenen Praktikum \\ Wintersemester 2018/2019\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Ionenschallwellen im Plasma\par}
+	\vspace{2cm}
+	{\Large\itshape Gruppe: M09\\ Alexander Sattler  \\  Michael Marquardt    \\ Versuchsdatum: Montag 17. Dezember 2018\\ Betreuer: Alf Köhn\\ \par}
+	
+	\end{titlepage}
+
+
+\tableofcontents
+
+%\siUerr
+%\siIerr
+%\input{Grundlagen}
+%\input{Durchfuehrung}
+\input{Auswertung}
+%\FloatBarrier
+%\input{Fehler}
+%\printbibliography
+%\FloatBarrier
+%\bibliography{mybib}{}
+\end{document}
