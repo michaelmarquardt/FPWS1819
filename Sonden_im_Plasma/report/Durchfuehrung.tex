@@ -5,6 +5,7 @@ Der Hauptbestandteil des Versuchsaufbaus ist eine Glasröhre, in dem das Plasma 
   \tau = R C = 22\ \mathrm{k} \Omega \cdot 16\ \mu \mathrm{F} = 0.352\ \mathrm{s}.
 \end{align}
 
+\begin{figure}[htbp]
 \begin{center}
 \begin{circuitikz}
 
@@ -18,9 +19,9 @@ to [short] node[ground] {} (7,-2)
 (4,0) to [short, *-]  (2,0)
 to [short] (2,-2)
 to [short] (3,-2);
-\draw[dotted] (5.5,-2) to [short] (5.5,-4)
-to [short] (4.6,-4)
-to [short] (4.6,-3);
+\draw[dotted,blue] (5.5,-2) to [short] (5.5,-4)
+to [short] (4.6,-4);
+\draw[dotted,red] (4.6,-4) to [short] (4.6,-3);
 \draw (4.6,-3) to [generic, l=$L_2$] (4.6,-2.2)
 (3.4,-3) to [generic, l=$L_1$] (3.4,-2.2)
 (4.6,-5.5) to [short, *-] (4.6,-4)
@@ -41,11 +42,18 @@ to [short] (2,-7)
 to [voltmeter] (6,-6)
 to [short] (6,-7)
 (8,-4.5) to [short] (8,-5.5)
-to [R, l=$700\ \Omega$] (8,-6)
+to [R, l=$100\ \Omega$] (8,-6)
 to [short] (8,-7)
 ;
 \end{circuitikz}
 \end{center}
+\caption{
+    Der Schaltplan zeigt den Verschsaufbau.
+    Der orangene Kasten ist die Glasr\"ohre mit dem Plasma.
+    Der obere Schaltkreis liefert die Heizspannung f\"ur das Plasma, der untere betreibt und misst die Langmuir-Sonden $L_1$ und $L_2$.
+    Auch wenn sie hier weiter vorne und hinten im Plasma gezeigt sind, so befinden sie sich im Experiment doch an der selben Stelle nebeneinander.
+    F\"ur die Messung der Einzelsonde $L_1$ wird der blau gestrichelte Pfad verwendet, f\"ur die Doppelsonde stattdessen der rote.}
+\end{figure}
 
 \subsection{Durchführung}
 Im erstem Versuchsteil soll das Plasma mit einer Langmuir-Sonde untersucht werden. Die Kennlinie der Langmuir-Sonde soll für fünf unterschiedliche Gasdrücke gemessen  werden. Aus den Kennlinien k\"onnen dann Elektronentemperatur, Dichte, Ionisationsgrad, Debye-Länge und Plasmafrequenz bestimmt werden. Aufgetragen werden sollen die Ergebnisse in Diagramme in Abhängigkeit vom gemessenem Druck.
