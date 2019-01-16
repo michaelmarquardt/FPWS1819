@@ -2,6 +2,7 @@
 
 \subsection{Plasma}
 Ein Plasma ist ein teilweise oder vollst\"andig ionisiertes Gas.
+Dies bedeutet, dass die Gasatome in positive Ionen und freie Elektronen aufspalten.
 Der Ionisationsgrad
 \begin{equation}
 \alpha
@@ -39,7 +40,7 @@ Ein Plasma muss die folgenden drei Kriterien erf\"ullen.
 Zuerst muss die Abmessung des Plasmas $L$ wesentlich gr\"o\ss er als die Debye-L\"ange sein, da sonst keine kollektiven Eigenschaften in Erscheinung treten k\"onnen.
 Um eine statistische Behandlung zu rechtfertigen muss eine gro\ss e Anzahl Teilchen $N_\text{D}$ innerhalb innerhalb einer Kugel mit der Debye-L\"ange als Radius (Debye-Kugel) vorhanden sein.
 Ein Plasma kann nicht schneller als mit der Plasmafrequenz auf \"au\ss ere Felder reagieren.
-Darum muss es m\"oglich sein eine Schwingung auszuf\"uehren ohne dass die Teilchen vorher Sto\ss en.
+Darum muss es m\"oglich sein eine Schwingung auszuf\"uehren ohne dass die Teilchen vorher sto\ss en.
 Diese Bedingungen werden \"uber die Ungleichungen
 \begin{align}
 \omega_{\text{p},e}\tau
@@ -59,59 +60,69 @@ beschrieben, wobei $\tau$ die Sto\ss zeit der Elektronen im Plasma ist.
 
 
 
-\subsection{Doppel-Plasma-Kammer}
+
+\subsection{Langmuir-Sonde}
+Eine Langmuir Sonde besteht aus einer Elektrode, die in ein Plasma eingebracht wird.
+Die Elektrode ist an der Spitze leitend, aber ansonsten isoliert.
+Das Potential der Sonde ist negativ gegen\"uber dem des Plasmas, da die Elektronen im Plasma wesentlich mobiler sind als die Ionen und somit h\"aufuger mit der Sonde stossen.
+Nun kann man zus\"atzlich eine Spannung an die Langmuir-Sonde anlegen.
+Das andere Ende der Leitung m\"undet ins Plasma, was bedeuted, dass jetzt ein Strom durch die Langmuir-Sonde und das Plasma flie\ss t.
+Durch die Aufnahme einer Kennlinie
+\cite{anleitung1}
+
+\section{Double Plasma Device}
 \begin{figure}[htbp]
-\centering
-\begin{circuitikz}
-    \coordinate (o) at (0,0);
-    \coordinate (x) at (20,0);
-    \coordinate (bx) at (4,0);
-    \coordinate (by) at (0,4);
-    \coordinate (r) at (8,0);
-    \coordinate (y) at (8,4);
-    \draw[white,
+    \centering
+    \begin{circuitikz}
+        \coordinate (o) at (0,0);
+        \coordinate (x) at (20,0);
+        \coordinate (bx) at (4,0);
+        \coordinate (by) at (0,4);
+        \coordinate (r) at (8,0);
+        \coordinate (y) at (8,4);
+        \draw[white,
         fill=yellow,
         fill opacity=0.2]
         (0,0) rectangle ($(bx)+(by)$);
-    \draw[white,
+        \draw[white,
         fill=blue,
         fill opacity=0.2]
         (bx) rectangle ($2*(bx)+(by)$);
-    %box
-    \draw[]
+        %box
+        \draw[]
         (0,0) rectangle ($2*(bx)+(by)$)
         ($0.5*(bx)+0.9*(by)$) node[] {source}
         ($1.5*(bx)+0.9*(by)$) node[] {target};
-    %grid
-    \draw[dashed]
-        ($(bx)+(0,0.3)$) -- ($(bx)+(by)$)
+        %grid
+        \draw[dashed]
+        ($(bx)+(0,0.3)$) -- ($(bx)+(by)-(0,0.2)$)
         ($(bx)+(0.2,1.5)$) node[right, rotate=270] {Gitter};
-    %anode
-    \draw[]
+        %anode
+        \draw[]
         (0.3,-3) to[kinky cross=(o)--(x), kinky crosses=right]
         ($(0.3,0)+0.5*(by)$) --
         ($(0.5,0)+0.5*(by)$)
         ($(0.5,0)+0.2*(by)$) --
         ($(0.5,0)+0.8*(by)$)
         ($(0.7,0)+0.8*(by)$) node[right, rotate=270] {Anode};
-    %filament1
-    \draw[]
+        %filament1
+        \draw[]
         (1.7,-1.3) to[kinky cross=(o)--(x), kinky crosses=right]
         (1.7,0.7) to[cute inductor={Filament 1}]
         (2.7,0.7) to[kinky cross=(o)--(x), kinky crosses=left]
         (2.7,-1.3)
         (1.7,-1.3) to[battery1]
         (2.7,-1.3) node[below] {$U_\text{H}$};
-    %filament2
-    \draw[]
+        %filament2
+        \draw[]
         (5.7,-1.3) coordinate (f2a) to[kinky cross=(o)--(x), kinky crosses=right]
         (5.7,0.7) coordinate (f2b) to[cute inductor={Filament 2}]
         (6.7,0.7) coordinate (f2c) to[kinky cross=(o)--(x), kinky crosses=left]
         (6.7,-1.3) coordinate (f2d)
         (5.7,-1.3) to[battery1]
         (6.7,-1.3) node[below] {$U_\text{H}$};
-    %bottomline
-    \draw[]
+        %bottomline
+        \draw[]
         (0.3,-3) -- (10,-3)
         (1,-3) -- (1,0)
         (1.7,-1.3) --
@@ -127,16 +138,16 @@ beschrieben, wobei $\tau$ die Sto\ss zeit der Elektronen im Plasma ist.
         (4,-0.5) to[C]
         (4,-1.5)
         (4.5,-2) node[oscillator] {};
-    %topline
-    \draw[]
+        %topline
+        \draw[]
         (1.25,4) -- (1.25,4.5)
         (0,4.5) rectangle node{Vakuum Pumpe} (2.5,5.5)
         (3.75,4) -- (3.75,4.5)
         (3,4.5) rectangle node{Barometer} (4.5,5.5)
         (6.5,4) -- (6.5,4.5)
         (5,4.5) rectangle node{Gaszufuhr (Ventil)} (8,5.5);
-    %Gauges
-    \draw[]
+        %Gauges
+        \draw[]
         (6,2.5) node[rground, rotate=270]{}
         to[kinky cross=(r)--(y), kinky crosses=right] (8.3,2.5)
         (8.3,2) rectangle node{Kurbel} (9.5,3)
@@ -152,8 +163,8 @@ beschrieben, wobei $\tau$ die Sto\ss zeit der Elektronen im Plasma ist.
         (12,3) rectangle (14,4.5)
         (13,4) node{Spektrum-}
         (13,3.5) node{Analysator};
-    %close bottom
-    \draw[]
+        %close bottom
+        \draw[]
         (9.5,-1) rectangle node{Oszilloskop} (11.5,0)
         (10.5,-1) -- (10.5,-1.5)
         (10,-2.5) rectangle node{PC} (11,-1.5)
@@ -164,13 +175,21 @@ beschrieben, wobei $\tau$ die Sto\ss zeit der Elektronen im Plasma ist.
         (10,-3) -|
         (12.5,1) to[battery1] (11,1)
         (12.1,1.4) node[]{$U_\text{L}$};
-\end{circuitikz}
+    \end{circuitikz}
+    \caption{
+        Double plasma device.
+        Die Abbildung zeigt den Versuchsaufbau.
+        Die Plasmakammer ist durch ein Gitter in zwei Kammern \glqq source\grqq\ und \glqq target\grqq\ geteilt.
+        Durch eine Vakuumpumpe wird das Gas aus der Kammer abgesaugt, w\"ahrend neues Gas durch ein Ventil zugef\"uhrt wird.
+        Dies erlaubt es einen konstanten Druck im Plasma einzustellen, der allerdings aufgrund eines defekten Barometers nicht gemessen werden konnte.
+        }
+    \label{fig:circ}
 \end{figure}
 
 
 
 
-\cite{anleitung}
+\cite{anleitung2}
 
-a\cite{schwabedissen99a}
+\cite{schwabedissen99a}
 \cite{taylor70a}
