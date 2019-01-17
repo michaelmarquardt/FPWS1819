@@ -24,17 +24,17 @@ Der Entladungsstrom als Funktion des Druckes mit eingeschaltetem und ausgeschalt
 \subsection{Plasma Oszillations Methode}
 Mithilfe der Plasma  Oszillations Methode kann die Plasmadichte bestimmt werden. Die Oszillationen werden mit der Langmuir-Sonde gemessen und mit einem Spektrumanalysator dargestellt. Als erstes muss das richtige Maximum gefunden werden. Dazu müssen die Parameter variiert werden. Das Maxima das sich als einziges verändern lässt, ist das gesuchte Maximum. Die Plasmafrequenz kann dann mit dem Spektrumanalysator ermittelt werden. Zu beachten ist, das die Frequnz $f_{\mathrm{p}}$ gemessen wird, die Plasmafrequnz aber normalerweise als Kreisfrequenz angegeben wird: $\omega_{\mathrm{p}}= 2 \pi f_{\mathrm{p}}$.  Aus der Plasmafrequenz  kann dann die Plasmadichte berechnet werden:
 \begin{align}
-  \omega_{\mathrm{p}}=\sqrt{\frac{e^2 n}{\epsilon_0 m_{\mathrm{e}}}} = 56.5 \sqrt{n}
+  \omega_{\mathrm{p}}=\sqrt{\frac{e^2 n}{\epsilon_0 m_{\mathrm{e}}}} = 56.5\ \mathrm{s}^{-1}\mathrm{m}^{3/2}\ \sqrt{n}
 \end{align}
 Durch Umstellen der Gleichung erhält man
 \begin{align}
-  n=\left( \frac{\omega_{\mathrm{p}}}{56.5} \right)^2=\left( \frac{2 \pi f_{\mathrm{p}}}{56.5} \right)^2.
+  n=\left( \frac{\omega_{\mathrm{p}}}{56.5\ \mathrm{s}^{-1}\mathrm{m}^{3/2}} \right)^2=\left( \frac{2 \pi f_{\mathrm{p}}}{56.5\ \mathrm{s}^{-1}\mathrm{m}^{3/2}} \right)^2.
 \end{align}
 Die Werte der physikalischen Konstanten kann \cite{wiki:Konstanten} entnommen werden. Es gilt für die Elementarladung $e= 1.6022 \cdot 10^{-19}$ C, für die Elektrische Feldkonstante $\epsilon_0= 8.8542 \cdot 10^{-12}\ \mathrm{F}/\mathrm{m}$ und für die Elektronenmasse $m_{\mathrm{e}}=9.1094 \cdot 10^{-31}$ kg.
 Der Fehler kann durch Fehlerfortpfalnzung berechnet werden, wobei als Fehler der gemessenen Frequenz  $\Delta f= 5$ MHz angenommen wird.  
 \begin{align}
   \Delta n &= \frac{\mathrm{d} n}{\mathrm{d} f} \Delta f \\
-  &=\left( \frac{2 \pi}{56.5} \right)^2 2 f_{\mathrm{p}} \Delta f
+  &=\left( \frac{2 \pi}{56.5\ \mathrm{s}^{-1}\mathrm{m}^{3/2}} \right)^2 2 f_{\mathrm{p}} \Delta f
 \end{align}
 Analog zum Kapitel \ref{sec:Entladungsstrom} wird die Abhängigkeit der Plasmadichte von den Parametern Entladungsspannung, Heizstrom und Druck bestimmt. Die Plasmadichte als Funktion der Entladungsspannung ist in der Abbildung \ref{fig:3_2_Spannung} dargestellt. Die Plasmadichte steigt mit steigender Entladungsspannung an. Bei ca. \SI{80}{A} Entladungsspannung kommt es zu eienm Sattelpunkt. Danach steigt die Plasmadichte wieder an. 
 \begin{figure}[H]
