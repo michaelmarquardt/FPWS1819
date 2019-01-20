@@ -22,13 +22,13 @@ Der Entladungsstrom als Funktion des Druckes mit eingeschaltetem und ausgeschalt
 \label{fig:3_1_Druck}
 \end{figure}
 \subsection{Plasma Oszillations Methode}
-Mithilfe der Plasma  Oszillations Methode kann die Plasmadichte bestimmt werden. Die Oszillationen werden mit der Langmuir-Sonde gemessen und mit einem Spektrumanalysator dargestellt. Als erstes muss das richtige Maximum gefunden werden. Dazu müssen die Parameter variiert werden. Das Maxima das sich als einziges verändern lässt, ist das gesuchte Maximum. Die Plasmafrequenz kann dann mit dem Spektrumanalysator ermittelt werden. Zu beachten ist, das die Frequnz $f_{\mathrm{p}}$ gemessen wird, die Plasmafrequnz aber normalerweise als Kreisfrequenz angegeben wird: $\omega_{\mathrm{p}}= 2 \pi f_{\mathrm{p}}$.  Aus der Plasmafrequenz  kann dann die Plasmadichte berechnet werden:
+Mithilfe der Plasma  Oszillations Methode kann die Plasmadichte bestimmt werden. Die Oszillationen werden mit der Langmuir-Sonde gemessen und mit einem Spektrumanalysator dargestellt. Als erstes muss das richtige Maximum gefunden werden. Dazu müssen die Parameter variiert werden. Das Maxima das sich als einziges verändern lässt, ist das gesuchte Maximum. Die Plasmafrequenz kann dann mit dem Spektrumanalysator ermittelt werden. Zu beachten ist, das die Frequnz $f_{\mathrm{p},e}$ gemessen wird, die Plasmafrequnz aber normalerweise als Kreisfrequenz angegeben wird: $\omega_{\mathrm{p},e}= 2 \pi f_{\mathrm{p},e}$.  Aus der Plasmafrequenz \eqref{eq:wpe} kann dann die Plasmadichte berechnet werden:
 \begin{align}
-  \omega_{\mathrm{p}}=\sqrt{\frac{e^2 n}{\epsilon_0 m_{\mathrm{e}}}} = 56.5\ \mathrm{s}^{-1}\mathrm{m}^{3/2}\ \sqrt{n}
+  \omega_{\mathrm{p},e}=\sqrt{\frac{e^2 n}{\epsilon_0 m_{\mathrm{e}}}} = 56.5\ \mathrm{s}^{-1}\mathrm{m}^{3/2}\ \sqrt{n}
 \end{align}
 Durch Umstellen der Gleichung erhält man
 \begin{align}
-  n=\left( \frac{\omega_{\mathrm{p}}}{56.5\ \mathrm{s}^{-1}\mathrm{m}^{3/2}} \right)^2=\left( \frac{2 \pi f_{\mathrm{p}}}{56.5\ \mathrm{s}^{-1}\mathrm{m}^{3/2}} \right)^2.
+  n=\left( \frac{\omega_{\mathrm{p},e}}{56.5\ \mathrm{s}^{-1}\mathrm{m}^{3/2}} \right)^2=\left( \frac{2 \pi f_{\mathrm{p},e}}{56.5\ \mathrm{s}^{-1}\mathrm{m}^{3/2}} \right)^2.
 \end{align}
 Die Werte der physikalischen Konstanten kann \cite{wiki:Konstanten} entnommen werden. Es gilt für die Elementarladung $e= 1.6022 \cdot 10^{-19}$ C, für die Elektrische Feldkonstante $\epsilon_0= 8.8542 \cdot 10^{-12}\ \mathrm{F}/\mathrm{m}$ und für die Elektronenmasse $m_{\mathrm{e}}=9.1094 \cdot 10^{-31}$ kg.
 Der Fehler kann durch Fehlerfortpfalnzung berechnet werden, wobei als Fehler der gemessenen Frequenz  $\Delta f= 5$ MHz angenommen wird.  
@@ -68,12 +68,12 @@ Der Fehler $\Delta k$ wird mittels Fehlerfortpflanzung berechnet, wobei für die
 \begin{align}
   \Delta k = \bigl| \frac{\mathrm{d} k}{\mathrm{d} \lambda} \bigl| \Delta \lambda = \frac{2\pi}{\lambda^2} \Delta \lambda
 \end{align}
-Für die Bestimmung der Schallgeschwindigkeit kann die  Funtkion 
+Für die Bestimmung der Schallgeschwindigkeit kann Gleichung
 \begin{align}
-  \omega(k) = \sqrt{\frac{T_{\mathrm{e}} + 3 T_{\mathrm{i}}}{m_{\mathrm{i}}}} k = c_{\mathrm{s}} k
-  \label{eq:Dispersion_3_3}
+\omega (k)
+    &=c_\text{s}k
 \end{align}
-zum fitten benutzt werden, wobei $T_{\mathrm{e}}$ die Temperatur der Elektronen, $T_{\mathrm{i}}$ die Temperatur der Ionen, $m_{\mathrm{i}}$ die Masse der Ionen und $c_{\mathrm{s}}$ die Schallgeschwindigkeit ist. Das bedeutet durch das Fitten mir einer Geraden
+zum fitten benutzt werden, wobei die Schallgeschwindigkeit $c_{\mathrm{s}}$ durch Gleichung \eqref{eq:cs2} gegeben ist. Das bedeutet durch das Fitten mir einer Geraden
 \begin{align}
   f(x)= a x +b
   \label{eq:fit_Dispersion}
@@ -96,20 +96,16 @@ Der Mittelwert dieser drei Werte ergibt die Schallgeschwindigkeit
   c_{\mathrm{s}}= 2741.35\  \mathrm{m s}^{-1}.
   \label{eq:Wert_Schallgeschwindigkeit}
 \end{align}
-Aus der Schallgeschwindigkeit kann mit der Gleichung \eqref{eq:Dispersion_3_3} die Elekronentemperatur berechnet werden. Durch Vervendung von  $T_{\mathrm{e}} \gg T_{\mathrm{i}}$ vereinfacht sich die Gleichung  \eqref{eq:Dispersion_3_3} zu
-\begin{align}
-  T_{\mathrm{e}} \approx m_{\mathrm{i}} c_{\mathrm{s}}^2,
-  \end{align}
-wobei $ m_{\mathrm{i}}=6.6334 \cdot 10^{-26}$ kg \cite{wiki:Argon}  die Atommasse von Argon  ist. Mit dieser Masse und der Schallgeschwindigkeit aus \eqref{eq:Wert_Schallgeschwindigkeit} ergibt sich
+Aus der Schallgeschwindigkeit kann mit der Gleichung \eqref{eq:cs2} die Elekronentemperatur berechnet werden, wobei $ m_{\mathrm{Ar}}=6.6334 \cdot 10^{-26}$ kg \cite{wiki:Argon}  die Atommasse von Argon  ist. Mit dieser Masse und der Schallgeschwindigkeit aus \eqref{eq:Wert_Schallgeschwindigkeit} ergibt sich
 \begin{align}
    T_{\mathrm{e}} \approx m_{\mathrm{i}} c_{\mathrm{s}}^2= 3.1108\ \mathrm{eV}.
   \end{align} 
-Daraus lässt sich die tatsächliche Temperatur $T=T_{\mathrm{e}}/k_{\mathrm{B}}=3.809 \cdot 10^4$ K bestimmen.  Um die Dämpfung zu bestimmen, kann die Amplitude für unterschiedliche Positionen untersucht werden. Die Amplituden nehmen exponentiell mit dem Abstand ab
-\begin{align}
-  A(x) = A(x=0) \mathrm{exp}\ \left(- \frac{x}{\lambda_{\mathrm{damp}}}  \right),
-  \label{eq:Damp_allgemein}
-\end{align}
-wobei $\lambda_{\mathrm{damp}}$ die Dämpfungslänge ist. Ermittelt werden kann diese durch Fitten der Gleichung \eqref{eq:Damp_allgemein} an die Messwerte. Dies ist für drei unterschiedliche Drücke gemacht worden und die Ergebniss sind in der Abbildung \ref {fig:3_3_Daempfung} dargestellt. 
+Daraus lässt sich die tatsächliche Temperatur $T=T_{\mathrm{e}}/k_{\mathrm{B}}=3.809 \cdot 10^4$ K bestimmen.  Um die Dämpfung zu bestimmen, kann die Amplitude für unterschiedliche Positionen untersucht werden. Die Amplituden \eqref{eq:A} nehmen exponentiell mit dem Abstand ab
+%\begin{align}
+%  A(x) = A(x=0) \mathrm{exp}\ \left(- \frac{x}{\lambda_{\mathrm{damp}}}  \right),
+%  \label{eq:Damp_allgemein}
+%\end{align}
+wobei $\lambda_{\mathrm{damp}}$ die Dämpfungslänge ist. Ermittelt werden kann diese durch Fitten der Gleichung \eqref{eq:A} an die Messwerte. Dies ist für drei unterschiedliche Drücke gemacht worden und die Ergebniss sind in der Abbildung \ref {fig:3_3_Daempfung} dargestellt. 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{3_3_Daempfung.pdf}
@@ -147,10 +143,10 @@ Wird die Amplitude der Spannung am Gitter erhöht, kommt es zu einem Übergang v
 \label{fig:oszi_3}
 \end{figure}
 \subsection{Plasma Kriterien}
-In diesem Kapitel soll geprüft werden, ob die Plasma Kriterien mit den berechnetern Werten erfüllt werden. Ein Kriterium ist, dass das gesamte System viel größer als die Debye-Länge $\lambda_{\mathrm{D}}$
-\begin{align}
-\lambda_{\mathrm{D}} = \sqrt{\frac{\epsilon_0 T}{e^2 n}}
-\end{align}
+In diesem Kapitel soll geprüft werden, ob die Plasma Kriterien mit den berechnetern Werten erfüllt werden. Ein Kriterium ist, dass das gesamte System viel größer als die Debye-Länge $\lambda_{\mathrm{D}}$ \eqref{eq:lD}
+%\begin{align}
+%\lambda_{\mathrm{D}} = \sqrt{\frac{\epsilon_0 T}{e^2 n}}
+%\end{align}
 ist, wobei $T$ die Temepratur und $n$ die Teilchendichte ist. Diese Größen sind in den vorangegangen Kapiteln berechnet worden. Für die Werte $n \approx 10^{15} $ und $T=3.1108\ \mathrm{eV} $ ergibt sich
 \begin{align}
 \lambda_{\mathrm{D}} = 2.351 \cdot 10^{-4}\ \mathrm{m}.
@@ -160,8 +156,10 @@ Diese Länge ist klein im Vergleich zur Größe des Doppel Plasma Apparates. Die
 N = V n= \frac{4}{3}\pi \lambda_{\mathrm{D}}^3 n = 54431.023 ,
 \end{align}
 wobei $V$ das Volumen der Deybe-Kugel ist. Das bedeutet, dass in der Debye Kugel ungefähr 54431 Teilchen sind. Das zweite Kriterium ist somit auch erfüllt. Das dritte Plasmakriterium ist, dass die Stoßzeit viel größer ist als die Periodendauer der Schwingungen des Plasmas. Die Stzoßzeit $\tau$ kann berechnet werden mit
-\begin{align}
-  \tau = \frac{1}{v \sigma n_0},
-\end{align}
-wobei $v$ die mittlere Geschwindigkeit der Elektronen, $\sigma$  der Streuquerschnitt und $n_0$ die Neutralteilchendichte ist. Für den Streuquerschnitt kann $\sigma= 5 \cdot 10^{-19}\ \mathrm{m}^2 $ angenommen werden, für die mittlere Geschwindigkeit gilt $v= \sqrt{2 T_{\mathrm{e}}/m_{\mathrm{e}}} $ und die Neutralteilchendichte $n_0=p/(k_{\mathrm{B}}T_{\mathrm{Gas}})$ kann mit dem idealem Gasgesetz berechnet werden. Aufgrund des defekten Druckmessgerätes ist der Druck in dem Doppel Plasma Apparat nicht bekannt. Deshalb kann die Überprüfung dieses Kriteriums nicht durchgeführt werden. Grundsätzlich müsste die berechnete Stoßzeit mit der Plasmafrequnz multilpiziert werden und das Ergebniss davon müsste viel größer als eins sein. 
+Gleichung \eqref{eq:tau}
+%\begin{align}
+%  \tau = \frac{1}{v \sigma n_0},
+%\end{align}
+%wobei $v$ die mittlere Geschwindigkeit der Elektronen, $\sigma$  der Streuquerschnitt und $n_0$ die Neutralteilchendichte ist.
+Für den Streuquerschnitt kann $\sigma_0= 5 \cdot 10^{-19}\ \mathrm{m}^2 $ angenommen werden, für die mittlere Geschwindigkeit gilt $v_e= \sqrt{2 T_{\mathrm{e}}/m_{\mathrm{e}}} $ und die Neutralteilchendichte $n_0=p_0/(k_{\mathrm{B}}T_{\mathrm{Gas}})$ kann mit dem idealem Gasgesetz berechnet werden. Aufgrund des defekten Druckmessgerätes ist der Druck in dem Doppel Plasma Apparat nicht bekannt. Deshalb kann die Überprüfung dieses Kriteriums nicht durchgeführt werden. Grundsätzlich müsste die berechnete Stoßzeit mit der Plasmafrequnz multilpiziert werden und das Ergebniss davon müsste viel größer als eins sein. 
 

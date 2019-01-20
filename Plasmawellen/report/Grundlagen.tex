@@ -41,6 +41,7 @@ Zuerst muss die Abmessung des Plasmas $L$ wesentlich gr\"o\ss er als die Debye-L
 Um eine statistische Behandlung zu rechtfertigen muss eine gro\ss e Anzahl Teilchen $N_\text{D}$ innerhalb innerhalb einer Kugel mit der Debye-L\"ange als Radius (Debye-Kugel) vorhanden sein.
 Ein Plasma kann nicht schneller als mit der Plasmafrequenz auf \"au\ss ere Felder reagieren.
 Darum muss es m\"oglich sein eine Schwingung auszuf\"uehren ohne dass die Teilchen vorher sto\ss en.
+\cite{stroth11a}
 Diese Bedingungen werden \"uber die Ungleichungen
 \begin{align}
 \omega_{\text{p},e}\tau
@@ -53,13 +54,84 @@ N_\text{D}
 &\gg 1
 \label{eq:c3}
 \end{align}
-beschrieben, wobei $\tau$ die Sto\ss zeit der Elektronen im Plasma ist.
-\cite{stroth11a}
+beschrieben, wobei
+\begin{align}
+\tau
+    &=\frac{1}{v_en_0\sigma_0}
+    \label{eq:tau}
+\end{align}
+die mittlere Sto\ss zeit der Elektronen im Plasma ist.
+Dabei ist $v_e=\sqrt{2T_e/m_e}$ die thermische geschwindigkeit der Elektronen, $n_0$ die Dichte der neutralen Teilchen und $\sigma_0=\SI{5e-19}{\metre\squared}$ der elastische Streuquerschnitt der neutralen Teilchen.
+Die Dichte $n_0$ kann aus dem Gasdruck $p_0$ \"uber die ideale Gasgleichung
+\begin{align}
+n_0
+    &=\frac{p_0}{k_\text{B}T}
+    \label{eq:n0}
+\end{align}
+gen\"ahert werden.
+\cite{anleitung2}
 
 \subsection{Wellen im Plasma}
+In einem Plasma k\"onnen verschiedene Arten von Schwingungen angeregt werden.
+Die Bewegung der Ionen ist im Vergleich zu der der Elektronen langsam, weshalb die Ionenwolke als station\"ar angesehen werden kann, w\"ahrend die Elektronenwolke schwingt.
+Plasmaoszillationen k\"onnen zum Beispiel durch einen Elektronenstrahl erzeugt werden.
+Dabei wird ein Filament durch eine Heizspannung $U_\text{H}$ geheizt um Elektronen aus dem Metall auszul\"osen.
+%Das Filament wird mit einer negativen Entladungsspannung $U_\text{D}$ relativ zum Plasmapotential $\Phi_\text{p}$ betrieben.
+%Der Elektronenstrahl hat somit die Energie $eU_\text{d}$.
+Schickt man einen Elektronenstrahl der Dichte $n_b$ in ein kaltes nicht sto\ss endes Plasma der Elektronendichte $n_e$ f\"uhrt lineare St\"orungstheorie zu der Beziehung
+\begin{align}
+1-\frac{\omega_{\text{p},e}^2}{\omega^2}-\frac{\eta\omega_{\text{p},e}^2}{(\omega-ku)^2}
+    &=0,
+    \label{eq:rel1}
+\end{align}
+wobei $u$ die mittlere Geschwindigkeit der Elektronen des Elektronenstrahls und $\eta=n_b/n_p$ ist.
+\cite{shirkawa93a}
+Die Stromdichte der austretenden Elektronen wird durch das Richardson-Gesetz
+\begin{align}
+j(T)
+    &=A_\text{R}T^2\exp(-\frac{W_e}{k_\text{B}T})
+\end{align}
+beschrieben, mit der Richardson-Konstante $A_\text{R}$ und der Austrittsarbeit $W_e\approx \SI{5}{\electronvolt}$.
+Die Elektronengeschwindigkeit ist demnach $u=j/e$.
+\cite{anleitung2}
+F\"ur die instabilste und st\"arkste angeregte lineare Welle ergibt sich die Frequenz
+\begin{align}
+\omega_\text{max}
+    &=\omega_{\text{p},e}\left[ 1-\frac{1}{2}\left(\frac{1}{2}\eta\right)^{\frac{1}{3}}+\ldots\right],
+    \label{eq:wmax}
+\end{align}
+was f\"ur kleine Strahldichten $n_\text{b}$ etwa der Plasmafrequenz entspricht.
+Es ist so also m\"oglich Schwingungen mit der Eigenfrequenz des Plasmas anzuregen und die Plasmafrequenz zu bestimmen.
+\cite{shirkawa93a}
 
-
-
+Eine \"ahnliche Art von Wellen sind sogenannte Ionenschallwellen.
+Bei ihnen schwingen die freien Elektronen im Plasma analog zu den Teilchen eines Gases beim Schall.
+Im Unterschied zu normalen Schallwellen interagieren die Elektronen \"uber die langreichweitige Coulomb-Wechselwirkung.
+Dar\"uber hinaus f\"uhren die Ladungsverschiebungen zu einem Elektrischen Feld, dessen Feldvektor parallel zur Ausbreitungsrichtung der Welle ist.
+Ionenschallwellen sind damit wie auch normale Schallwellen Longitudinalwellen.
+\cite{schwabedissen99a}
+F\"ur ein Plasma mit nur einer Teilchensorte lautet die Schallgeschwindigkeit im linearen Bereich
+\begin{align}
+c_\text{s}
+    &=\sqrt{\frac{\gamma_eZT_e+\gamma_iT_i}{m_i}},
+    \label{eq:cs1}
+\end{align}
+wobei $T_i$ analog zu $T_e$ die Ionentemperatur im Plasma und $Z$ der Ionisationsgrad eines Ions ist.
+F\"ur die hier relevanten F\"alle sind die Koeffizienten $\gamma_e=1$ und $\gamma_i=3$.
+Au\ss erdem ist die Ionentemperatur bei unserem Experiment aufgrund der hohen Masse der Ionen $m_i$ wesentlich kleiner als die der Elektronen.
+F\"ur Argon, welches im Versuch verwendet wird und einfach ionisiert, ergibt sich damit
+\begin{align}
+c_\text{s}
+    &\approx\sqrt{\frac{T_e}{m_\text{Ar}}},
+    \label{eq:cs2}
+\end{align}
+solange die Antwort des Plasmas linear ist, also keine Dispersion vorliegt und $\omega=c_\text{s}k$ gilt.
+Diese Schwingungen werden, wie auch Schallwellen, ged\"ampft.
+Dies geschieht zum einen \"uber die Coulomb-Wechselwirkung mit den Ionen, zum anderen \"uber Landau-D\"ampfung.
+\cite{wiki:IAwaves}
+Bei ihr gibt es mehr langsame als schnelle Teilchen im Plasma.
+Die langsamen Teilchen nehmen dann mehr Energie auf, als die schnellen an die Welle abgeben k\"onnen.
+\cite{wiki:Landau}
 
 \subsection{Langmuir-Sonde}
 Eine Langmuir Sonde besteht aus einer Elektrode, die in ein Plasma eingebracht wird.
@@ -67,7 +139,8 @@ Die Elektrode ist an der Spitze leitend, aber ansonsten isoliert.
 Das Potential der Sonde ist negativ gegen\"uber dem des Plasmas, da die Elektronen im Plasma wesentlich mobiler sind als die Ionen und somit h\"aufuger mit der Sonde stossen.
 Nun kann man zus\"atzlich eine Spannung an die Langmuir-Sonde anlegen.
 Das andere Ende der Leitung m\"undet ins Plasma, was bedeuted, dass jetzt ein Strom durch die Langmuir-Sonde und das Plasma flie\ss t.
-Durch die Aufnahme einer Kennlinie
+Wenn das Potential der Sonde ausreichend positiv gegen\"uber dem Plasma ist, werden die Elektronen innerhalb der Debye-L\"ange aus dem Plasma abgesaugt.
+Man nennt dies den Elektronens\"attigungsbereich.
 \cite{anleitung1}
 
 \section{Durchf\"uhrung}
@@ -112,7 +185,7 @@ Durch die Aufnahme einer Kennlinie
         (2.7,0.7) to[kinky cross=(o)--(x), kinky crosses=left]
         (2.7,-1.3)
         (1.7,-1.3) to[battery1]
-        (2.7,-1.3) node[below] {$U_\text{H}$};
+        (2.7,-1.3) node[below] {$U_\text{H,s}$};
         %filament2
         \draw[]
         (5.7,-1.3) coordinate (f2a) to[kinky cross=(o)--(x), kinky crosses=right]
@@ -120,16 +193,16 @@ Durch die Aufnahme einer Kennlinie
         (6.7,0.7) coordinate (f2c) to[kinky cross=(o)--(x), kinky crosses=left]
         (6.7,-1.3) coordinate (f2d)
         (5.7,-1.3) to[battery1]
-        (6.7,-1.3) node[below] {$U_\text{H}$};
+        (6.7,-1.3) node[below] {$U_\text{H,t}$};
         %bottomline
         \draw[]
         (0.3,-3) -- (10,-3)
         (1,-3) -- (1,0)
         (1.7,-1.3) --
-        (1.7,-2) to [battery1, l=$U_\text{D}$, n=res]
+        (1.7,-2) to [battery1, l=$U_\text{D,s}$, n=res]
         (1.7,-3) node[ground] {}
         (5.7,-1.3) --
-        (5.7,-2) to [battery1, l=$U_\text{D}$, n=res]
+        (5.7,-2) to [battery1, l=$U_\text{D,t}$, n=res]
         (5.7,-3)
         (4,0.3) to[kinky cross=(o)--(x), kinky crosses=left]
         (4,-0.5) to[kinky cross=(f2a)--(f2b), kinky crosses=right]
@@ -177,28 +250,70 @@ Durch die Aufnahme einer Kennlinie
         (12.1,1.4) node[]{$U_\text{L}$};
     \end{circuitikz}
     \caption{
-        Double plasma device.
+        Doppel-Plasma-Kammer.
         Die Abbildung zeigt den Versuchsaufbau.
         Die Plasmakammer ist durch ein Gitter in zwei Kammern \glqq source\grqq\ und \glqq target\grqq\ geteilt.
         Durch eine Vakuumpumpe wird das Gas aus der Kammer abgesaugt, w\"ahrend neues Gas durch ein Ventil zugef\"uhrt wird.
         Dies erlaubt es einen konstanten Druck im Plasma einzustellen, der allerdings aufgrund eines defekten Barometers nicht gemessen werden konnte.
-        Das Plasma wird durch die Filamente erzeugt.
-        Durch sie wird ein starker Strom geschickt, der Elektronen ausl\"ost und ins Gas schleudert.
-        Dort werden die Elektronen zur Anode hin beschleunigt und sto\ss en dabei mit den Gasatomen, was diese ionisiert.
+        Das Plasma wird durch die Filamente erzeugt, an die jeweils eine Heizspannung $U_\text{H}$ angelegt wird, die das Filament erhitzt und Elektronen ausl\"ost und ins Gas schleudert.
+        Dort werden die Elektronen durch die Entladungsspannung $U_\text{D}$ zur Anode hin beschleunigt und sto\ss en dabei mit den Gasatomen, was diese ionisiert.
         Das Gitter bekommt eine negative Ladung von etwa \SI{-30}{\volt}, was verhindert, dass Elektronen von einer Kammer in die andere wechseln.
-        Es kann dar\"uber hinaus zus\"atzlich mit einer Wechselspannung betrieben werden um Wellen im Plasma anzuregen.
+        Es kann dar\"uber hinaus zus\"atzlich mit einer Wechselspannung betrieben werden um Ionenschallwellen im Plasma anzuregen.
         Die Langmuir-Sonde ist an einem beweglichen Stab angebracht, dessen Position im Plasma durch eine Kurbel manuell eingestellt werden kann.
         Dies erm\"oglicht es Wellenl\"ange und Amplitude der Wellen zu bestimmen.
+        Der Schalter S erm\"oglicht es die Langmuir-Sonde entweder an einen Spektrum-Analysator zu leiten, oder an das Oszilloskop.
+        Dabei ist $U_\text{L}$ eine Vorspannung f\"ur die Langmuir-Sonde und R eine Schaltung zur Messung des Stroms in der Langmuir-Sonde und zur Filterung hoher und niedriger Frequenzen.
+        Das Signal des Oszilloskops kann am PC graphisch dargestellt und ausgewertet werden.
         \cite{anleitung2,taylor72a}
         }
     \label{fig:circ}
 \end{figure}
 Abbildung \vref{fig:circ} zeigt einen Schaltplan f\"ur den Versuchsaufbau.
-Darin ist auch der \glqq double plasma device\grqq\ erkl\"art.
+Darin ist auch der Doppel-Plasma-Kammer erkl\"art.
+Das im Versuch verwendete Gas ist Argon.
 
+\subsection{Messung des Entladungsstroms}
+Zuerst wird nur ein Plasma in der source Kammer erzeugt, indem nur Filament 1 eingeschaltet wird.
+Nun wird der Entladungsstrom $I_\text{D,s}$ gemessen seine die Abh\"angigkeit von der Entladungsspannung $U_\text{D,s}$, des Heizstroms $I_\text{H,s}$ und des Gasdrucks $p_0$ untersucht.
+Dies geschieht indem jeweils einer der drei Parameter variiert wird, w\"ahrend die beiden anderen festgehalten werden.
+Passende Werte f\"ur diese Parameter werden zu Beginn des Experiments ermittelt.
+Um den Einfluss des Plasmas in der target Kammer zu Untersuchen wird der Versuch wiederholt w\"ahrend Filament 2 mit passenden Werten eingeschaltet ist, und ein Plasma in der target Kammer erzeugt.
 
+\subsection{Plasma-Oszillation Methode}
+Das Ziel dieses Versuchsteils ist es die Elektronendichte im Plasma $n_e$ zu bestimmen.
+Diese kann einfach durch Umstellen von Gleichung \eqref{eq:wpe} aus der Plasmafrequenz $\omega_{\text{p},e}$ erhalten werden.
+Um diese zu messen werden in der target Kammer Plasmawellen mit der Plasmafrequenz durch einen Elektronenstrahl angeregt.
+Hierf\"ur wird eine Spannung von $U_\text{D,t}\approx\SI{100}{\volt}$ an Filament 2 angelegt.
+Das Signal der Langmuir-Sonde wird ohne Vorspannung \"uber den Schalter S auf den Spektrum-Analysator geschaltet.
+Mit diesem werden nun die Schwingungen im Plasma erfasst.
+Allerdings stammen die meisten sichtbaren Signale von Radiowellen.
+Um die Schwingung mit der Plasmafrequenz zu finden muss ein Parameter wie $U_\text{D,s}$ variiert werden, von dem die Plasmafrequenz abh\"angt.
+Das einzige Signal, dass sich dann im Frequenzraum verschiebt ist das mit der Plasmafrequenz.
+Auf diese Art wird $n_e$ in Abh\"angigkeit von $U_\text{D,s}$, $I_\text{H,s}$ und $p_0$ bestimmt.
 
+\subsection{Dispersionsrelation und D\"ampfung von Ionenschallwellen}
+Nun werden stabile Ionenschallwellen in der target Kammer erzeugt.
+Hierf\"ur wird eine sinusf\"ormige Spannung auf das Gitter gelegt.
+Die Langmuir Probe wird nun im Elektronens\"attigungsbeeich betrieben, also mit einer positiven Vorspannung $U_\text{L}$ die daf\"ur sorgt, dass die Sonde alle Elektronen im Bereich der Debye-L\"ange um die Sonde absaugt.
+Sie wird \"uber den Schalter S mit dem Oszilloskop verbunden, an welchem die Signale am Gitter und an der Langmuir-Sonde verglichen werden.
+Die gew\"unschte Frequenz $\omega$ wird direkt am Signalgenerator eingestellt.
+Die Wellenl\"ange kann nun gemessen werden, indem die axiale Position der Langmuir-Sonde im Plasma langsam ver\"andert wird, w\"ahrend die Signale am Oszilloskop betrachtet werden.
+Sobald sich die Signale um eine volle Periode gegeneinander verschoben haben wurde die Sonde um eine Wellenl\"ange $\lambda$ verschoben.
+Die Wellenzahl $k$ wird mittels $k=2\pi/\lambda$ bestimmt.
+Dies wird f\"ur mehrere Frequenzen und drei Dr\"ucke wiederholt.
+Beim Versuch ist darauf zu achten, dass die Antwort linear, also ein sinusf\"ormiges Signal, bleibt.
+Dar\"uber hinaus kann auch die D\"ampfung der Welle bestimmt werden, indem f\"ur eine Frequenz die Amplitude des Signals an der Langmuir-Sonde f\"ur verschiedene Positionen im Plasma untersucht wird.
+Das D\"ampfung sollte exponentiell auf der Abklingl\"ange $\lambda_\text{damp}$ erfolgen, was einer Amplitude
+\begin{align}
+A(x)
+    &=A(x=0)\exp(-\frac{x}{\lambda_\text{damp}})
+    \label{eq:A}
+\end{align}
+in Abh\"angigkeit der axialen Position $x$ entspricht.
+
+\subsection{Nichtlineare Schockwellen}
+Nun soll die Antwort des Plasmas auf hohe Frequenzen untersucht werden, bei denen die Antwort nichtlinear wird.
+Hierf\"ur wird der selbe Aufbau wie im vorigen Versuch verwendet.
+Bilder der Signale am Oszilloskop werden f\"ur verschiedene Frequenzen aufgenommen.
 \cite{anleitung2}
 \FloatBarrier
-\cite{schwabedissen99a}
-\cite{taylor70a}
