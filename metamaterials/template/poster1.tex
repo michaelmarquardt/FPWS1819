@@ -1,0 +1,92 @@
+\documentclass[fontsize=24,
+               ]{beamer}
+
+% Language and encoding
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+% Bibliography and citation
+%\usepackage[backend=biber]{biblatex}
+
+% Colors
+\usepackage{xcolor}
+
+% Images
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows, calc}
+
+% Physics and maths
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{upgreek}
+\usepackage{amssymb}
+\usepackage[separate-uncertainty=true,
+            list-units = single,
+            list-separator = {;\,},
+            exponent-product=\cdot,
+            ]{siunitx}
+
+% Poster specific
+\usepackage[orientation=portrait,
+            size=a0,
+            scale=1.0,
+            ]{beamerposter}
+\usepackage[absolute,
+            overlay,
+            ]{textpos}
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+\usetheme{Dreuw}
+
+% Title
+\graphicspath{{figures/}}
+\title[Metamaterials]{Metamaterials}
+\author[Sattler \& Marquardt]{Alexander Sattler \& Michael Marquardt}
+\institute[Universität Stuttgart]{Universität Stuttgart}
+\date{18.06.2018}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=.4ex, line width = 1.5mm] (char) {#1};}}
+\begin{document}
+
+% Example using columns
+\begin{frame}{}
+\begin{columns}[t]
+
+\begin{column}{0.3\textwidth}
+    \begin{block}{\circled{1} b1}
+        text
+    \end{block}
+\end{column}
+
+\begin{column}{0.3\textwidth}
+    \begin{block}{b1}
+        text
+    \end{block}
+\end{column}
+
+\begin{column}{0.3\textwidth}
+    \begin{block}{b1}
+        text
+    \end{block}
+\end{column}
+
+\end{columns}
+\end{frame}
+
+% Example using textblock
+\begin{frame}{}
+    
+\begin{textblock}{30}(1,10)
+\begin{block}{\circled{1} b1}
+    text
+\end{block}
+\end{textblock}
+
+\end{frame}
+\end{document}

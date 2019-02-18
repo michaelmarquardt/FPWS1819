@@ -1,0 +1,80 @@
+% this style was created by Philippe Dreuw and Thomas Deselaers
+% Edited by Tim Meiler and Michael Marquardt
+\ProvidesPackage{beamerthemeDreuw} 
+\selectcolormodel{cmyk}
+\mode<presentation>
+
+% ------------------------------------------------------------------------------
+% university colors
+\definecolor{anthrazit}{cmyk}{60,35,25,70}
+\definecolor{mittelblau}{cmyk}{100,70,0,0}
+\definecolor{hellblau}{cmyk}{70,0,0,0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{headline}{fg=anthrazit,bg=white}
+\setbeamercolor{separation line}{bg=mittelblau}
+\setbeamercolor{title in headline}{fg=anthrazit}
+\setbeamercolor{author in headline}{fg=anthrazit}
+\setbeamercolor{institute in headline}{fg=anthrazit}
+
+\setbeamercolor{framesubtitle}{fg=black, bg=black}
+
+\setbeamercolor*{normal text}{fg=anthrazit, bg=hellblau}
+\setbeamercolor*{block body}{bg=white,fg=anthrazit}
+\setbeamercolor*{block title}{fg=white,bg=hellblau}
+\setbeamerfont{block title}{size=\Large,series=\bf}
+\setbeamercolor{upper separation line head}{fg=mittelblau}
+
+%\setbeamercolor{alerted text}{fg=ta3gray}
+\setbeamercolor{structure}{fg=mittelblau}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{navigation symbols}{}  % no navigation on a poster
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{block begin}{
+    \begin{beamercolorbox}[rounded=true, sep=1ex]{block title}%
+        \usebeamerfont{block title}{\Large \insertblocktitle\par}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[rounded=true,shadow=false,sep=2ex]{block body}%
+    }
+    \setbeamertemplate{block end}{
+    \end{beamercolorbox}
+    \vspace{.7cm}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{headline}{
+\leavevmode
+\begin{beamercolorbox}[wd=\paperwidth, sep=6ex]{headline}
+    \begin{columns}
+        \begin{column}{0.18\paperwidth} \raggedleft
+            \begin{tikzpicture}[thick, font=\Large]
+                \draw[line width = 2mm] (0,0) -- ++(9,0) sin ++(.8,3.5) cos ++(.8,-3.5) sin ++(.4,-2) cos ++(.4,2) -- node[above, yshift=1ex] {FP} ++(3,0);
+                \draw node[above right, yshift=1ex, align=left] at (0,0) {Fortgeschrittenen\\Praktikum};
+                \draw node[below right, yshift=-1ex] at (0,0) {Dr. B. Gompf};
+            \end{tikzpicture}
+        \end{column}
+        \hfill
+        \begin{column}{.32\paperwidth} \centering
+            \usebeamercolor{title in headline}{\color{fg}\textbf{\VERYHuge{\textsc{\inserttitle}}} \\[3em]}
+            \usebeamercolor{author in headline}{\color{fg}\textsc{\LARGE{\insertauthor}}}
+        \end{column}
+        \hfill
+        \begin{column}{13cm} \raggedright
+            \begin{minipage}[c][5.2cm][c]{5.2cm}
+                \includegraphics[width=\linewidth]{unistuttgart_logo}
+            \end{minipage}
+            \hspace{3em}
+            \begin{minipage}[c]{6cm}
+                \usebeamercolor{institute in headline}{\color{fg}\Large{\insertinstitute}\par}
+            \end{minipage}
+        \end{column}
+    \end{columns}
+\end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<all>

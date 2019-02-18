@@ -1,0 +1,103 @@
+\documentclass[final,hyperref={pdfpagelabels=false}]{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\selectcolormodel{cmyk}
+\usepackage[orientation=portrait,size=a0, debug]{beamerposter}
+\usepackage{helvet}
+\usepackage{chemformula}
+\usepackage[style=numeric-comp,backend=biber,sortlocale=de_DE,natbib=true]{biblatex}
+\addbibresource{Quellen.bib}
+\usepackage{pgfplots}
+\usepackage[separate-uncertainty=true,
+            list-units = single,
+            list-separator = {;\,},
+            list-final-separator = {\,und\,},%
+            list-pair-separator = {\,und\,},%
+            exponent-product=\cdot,%
+            output-decimal-marker={,},%
+            range-phrase={\,bis\,}%
+            ]{siunitx}
+\usepackage{mathtools}
+\usepackage{physics}
+\usetikzlibrary{
+    arrows,
+    calc,
+    %decorations.markings,
+    math,
+    %intersections,
+    %shapes.arrows,
+    arrows.meta,
+    patterns
+    }
+%\tikzset{
+%    my arrow/.style={
+%        fill=black,
+%        inner sep=3pt,
+%        shape=single arrow,
+%        minimum width=0.5cm,
+%        minimum height=1.5cm,
+%        outer sep=0pt,
+%        shape border rotate=90
+%       
+%    }
+\usepackage{varwidth}
+\newcommand\Umbruch[2][0.15\linewidth]{
+    \begin{varwidth}{#1}
+        \flushleft #2   
+    \end{varwidth}}
+\newenvironment{indentitemize}{%
+    \begin{itemize}%
+    \addtolength{\itemindent}{2ex}%
+    \setlength{\leftmargin}{2ex}%
+    \setlength{\topsep}{0pt}%
+    }
+    {%
+\end{itemize}%
+}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=.4ex, line width = 1.5mm] (char) {#1};}}
+
+\usepackage{adjustbox} % For minipage alignment
+
+%\usepackage{array}
+%\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\graphicspath{{figures/}}
+\title[Raman-Spektroskopie]{Raman Effekt}
+\author[Meiler \& Marquardt]{Tim Meiler \& Michael Marquardt}
+\institute[Universität Stuttgart]{Universität Stuttgart}
+\date{18.06.2018}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\mode<presentation>
+{
+\usetheme{Dreuw}
+}
+\begin{document}
+\begin{frame}{}
+\begin{columns}[t]
+    \begin{column}{.48\linewidth}
+        \begin{block}{\circled{1} Versuchsziel und Versuchsmethode}
+        \textbf{Methode:} Aufnahme der Schwingungsspektren von Molek"ulen mittels Raman Effekt\\
+        \textbf{Proben:} Tetraedermoleküle \ch{CH_2Cl_2}, \ch{CHCl_3}, \ch{CDCl_3}, \ch{CHBr_3} und \ch{CDBr_3} (Zuordnung unbekannt)
+        \begin{indentitemize}
+            \item Bestimmung der Boltzmann-Konstanten aus dem Stokes-Antistokes-Intensit"atsverh"altnis
+            \item Molek"ule den Proben zuordnen durch Vergleich der Positionen der Raman-Linien
+            %Zuordnen der Proben zu den Tetraedermolek"ulen durch Positionen der Raman-Linien
+            \item Depolarisationsgrade aus Intensitätsverhältnis paralleler und senkrechter Polarisation
+        \end{indentitemize}
+        \end{block}
+    \end{column}
+    \hfill
+    \begin{column}{.48\linewidth}
+        \begin{block}{\circled{9} Literatur}
+            \printbibliography
+        \end{block}
+    \end{column}
+\end{columns}
+\end{frame}
+\end{document}
