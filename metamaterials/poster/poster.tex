@@ -10,6 +10,7 @@
 
 % Colors
 \usepackage{xcolor}
+\selectcolormodel{cmyk}
 
 % Images
 \usepackage{caption}
@@ -19,6 +20,15 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usetikzlibrary{arrows, calc}
+
+% Configure tikz
+%\tikzset{
+%    x=0.1\textwidth,
+%    y=0.1\textwidth,
+%    }
+
+% Configure captions
+\renewcommand\thesubfigure{\arabic{subfigure}}
 
 % Physics and maths
 \usepackage{physics}
@@ -51,6 +61,22 @@
 \institute[Universität Stuttgart]{Universität Stuttgart}
 \date{18.06.2018}
 
+% New commands for posters
+\usepackage{varwidth}
+\newcommand\Umbruch[2][0.15\linewidth]{
+    \begin{varwidth}{#1}
+        \flushleft #2   
+    \end{varwidth}}
+    \newenvironment{indentitemize}{%
+        \begin{itemize}%
+            \addtolength{\itemindent}{2ex}%
+            \setlength{\leftmargin}{2ex}%
+            \setlength{\topsep}{0pt}%
+        }
+        {%
+        \end{itemize}%
+    }
+
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=.4ex, line width = 1.5mm] (char) {#1};}}
 \begin{document}
 
@@ -63,8 +89,8 @@
         text
     \end{block}
     
-    \begin{block}{\circled{2} b2}
-        text
+    \begin{block}{\circled{2} Fabrication of a Monolayer Mask}
+        \input{mask}
     \end{block}
 \end{column}
 
