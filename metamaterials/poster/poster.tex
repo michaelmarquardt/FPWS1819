@@ -62,10 +62,13 @@
 \setlength{\TPVertModule}{1cm}
 \usetheme{Dreuw}
 
+%bibliography
+\bibliographystyle{plain}
+
 % Title
 \graphicspath{{../figures/}}
 \title[Metamaterials]{Metamaterials}
-\author[Sattler \& Marquardt]{Alexander Sattler \& Michael Marquardt}
+\author[Sattler \& Marquardt]{Alexander Sattler \\ \& Michael Marquardt}
 \institute[Universität Stuttgart]{Universität Stuttgart}
 \date{18.06.2018}
 
@@ -93,18 +96,22 @@
 \begin{columns}[t]
 
 \begin{column}{0.48\linewidth}
-    \begin{block}{\circled{1} b1}
-        text
+    \begin{block}{\circled{1} Introduction}
+        \input{introduction.tex}
     \end{block}
     
-    \begin{block}{\circled{2} Fabrication of a Monolayer Mask}
+     \begin{block}{\circled{2} Theory}
+        \input{theory.tex}
+    \end{block}    
+
+    \begin{block}{\circled{3} Fabrication of a Monolayer Mask}
         \input{mask}
     \end{block}
 \end{column}
 
 \begin{column}{0.48\linewidth}
-    \begin{block}{b1}
-        text
+    \begin{block}{Literature}
+        \bibliography{mybib}{}
     \end{block}
 \end{column}
 
