@@ -12,6 +12,12 @@
 \usepackage{xcolor}
 \selectcolormodel{cmyk}
 
+% New colors
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\definecolor{darkgrey}{rgb}{0.25,0.25,0.25}
+\definecolor{brightgrey}{rgb}{0.75,0.75,0.75}
+\definecolor{water}{rgb}{0.5,0.7,1}
+
 % Images
 \usepackage{caption}
 \usepackage{subcaption}
@@ -19,6 +25,8 @@
 \usepackage{wrapfig}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{adjustbox}
+%\usepackage{environ}
 \usetikzlibrary{arrows, calc}
 
 % Configure tikz
@@ -55,7 +63,7 @@
 \usetheme{Dreuw}
 
 % Title
-\graphicspath{{figures/}}
+\graphicspath{{../figures/}}
 \title[Metamaterials]{Metamaterials}
 \author[Sattler \& Marquardt]{Alexander Sattler \& Michael Marquardt}
 \institute[Universität Stuttgart]{Universität Stuttgart}
