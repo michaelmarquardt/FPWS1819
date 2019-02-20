@@ -1,4 +1,4 @@
-\section{Grundlagel}
+\section{Grundlagen}
 
 \subsection{Plasma}
 Ein Plasma ist ein teilweise oder vollst\"andig ionisiertes Gas.
@@ -30,7 +30,7 @@ F\"ur Elektronen ist sie gegeben durch
     \label{eq:wpe}
 \end{equation}
 wobei $m_e$ die Masse eines Elektrons ist.
-Die Ionen Schwingen aufgrund ihrer h\"oheren Masse $m_i$ wesentlich langsamer mit
+Die Ionen schwingen aufgrund ihrer h\"oheren Masse $m_i$ wesentlich langsamer mit
 \begin{equation}
 \omega_{\text{p},i}
     =\sqrt{\frac{e^2n_i}{\varepsilon_0m_i}}.
@@ -75,7 +75,7 @@ gen\"ahert werden.
 In einem Plasma k\"onnen verschiedene Arten von Schwingungen angeregt werden.
 Die Bewegung der Ionen ist im Vergleich zu der der Elektronen langsam, weshalb die Ionenwolke als station\"ar angesehen werden kann, w\"ahrend die Elektronenwolke schwingt.
 Plasmaoszillationen k\"onnen zum Beispiel durch einen Elektronenstrahl erzeugt werden.
-Dabei wird ein Filament durch eine Heizspannung $U_\text{H}$ geheizt um Elektronen aus dem Metall auszul\"osen.
+Dabei wird ein Filament durch eine Heizspannung $U_\text{H}$ geheizt um Elektronen aus dem Metall auszul\"osen. Um den Elektronen die notwendige Energie mitzugeben, wird zusätzlich eine Vorspannung benutzt.
 %Das Filament wird mit einer negativen Entladungsspannung $U_\text{D}$ relativ zum Plasmapotential $\Phi_\text{p}$ betrieben.
 %Der Elektronenstrahl hat somit die Energie $eU_\text{d}$.
 Schickt man einen Elektronenstrahl der Dichte $n_b$ in ein kaltes nicht sto\ss endes Plasma der Elektronendichte $n_e$ f\"uhrt lineare St\"orungstheorie zu der Beziehung
@@ -90,6 +90,7 @@ Die Stromdichte der austretenden Elektronen wird durch das Richardson-Gesetz
 \begin{align}
 j(T)
     &=A_\text{R}T^2\exp(-\frac{W_e}{k_\text{B}T})
+\label{eq:Richardson}
 \end{align}
 beschrieben, mit der Richardson-Konstante $A_\text{R}$ und der Austrittsarbeit $W_e\approx \SI{5}{\electronvolt}$.
 Die Elektronengeschwindigkeit ist demnach $u=j/e$.
@@ -110,7 +111,7 @@ Im Unterschied zu normalen Schallwellen interagieren die Elektronen \"uber die l
 Dar\"uber hinaus f\"uhren die Ladungsverschiebungen zu einem Elektrischen Feld, dessen Feldvektor parallel zur Ausbreitungsrichtung der Welle ist.
 Ionenschallwellen sind damit wie auch normale Schallwellen Longitudinalwellen.
 \cite{schwabedissen99a}
-F\"ur ein Plasma mit nur einer Teilchensorte lautet die Schallgeschwindigkeit im linearen Bereich
+F\"ur ein Plasma lautet die Schallgeschwindigkeit im linearen Bereich
 \begin{align}
 c_\text{s}
     &=\sqrt{\frac{\gamma_eZT_e+\gamma_iT_i}{m_i}},
@@ -136,7 +137,7 @@ Die langsamen Teilchen nehmen dann mehr Energie auf, als die schnellen an die We
 \subsection{Langmuir-Sonde}
 Eine Langmuir Sonde besteht aus einer Elektrode, die in ein Plasma eingebracht wird.
 Die Elektrode ist an der Spitze leitend, aber ansonsten isoliert.
-Das Potential der Sonde ist negativ gegen\"uber dem des Plasmas, da die Elektronen im Plasma wesentlich mobiler sind als die Ionen und somit h\"aufuger mit der Sonde stoßen.
+Das Potential der Sonde ist negativ gegen\"uber dem des Plasmas, da die Elektronen im Plasma wesentlich mobiler sind als die Ionen und somit h\"aufiger mit der Sonde stoßen.
 Nun kann man zus\"atzlich eine Spannung an die Langmuir-Sonde anlegen.
 Das andere Ende der Leitung m\"undet ins Plasma, was bedeuted, dass jetzt ein Strom durch die Langmuir-Sonde und das Plasma flie\ss t.
 Wenn das Potential der Sonde ausreichend positiv gegen\"uber dem Plasma ist, werden die Elektronen innerhalb der Debye-L\"ange aus dem Plasma abgesaugt.
@@ -257,7 +258,7 @@ Man nennt dies den Elektronens\"attigungsbereich.
         Dies erlaubt es einen konstanten Druck im Plasma einzustellen, der allerdings aufgrund eines defekten Barometers nicht gemessen werden konnte.
         Das Plasma wird durch die Filamente erzeugt, an die jeweils eine Heizspannung $U_\text{H}$ angelegt wird, die das Filament erhitzt und Elektronen ausl\"ost und ins Gas schleudert.
         Dort werden die Elektronen durch die Entladungsspannung $U_\text{D}$ zur Anode hin beschleunigt und sto\ss en dabei mit den Gasatomen, was diese ionisiert.
-        Das Gitter bekommt eine negative Ladung von etwa \SI{-30}{\volt}, was verhindert, dass Elektronen von einer Kammer in die andere wechseln.
+        Das Gitter bekommt eine negative Spannung von etwa \SI{-30}{\volt}, was verhindert, dass Elektronen von einer Kammer in die andere wechseln.
         Es kann dar\"uber hinaus zus\"atzlich mit einer Wechselspannung betrieben werden um Ionenschallwellen im Plasma anzuregen.
         Die Langmuir-Sonde ist an einem beweglichen Stab angebracht, dessen Position im Plasma durch eine Kurbel manuell eingestellt werden kann.
         Dies erm\"oglicht es Wellenl\"ange und Amplitude der Wellen zu bestimmen.
@@ -277,7 +278,7 @@ Zuerst wird nur ein Plasma in der source Kammer erzeugt, indem nur Filament 1 ei
 Nun wird der Entladungsstrom $I_\text{D,s}$ gemessen seine die Abh\"angigkeit von der Entladungsspannung $U_\text{D,s}$, des Heizstroms $I_\text{H,s}$ und des Gasdrucks $p_0$ untersucht.
 Dies geschieht indem jeweils einer der drei Parameter variiert wird, w\"ahrend die beiden anderen festgehalten werden.
 Passende Werte f\"ur diese Parameter werden zu Beginn des Experiments ermittelt.
-Um den Einfluss des Plasmas in der target Kammer zu Untersuchen wird der Versuch wiederholt w\"ahrend Filament 2 mit passenden Werten eingeschaltet ist, und ein Plasma in der target Kammer erzeugt.
+Um den Einfluss des Plasmas in der target Kammer zu untersuchen wird der Versuch wiederholt w\"ahrend Filament 2 mit passenden Werten eingeschaltet ist und ein Plasma in der target Kammer erzeugt.
 
 \subsection{Plasma-Oszillation Methode}
 Das Ziel dieses Versuchsteils ist es die Elektronendichte im Plasma $n_e$ zu bestimmen.
@@ -313,7 +314,7 @@ in Abh\"angigkeit der axialen Position $x$ entspricht.
 
 \subsection{Nichtlineare Schockwellen}
 Nun soll die Antwort des Plasmas auf hohe Frequenzen untersucht werden, bei denen die Antwort nichtlinear wird.
-Hierf\"ur wird der selbe Aufbau wie im vorigen Versuch verwendet.
+Hierf\"ur wird derselbe Aufbau wie im vorigen Versuch verwendet.
 Bilder der Signale am Oszilloskop werden f\"ur verschiedene Amplituden aufgenommen.
 Bei gr\"o\ss eren Amplituden sollte die Antwort zunehmend nichtlinear werden.
 \cite{anleitung2}
