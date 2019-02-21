@@ -25,6 +25,9 @@
 \definecolor{angle}{rgb}{0,0,1}
 \definecolor{omega}{rgb}{0,0,0}
 \definecolor{spy}{rgb}{.9,0,0}
+\definecolor{crosssection}{rgb}{0,1,0}
+\definecolor{goldray}{rgb}{.8,.6,0}
+\definecolor{split}{rgb}{1,0,0}
 
 % Images
 \usepackage{caption}
@@ -34,6 +37,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{adjustbox}
+\usepackage{changepage}
 %\usepackage{environ}
 \usetikzlibrary{arrows, calc}
 
@@ -42,6 +46,11 @@
 %    x=0.1\textwidth,
 %    y=0.1\textwidth,
 %    }
+
+% Extracts coordinate
+\newdimen\XCoord
+\newdimen\YCoord
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}
 
 % Configure captions
 \renewcommand\thesubfigure{\arabic{subfigure}}
@@ -116,14 +125,9 @@
         \input{evaporation2}
     \end{block}
 
-    \begin{block}{\circled{3} Fabrication of a Monolayer Mask}
+    \begin{block}{\circled{4} Fabrication of a Monolayer Mask}
         \input{mask}
     \end{block}
-    
-     \begin{block}{\circled{4} Evaporation}
-        \input{evaporation.tex}
-     \end{block}
-     
 \end{column}
 
 \begin{column}{0.48\linewidth}
