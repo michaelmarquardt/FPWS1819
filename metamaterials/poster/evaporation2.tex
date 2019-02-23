@@ -179,11 +179,11 @@
         (0,2.9)++(120:.55) arc(120:420:.55 and .1);
     \draw[angle,dashed,line width=0.003\textwidth,shift={(m)}]
         (0,0.6)--(0,3.5);
-    \coordinate (rellda) at ($(m)-(lda)$);
+    \coordinate (rellda) at ($(m)-(lda)+(0,0.6)$);
     \ExtractCoordinate{rellda}
-    \coordinate (point) at ($(m)+(0,-\YCoord+\XCoord/sin{\theta}*cos{\theta})$);
+    \coordinate (point) at ($(m)+(0,\XCoord/sin{\theta}*cos{\theta})$);
     \draw[angle,line width=0.002\textwidth]
-        ($(point)+(0,0.8)$) arc(90:90-\theta:0.8);
+        ($(point)+(0,0.9)+(0,0.6)$) arc(90:90-\theta:0.9);
     % split-ring
     \draw[split,shift=(m)]
         (-0.8,0.4)rectangle(0.8,0.8)
@@ -192,7 +192,7 @@
         (-0.8,-0.2)rectangle(0.8,-1.8);
     \coordinate (O) at ($(m)-(0,1)$);
     \coordinate (split1) at (\XCoord,0);
-    \coordinate (relrua) at ($(m)-(rua)$);
+    \coordinate (relrua) at ($(m)-(rua)+(0,0.6)$);
     \ExtractCoordinate{relrua}
     \coordinate (split) at ($(split1)+(0,\XCoord)$);
     \ExtractCoordinate{split}
