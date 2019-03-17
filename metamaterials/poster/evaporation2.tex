@@ -1,5 +1,5 @@
 \begin{figure}[htbp]
-\begin{subfigure}{0.72\textwidth}
+\begin{subfigure}[t][][t]{0.72\textwidth}
     \begin{tikzpicture}
     [x=0.06667\textwidth, y=0.06667\textwidth]
     \draw (0,0) rectangle (15,7);
@@ -185,12 +185,13 @@
     \draw[angle,line width=0.002\textwidth]
         ($(point)+(0,0.9)+(0,0.6)$) arc(90:90-\thetheta:0.9);
     % split-ring
-    \draw[split,shift=(m)]
+    \coordinate (n) at ($(m)+(1.6,0)$);
+    \draw[split,line width=0.002\textwidth,shift=(m)]
         (-0.8,0.4)rectangle(0.8,0.8)
-        (0,0.4)--(0,-0.2);
-    \draw[split,fill=substrate,shift=(m)]
+        (0,0.4)--(1.6,-0.2);
+    \draw[split,line width=0.002\textwidth,fill=substrate,shift=(n)]
         (-0.8,-0.2)rectangle(0.8,-1.8);
-    \coordinate (O) at ($(m)-(0,1)$);
+    \coordinate (O) at ($(n)-(0,1)$);
     \coordinate (split1) at (\XCoord,0);
     \coordinate (relrua) at ($(m)-(rua)+(0,0.6)$);
     \ExtractCoordinate{relrua}
@@ -205,17 +206,34 @@
     % symbols
     \draw[omega] (2.6,6) node{$\omega$};
     \draw[angle] (2.2,3.8) node{$\theta$};
-    \draw[omega] (13,5.8) node{$\omega$};
+    \draw[omega] (11.2,5.7) node{$\omega$};
     \draw[angle] (12.12,5.1) node{$\theta$};
+    \draw[decoration={
+        markings,
+        mark=at position 0 with {\arrow[scale=4,shift={(0.025,0)},black]{<}};,
+        mark=at position 1 with {\arrow[scale=4,black]{>}};
+    },postaction={decorate}] (1.1,2.3)--(1.1,4.5);
+    \draw[] (1.1,3.4) node[above,rotate=90]{$\approx\SI{60}{\centi\metre}$};
     % text
-    \draw[] (0.7,1.8)--(0.7,0.3) node[right]{vacuum chamber};
-    \draw[] (2,1.9)--(2,0.7) node[right]{molten gold};
+    \draw[] (0.7,1.8)--(0.7,0.5) node[right]{vacuum chamber};
+    \draw[] (2,1.9)--(2,1) node[right]{molten gold};
+    \draw[] (2,2.5)--(3.8,1.5) node[right]{gold beam};
+    \draw[] (1.9,5.3)--(4,6.5) node[right]{rotatable holder};
+    \draw[] (2.6,5.05)--(4,6) node[right]{probe};
+    \draw[] (6.4,5.2)--(7.2,5.5) node[right]{substrate};
+    \draw[] (6.4,5)--(7.2,5) node[right]{mask};
+    \draw[] (8.5,1.6)--(9,1) node[right]{sphere ($\varnothing\approx\SI{5}{\micro\metre}$)};
+    \draw[] (7.7,1.3)--(9,0.5) node[right]{hole};
+    \draw[] (13.6,1.9)--(12.5,1.9) node[left]{gold film};
+    \draw[] (11.6,3.15)--(11.6,2.2);
+    \draw[] (12.6,5.8)--(12.6,6.5) node[right]{gold beam};
+    \draw[crosssection] (9.5,6.5) node[right]{cross section};
     \end{tikzpicture}
-    \subcaption{evaporation}
+    \subcaption{Schematic drawing of the evaporation process.}
 \end{subfigure}
 \hfill
-\begin{subfigure}{0.26\textwidth}
+\begin{subfigure}[t][][t]{0.26\textwidth}
 \includegraphics[width=0.97\textwidth]{chamber.jpg}
-\subcaption{evaporation chamber}
+\subcaption{Evaporation chamber.}
 \end{subfigure}
 \end{figure}
