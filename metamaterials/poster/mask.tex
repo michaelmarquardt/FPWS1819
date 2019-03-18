@@ -1,8 +1,5 @@
-\begin{indentitemize}
-    \item text
-\end{indentitemize}
 \begin{figure}[htbp]
-\begin{subfigure}{0.48\textwidth}
+\begin{subfigure}[t][][t]{0.48\textwidth}
     \begin{tikzpicture}
     [x=0.1\textwidth, y=0.1\textwidth]
     \draw (0,0) rectangle (10,5);
@@ -68,11 +65,15 @@
         (-0.2,-0.57)--
         (0.48,-0.25)--
         (0,0);
+     % text
+     \draw[] (1.5,0.5)--(2.5,0.5) node[right]{Bunsen burner};
+     \draw[] (2.5,3.5)--(2.5,2.9) node[right]{glass pipette};
+     \draw[] (8.45,4.5)--(8,4.5) node[left]{reduce the size of the opening};
     \end{tikzpicture}
-    \subcaption{Forming the pipette}
+    \subcaption{Bending of a glass pipette through melting.}
 \end{subfigure}
 \hfill
-\begin{subfigure}{0.48\textwidth}
+\begin{subfigure}[t][][t]{0.48\textwidth}
     \begin{tikzpicture}
     [x=0.1\textwidth, y=0.1\textwidth]
     \draw (0,0) rectangle (10,5);
@@ -119,11 +120,17 @@
     \draw[sphere,->,line width=0.007\textwidth]
         (5.2,1.5)..controls(5.2,2.2)and(5.35,2.25)..
         (7,2.25);
+    % text
+    \draw[] (9.65,2.5)--(9.65,4.5) node[left]{Petri dish};
+    \draw[] (9.3,2.3)--(9.3,4) node[left]{microsphere monolayer};
+    \draw[] (8.95,1.5)--(8.95,3.5) node[left]{destilled water};
+    \draw[] (2.2,3.5) node[right]{particle solution};
+    \draw[] (3.8,2.2)--(3.8,3.3);
     \end{tikzpicture}
-    \subcaption{petri dish}
+    \subcaption{Creation of a microsphere monolayer at the water surface.}
 \end{subfigure}
 
-\begin{subfigure}{0.48\textwidth}
+\begin{subfigure}[t][][t]{0.48\textwidth}
     \begin{tikzpicture}
     [x=0.1\textwidth, y=0.1\textwidth]
     \draw (0,0) rectangle (10,5);
@@ -157,11 +164,15 @@
         (8.5,1);
     \draw[ultra thick,->]
         (8.35,1.4)--(8.5,2.12);
+    % text
+    \draw[] (9.6,4)--(9,4.5) node[left]{suck away the water through the hose};
+    \draw[] (1.8,0.6)--(1.8,3.5) node[right]{substrate};
+    \draw[] (2.5,1.5)--(2.5,2.5) node[right]{monolayer subsides};
     \end{tikzpicture}
-    \subcaption{petri dish}
+    \subcaption{Applying the monolayer to the substrates.}
 \end{subfigure}
 \hfill
-\begin{subfigure}{0.48\textwidth}
+\begin{subfigure}[t][][t]{0.48\textwidth}
     \begin{tikzpicture}
     [x=0.1\textwidth, y=0.1\textwidth]
     \draw (0,0) rectangle (10,5);
@@ -190,7 +201,13 @@
     \foreach \i in {0.6,0.8,...,2.41}
         \filldraw[sphere,shift={(s)}]
             (\i,0.79) ellipse [x radius=0.105,y radius=0.09];
-    \filldraw[red,scale=0.5,shift={(9,5)}]
+    \filldraw[sphere]
+        (4,1.3) ellipse [x radius=.5,y radius=.5]
+        (6,1.25) ellipse [x radius=.55,y radius=.45];
+    \draw[fill=substrate]
+        (3.3,0.5) rectangle (4.7,0.8)
+        (5.3,0.5) rectangle (6.7,0.8);
+    \filldraw[red,yscale=.8,shift={(3.5,3.5)}]
         (0,.5)--
         (2,.5)--
         (2,1)--
@@ -198,17 +215,26 @@
         (2,-1)--
         (2,-.5)--
         (0,-.5);
+    % text
+    \draw[red] (3.5,3.6) node[right]{\SI{108}{\degreeCelsius}};
+    \draw[red] (3.5,4.1) node[right]{$\SI{120}{\second}-\SI{240}{\second}$};
+    \draw[] (1.5,3.5) node[above]{spheres};
+    \draw[] (8.5,3.5) node[above]{ellipsioids};
+    \draw[] (2.5,0.8)--(3.5,1.3);
+    \draw[] (7.5,0.8)--(6.55,1.25);
     \end{tikzpicture}
-    \subcaption{annealing}
+    \subcaption{Annealing of the probe shrinks the space between the spheres.}
 \end{subfigure}
 \end{figure}
 
 \begin{figure}[htbp]
-\begin{subfigure}{0.48\textwidth}
-    \includegraphics[width=\textwidth]{pipette.jpg}
-\end{subfigure}
+\begin{minipage}[t][][t]{0.48\textwidth}
+    Hier k\"onnte ihre Werbung stehen!
+\end{minipage}
 \hfill
-\begin{subfigure}{0.48\textwidth}
+\begin{subfigure}[t][][b]{0.48\textwidth}
     \includegraphics[width=\textwidth]{petrischale.jpg}
+    \caption{Photography of (2).
+        One can see the monolayer as shiny film.}
 \end{subfigure}
 \end{figure}
