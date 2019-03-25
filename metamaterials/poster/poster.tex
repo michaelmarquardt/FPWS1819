@@ -16,7 +16,7 @@
 \definecolor{darkgrey}{rgb}{0.25,0.25,0.25}
 \definecolor{brightgrey}{rgb}{0.75,0.75,0.75}
 \definecolor{water}{rgb}{0.5,0.7,1}
-\definecolor{solution}{rgb}{1,1,0}
+\definecolor{solution}{rgb}{.3,.4,0}
 \definecolor{sphere}{rgb}{.1,.1,.1}
 \definecolor{substrate}{rgb}{.75,.75,.75}
 \definecolor{gold}{rgb}{1,.8,0}
@@ -29,8 +29,10 @@
 \definecolor{split}{rgb}{1,0,0}
 
 % Images
+%\usepackage[font=normalsize]{caption}
+\usepackage[font=normalsize]{subcaption}
 \usepackage{caption}
-\usepackage{subcaption}
+%\usepackage{subcaption}
 \usepackage{placeins}
 \usepackage{wrapfig}
 \usepackage{tikz}
@@ -106,6 +108,7 @@
     }
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=.4ex, line width = 1.5mm] (char) {#1};}}
+
 \begin{document}
 
 % Example using columns
@@ -131,7 +134,7 @@
 \end{column}
 
 \begin{column}{0.48\linewidth}
-    \begin{block}{\circled{5} Scanning Electron Microscope (SEM) Imaging}
+    \begin{block}{\circled{5} Scanning Electron Microscope Imaging (SEM)}
         \input{sem}
     \end{block}
 

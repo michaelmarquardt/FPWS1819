@@ -1,3 +1,7 @@
+\captionsetup{
+    singlelinecheck=false,
+    justification=justified
+    }
 \begin{figure}[htbp]
 \begin{subfigure}[t][][t]{0.48\textwidth}
     \begin{tikzpicture}
@@ -70,7 +74,13 @@
      \draw[] (2.5,3.5)--(2.5,2.9) node[right]{glass pipette};
      \draw[] (8.45,4.5)--(8,4.5) node[left]{reduce the size of the opening};
     \end{tikzpicture}
-    \subcaption{Bending of a glass pipette through melting.}
+    \subcaption{
+        %Bending of a glass pipette through melting.
+        A glass pipette is formed through melting.
+        The new form ensures the right flow behavior in step 2.
+        The opening of the pipette is hold into the fire to reduce the openings size.
+        This ensures the right flow velocity.
+        }
 \end{subfigure}
 \hfill
 \begin{subfigure}[t][][t]{0.48\textwidth}
@@ -123,11 +133,16 @@
     % text
     \draw[] (9.65,2.5)--(9.65,4.5) node[left]{Petri dish};
     \draw[] (9.3,2.3)--(9.3,4) node[left]{microsphere monolayer};
-    \draw[] (8.95,1.5)--(8.95,3.5) node[left]{destilled water};
+    \draw[] (8.95,1.5)--(8.95,3.5) node[left]{distilled water};
     \draw[] (2.2,3.5) node[right]{particle solution};
     \draw[] (3.8,2.2)--(3.8,3.3);
     \end{tikzpicture}
-    \subcaption{Creation of a microsphere monolayer at the water surface.}
+    \subcaption{
+        %Creation of a microsphere monolayer at the water surface.
+        The pipette is filled with the particle solution and hold into a petri dish with distilled water.
+        The solvent rises and takes the microspheres with it.
+        The microspheres accumulate in a hexagonal monolayer at the border of the petri dish.
+        }
 \end{subfigure}
 
 \begin{subfigure}[t][][t]{0.48\textwidth}
@@ -169,7 +184,15 @@
     \draw[] (1.8,0.6)--(1.8,3.5) node[right]{substrate};
     \draw[] (2.5,1.5)--(2.5,2.5) node[right]{monolayer subsides};
     \end{tikzpicture}
-    \subcaption{Applying the monolayer to the substrates.}
+    \subcaption{
+        %Applying the monolayer to the substrates.
+        %A napkin is dunked at one point of the petri dish border.
+        %It absorbs water from the ground and causes the microspheres to travel to the other site of the petri dish.
+        %This makes the monolayer more dense.
+        Substrate plates are placed under the monolayer.
+        A hose is used to suck the most of the water away until the monolayer almost touches the substrate.
+        The rest of the water evaporates over night.
+        }
 \end{subfigure}
 \hfill
 \begin{subfigure}[t][][t]{0.48\textwidth}
@@ -223,27 +246,33 @@
     \draw[] (2.5,0.8)--(3.5,1.3);
     \draw[] (7.5,0.8)--(6.55,1.25);
     \end{tikzpicture}
-    \subcaption{Annealing of the probe shrinks the space between the spheres.}
+    \subcaption{
+        %Annealing of the probe shrinks the space between the spheres.
+        The mask is annealed in order to deform the microspheres into ellipsoids.
+        This closes the gaps between the spheres and leaves only little holes between the spheres.
+        }
 \end{subfigure}
 \end{figure}
 
+\setcounter{figure}{4}
 \begin{figure}[htbp]
-\begin{minipage}[t][][t]{0.48\textwidth}
+\begin{minipage}[t][][t]{0.68\textwidth}
+    \large
+    \begin{color}{mittelblau}
+        Preparing the particle solution: \cite{manual}
+    \end{color}
+    \normalsize
     \begin{enumerate}
-        \item The glass pipette must be formed to ensure the right flow behavior of the particle solution.
-        The size of the opening of the pipette is reduced to reduce the flow velocity.
-        \item The particle solution is made up of polybead microspheres, ethanol and hexylamine.
-        See \cite{wollet10a} for more detail.
-        \item The pipette with the particle solution is hold into a petri dish with destilled water.
-        The microspheres rise and form a monolayer at the water surface.
-        \item \color{red}{Dieser Text kommt vielleicht besser zu den Bildern}
-        \item \color{red}{Rechtes Bild kleiner}
+        \item Centrifuge \SI{1}{\milli\litre} of a particle solution containing the polystyrene microspheres until sedimentation and remove about $2/3$ of the water.
+        \item Loosen the microspheres using an ultrasonic bath (15-\SI{20}{\minute}).
+        \item Mix \SI{100}{\micro\litre} of this with \SI{100}{\micro\litre} ethanol and \SI{6}{\micro\litre} hexylamine (\SI{2}{vol}-\si{\percent} in ethanol).
+        \item Use the ultrasonic bath again (15-\SI{20}{\minute}).
     \end{enumerate}
 \end{minipage}
 \hfill
-\begin{subfigure}[t][][b]{0.48\textwidth}
+\begin{minipage}[t][][b]{0.28\textwidth}
     \includegraphics[width=\textwidth]{petrischale.jpg}
     \caption{Photography of (2).
         One can see the monolayer as shiny film. \cite{manual}}
-\end{subfigure}
+\end{minipage}
 \end{figure}
