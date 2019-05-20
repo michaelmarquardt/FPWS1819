@@ -1,6 +1,92 @@
 \section{Grundlagen}
 \subsection{Photonenquellen}
+\begin{figure}[htbp]
+    \begin{minipage}[t][][b]{0.6\textwidth}
+        
+        \caption{
+            Ein 4-Niveau-System wird konstant extern von Zustand 1 in Zustand 2 angeregt.
+            Dies geschieht zum Beispiel mit Licht der Energie $\hbar \nu_\text{x}$.
+            Das System f\"allt durch Emission eines Phonons in Zustand 3 onhe Licht zu emittieren.
+            Der \"Ubergang von 3 nach 4 setzt ein einzelnes Photon frei.
+            Der \"Ubergang von 4 nach 1 l\"auft wieder durch Phononen.
+        }
+        \label{fig:4niv}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t][][b]{0.38\textwidth}
+        \flushright
+        \begin{tikzpicture}[
+        x=0.2\textwidth,
+        y=0.15\textwidth,
+        >=triangle 60,
+        ]
+        %\draw (0,0)rectangle(5,6);
+        \draw[->] (0,0)--(0,5) node[right]{E};
+        % states
+        \draw
+        (1,0.5)node[left]{1}--(2,0.5)
+        (1,4.5)node[left]{2}--(2,4.5)
+        (2,1)--(3,1)node[right]{4}
+        (2,4)--(3,4)node[right]{3}
+        ;
+        % light
+        \draw [
+        ->,
+        decorate,
+        decoration={
+            snake,
+            amplitude=0.7mm,
+            segment length=2.2mm,
+            post length=2mm,
+        },
+        color=red,
+        ]
+        (0.1,1.5)--(1.45,2.5);
+        \draw[color=red,->]
+        (1.5,.5)--(1.5,4.5);
+        \draw[color=red]
+        (0.3,2.4)node[right]{$\hbar \nu_\text{x}$};
+        \draw[->,color=grey]
+        (1.8,4.5)--(2.2,4);
+        \draw[->,color=blue]
+        (2.5,4)--(2.5,1);
+        \draw [
+        ->,
+        decorate,
+        decoration={
+            snake,
+            amplitude=0.7mm,
+            segment length=2.2mm,
+            post length=2mm,
+        },
+        color=blue,
+        ]
+        (2.6,2.6)--(3.9,3.6);
+        \draw[color=blue]
+        (3,2.6)node[right]{$\hbar \nu_\text{e}$};
+        \draw[->,color=grey]
+        (2.2,1)--(1.8,0.5);
+        \end{tikzpicture}
+    \end{minipage}
+\end{figure}
+Eine Lichtquelle funktioniert prinzipiell dadurch, dass elektronische Zust\"ande in der Quelle angeregt werden.
+Diese fallen dann in den Grundzustand zur\"uck, wobei sie ein Photon emittieren.
+Ein Beispiel f\"ur einen einfachen \"Ubergang ist ein 4-Niveau-System wie in Abbildung \vref{fig:4niv}.
+In makroskopischen Lichtquellen werden viele solche Systeme gleichzeitig angeregt.
+F\"ur eine Einzel-Photon-Quelle hingegen darf nur ein Zustand angeregt werden.
+
+
+
+
+\subsection{Moden}
+
+
+
 
 \subsection{Bunching und Antibunching}
 
-%Test\cite{brouri}
+
+
+
+
+% Test\cite{brouri}
