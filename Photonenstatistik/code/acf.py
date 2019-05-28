@@ -66,6 +66,7 @@ for k in (0,1):
     
     print("   N1        = {}".format(N1[k]))
     print("   N2        = {}".format(N2[k]))
+    print("   f         = {}".format(f[k]))
     
     # calculations
     S       = N1[k] + N2[k] - B
@@ -79,8 +80,7 @@ for k in (0,1):
     p0  = [10.,g.min(),g.mean()]
     popt,  pcov = curve_fit(g_exp,t,g,p0=p0)
     print("    popt     = {}".format(popt))
-    print("    pcov     = {}".format(np.diag(pcov)))
-    
+    print("    pcov     = {}".format(np.diag(pcov)))    
     
     # plot
     ts  = np.linspace(-500,500,10000)
@@ -113,6 +113,7 @@ while g.mean()-1. > 1e-7:
 
 print("   N1        = {}".format(N1[k]))
 print("   N2        = {}".format(N2[k]))
+print("   f         = {}".format(f[k]))
 
 # calculations
 S       = N1[k] + N2[k] - B
