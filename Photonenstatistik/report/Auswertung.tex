@@ -6,12 +6,12 @@ Die Abbildungen \vref{fig:NV} und \vref{fig:hell} zeigen, wie die Messpunkte in 
 \begin{figure}[htbp]
     \begin{subfigure}[t][][b]{0.43\textwidth}
         \includegraphics[width=1\textwidth]{messung_1.JPG}
-        \subcaption{Messung: NV-Zentrum 1}
+        \subcaption{Messung: NV-Zentrum 1 (NV 1)}
         \label{fig:NV:1}
     \end{subfigure}
     \begin{subfigure}[t][][b]{0.42\textwidth}
         \includegraphics[width=1\textwidth]{messung_2.JPG}
-        \subcaption{Messung: NV-Zentrum 2}
+        \subcaption{Messung: NV-Zentrum 2 (NV 2)}
         \label{fig:NV:2}
     \end{subfigure}
     \hfill
@@ -23,8 +23,8 @@ Die Abbildungen \vref{fig:NV} und \vref{fig:hell} zeigen, wie die Messpunkte in 
         Die Graphiken zeigen dabei die Intensit"atsverteilung der Lichtemission in der Probe.
         Einzelne NV-Zentren sind diejenigen Punkte, die von den anderen separiert sind, keine zu hohe Intensit"at haben und im Zoom etwa kreisf"ormig erscheinen.
         Das blaue Fadenkreuz zeigt jeweils an, welches Zentrum f"ur die beiden Messungen ausgew"ahlt wurde.
-        Die Messungen werden NV-Zentrum 1 und NV-Zentrum 2 genannt.
-        Bei NV-Zentrum 1 liegt das Fadenkreuz nicht mehr ganz auf dem Punkt (rechts "uber dem Fadenkreuz).
+        Die Messungen werden NV 1 und NV 2 genannt.
+        Bei NV 1 liegt das Fadenkreuz nicht mehr ganz auf dem Punkt (rechts "uber dem Fadenkreuz).
         Dies liegt daran, dass das Bild erst am Ende der Messung aufgenommen wurde.
         Die Intensit"atsverteilung zeigt dabei die Situation zu Beginn und das Fadenkreuz die Position des NV-Zentrums nach etwa zwei Stunden.
         Es ist um einiges gewandert.
@@ -40,7 +40,7 @@ Die Abbildungen \vref{fig:NV} und \vref{fig:hell} zeigen, wie die Messpunkte in 
         \hfill
         \begin{minipage}[t][][b]{0.5\textwidth}
             \caption{
-                Messung: Hellster Punkt
+                Messung: Hellster Punkt (HP)
                 \\
                 Zus"atzlich zu den NV-Zentren wurde noch eine weitere Lichtquelle untersucht.
                 die nebenstehende Abbildung zeigt, wie der hellste verf"ugbare Punkt als Quelle ausgew"ahlt wird.
@@ -57,25 +57,30 @@ Die Abbildungen \vref{fig:NV} und \vref{fig:hell} zeigen, wie die Messpunkte in 
         Die Tabelle zeigt die Z"ahlraten $N_1$ und $N_2$ der Detektoren die zu einem Zeitpunkt w"ahrend der Messung aufgenommen wurden.
         Ihr Verh"altnis $f=N_2/N_1$ wird direkt daraus berechnet.
         Wie unschwer zu erkennen ist, arbeitet Detektor 2 effizienter als Detektor 1.
+        $T$ bezeichnet die Gesamtdauer der Messung.
         }
     \label{tab:counts}
-    \begin{tabular}{l|*2S[table-format=6]S[table-format=1.2]}
+    \begin{tabular}{l|*2S[table-format=6]S[table-format=1.2]S[table-format=4.2]}
         Versuch
             &{$N_1$ [\si{counts\per\second}]}
             &{$N_2$ [\si{counts\per\second}]}
-            &{$f=N_2/N_1$}\\\hline
+            &{$f=N_2/N_1$}
+            &{$T$ [\si{\second}]}\\\hline
         NV-Zentrum 1
             &11000
             &20000
-            &1.82\\
+            &1.82
+            &6128.2\\
         NV-Zentrum 2
             &12000
             &21000
-            &1.75\\
+            &1.75
+            &6525.34\\
         Hellster Punkt
             &120000
             &200000
             &1.67
+            &460.99
     \end{tabular}
 \end{table}
 Im Versuch wird ein Histogramm aufgenommen, welches die H"aufigkeit z"ahlt, mit der zwischen dem Klick an Detektor 1 und dem an  Detektor 2 die Zeit $\tau$ vergeht.
@@ -87,3 +92,41 @@ Diese Schwankung ist darauf zur"uckzuf"uhren, dass die NV-Zentren in der Probe w
 Dieser wird zwar alle 3 Minuten neu justiert, aber der Intensit"atsverlust ist dennoch bedeutend.
 Um diese Schwankung auszugleichen, wird das Verh"altnis $f=N_2/N_1$ konstant gehalten um die Z"ahlraten anschlie\ss end so zu optimieren, dass die Korrelationsfunktion $g^{(2)}(\tau)$ f"ur gro\ss e Zeitdifferenzen $\tau$ zu $g^{(2)}(\abs{\tau}\gg \tau_\text{c})=1$ wird, wobei $\tau_\text{c}$ die Korrelationszeit ist.
 
+Die Korrelationsfunktion wird folgenderma\ss en berechnet.
+Zuerst wird die Verteilung $c(\tau)$ normalisiert.
+Dies geschieht "uber
+\begin{equation}
+C_\text{N}(\tau)
+    =\frac{c(\tau)}{N_1N_2\omega T},
+    \label{eq:CN}
+\end{equation}
+wobei $\omega=\SI{0.5}{\nano\second}$ die Breite der Zeitintervalle f"ur die Verteilung und $T$ die Gesamtdauer der Messung ist (siehe Tabelle \vref{tab:counts}).
+Anschlie\ss end wird die Hintergrundstrahlung abgezogen.
+Die Intensit"at $B$ der Hintergrundstrahlung wird durch Messung an einem Punkt in der Probe mit m"oglichst niedriger Intensit"at bestimmt zu $B=N_1^{(\text{B})}+N_2^{(\text{B})}=\SI{1100}{counts\per\second}$, wobei $N_i^{(\text{B})}$ die Z"ahlraten der Detektoren sind.
+Die Signalst"arke einer Messreihe berechnet sich dann zu $S=N_1+N_2-B$.
+%\begin{align}
+%S
+%    &=N_1+N_2-B;
+%    \label{eq:S}\\
+%S^\text{(NV 1)}
+%    &=\SI{11000}{counts\per\second}+\SI{20000}{counts\per\second}-\SI{1100}{counts\per\second}
+%    \nonumber\\
+%     &=\SI{29900}{counts\per\second}.
+%     \nonumber
+%\end{align}
+Die Korrelationsfunktion wird dann
+\begin{equation}
+g^{(2)}(\tau)
+    =\left[ C_\text{N}(\tau)-(1-\rho^2)\right]/\rho^2,
+    \label{eq:g2}
+\end{equation}
+mit $\rho=S/(S+B)$.
+
+F"ur eine Poissonverteilung der Strahlungsquelle wird eine Korrelationsfunktion der Form
+\begin{equation}
+g^{(2)}(\tau)
+    =h-(h-a)\cdot \exp(-\frac{\abs{\tau}}{\tau_\text{c}})
+    \label{eq:fit}
+\end{equation}
+erwartet, wobei $a$ die Korrelation bei $\tau=\SI{0}{\second}$, $\tau_\text{c}$ die Korrelationszeit und $h$ der Wert der Funktion im unendlichen ist.
+Da die Ereignisse f"ur gro\ss e Zeiten nicht mehr korreliert sind, sollte $h=1$ sein.

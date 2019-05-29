@@ -64,6 +64,7 @@ for k in (0,1):
         N1[k]  *= np.sqrt(popt[2])
         N2[k]  *= np.sqrt(popt[2])
     
+    print("   T         = {}".format(T[k]))
     print("   N1        = {}".format(N1[k]))
     print("   N2        = {}".format(N2[k]))
     print("   f         = {}".format(f[k]))
@@ -111,6 +112,7 @@ while g.mean()-1. > 1e-7:
     N1[k]  *= np.sqrt(g.mean())
     N2[k]  *= np.sqrt(g.mean())
 
+print("   T         = {}".format(T[k]))
 print("   N1        = {}".format(N1[k]))
 print("   N2        = {}".format(N2[k]))
 print("   f         = {}".format(f[k]))
