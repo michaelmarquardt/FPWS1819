@@ -43,7 +43,7 @@ def g_exp(t,tau,a,h):
 
 # calculations
 subprocess.call(["mkdir","-p","../plots"])
-for k in (0,1):
+for k in (0,1,2):
     print("measurement {}".format(k+1))
     t, c    = np.loadtxt("../Photonenstatistik_Messdaten/messung_{}.dat".format(k+1),unpack=True)
     
@@ -89,13 +89,14 @@ for k in (0,1):
     plt.plot(t,g,"x",label="Messdaten")
     plt.plot(ts,g_exp(ts,popt[0],popt[1],popt[2]),label="Fit")
     plt.ylim((0,2))
-    plt.xlabel(r"Zeitdifferenz $t$ [\si{\nano\second}]")
-    plt.ylabel(r"Korrelationsfunktion $g$")
+    plt.xlabel(r"$\tau$ [\si{\nano\second}]")
+    plt.ylabel(r"$g^{(2)}$")
     plt.legend(loc="upper right")
     plt.savefig("../plots/g_{}.pgf".format(k+1))
     plt.savefig("../plots/g_{}.pdf".format(k+1))
     plt.close()
 
+"""
 k   = 2
 print("measurement {}".format(k+1))
 t, c    = np.loadtxt("../Photonenstatistik_Messdaten/messung_{}.dat".format(k+1),unpack=True)
@@ -133,10 +134,10 @@ tsp  = np.linspace(0,500,10000)
 tsm  = np.linspace(-500,0,10000)
 plt.plot(t,g,"x")
 plt.ylim((0,2))
-plt.xlabel(r"Zeitdifferenz $t$ [\si{\nano\second}]")
-plt.ylabel(r"Korrelationsfunktion $g$")
+plt.xlabel(r"$\tau$ [\si{\nano\second}]")
+plt.ylabel(r"$g^{(2)}$")
 plt.savefig("../plots/g_{}.pgf".format(k+1))
 plt.savefig("../plots/g_{}.pdf".format(k+1))
 plt.close()
-
+"""
    
