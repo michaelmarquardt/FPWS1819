@@ -80,8 +80,9 @@ for k in (0,1):
     # fit (separate for + and -)
     p0  = [10.,g.min(),g.mean()]
     popt,  pcov = curve_fit(g_exp,t,g,p0=p0)
+    perr        = np.sqrt(np.diag(pcov))
     print("    popt     = {}".format(popt))
-    print("    pcov     = {}".format(np.diag(pcov)))    
+    print("    perr     = {}".format(perr))    
     
     # plot
     ts  = np.linspace(-500,500,10000)
