@@ -34,11 +34,11 @@ Die Abbildungen \vref{fig:NV} und \vref{fig:hell} zeigen, wie die Messpunkte in 
     \label{fig:NV}
 \end{figure}
 \begin{figure}[htbp]
-        \begin{subfigure}[t][][b]{0.43\textwidth}
+        \begin{subfigure}[b][][t]{0.43\textwidth}
             \includegraphics[width=1\textwidth]{messung_3.JPG}
         \end{subfigure}
         \hfill
-        \begin{minipage}[t][][b]{0.5\textwidth}
+        \begin{minipage}[b][][t]{0.5\textwidth}
             \caption{
                 Messung: Hellster Punkt (HP)
                 \\
@@ -194,27 +194,29 @@ Dies wird wiederholt bis $h=1 $ ist.
 \end{table}
 
 \begin{figure}[htbp]
-\centering
-\input{../plots/g_1.pgf}
-\caption{
-    NV-Zentrum 1:
-    \\
-    Korrelationsfunktion und Fit.
-    Es ist zu erkennen, dass die Wahrscheinlichkeit zwei Teilchen gleichzeitig zu messen ($\tau=\SI{0}{s}$) kleiner ist.
-}
-\label{fig:g1}
-\end{figure}
-\begin{figure}[htbp]
     \centering
-    \input{../plots/g_2.pgf}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \input{../plots/g_1.pgf}
+        \subcaption{NV-Zentrum 1}
+        \label{fig:g12:1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \input{../plots/g_2.pgf}
+        \subcaption{NV-Zentrum 2}
+        \label{fig:g12:2}
+    \end{subfigure}
     \caption{
         NV-Zentrum 2:
         \\
         Korrelationsfunktion und Fit.
         Es ist zu erkennen, dass die Wahrscheinlichkeit zwei Teilchen gleichzeitig zu messen ($\tau=\SI{0}{s}$) kleiner ist.
     }
-    \label{fig:g2}
+    \label{fig:g12}
 \end{figure}
+
 \begin{figure}[htbp]
     \centering
     \input{../plots/g_3.pgf}

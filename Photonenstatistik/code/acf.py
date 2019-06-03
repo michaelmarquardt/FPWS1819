@@ -6,7 +6,7 @@ from export_data import *
 texfile("../report/values.tex")
 set_dig(3)
 set_pre("")
-usepgf()
+usepgf(size=(2.1,3.5))
 import matplotlib.pyplot as plt
 
 #   Calculation
@@ -91,7 +91,8 @@ for k in (0,1,2):
     plt.ylim((0,2))
     plt.xlabel(r"$\tau$ [\si{\nano\second}]")
     plt.ylabel(r"$g^{(2)}$")
-    plt.legend(loc="upper right")
+    if not k == 1:
+        plt.legend(loc="lower left")
     plt.savefig("../plots/g_{}.pgf".format(k+1))
     plt.savefig("../plots/g_{}.pdf".format(k+1))
     plt.close()
