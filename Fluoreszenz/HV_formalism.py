@@ -1,11 +1,6 @@
 import numpy as np
 
-# Basis
-HH  = HV_State([1.,0.],[1.,0.])
-HV  = HV_State([1.,0.],[0.,1.])
-VH  = HV_State([0.,1.],[1.,0.])
-VV  = HV_State([0.,1.],[0.,1.])
-basis   = [HH,HV,VH,VV]
+
 
 class HV_State:
     """
@@ -67,18 +62,18 @@ class State:
     """
     hv  = []
     
-    def __init__(self,hv_list=[]):
+    def __init__(self,s1=np.matrix([None]),s2=np.matrix([None])):
         """
-        Takes list of HV_states (list is important)
+        Initiates like HV_State
         """
-        for HV_state in hv_list:
-            self.add(HV_state)
+        if s1.any()!=None and s2.any!=None:
+            self.add(HV_State(s1,s2))
     
     def add(self,HV_state):
         """
         Adds a purestate to the superposition hv
         """
-        self.hv.add(HV_state)
+        self.hv.append(HV_state)
     
     def braket(self,state):
         """
@@ -160,18 +155,18 @@ class Operator:
     """
     hv  = []
     
-    def __init__(self,hv_list=[]):
+    def __init__(self,O1=np.matrix([None]),O2=np.matrix([None])):
         """
-        Takes list of HV_states (list is important)
+        Initiates like HV_Operator
         """
-        for HV_operator in hv_list:
-            self.add(HV_operator)
-    
+        if O1.any()!=None and O2.any!=None:
+            self.add(HV_Operator(O1,O2))
+            
     def add(self,HV_operator):
         """
         Adds a purestate to the superposition hv
         """
-        self.hv.add(HV_operator)
+        self.hv.append(HV_operator)
     
     def matmul(self,operator):
         """
@@ -181,11 +176,28 @@ class Operator:
         for hv1 in self.hv:
             for hv2 in operator.hv:
                 result.add(hv1.matmul(hv2))
+                print(result.hv[-1].O1)
         return result
     
     def trace(self):
         result  = 0.
         for hv1 in self.hv:
-            for hv2 in basis:
+            for hv2 in basis():
                 result += hv2.braket(hv2.toket(hv1))
+                print(result)
         return result
+    
+    def contract(self):
+        k       = 0
+        while k < len(self.hv)-1:
+            if self.hv[k].O1.all() == 0. or self.hv[k].O2.all() == 0.
+                del self.hv[k]
+                continue
+            for l in range(k+1,len(self.hv)):
+
+def basis():
+    HH  = HV_State([1.,0.],[1.,0.])
+    HV  = HV_State([1.,0.],[0.,1.])
+    VH  = HV_State([0.,1.],[1.,0.])
+    VV  = HV_State([0.,1.],[0.,1.])
+    return [HH,HV,VH,VV]
