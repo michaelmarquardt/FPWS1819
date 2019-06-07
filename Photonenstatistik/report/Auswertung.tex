@@ -103,7 +103,7 @@ C_\text{N}(\tau)
 wobei $\omega=\SI{0.5}{\nano\second}$ die Breite der Zeitintervalle f"ur die Verteilung und $T$ die Gesamtdauer der Messung ist (siehe Tabelle \vref{tab:counts}).
 Anschlie\ss end wird die Hintergrundstrahlung abgezogen.
 Die Intensit"at $B$ der Hintergrundstrahlung wird durch Messung an einem Punkt in der Probe mit m"oglichst niedriger Intensit"at bestimmt zu $B=N_1^{(\text{B})}+N_2^{(\text{B})}=\SI{1100}{counts\per\second}$, wobei $N_i^{(\text{B})}$ die Z"ahlraten der Detektoren sind.
-Die Signalst"arke einer Messreihe berechnet sich dann zu $S=N_1+N_2-B$.
+Die Signalst"arke einer Messreihe berechnet sich zu $S=N_1+N_2-B$.
 %\begin{align}
 %S
 %    &=N_1+N_2-B;
@@ -139,13 +139,25 @@ Anschlie\ss end werden alle Rechenschritte wiederholt und ein neuer Fit durchgef
 Dies wird wiederholt bis $h=1 $ ist.
 
 \subsection{Ergebnisse}
+Tabelle \vref{tab:final} zeigt die endg"ultigen Fitparameter.
+Dort ist zu erkennen, dass die Korrelationszeiten von NV 1 und NV 2 um das f"unffache abweichen.
+Die Abbildungen zeigen, dass die Korrelation f"ur $\tau=0$ nicht ganz auf 0 herunter geht, ja gerade mal auf $0.75$.
+Dies konnte durch den m"oglichen Einfluss eines zweiten NV-Zentrums erkl"art werden oder durch eine st"arkere Hintergrundstrahlung als angenommen.
+
+Au\ss erdem sind bei $\tau=\SI{13.5}{ns}$ Peaks in allen drei Korrelationsfunktionen zu erkennen.
+Diese sind vermutlich auf die Tatsache zur"uckzuf"uhren, dass ein Detektor wesentlich sensibler ist als der andere.
+
 \begin{table}[htbp]
     \caption{
         Die Tabelle listet die finalen Fitparameter.
+        Dabei entspricht $\tau_\text{c}$ der Korrelationszeit, $a$ der Korrelation bei $\tau =0$ und $h$ der Korrelation f"ur $\tau \gg \tau_\text{c}$.
         Die Unsicherheiten entsprechen Standardabweichung beim Fit.
-        Au\ss erdem sind die korrigierten mittleren Z"ahlraten aufgef"uhrt.
+        Au\ss erdem sind die korrigierten mittleren Z"ahlraten $N_i$ aufgef"uhrt.
+        \\
+        Es ist dabei zu erkennen, dass die Korrelazionszeit f"ur NV 1 fast f"unfmal so gro\ss\ ist, wie die f"ur NV 2.
+        Daf"ur ist sie bei NV 2 ungef"ahr so gro\ss\ wie bei HP.
     }
-    \label{tab:counts}
+    \label{tab:final}
     \begin{tabular}{
             l|
             S[table-format=6]
@@ -209,10 +221,9 @@ Dies wird wiederholt bis $h=1 $ ist.
         \label{fig:g12:2}
     \end{subfigure}
     \caption{
-        NV-Zentrum 2:
-        \\
         Korrelationsfunktion und Fit.
         Es ist zu erkennen, dass die Wahrscheinlichkeit zwei Teilchen gleichzeitig zu messen ($\tau=\SI{0}{s}$) kleiner ist.
+        Bei NV 2 ist der Achsenabschnitt niedriger, aber die Korrelationszeit ist bei NV 1 h"oher.
     }
     \label{fig:g12}
 \end{figure}
@@ -224,7 +235,8 @@ Dies wird wiederholt bis $h=1 $ ist.
         Hellster Punkt:
         \\
         Korrelationsfunktion und Fit.
-        Es ist zu erkennen, dass die Wahrscheinlichkeit zwei Teilchen gleichzeitig zu messen ($\tau=\SI{0}{s}$) kleiner ist.
+        Idealerweise sollte sie einfach 1 sein, da die Lichtquelle unkorreliert seien sollte, allerdings ist ein schwer wahrnehmbares Minimum bei $\tau=0$ zu erkennen.
+        Dies ist darauf zur"uckzuf"uhren, dass die Strahlungsquele zwar aus vielen NV-Zentren aufgebaut ist, jedoch bei $\tau=0$ dennoch schwach die Eigenschaften eines einzelnen NV-Zentrums zu erkennen sind.
     }
     \label{fig:g3}
 \end{figure}

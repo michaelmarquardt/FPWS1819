@@ -77,6 +77,9 @@ for k in (0,1,2):
     CN      = c/(N1[k]*N2[k]*omega*T[k])
     g       = (CN-(1-rho**2))/rho**2
     
+    print("    tmax     = {} ns".format(t[np.argmax(g)]))
+    print("    cmax     = {}".format(np.max(g)))
+    
     # fit (separate for + and -)
     p0  = [10.,g.min(),g.mean()]
     popt,  pcov = curve_fit(g_exp,t,g,p0=p0)
