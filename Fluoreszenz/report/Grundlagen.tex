@@ -1,5 +1,5 @@
 \section{Theory}
-\subsection{Spontaneous parametric downconversion} 
+\subsection{Spontaneous parametric downconversion}\label{sec:SPD}
 Spontaneous parametric downconversion is the spontaneous splitting of a photon in two different photons. That can be done by shining with a laser beam on a crystal, which has nonlinear effects. Under certain circumstances the both emitted photons of the crystal are entangled. 
 As for every process momentum and energy conservation must be fulfilled. Because the energy for a photon is $E = \hbar \omega$, one can consider the frequencies to satisfiy the energy conservation. The pumping laser from the laser has the frequency $\omega_{\mathrm{p}}$. The resulting photons, which are named as signal and idler photon, after the splitting must have frequencies below $\omega_{\mathrm{p}}$. The energy conservation can be written as
 \begin{equation}
@@ -14,9 +14,11 @@ As the momentum can be calculated by $\vec{p} = \hbar \vec{k}$, for  the momentu
 what is called phase matching. 
 The explained process is not possible for free electrons, but in a nonlinear medium. The nonlinearity refers to the polarization which is not linear dependent on the electric field
 \begin{equation}
-    \vec{P}_{\mathrm{i}} = \varepsilon_0 \left( \chi^{(1)} \vec{E}_{\mathrm{j}} 
+    \vec{P}_{\mathrm{i}} = \varepsilon_0 \left( 
+      \chi^{(1)} \vec{E}_1 
     + \chi^{(2)} \vec{E}_1 \vec{E}_2 
-    + \chi^{(3)} \vec{E}_1 \vec{E}_2 \vec{E}_3 + ... \right).
+    + \chi^{(3)} \vec{E}_1 \vec{E}_2 \vec{E}_3 + ... 
+    \right).
 \end{equation}
 The understand phase matching it is important to understand how photons propagate in a birefringence media. In this experiment a Beta Barium Borate (BBO) crystal is used which is an anisotropic medium. A BBO crystal is an uniaxiale crystal and the special symmetry axis is called optical axis (OA).  Because of that there are two different refractive indices. They are called ordinary $(n_{\mathrm{o}})$ and extraordinary $(n_{\mathrm{e}})$. 
 If the polarization of the photons is parallel to the OA, the photons will see only $(n_{\mathrm{e}})$. 
@@ -29,17 +31,35 @@ For the case that the polarization is perpendicular to the OA, the photons will 
     \right)^{-\frac{1}{2}},
 \end{equation}
 where $\lambda$ is a hidden parameter. What a hidden parameter is, is explained in chapter \ref{sec:theory_CHSH}.  
-The $\vec{k}$ vectors are related to the refractive indices. These relations can be inserted in the euqation for the phase matching \eqref{eq:phase_matching}. The result is, that the emission directions of the two created photons habe to be fixed, to fulfill equaion \eqref{eq:phase_matching}. To get two entangled photonss, the pumping photon has to be extraordinary polarised. Then one emmited photon is extraordinary and the other one is ordinary polarised. That results in a fixed emission angle of the created entangled photon pair and the geomytry of two cones, see figure \ref{fig:theory_cones}. 
+The $\vec{k}$ vectors are related to the refractive indices. These relations can be inserted in the euqation for the phase matching \eqref{eq:phase_matching}. The result is, that the emission directions of the two created photons habe to be fixed, to fulfill equaion \eqref{eq:phase_matching}. To get two entangled photonss, the pumping photon has to be extraordinary polarized. Then one emmited photon is extraordinary and the other one is ordinary polarized. That results in a fixed emission angle of the created entangled photon pair and the geomytry of two cones, see figure \ref{fig:theory_cones}. 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.2]{figures/2_kegel.PNG}
-\caption{Scetch of spontaneous parametric downconversion with the two cones for the extraordinary and ordinary polarised photon \cite{barz}.   }
+\caption{Scetch of spontaneous parametric downconversion with the two cones for the extraordinary and ordinary polarized photon \cite{barz}.   }
 \label{fig:theory_cones}
 \end{figure}
 
-%Talk:
-%   - both walk off effect --> oder im Versuchsaufbau Teil
+
 \subsection{CHSH inequality}\label{sec:theory_CHSH}
+As already mentioned in chapter \ref{sec:SPD}, the both emmited photons are entangled. For a quantum mechanical describtion is it necessary to choose a basis. One possibility for a basis is the horizontal polarization $\ket{H}$ and  the vertical polarization $\ket{V}$
+\begin{align}
+\ket{H}  & \coloneqq \mathrm{cos}(\alpha) \ket{\alpha} -  \mathrm{sin}(\alpha) \ket{\overline{\alpha}} \\
+\ket{V}  & \coloneqq \mathrm{sin}(\alpha) \ket{\alpha} +  \mathrm{cos}(\alpha) \ket{\overline{\alpha}}
+\label{eq:basis}
+\end{align}
+There are four possible states for a system with two photons, which are called Bell states, are
+\begin{align}
+\ket{\Phi^{+}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HH} + \ket{VV} \right]  \\  
+\ket{\Phi^{-}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HH} - \ket{VV} \right]  \\
+\ket{\Psi^{+}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HV} + \ket{VH} \right]  \\  
+\ket{\Psi^{-}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HV} - \ket{VH} \right].   
+\label{eq:bell_states}
+\end{align}
+To show that the states are entangled, one can insert the definition of the basis \eqref{eq:basis} into the four bell states \eqref{eq:bell_states}. The outcome is, that each photon is unpolarized, but they are still perpenducular polarized with respect to each other. 
+That is classically not possible, because classical each photon is either $\ket{H}$  or $\ket{V}$ polarized. 
+
+
+
 %TALK about:
 %   - bell states
 %   - entanglement
@@ -47,3 +67,4 @@ The $\vec{k}$ vectors are related to the refractive indices. These relations can
 %   - inequality
 %   - how to violate inequality
 %   - hidden parametr lambda
+%   - both walk off effect --> oder im Versuchsaufbau Teil
