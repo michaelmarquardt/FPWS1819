@@ -40,7 +40,7 @@ def E(a,b,rho):
     return head/foot
 
 def S(a1,b1,a2,b2,rho):
-    return E(a1,a2,rho)-E(a1,b2,rho)+E(a2,b1,rho)+E(a2,b2,rho)
+    return E(a1,b1,rho)-E(a1,b2,rho)+E(a2,b1,rho)+E(a2,b2,rho)
 
 rad = np.pi/180.
 a1  = 22.5*rad
@@ -79,7 +79,7 @@ for k in range(4):
     print("S    = {}".format(S(a1,b1,a2,b2,rho)))
     print()
 
-
+"""
 rho = np.zeros((4,4))
 ps  = np.array([54,10,4,300])
 ps  = ps/np.linalg.norm(ps)
@@ -88,7 +88,7 @@ for k in (0,1,2,3):
     rho += bell[k]*bell[k].H*ps[k]
 print("S    = {}".format(S(a1,b1,a2,b2,rho)))
 print()
-
+"""
 
 
 
