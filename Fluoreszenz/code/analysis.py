@@ -2,6 +2,8 @@ import numpy as np
 import formalism as f
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
+from numpy.linalg import eig
+np.set_printoptions(linewidth=120)
 
 """
 The values are impoerted from ../messwerte/.
@@ -154,10 +156,20 @@ for k in range(16):
     rho    += P[k]*state*state.H
     drho   += dP[k]*state*state.H
 
+print("rho")
 print(rho)
+print("drho")
 print(drho)
 
-print("S    = {} +- {}".format(f.S(f.a1,f.b1,f.a2,f.b2,rho),f.S(f.a1,f.b1,f.a2,f.b2,drho)))
+w, v    = eig(rho)
+print("Eigenvalues")
+print(w)
+print("Eigenvectors")
+print(v)
+print("rho (bell basis)")
+print(f.bellmat*rho*f.bellmat)
+
+#print("S    = {} +- {}".format(f.S(f.a1,f.b1,f.a2,f.b2,rho),f.S(f.a1,f.b1,f.a2,f.b2,drho)))
 
 """
 # 2D plot of alpha and beta with a'=a-45deg b'=b-45deg

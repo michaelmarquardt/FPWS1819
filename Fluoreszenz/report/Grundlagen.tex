@@ -42,19 +42,29 @@ The $\vec{k}$ vectors are related to the refractive indices. These relations can
 
 \subsection{CHSH inequality}\label{sec:theory_CHSH}
 As already mentioned in chapter \ref{sec:SPD}, the both emmited photons are entangled. For a quantum mechanical describtion is it necessary to choose a basis. One possibility for a basis is the horizontal polarization $\ket{H}$ and  the vertical polarization $\ket{V}$
-\begin{align}
-\ket{H}  & \coloneqq \mathrm{cos}(\alpha) \ket{\alpha} -  \mathrm{sin}(\alpha) \ket{\overline{\alpha}} \\
-\ket{V}  & \coloneqq \mathrm{sin}(\alpha) \ket{\alpha} +  \mathrm{cos}(\alpha) \ket{\overline{\alpha}}
+\begin{subequations}
 \label{eq:basis}
-\end{align}
-There are four possible states for a system with two photons, which are called Bell states, are
 \begin{align}
-\ket{\Phi^{+}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HH} + \ket{VV} \right]  \\  
-\ket{\Phi^{-}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HH} - \ket{VV} \right]  \\
-\ket{\Psi^{+}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HV} + \ket{VH} \right]  \\  
-\ket{\Psi^{-}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HV} - \ket{VH} \right].   
-\label{eq:bell_states}
+\ket{H}  & \coloneqq \mathrm{cos}(\alpha) \ket{\alpha} -  \mathrm{sin}(\alpha) \ket{\overline{\alpha}}
+\label{eq:basis:H}\\
+\ket{V}  & \coloneqq \mathrm{sin}(\alpha) \ket{\alpha} +  \mathrm{cos}(\alpha) \ket{\overline{\alpha}}
+\label{eq:basis:V}
 \end{align}
+\end{subequations}
+There are four possible states for a system with two photons, which are called Bell states, are
+\begin{subequations}
+\label{eq:bell_states}
+\begin{align}
+\ket{\Phi^{+}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HH} + \ket{VV} \right]  
+\label{eq:bell_states:phip}\\  
+\ket{\Phi^{-}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HH} - \ket{VV} \right]  
+\label{eq:bell_states:phim}\\
+\ket{\Psi^{+}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HV} + \ket{VH} \right] 
+\label{eq:bell_states:psip}\\  
+\ket{\Psi^{-}} & \coloneqq \frac{1}{\sqrt{2}} \left[\ket{HV} - \ket{VH} \right].
+\label{eq:bell_states:psim}
+\end{align}
+\end{subequations}
 To show that the states are entangled, one can insert the definition of the basis \eqref{eq:basis} into the four bell states \eqref{eq:bell_states}. The outcome is, that each photon is unpolarized, but they are still perpenducular polarized with respect to each other. 
 That is classically not possible, because classical each photon is either $\ket{H}$  or $\ket{V}$ polarized. 
 

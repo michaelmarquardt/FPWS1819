@@ -67,6 +67,11 @@ psim    = np.matrix([[0.],
 
 bell    = [phip,phim,psip,psim]
 
+bellmat = np.matrix([[1.,1.,0.,0.],
+                     [1.,-1.,0.,0.],
+                     [0.,0.,1.,1.],
+                     [0.,0.,1.,-1.]])/np.sqrt(2.)
+
 
 """
 print("2**1.5   = {}".format(2**1.5))

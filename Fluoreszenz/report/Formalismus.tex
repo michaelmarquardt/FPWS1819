@@ -1,0 +1,50 @@
+\section{Formalism}
+The formalism used to describe the quantum mechanic state of light is presented in the following.
+
+A single Photon is described by its polarization, $\state{H}$ (horizontal) and $\state{V}$ (vertical).
+Each other polarization like $\state{D}$ (diagonal), $\state{R}$ (right circular) and $\state{L}$ (left circular) can be described as a superposition of these two states:
+\begin{align}
+\state{D}
+    &=\frac{1}{\sqrt{2}}\left(\state{H}+\state{V}\right)
+    \label{eq:D}\\
+\state{R}
+    &=\frac{1}{\sqrt{2}}\left(\state{H}-i\state{V}\right)
+    \label{eq:R}\\
+\state{L}
+    &=\frac{1}{\sqrt{2}}\left(\state{H}+i\state{V}\right)
+    \label{eq:L}
+\end{align}
+A pure two photon state can be described by two photons in such individual states $\state{1}\otimes\state{2}=\state{12}$ where the first state is photon 1 and the second state is photon 2.
+The corresponding bra is defined by $\brastate{12}$.
+All states (not only pure states) can be described as superposition of the four states $\state{HH}$, $\state{VV}$, $\state{HV}$ and $\state{VH}$.
+For easy calculations we express this basis as 4 dimensional vectors and operators as $4\cross 4$ matrices:
+\begin{align}
+\state{HH}
+    &=\begin{pmatrix}1\\0\\0\\0\end{pmatrix}
+    &\state{VV}
+    &=\begin{pmatrix}0\\1\\0\\0\end{pmatrix}
+    &\state{HV}
+    &=\begin{pmatrix}0\\0\\1\\0\end{pmatrix}
+    &\state{VH}
+    &=\begin{pmatrix}0\\0\\0\\1\end{pmatrix}
+    \label{eq:basis}
+\end{align}
+The bell states \eqref{eq:bell_states} become
+\begin{subequations}
+\label{eq:bell_formalism}
+\begin{align}
+\ket{\Phi^{+}}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\\0\\0\end{pmatrix}
+    \label{eq:bell_formalism:phip}\\
+\ket{\Phi^{-}}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\-1\\0\\0\end{pmatrix}
+    \label{eq:bell_formalism:phim}\\
+\ket{\Psi^{+}}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix}0\\0\\1\\1\end{pmatrix}
+    \label{eq:bell_formalism:psip}\\
+\ket{\Psi^{-}}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix}0\\0\\1\\-1\end{pmatrix}
+    \label{eq:bell_formalism:psim}
+\end{align}
+\end{subequations}
+in this formalism.
