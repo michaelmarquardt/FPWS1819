@@ -1,4 +1,7 @@
 import numpy as np
+import formalism as f
+import matplotlib.pyplot as plt
+from mpl_toolkits import mplot3d
 
 """
 The values are impoerted from ../messwerte/.
@@ -72,8 +75,106 @@ for state, table in zip((DATA+"psi_plus/",DATA+"psi_minus/"),tables):
         if (l+1)%4==0:
             texfile.write(r"\hline")
         texfile.write("\n")
-    texfile.write("\\end{tabular}}\n")
+    texfile.write("\\end{tabular}}\n\n")
     
+#   Tomography
+##############
+"""
+Calculate the density matrix rho.
+Then use formalism to calculate S with this rho.
+"""
+# state key: Photon1 Photon2 pol1 lamb1 pol2 lamb2
+state_key   = [["H", "H",   0,   0,   0,   0],
+               ["H", "V",   0,   0,  90,   0],
+               ["V", "V",  90,   0,  90,   0],
+               ["V", "H",  90,   0,   0,   0],
+               ["R", "H",  90,  45,   0,   0],
+               ["R", "V",  90,  40,  90,   0],
+               ["D", "V",  45,  45,  90,   0],
+               ["D", "H",  45,  45,   0,   0],
+               ["D", "R",  45,  45,  45,   0],
+               ["D", "D",  45,  45,  45,  45],
+               ["R", "D",  45,   0,  45,  45],
+               ["H", "D",   0,   0,  45,  45],
+               ["V", "D",  90,   0,  45,  45],
+               ["V", "L",  90,   0,   0,  45],
+               ["H", "L",   0,   0,   0,  45],
+               ["R", "L",   0, -45,   0,  45]]
+# The state is a superposition of all those states.
+# Their probability P can be calculated from the count rates C in the datafile.
+data    = np.loadtxt(DATA+"tomography/tomography.txt",delimiter=",")
 
+# Big table
+texfile.write("\\newcommand{\\bigtabletom}{\n")
+texfile.write("\\begin{tabular}{S[table-format=2]|ll|S[table-format=+2]S[table-format=+2]|S[table-format=2]S[table-format=2]||S[table-format=3]S[table-format=3]S[table-format=3]S[table-format=3]S[table-format=3]}\n")
+texfile.write("&{S1}&{S2}&{P1 [\si{\degree}]}&{L1 [\si{\degree}]}&{P2 [\si{\degree}]}&{L2 [\si{\degree}]}&\multicolumn{5}{c}{$C(\\alpha,\\beta)$ [counts/s]}\\\\\\hline\n")
+for l in range(16):
+    texfile.write("{:d}&$\state{{{:s}}}$&$\state{{{:s}}}$&{:d}&{:d}&{:d}&{:d}&{:.0f}&{:.0f}&{:.0f}&{:.0f}&{:.0f}\\\\".format(
+        l+1,
+        state_key[l][0],
+        state_key[l][1],
+        state_key[l][2],
+        state_key[l][3],
+        state_key[l][4],
+        state_key[l][5],
+        data[l,0],
+        data[l,1],
+        data[l,2],
+        data[l,3],
+        data[l,4]))
+    texfile.write("\n")
+texfile.write("\\hline\n\\end{tabular}}\n\n")
 
+# Calculate mean coincidence count rates
+C   = np.mean(data,axis=1)
+dC  = np.std(data,axis=1)
 
+# Calculate the probabilities
+P       = C/np.sum(C)
+dP      = dC/np.sum(C)*(1.+np.abs(E[k]))
+
+#print(C)
+#print(dC)
+#print(P)
+#print(dP)
+
+# Calculate density matrix
+rho     = np.matrix(
+    [[0.+0.j,0.,0.,0.],
+     [0.,0.,0.,0.],   
+     [0.,0.,0.,0.],
+     [0.,0.,0.,0.]])
+drho    = np.matrix(
+    [[0.+0.j,0.,0.,0.],
+     [0.,0.,0.,0.],   
+     [0.,0.,0.,0.],
+     [0.,0.,0.,0.]])
+for k in range(16):
+    state   = f.basis(state_key[k][0],state_key[k][1])
+    rho    += P[k]*state*state.H
+    drho   += dP[k]*state*state.H
+
+print(rho)
+print(drho)
+
+print("S    = {} +- {}".format(f.S(f.a1,f.b1,f.a2,f.b2,rho),f.S(f.a1,f.b1,f.a2,f.b2,drho)))
+
+"""
+# 2D plot of alpha and beta with a'=a-45deg b'=b-45deg
+abrange = np.linspace(0.,2*np.pi,1000)
+X, Y    = np.meshgrid(abrange,abrange)
+Z       = np.zeros((1000,1000))
+for k in range(1000):
+    for l in range(1000):
+        Z[k,l]    = np.real(f.S(X[k,l],Y[k,l],X[k,l]-np.pi/4.,Y[k,l]-np.pi/4.,rho))
+
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+ax.contour3D(X, Y, Z, 50, cmap='binary')
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+plt.show()
+"""
+
+texfile.close()

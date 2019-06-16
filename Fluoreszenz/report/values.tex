@@ -18,6 +18,7 @@
 67.5&-45&196&210&201&211&203\\
 67.5&45&558&563&562&562&549\\\hline
 \end{tabular}}
+
 \newcommand{\bigtableminus}{
 \begin{tabular}{S[table-format=+3.1]S[table-format=+2]|S[table-format=3]S[table-format=3]S[table-format=3]S[table-format=3]S[table-format=3]}
 {$\alpha$ [\si{\degree}]}&{$\beta$ [\si{\degree}]}&\multicolumn{5}{c}{$C(\alpha,\beta)$ [counts/s]}\\\hline
@@ -38,3 +39,26 @@
 67.5&-45&647&637&632&621&631\\
 67.5&45&108&103&107&109&111\\\hline
 \end{tabular}}
+
+\newcommand{\bigtabletom}{
+\begin{tabular}{S[table-format=2]|ll|S[table-format=+2]S[table-format=+2]|S[table-format=2]S[table-format=2]||S[table-format=3]S[table-format=3]S[table-format=3]S[table-format=3]S[table-format=3]}
+&{S1}&{S2}&{P1 [\si{\degree}]}&{L1 [\si{\degree}]}&{P2 [\si{\degree}]}&{L2 [\si{\degree}]}&\multicolumn{5}{c}{$C(\alpha,\beta)$ [counts/s]}\\\hline
+1&$\state{H}$&$\state{H}$&0&0&0&0&49&48&52&48&49\\
+2&$\state{H}$&$\state{V}$&0&0&90&0&647&647&647&641&647\\
+3&$\state{V}$&$\state{V}$&90&0&90&0&49&47&43&45&47\\
+4&$\state{V}$&$\state{H}$&90&0&0&0&683&669&660&665&686\\
+5&$\state{R}$&$\state{H}$&90&45&0&0&413&396&402&409&409\\
+6&$\state{R}$&$\state{V}$&90&40&90&0&300&283&297&292&293\\
+7&$\state{D}$&$\state{V}$&45&45&90&0&419&434&426&420&416\\
+8&$\state{D}$&$\state{H}$&45&45&0&0&303&307&312&308&303\\
+9&$\state{D}$&$\state{R}$&45&45&45&0&399&391&388&392&378\\
+10&$\state{D}$&$\state{D}$&45&45&45&45&621&622&628&628&618\\
+11&$\state{R}$&$\state{D}$&45&0&45&45&382&378&385&378&392\\
+12&$\state{H}$&$\state{D}$&0&0&45&45&259&267&268&269&270\\
+13&$\state{V}$&$\state{D}$&90&0&45&45&436&422&435&425&428\\
+14&$\state{V}$&$\state{L}$&90&0&0&45&351&342&345&338&344\\
+15&$\state{H}$&$\state{L}$&0&0&0&45&394&385&401&387&396\\
+16&$\state{R}$&$\state{L}$&0&-45&0&45&55&54&50&55&48\\
+\hline
+\end{tabular}}
+

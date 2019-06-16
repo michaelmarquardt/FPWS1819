@@ -8,7 +8,6 @@
 %\usepackage{siunitx}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \usepackage{lmodern}
-\usepackage{physics}
 \usepackage{mathpazo}
 \usepackage{here}
 \usepackage{amsmath}
@@ -76,6 +75,7 @@
 %\usepackage{threeparttable}
 %\usepackage{booktabs}
 %\usepackage{multirow}
+\usepackage{longtable}
 
 %%% MATHE %%%
 %\usepackage{mathtools}
@@ -127,6 +127,13 @@
 %            delta angle=\pgfkeysvalueof{/tikz/@kinky cross}180 ]
 %%            -- (\tikztotarget)}}}
 
+\usepackage{physics}
+
+% Own commands
+\newcommand{\state}[1]{\left|\text{#1}\right\rangle}
+\input{values.tex}
+
+
 \begin{document}
 	\begin{titlepage}
 	\centering
@@ -139,9 +146,6 @@
 	\vspace{2cm}
 	{\Large\itshape Group: M20\\ Alexander Sattler  \\  Michael Marquardt    \\ Date: Monday, 3 June 2019\\ Supervisor: Chen Xing\\ \par}
 	\end{titlepage}
-
-\usepackage{longtable}
-\input{values.tex}
 
 \tableofcontents
 \newpage
