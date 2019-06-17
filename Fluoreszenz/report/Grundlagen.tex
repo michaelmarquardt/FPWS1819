@@ -1,4 +1,4 @@
-\section{Theory}
+\section{Theory}\label{sec:theory}
 \subsection{Spontaneous parametric downconversion}\label{sec:SPD}
 Spontaneous parametric downconversion is the spontaneous splitting of a photon in two different photons. That can be done by shining with a laser beam on a crystal, which has nonlinear effects. Under certain circumstances the both emitted photons of the crystal are entangled. 
 As for every process momentum and energy conservation must be fulfilled. Because the energy for a photon is $E = \hbar \omega$, one can consider the frequencies to satisfiy the energy conservation. The pumping laser from the laser has the frequency $\omega_{\mathrm{p}}$. The resulting photons, which are named as signal and idler photon, after the splitting must have frequencies below $\omega_{\mathrm{p}}$. The energy conservation can be written as
@@ -67,14 +67,20 @@ There are four possible states for a system with two photons, which are called B
 \end{subequations}
 To show that the states are entangled, one can insert the definition of the basis \eqref{eq:basis} into the four bell states \eqref{eq:bell_states}. The outcome is, that each photon is unpolarized, but they are still perpenducular polarized with respect to each other. 
 That is classically not possible, because classical each photon is either $\ket{H}$  or $\ket{V}$ polarized. 
+John Bell found an equaion to check if there are local hidden variables (LHV) in the quantum theory or not.  In the LHV theory the experimental results are dependent on a non-measurable variable.  All results which satisty the Bell inequality can be described by local hidden variables. In this experiment the Clauser-Horne-Simoney-Holt (CHSH) inequality is used, because this equation is better for experiments. 
+The CHSH-inequality can be calculated \cite{barz} as
+\begin{equation}
+\left| P\left(\vec{a},\vec{b}\right)-P\left(\vec{a},\vec{c}\right)\right| + P\left(\vec{b^{\prime}},\vec{c}\right)+ P\left(\vec{b^{\prime}},\vec{b}\right) \leq 2.
+\label{eq:CHSH}
+\end{equation}
+The maximal value of violating the CHSH-inequality \eqref{eq:CHSH} is $2\sqrt{2}$ \cite{barz}.
+To check  if the CHSH is violated or not, can be used polarization measurement of two entangled photons. 
+The experimental setup for the measurement is shown in chapter \ref{sec:setup}. 
 
 
 
-%TALK about:
-%   - bell states
-%   - entanglement
-%   - hanbury brown twiss effect
-%   - inequality
-%   - how to violate inequality
-%   - hidden parametr lambda
-%   - both walk off effect --> oder im Versuchsaufbau Teil
+
+
+
+
+
