@@ -51,16 +51,16 @@ for state, table in zip((DATA+"psi_plus/",DATA+"psi_minus/"),tables):
         E[k]    = (C[0]-C[1]-C[2]+C[3])/np.sum(C)
         dE[k]   = np.sum(dC)/np.sum(C)*(1.+np.abs(E[k]))
         
-        #print(C)
-        #print(dC)
-        #print(E)
-        #print(dE)
+        print(C)
+        print(dC)
+        print(E)
+        print(dE)
         
     # Calculate CHSH inequality
     S   = E[0]-E[1]+E[2]+E[3]
     dS  = np.sum(dE)
     
-    print("S    = {:.2f} +- {:.2f}".format(S,dS))
+    print("S    = {:.3f} +- {:.3f}".format(S,dS))
     
     texfile.write("\\newcommand{{\\bigtable{:s}}}{{\n".format(table))
     texfile.write("\\begin{tabular}{S[table-format=+3.1]S[table-format=+2]|S[table-format=3]S[table-format=3]S[table-format=3]S[table-format=3]S[table-format=3]}\n")
@@ -133,12 +133,39 @@ dC  = np.std(data,axis=1)
 
 # Calculate the probabilities
 P       = C/np.sum(C)
-dP      = dC/np.sum(C)*(1.+np.abs(E[k]))
+dP      = 1./np.sum(C)*(dC+np.sum(dC)*np.abs(P[k]))
 
 #print(C)
 #print(dC)
 #print(P)
 #print(dP)
+
+def complexceil(val,dig=3):
+    ee  = 10**dig
+    return np.ceil(ee*val.real)/ee+1.j*np.ceil(ee*val.imag)/ee
+
+def printcomplexmatrix(name,mat,dmat=np.matrix([False]),dig=3):
+    texfile.write("\\newcommand{\\"+name+"}{\n")
+    texfile.write("\\begin{pmatrix}\n")
+    if dmat.any()!=False:
+        pstring = "{{0.real:.{0:d}f}}{{0.imag:+.{0:d}f}}i\\pm {{1.real:.{0:d}f}}{{1.imag:+.{0:d}f}}i".format(dig)
+        for k in range(mat.shape[0]):
+            texfile.write(pstring.format(mat[k,0],complexceil(dmat[k,0],dig)))
+            for l in range(1,mat.shape[1]):
+                texfile.write(" &"+pstring.format(mat[k,l],complexceil(dmat[k,l],dig)))
+            if k+1 != mat.shape[0]:
+                texfile.write("\\\\")
+            texfile.write("\n")
+    else:
+        pstring = "{{0.real:.{0:d}f}}{{0.imag:+.{0:d}f}}i".format(dig)
+        for k in range(mat.shape[0]):
+            texfile.write(pstring.format(mat[k,0]))
+            for l in range(1,mat.shape[1]):
+                texfile.write(" &"+pstring.format(mat[k,l]))
+            if k+1 != mat.shape[0]:
+                texfile.write("\\\\")
+            texfile.write("\n")
+    texfile.write("\\end{pmatrix}}\n\n")
 
 # Calculate density matrix
 rho     = np.matrix(
@@ -153,13 +180,17 @@ drho    = np.matrix(
      [0.,0.,0.,0.]])
 for k in range(16):
     state   = f.basis(state_key[k][0],state_key[k][1])
-    rho    += P[k]*state*state.H
-    drho   += dP[k]*state*state.H
+    ketbra  = state*state.H
+    rho    += P[k]*ketbra
+    drho   += dP[k]*(abs(ketbra.real)+1.j*abs(ketbra.imag))
 
 print("rho")
 print(rho)
 print("drho")
 print(drho)
+
+printcomplexmatrix("rhonormal",rho,dig=3)
+printcomplexmatrix("drhonormal",drho,dig=3)
 
 w, v    = eig(rho)
 print("Eigenvalues")
@@ -168,6 +199,9 @@ print("Eigenvectors")
 print(v)
 print("rho (bell basis)")
 print(f.bellmat*rho*f.bellmat)
+
+printcomplexmatrix("rhobell",f.bellmat*rho*f.bellmat,dig=3)
+printcomplexmatrix("drhobell",f.bellmat*drho*f.bellmat,dig=3)
 
 #print("S    = {} +- {}".format(f.S(f.a1,f.b1,f.a2,f.b2,rho),f.S(f.a1,f.b1,f.a2,f.b2,drho)))
 

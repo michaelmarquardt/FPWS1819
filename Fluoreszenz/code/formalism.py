@@ -73,7 +73,6 @@ bellmat = np.matrix([[1.,1.,0.,0.],
                      [0.,0.,1.,-1.]])/np.sqrt(2.)
 
 
-"""
 print("2**1.5   = {}".format(2**1.5))
 print("")
 for k in range(4):
@@ -83,7 +82,7 @@ for k in range(4):
     #print(rho)
     print("S    = {}".format(S(a1,b1,a2,b2,rho)))
     print()
-"""
+
 """
 rho = np.zeros((4,4))
 ps  = np.array([54,10,4,300])

@@ -1,2 +1,321 @@
 \section{Analysis}
+\subsection{Theoretical test of CHSH inequality}
+In LHV-theory one assumes that a local hidden variable (LHV) $\lambda$ exists which is created during the creation of a photon pair.
+Now each of this photons is measured at a detector after a polarizer with angle $\alpha$/$\beta$.
+The corresponding variable is $A(\alpha,\lambda)$/$B(\beta,\lambda)$ which is 1 when the photon is detected and $-1$ otherwise.
+The locality of $\lambda$ states that $A(\alpha,\lambda)$ and $B(\beta,\lambda)$ are independent.
+One can now define the expectation value
+\begin{align}
+E(\alpha,\beta)
+    &=\int \dd \lambda\ p(\lambda)A(\alpha,\lambda)B(\beta,\lambda)
+    \label{eq:a:defE}
+\end{align}
+for coincidence between $A$ and $B$ with the normalized distribution $\int \dd\lambda\ p(\lambda)=1$.
+One can now calculate
+\begin{subequations}
+\label{eq:a:Eab-Eab'}
+\begin{align}
+\abs{E(\alpha,\beta)-E(\alpha,\beta')}
+    &=\abs{\int \dd \lambda\ p(\lambda)\left[A(\alpha,\lambda)B(\beta,\lambda)-A(\alpha,\lambda)B(\beta',\lambda)\right]}
+    \label{eq:a:Eab-Eab':1}\\
+    &\leq \int \dd \lambda\ p(\lambda)\abs{A(\alpha,\lambda)}\abs{B(\beta,\lambda)-B(\beta',\lambda)}
+    \label{eq:a:Eab-Eab':2}\\
+    &\leq \int \dd \lambda\ p(\lambda)\abs{B(\beta,\lambda)-B(\beta',\lambda)}
+    \label{eq:a:Eab-Eab':3}
+\end{align}
+\end{subequations}
+and analogously
+\begin{align}
+\abs{E(\alpha',\beta)+E(\alpha',\beta')}
+    &\leq \int \dd \lambda\ p(\lambda)\abs{B(\beta,\lambda)+B(\beta',\lambda)}.
+    \label{eq:a:Ea'b-Ea'b'}
+\end{align}
+Because $B=\pm 1$ it is
+\begin{equation}
+\abs{B(\beta,\lambda)-B(\beta',\lambda)}+\abs{B(\beta,\lambda)+B(\beta',\lambda)}=2
+\label{eq:a:B+B}
+\end{equation}
+and therefore
+\begin{subequations}
+\label{eq:a:E+E}
+\begin{align}
+\abs{E(\alpha,\beta)-E(\alpha,\beta')}+\abs{E(\alpha,\beta)-E(\alpha,\beta')}
+    &\leq \int \dd \lambda\ p(\lambda)\left(\abs{B(\beta,\lambda)-B(\beta',\lambda)}+\abs{B(\beta,\lambda)+B(\beta',\lambda)}\right)
+    \label{eq:a:E+E:1}\\
+    &= \int \dd \lambda\ p(\lambda)2
+    \label{eq:a:E+E:2}\\
+    &= 2
+    \label{eq:a:E+E:3}
+\end{align}
+\end{subequations}
+One can now define the variable S
+\begin{equation}
+S\equiv E(\alpha,\beta)-E(\alpha,\beta')+E(\alpha',\beta)+E(\alpha',\beta')
+\label{eq:a:S}
+\end{equation}
+which satisfies the CHSH inequality
+\begin{subequations}
+\label{eq:a:CHSH}
+\end{subequations}
+\begin{align}
+\abs{S}
+    &=\abs{E(\alpha,\beta)-E(\alpha,\beta')+E(\alpha',\beta)+E(\alpha',\beta')}
+    \label{eq:a:CHSH:1}\\
+    &\leq \abs{E(\alpha,\beta)-E(\alpha,\beta')}+\abs{E(\alpha',\beta)+E(\alpha',\beta')}
+    \label{eq:a:CHSH:2}\\
+    &\leq 2
+    \label{eq:a:CHSH:3}.
+\end{align}
+Let us now take a look at the quantum correlation when no hidden variable exists.
+The expectation value $E(\alpha,\beta)$ can be expressed through the coincidence count rates $C(\alpha,\beta)$ for polarizers with angle $\alpha$ and $\beta$ like
+\begin{equation}
+E(\alpha,\beta)=\frac{C(\alpha,\beta)-C(\alpha,\beta^\perp)-C(\alpha^\perp,\beta)+C(\alpha^\perp,\beta^\perp)}{C(\alpha,\beta)+C(\alpha,\beta^\perp)+C(\alpha^\perp,\beta)+C(\alpha^\perp,\beta^\perp)},
+\label{eq:a:EC}
+\end{equation}
+where $\alpha^\perp=\alpha+\SI{90}{\degree}$.
+The coincidence count rates will be measured in the experiments but they can also theoretically be derived by defining the coincidence operator
+\begin{align}
+\hat A(\alpha,\beta)
+    &=\hat J(\alpha)\otimes \hat J(\beta)
+    \label{eq:a:A}\\
+\hat J
+    &=\hat R(\alpha) \begin{pmatrix}
+    1&0\\0&0
+    \end{pmatrix}\hat R^{-1}(\alpha)
+    \label{eq:a:J}\\
+\hat R
+    &=\begin{pmatrix}
+    \cos(\alpha)&\sin(\alpha)\\
+    -\sin(\alpha)&\cos(\alpha)
+    \end{pmatrix}.
+    \label{eq:a:R}
+\end{align}
+as
+\begin{equation}
+C(\alpha,\beta)   = \trace{\rho \hat A(\alpha,\beta)}
+\label{eq:a:CA}
+\end{equation}
+with the density matrix $\rho$.
+For a set of angles
+\begin{subequations}
+\label{eq:a:angles}
+\begin{align}
+\alpha&=\SI{22.5}{\degree}\label{eq:a:angles:a}\\
+\alpha'&=\SI{-22.5}{\degree}\label{eq:a:angles:a'}\\
+\beta&=\SI{0}{\degree}\label{eq:a:angles:b}\\
+\beta'&=\SI{-45}{\degree}\label{eq:a:angles:b'}
+\end{align}
+\end{subequations}
+the S values for the pure bell states become
+\begin{subequations}
+\label{eq:a:Sbell}
+\begin{align}
+S(\Phi^{(+)})&=2\sqrt{2}>2\label{eq:a:sbell:phi+}\\
+S(\Phi^{(-)})&=0\label{eq:a:sbell:phi-}\\
+S(\Psi^{(+)})&=0\label{eq:a:sbell:psi+}\\
+S(\Psi^{(-)})&=-2\sqrt{2}<-2.\label{eq:a:sbell:psi-}
+\end{align}
+\end{subequations}
+
+\subsection{Measurement of the S value}
+In the experiment we measure the coincidence count rates for $\Psi^{(+)}$ and $\Psi^{(-)}$.
+This is done by arranging the $\lambda/4$-plates in front of the polarizers in angles of $\alpha_{\lambda/4}=\beta_{\lambda/4}=\SI{0}{\degree}$ for $\Psi^{(+)}$ and $\alpha_{\lambda/4}=\SI{0}{\degree},\beta_{\lambda/4}=\SI{90}{\degree}$ for $\Psi^{(-)}$.
+Now all necessary angle combinations according to \eqref{eq:a:angles} and equation \eqref{eq:a:EC} are tested.
+The experimental results are listed in the tables \vref{tab:mesplus} and \vref{tab:mesminus}.
+
+At first the mean value of the measured coincidence count rates $C_\text{mes}$ is calculated.
+The standard deviation is used as the uncertainty:
+\begin{align}
+C
+    &= \left\langle C_\text{mes}\right\rangle
+    \label{eq:a:Cmean}\\
+\Delta C
+    &= \sqrt{\left\langle \left(C_\text{mes}-C\right)^2\right\rangle}
+    \label{eq:a:dC}\\
+C\left(\Psi^{(+)},\alpha=\SI{22.5}{\degree},\beta=\SI{0}{\degree}\right)
+    &=\frac{170+172+166+165+161}{5}\;\si{\counts\per\second}
+    \nonumber\\
+    &=\SI{166.8}{\counts\per\second}
+\nonumber\\
+\Delta C\left(\Psi^{(+)},\alpha=\SI{22.5}{\degree},\beta=\SI{0}{\degree}\right)
+    &=\sqrt{\frac{170^2+172^2+166^2+165^2+161^2}{5}-166.8^2}\;\si{\counts\per\second}
+    \nonumber\\
+    &=\SI{3.9}{\counts\per\second}
+    \nonumber
+\end{align}
+With this values one can use equation \eqref{eq:a:EC} to calculate the expectation value
+\begin{align*}
+E\left(\Psi^{(+)},\alpha=\SI{22.5}{\degree},\beta=\SI{0}{\degree}\right)
+    &=\frac{C(\alpha,\beta)-C(\alpha,\beta^\perp)-C(\alpha^\perp,\beta)+C(\alpha^\perp,\beta^\perp)}{C(\alpha,\beta)+C(\alpha,\beta^\perp)+C(\alpha^\perp,\beta)+C(\alpha^\perp,\beta^\perp)}
+    \\
+    &=\frac{166.8-619-638+176}{166.8+619+638+176}\;\frac{\si{\counts\per\second}}{\si{\counts\per\second}}
+    \\
+    &=-0.57
+\end{align*}
+with error propagation
+\begin{subequations}
+\label{eq:a:dE}
+\begin{align}
+\Delta E
+    &= \sum_{\substack{\alpha=\lbrace\alpha,\alpha^\perp\rbrace\\\beta=\lbrace\beta,\beta^\perp\rbrace}}\abs{\frac{\dd E}{\dd C(\alpha,\beta)}}\Delta C(\alpha,\beta)
+    \label{eq:a:dE:1}\\
+    %&=\frac{\Delta C(\alpha,\beta)+\Delta C(\alpha,\beta^\perp)+\Delta C(\alpha^\perp,\beta)+\Delta C(\alpha^\perp,\beta^\perp)}{C(\alpha,\beta)+C(\alpha,\beta^\perp)+C(\alpha^\perp,\beta)+C(\alpha^\perp,\beta^\perp)}\left(1+\abs{E}\right)
+    &=\left(1+\abs{E}\right)\frac{\sum_{\alpha,\beta}\Delta C(\alpha,\beta)}{\sum_{\alpha,\beta}C(\alpha,\beta)}
+    \label{eq:a:dE:2}\\
+\Delta E\left(\Psi^{(+)},\alpha=\SI{22.5}{\degree},\beta=\SI{0}{\degree}\right)
+    &=(1+0.57)\frac{3.9+7.5+7.7+2.1}{166.8+619+638+176}\;\frac{\si{\counts\per\second}}{\si{\counts\per\second}}
+    \nonumber\\
+    &=0.02.
+    \nonumber
+\end{align}
+\end{subequations}
+Finally one can calculate the $S$ value using equation \eqref{eq:a:S} like
+\begin{align*}
+S\left(\Psi^{(+)}\right)
+    &=E\left(\SI{22.5}{\degree},\SI{0}{\degree}\right)-E\left(\SI{22.5}{\degree},\SI{-45}{\degree}\right)+E\left(\SI{-22.5}{\degree},\SI{0}{\degree}\right)+E\left(\SI{-22.5}{\degree},\SI{-45}{\degree}\right)
+    \\
+    &=-0.57+0.63-0.64+0.52
+    \\
+    &=-0.06
+\end{align*}
+with error propagation
+\begin{subequations}
+\label{eq:a:dS}
+\begin{align}
+\Delta S
+    &= \sum_{\substack{\alpha=\lbrace\alpha,\alpha'\rbrace\\\beta=\lbrace\beta,\beta'\rbrace}}\abs{\frac{\dd S}{\dd E(\alpha,\beta)}}\Delta E(\alpha,\beta)
+    \label{eq:a:dS:1}\\
+    &=\sum_{\alpha,\beta}\Delta E(\alpha,\beta)
+    \label{eq:a:dS:2}\\
+\Delta S\left(\Psi^{(+)}\right)
+    &=0.02+0.04+0.02+0.02
+    \nonumber\\
+    &=0.10.
+    \nonumber
+\end{align}
+\end{subequations}
+The final results are:
+\begin{align*}
+S\left(\Psi^{(+)}\right)
+    &=-0.06\pm 0.10
+    \\
+S\left(\Psi^{(-)}\right)
+    &=-2.07\pm 0.09
+\end{align*}
+The $S$ value for $\Psi^{(+)}$ is 0 like expected but the $S$ value for $\Psi^{(-)}$ is much smaller than $2\sqrt{2}=2.83$.
+In fact the value can be seen as possibly bigger than -2 within its uncertainty and is therefore no proof for the wrongness of the LHV theory.
+
+\subsection{Tomography measurement of the density of states}
+The density matrix of the emitted light is measured in this section.
+In order to understand the procedure we look back at the formalism.
+The density matrix is an operator and
+a $4\cross 4$ shaped matrix in the chosen formalism.
+This matrix is complex and symmetric with a real diagonal and a trace of 1 which implies that it has fifteen degrees of freedom.
+One can now choose sixteen pure two photon states $\ket{k}=\ket{1}_k\otimes\ket{2}_k$, using combinations of $\state{H}$, $\state{V}$, $\state{D}$, $\state{R}$ and $\state{L}$, which differ in more than only a complex phase and measure their probability $P_k$.
+The density matrix is then defined as
+\begin{align}
+\rho
+    &=\sum_{k=1}^{16}P_k\ket{k}\bra{k}.
+    \label{eq:a:rho}
+\end{align}
+The probability can be calculated from the coincidence count rates $C_k$ like
+\begin{align}
+P_k
+    &=C_k \left(\sum_{l=1}^{16}C_l\right)^{-1},
+    \label{eq:a:Pk}
+\end{align}
+with uncertainty
+\begin{subequations}
+\label{eq:a:dP}
+\begin{align}
+\Delta P_k
+    &=\sum_{l=1}^{16}\abs{\frac{\dd P_k}{\dd C_l}}\Delta C_l
+    \label{eq:a:dP:1}\\
+    &=\frac{\Delta C_k+P_k\sum_{l=1}^{16}\Delta C_l}{\sum_{l=1}^{16}C_l}.
+    \label{eq:a:dP:2}
+\end{align}
+\end{subequations}
+The $\ket{k}\bra{k}$ term can be calculated with a matrix multiplication; for example $\state{DR}\brastate{DR}$:
+\begin{subequations}
+\label{eq:a:DR}
+\begin{align}
+\state{DR}\brastate{DR}
+    &=\frac{1}{\sqrt{2}}\left(\state{H}+\state{V}\right) \otimes \frac{1}{\sqrt{2}}\left(\state{H}-i\state{V}\right) \brastate{DR}
+    \label{eq:a:DR:1}\\
+    &=\frac{1}{2}\left(\state{HH}-i\state{VV}-i\state{HV}+\state{VH}\right) \brastate{DR}
+    \label{eq:a:DR:2}\\
+    &=\frac{1}{4}
+    \begin{pmatrix}1\\-i\\-i\\1\end{pmatrix}
+    \begin{pmatrix}1&i&i&1\end{pmatrix}
+    \label{eq:a:DR:3}\\
+    &=\frac{1}{4}\begin{pmatrix}
+    1   &i  &i  &1\\
+    -i  &1  &1  &-i\\
+    -i  &1  &1  &-i\\
+    1   &i  &i  &1
+    \end{pmatrix}
+\end{align}
+\end{subequations}
+An uncertainty can be assumed using error propagation while splitting the real and the complex part
+\begin{subequations}
+\label{eq:a:drho}
+\begin{align}
+\Delta \rho
+    &=\sum_{k=1}^{16}\abs{\frac{\dd\Re{\rho}}{\dd P_k}}\Delta P_k+i\sum_{k=1}^{16}\abs{\frac{\dd\Im{\rho}}{\dd P_k}}\Delta P_k
+    \label{eq:a:drho:1}\\
+    &=\sum_{k=1}^{16}\left(\abs{\Re{\ketbra{k}}}+i\abs{\Im{\ketbra{k}}}\right)\Delta P_k
+    \label{eq:a:drho:2}
+\end{align}
+\end{subequations}
+At first the states $\ket{k}$ must be determined.
+A good choice could be
+\begin{align*}
+\state{HH}
+    &=\begin{pmatrix} 1\\ 0\\ 0\\ 0\end{pmatrix}
+    &\state{HV}
+    &=\begin{pmatrix} 0\\ 0\\ 1\\ 0\end{pmatrix}
+    &\state{VV}
+    &=\begin{pmatrix} 0\\ 1\\ 0\\ 0\end{pmatrix}
+    &\state{VH}
+    &=\begin{pmatrix} 0\\ 0\\ 0\\ 1\end{pmatrix}
+    \\
+\state{RH}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ 0\\-i\end{pmatrix}
+    &\state{RV}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 0\\ 1\\-i\\ 0\end{pmatrix}
+    &\state{DV}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 0\\ 1\\ 1\\ 0\end{pmatrix}
+    &\state{DH}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ 0\\ 1\end{pmatrix}
+    \\
+\state{DR}
+    &=\frac{1}{2}\begin{pmatrix} 1\\-i\\-i\\ 1\end{pmatrix}
+    &\state{DD}
+    &=\frac{1}{2}\begin{pmatrix} 1\\ 1\\ 1\\ 1\end{pmatrix}
+    &\state{RD}
+    &=\frac{1}{2}\begin{pmatrix} 1\\-i\\ 1\\-i\end{pmatrix}
+    &\state{HD}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ 1\\ 0\end{pmatrix}
+    \\
+\state{VD}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ i\\ 1\\ i\end{pmatrix}
+    &\state{VL}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 0\\ i\\ 0\\ 1\end{pmatrix}
+    &\state{HL}
+    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ i\\ 0\end{pmatrix}
+    &\state{RL}
+    &=\frac{1}{2}\begin{pmatrix} 1\\ 1\\ i\\-i\end{pmatrix}
+\end{align*}
+which are listed with their representation in the actual formalism.
+The corresponding polarizer and $\lambda/4$-plate angles so as the measured coincidence count rates are listed in table \vref{tab:mestom}.
+The density matrix is calculated to
+\begin{align*}
+\rho
+    &=\rhonormal\\
+    &\pm \drhonormal .
+\end{align*}
+But what is it telling us?
+We can represent the matrix in the basis of the bell states.
+
+
 
