@@ -193,6 +193,11 @@ printcomplexmatrix("rhonormal",rho,dig=3)
 printcomplexmatrix("drhonormal",drho,dig=3)
 
 w, v    = eig(rho)
+for val, vec, nam in zip(w, [v[:,0],v[:,1],v[:,2],v[:,3]], ["a","b","c","d"]):
+    texfile.write("\\newcommand{{\\eval{:s}}}{{{:.3f}}}".format(nam,np.real(val)))
+    printcomplexmatrix("evec"+nam,vec,dig=3)
+    
+    
 print("Eigenvalues")
 print(w)
 print("Eigenvectors")
