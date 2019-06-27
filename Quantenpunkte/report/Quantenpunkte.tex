@@ -1,0 +1,153 @@
+% Alex header 
+\documentclass[aps,amsmath,amssymb,amsfont]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+\usepackage{float}
+\usepackage{graphicx}
+%\usepackage{siunitx}
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\usepackage{lmodern}
+\usepackage{physics}
+\usepackage{mathpazo}
+\usepackage{here}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{braket}
+\numberwithin{equation}{section}
+\usepackage{tikz}
+\usetikzlibrary{arrows, calc, decorations.pathmorphing}
+\tikzset{snake/.style={decorate, decoration=snake}}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\makeatletter
+\AtBeginDocument{
+\def\tocname{Inhalt}
+	\def\andname{and}
+	\def\Dated@name{Dated: }
+	\def\figurename{Abb.}
+	\def\tablename{Tab.}
+}
+\makeatother
+
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+
+\newcommand{\subfig}[1]{\begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.1\textwidth]{#1}
+        \caption{}	
+    \end{subfigure}}
+\newcommand{\pictures}[1]{\begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.1\textwidth]{#1}
+        \caption{}
+    \end{subfigure}}
+
+
+%Michael header
+%\documentclass[
+%    captions=nooneline
+%    ,headinclude
+%    ,headsepline
+%    ,bibliography=totocnumbered
+%]{scrartcl}
+%\usepackage[twoside,paper=a4paper,left=35mm,right=20mm,top=30mm,bottom=35mm]{geometry} 
+
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[german]{varioref}
+
+%%% GRAPHIKEN %%%
+%\usepackage{graphicx}
+\usepackage[labelfont=bf,justification=justified,format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{wrapfig}
+\graphicspath{{../Photonenstatistik_Messdaten/}}
+%\usepackage{floatrow}
+%% DREHUNG VON GRAFIKEN
+%\usepackage{rotating}
+%\usepackage{pdflscape}
+
+%%% Tabellen %%%
+%\usepackage{threeparttable}
+%\usepackage{booktabs}
+%\usepackage{multirow}
+
+%%% MATHE %%%
+%\usepackage{mathtools}
+%\usepackage{physics}
+%\usepackage{upgreek}
+%\usepackage{amssymb}
+\usepackage[separate-uncertainty=true,
+            list-units = single,
+            list-separator = {;\,},
+            exponent-product=\cdot,%
+            ]{siunitx}
+%\DeclareSIUnit\molar{\mole\per\l}
+%\DeclareSIUnit\counts{counts}
+
+%%% ZEICHENUMGEBUNG %%%
+\usepackage{pgf}
+
+
+%%% BIBLIOGRAPHIE %%%
+\usepackage[style=numeric-comp,backend=biber,natbib=true]{biblatex}
+\addbibresource{Quellen.bib}
+\usepackage[babel,german]{csquotes}
+
+%%% EIGENE DEFINITIONEN %%%
+%\newcommand{\iu}{{i\mkern1mu}}
+%\usepackage{txfonts} % |R, |C
+
+%\usepackage{hyperref}
+
+%%% INCLUDE VALUES %%%
+%\input{values}
+
+%\includeonly{}
+
+%\tikzset{
+%    declare function={% in case of CVS which switches the arguments of atan2
+%        atan3(\a,\b)=ifthenelse(atan2(0,1)==90, atan2(\a,\b), atan2(\b,\a));},
+%    kinky cross radius/.initial=+.125cm,
+%    @kinky cross/.initial=+, kinky crosses/.is choice,
+%    kinky crosses/left/.style={@kinky cross=-},kinky crosses/right/.style={@kinky cross=+},
+%    kinky cross/.style args={(#1)--(#2)}{
+%        to path={
+%            let \p{@kc@}=($(\tikztotarget)-(\tikztostart)$),
+%            \n{@kc@}={atan3(\p{@kc@})+180} in
+%            -- ($(intersection of \tikztostart--{\tikztotarget} and #1--#2)!%
+%            \pgfkeysvalueof{/tikz/kinky cross radius}!(\tikztostart)$)
+%            arc [ radius     =\pgfkeysvalueof{/tikz/kinky cross radius},
+%            start angle=\n{@kc@},
+%            delta angle=\pgfkeysvalueof{/tikz/@kinky cross}180 ]
+%%            -- (\tikztotarget)}}}
+
+\begin{document}
+	\begin{titlepage}
+	\centering
+	\par\vspace{1cm}
+	{\scshape\LARGE Universität Stuttgart \par}
+	\vspace{1cm}
+	{\scshape\Large  Fortgeschrittenen Praktikum \\ Sommersemester 2019\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Photolumineszenz von Quantenpunkten\par}
+	\vspace{2cm}
+	{\Large\itshape Gruppe: M20\\ Alexander Sattler  \\  Michael Marquardt    \\ Versuchsdatum: Montag 24. Juni 2019\\ Betreuer: Florian Hornung\\ \par}
+	\end{titlepage}
+
+
+\tableofcontents
+\newpage
+
+\include{Grundlagen}
+\include{Versuchsaufbau}
+\include{Auswertung}
+\include{Zusammenfassung}
+\printbibliography
+
+\end{document}
