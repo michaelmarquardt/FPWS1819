@@ -224,8 +224,7 @@ for k in range(16):
     drho   += dC[k]*(abs(ketbra.real)+1.j*abs(ketbra.imag))
 rho     /= np.sum(C[:4])
 drho    /= np.sum(C[:4])
-for k in range(4):
-    drho    += rho/np.sum(C[:4])*dC[k]
+drho    += (abs(rho.real)+1.j*abs(rho.imag))/np.sum(C[:4])*np.sum(dC[:4])
 
 print("rho")
 print(rho)
@@ -248,8 +247,20 @@ print(v)
 print("rho (bell basis)")
 print(f.bellmat*rho*f.bellmat)
 
-printcomplexmatrix("rhobell",f.bellmat*rho*f.bellmat,dig=3)
-printcomplexmatrix("drhobell",f.bellmat*drho*f.bellmat,dig=3)
+rhobell     = f.bellmat*rho*f.bellmat
+drhobell    = abs(f.bellmat)*drho*abs(f.bellmat)
+
+printcomplexmatrix("rhobell",rhobell,dig=3)
+printcomplexmatrix("drhobell",drhobell,dig=3)
+
+print(np.trace(rho))
+print(np.trace(drho))
+
+rho2    = rho*rho
+drho2   = abs(rho)*drho+drho*abs(rho)
+
+print(np.trace(rho2))
+print(np.trace(drho2))
 
 #print("S    = {} +- {}".format(f.S(f.a1,f.b1,f.a2,f.b2,rho),f.S(f.a1,f.b1,f.a2,f.b2,drho)))
 

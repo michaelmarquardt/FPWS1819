@@ -206,116 +206,90 @@ The $S$ value for $\Psi^{(+)}$ is 0 like expected but the $S$ value for $\Psi^{(
 In fact the value can be seen as possibly bigger than -2 within its uncertainty and is therefore no proof for the wrongness of the LHV theory.
 
 \subsection{Tomography measurement of the density of states}
-The density matrix of the emitted light is measured in this section.
-In order to understand the procedure we look back at the formalism.
-The density matrix is an operator and
-a $4\cross 4$ shaped matrix in the chosen formalism.
-This matrix is hermitian with a trace of 1 which implies that it has fifteen degrees of freedom.
-One can now choose sixteen pure two photon states $\ket{k}=\ket{1}_k\otimes\ket{2}_k$, using combinations of $\state{H}$, $\state{V}$, $\state{D}$, $\state{R}$ and $\state{L}$, which differ in more than only a complex phase and measure their probability $P_k$.
+The density matrix of the $\ket{\Psi^{(-)}}$ state is measured in this section.
 The density matrix is then defined as
 \begin{align}
 \rho
-    &=\sum_{k=1}^{16}P_k\ket{k}\bra{k}.
-    \label{eq:a:rho}
+&=\sum_{i}P_i\ket{\Psi_i}\bra{\Psi_i}.
+\label{eq:a:rho}
 \end{align}
-The probability can be calculated from the coincidence count rates $C_k$ like
+with the sum over all pure states $\Psi_i$.
+In order to understand the tomography procedure we look back at the formalism.
+The density matrix is an operator and a $4\cross 4$ shaped matrix in the chosen formalism.
+This matrix is hermitian with a trace of 1 which implies that it has fifteen degrees of freedom.
+An additional degree of freedom comes through the unknown detector efficiency.
+One can therefore choose 16 matrices $\Gamma_k$ which verify
 \begin{align}
-P_k
-    &=C_k \left(\sum_{l=1}^{16}C_l\right)^{-1},
-    \label{eq:a:Pk}
+\Tr{\Gamma_k\Gamma_l}
+    &=\delta_{k,l}
+    \label{eq:a:trgamma}\\
+A
+    &=\sum_{k=1}^{16}\Gamma_k\Tr{\Gamma_kA}
+    \label{eq:a:A}
 \end{align}
-with uncertainty
-\begin{subequations}
-\label{eq:a:dP}
+for an arbitrary matrix $A$.
+The density matrix can be represented as
 \begin{align}
-\Delta P_k
-    &=\sum_{l=1}^{16}\abs{\frac{\dd P_k}{\dd C_l}}\Delta C_l
-    \label{eq:a:dP:1}\\
-    &=\frac{\Delta C_k+P_k\sum_{l=1}^{16}\Delta C_l}{\sum_{l=1}^{16}C_l}.
-    \label{eq:a:dP:2}
+\rho
+    &=\sum_{k=1}^{16}\Gamma_k r_k
+    \label{eq:a:rhogamma}\\
+r_k
+    &=\Tr{\Gamma_k\rho}
+    \label{eq:a:rk}
 \end{align}
-\end{subequations}
-The $\ket{k}\bra{k}$ term can be calculated with a matrix multiplication; for example $\state{DR}\brastate{DR}$:
-\begin{subequations}
-\label{eq:a:DR}
+Now one chooses sixteen two photon states $\ket{k}=\ket{1}_k\otimes\ket{2}_k$, using combinations of $\state{H}$, $\state{V}$, $\state{D}$, $\state{R}$ and $\state{L}$.
+For a detector efficiency $\eta$ one finds
 \begin{align}
-\state{DR}\brastate{DR}
-    &=\frac{1}{\sqrt{2}}\left(\state{H}+\state{V}\right) \otimes \frac{1}{\sqrt{2}}\left(\state{H}-i\state{V}\right) \brastate{DR}
-    \label{eq:a:DR:1}\\
-    &=\frac{1}{2}\left(\state{HH}-i\state{VV}-i\state{HV}+\state{VH}\right) \brastate{DR}
-    \label{eq:a:DR:2}\\
-    &=\frac{1}{4}
-    \begin{pmatrix}1\\-i\\-i\\1\end{pmatrix}
-    \begin{pmatrix}1&i&i&1\end{pmatrix}
-    \label{eq:a:DR:3}\\
-    &=\frac{1}{4}\begin{pmatrix}
-    1   &i  &i  &1\\
-    -i  &1  &1  &-i\\
-    -i  &1  &1  &-i\\
-    1   &i  &i  &1
-    \end{pmatrix}
+C_k
+    &=\eta \sum_{l=1}^{16}B_{k,l}r_l
+    \label{eq:a:Ck}\\
+B_{k,l}
+    &=\bra{k}\Gamma_l\ket{k}
+    \label{eq:a:Bkl}\\
+r_k
+    &=\frac{1}{\eta}\sum_{l=1}^{16}(B^{-1})_{k,l}C_l
+    \label{eq:a:rkCl}\\
+\rho
+    &=\frac{1}{\eta}\sum_{k=1}^{16}M_kC_k
+    \label{eq:a:rhoM1}\\
+M_k
+    &=\sum_{l=1}^{16}(B^{-1})_{k,l}\Gamma_l.
+    \label{eq:a:Mk}
 \end{align}
-\end{subequations}
-An uncertainty can be assumed using error propagation while splitting the real and the complex part
+A detailed explanation can be found in \cite{james}.
+The resulting states $\ket{k}$ and the according angles at the polarizer and $\lambda/4$-plate angles so as the measured coincidence count rates are listed in table \vref{tab:mestom}.
+The $M$-matrices are listed in section \vref{sec:Mmat}.
+In our case we can reduce equation \eqref{eq:a:rhoM1} to
+\begin{equation}
+\rho
+=\frac{\sum_{k=1}^{16}M_kC_k}{\sum_{k=1}^{4}C_k}.
+\label{eq:a:rhoM2}
+\end{equation}
+An uncertainty can be assumed using error propagation while splitting the real and the imaginary part
 \begin{subequations}
 \label{eq:a:drho}
 \begin{align}
 \Delta \rho
-    &=\sum_{k=1}^{16}\abs{\frac{\dd\Re{\rho}}{\dd P_k}}\Delta P_k+i\sum_{k=1}^{16}\abs{\frac{\dd\Im{\rho}}{\dd P_k}}\Delta P_k
+    &=\sum_{k=1}^{16}\abs{\frac{\dd\Re{\rho}}{\dd C_k}}\Delta C_k+i\sum_{k=1}^{16}\abs{\frac{\dd\Im{\rho}}{\dd C_k}}\Delta C_k
     \label{eq:a:drho:1}\\
-    &=\sum_{k=1}^{16}\left(\abs{\Re{\ketbra{k}}}+i\abs{\Im{\ketbra{k}}}\right)\Delta P_k
+    &=\sum_{k=1}^{16}\left(\abs{\Re{M_k}}+i\abs{\Im{M_k}}\right)\Delta C_k
+    \nonumber\\
+    &\left(\abs{\Re{\rho}}+i\abs{\Im{\rho}}\right)\frac{\sum_{k=1}^4\dd C_k}{\sum_{k=1}^4C_k}.
     \label{eq:a:drho:2}
 \end{align}
 \end{subequations}
-At first the states $\ket{k}$ must be determined.
-A good choice could be
-\begin{align*}
-\state{HH}
-    &=\begin{pmatrix} 1\\ 0\\ 0\\ 0\end{pmatrix}
-    &\state{HV}
-    &=\begin{pmatrix} 0\\ 0\\ 1\\ 0\end{pmatrix}
-    &\state{VV}
-    &=\begin{pmatrix} 0\\ 1\\ 0\\ 0\end{pmatrix}
-    &\state{VH}
-    &=\begin{pmatrix} 0\\ 0\\ 0\\ 1\end{pmatrix}
-    \\
-\state{RH}
-    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ 0\\-i\end{pmatrix}
-    &\state{RV}
-    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 0\\ 1\\-i\\ 0\end{pmatrix}
-    &\state{DV}
-    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 0\\ 1\\ 1\\ 0\end{pmatrix}
-    &\state{DH}
-    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ 0\\ 1\end{pmatrix}
-    \\
-\state{DR}
-    &=\frac{1}{2}\begin{pmatrix} 1\\-i\\-i\\ 1\end{pmatrix}
-    &\state{DD}
-    &=\frac{1}{2}\begin{pmatrix} 1\\ 1\\ 1\\ 1\end{pmatrix}
-    &\state{RD}
-    &=\frac{1}{2}\begin{pmatrix} 1\\-i\\ 1\\-i\end{pmatrix}
-    &\state{HD}
-    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ 1\\ 0\end{pmatrix}
-    \\
-\state{VD}
-    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ i\\ 1\\ i\end{pmatrix}
-    &\state{VL}
-    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 0\\ i\\ 0\\ 1\end{pmatrix}
-    &\state{HL}
-    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ i\\ 0\end{pmatrix}
-    &\state{RL}
-    &=\frac{1}{2}\begin{pmatrix} 1\\ 1\\ i\\-i\end{pmatrix}
-\end{align*}
-which are listed with their representation in the actual formalism.
-The corresponding polarizer and $\lambda/4$-plate angles so as the measured coincidence count rates are listed in table \vref{tab:mestom}.
 The density matrix is calculated to
 \begin{align*}
 \rho
     &=\rhonormal\\
     &\pm \drhonormal .
 \end{align*}
-But what is it telling us?
-We can represent the matrix in the basis of the bell states
+One can calculate the purity of the state as
+\begin{align*}
+\Tr{\rho^2}
+    &=0.57\pm 0.6.
+\end{align*}
+Furthermore the projection on the bell states 
 \begin{align}
 \ket{\Phi^{+}}
     &=\begin{pmatrix}1\\0\\0\\0\end{pmatrix}
@@ -327,7 +301,7 @@ We can represent the matrix in the basis of the bell states
     &=\begin{pmatrix}0\\0\\0\\1\end{pmatrix}
     \label{eq:a:bell_basis}
 \end{align}
-by multiplying the transformation matrix $B$
+is calculated by multiplying the transformation matrix $B$
 \begin{align}
 \rho_\text{bell}
     &=B^\dagger \rho B
@@ -352,6 +326,11 @@ by multiplying the transformation matrix $B$
     \nonumber
 \end{align}
 One can read the probability to find the corresponding bell state from the diagonal of the density matrix.
+The tomography measurement shall show the density matrix of the generated $\Psi^{(-)}$ state according to \cite{barz}.
+But the accordance is only $0.20\pm 0.03$.
+The $\Psi^{(+)}$ state on the other hand shows an accordance of $0.73\pm0.03$.
+It may be that some angles were defined the other way around and that therefore the generated $\Psi^{(+)}$ state was measured instead of the $\Psi^{(-)}$ state.
+
 At last the eigenvectors $v_i$ and eigenvalues $\lambda_i$ of the density matrix are calculated (in the previous formalism, not the bell basis).
 \begin{align*}
 \lambda_1
@@ -367,11 +346,92 @@ At last the eigenvectors $v_i$ and eigenvalues $\lambda_i$ of the density matrix
 \lambda_3
     &=\evalc
     &v_3
-    &=\evecc \approx \ket{\Phi^{(-)}}
+    &=\evecc
     \\
 \lambda_4
     &=\evald
     &v_4
-    &=\evecd \approx \ket{\Psi^{(-)}}
+    &=\evecd
 \end{align*}
-The eigenvectors $v_3$ and $v_4$ are close to the minus bell states.
+
+%The probability can be calculated from the coincidence count rates $C_k$ like
+%\begin{align}
+%P_k
+%    &=C_k \left(\sum_{l=1}^{16}C_l\right)^{-1},
+%    \label{eq:a:Pk}
+%\end{align}
+%with uncertainty
+%\begin{subequations}
+%\label{eq:a:dP}
+%\begin{align}
+%\Delta P_k
+%    &=\sum_{l=1}^{16}\abs{\frac{\dd P_k}{\dd C_l}}\Delta C_l
+%    \label{eq:a:dP:1}\\
+%    &=\frac{\Delta C_k+P_k\sum_{l=1}^{16}\Delta C_l}{\sum_{l=1}^{16}C_l}.
+%    \label{eq:a:dP:2}
+%\end{align}
+%\end{subequations}
+%The $\ket{k}\bra{k}$ term can be calculated with a matrix multiplication; for example $\state{DR}\brastate{DR}$:
+%\begin{subequations}
+%\label{eq:a:DR}
+%\begin{align}
+%\state{DR}\brastate{DR}
+%    &=\frac{1}{\sqrt{2}}\left(\state{H}+\state{V}\right) \otimes \frac{1}{\sqrt{2}}\left(\state{H}-i\state{V}\right) \brastate{DR}
+%    \label{eq:a:DR:1}\\
+%    &=\frac{1}{2}\left(\state{HH}-i\state{VV}-i\state{HV}+\state{VH}\right) \brastate{DR}
+%    \label{eq:a:DR:2}\\
+%    &=\frac{1}{4}
+%    \begin{pmatrix}1\\-i\\-i\\1\end{pmatrix}
+%    \begin{pmatrix}1&i&i&1\end{pmatrix}
+%    \label{eq:a:DR:3}\\
+%    &=\frac{1}{4}\begin{pmatrix}
+%    1   &i  &i  &1\\
+%    -i  &1  &1  &-i\\
+%    -i  &1  &1  &-i\\
+%    1   &i  &i  &1
+%    \end{pmatrix}
+%\end{align}
+%\end{subequations}
+
+%At first the states $\ket{k}$ must be determined.
+%A good choice could be
+%\begin{align*}
+%\state{HH}
+%    &=\begin{pmatrix} 1\\ 0\\ 0\\ 0\end{pmatrix}
+%    &\state{HV}
+%    &=\begin{pmatrix} 0\\ 0\\ 1\\ 0\end{pmatrix}
+%    &\state{VV}
+%    &=\begin{pmatrix} 0\\ 1\\ 0\\ 0\end{pmatrix}
+%    &\state{VH}
+%    &=\begin{pmatrix} 0\\ 0\\ 0\\ 1\end{pmatrix}
+%    \\
+%\state{RH}
+%    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ 0\\-i\end{pmatrix}
+%    &\state{RV}
+%    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 0\\ 1\\-i\\ 0\end{pmatrix}
+%    &\state{DV}
+%    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 0\\ 1\\ 1\\ 0\end{pmatrix}
+%    &\state{DH}
+%    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ 0\\ 1\end{pmatrix}
+%    \\
+%\state{DR}
+%    &=\frac{1}{2}\begin{pmatrix} 1\\-i\\-i\\ 1\end{pmatrix}
+%    &\state{DD}
+%    &=\frac{1}{2}\begin{pmatrix} 1\\ 1\\ 1\\ 1\end{pmatrix}
+%    &\state{RD}
+%    &=\frac{1}{2}\begin{pmatrix} 1\\-i\\ 1\\-i\end{pmatrix}
+%    &\state{HD}
+%    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ 1\\ 0\end{pmatrix}
+%    \\
+%\state{VD}
+%    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ i\\ 1\\ i\end{pmatrix}
+%    &\state{VL}
+%    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 0\\ i\\ 0\\ 1\end{pmatrix}
+%    &\state{HL}
+%    &=\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 0\\ i\\ 0\end{pmatrix}
+%    &\state{RL}
+%    &=\frac{1}{2}\begin{pmatrix} 1\\ 1\\ i\\-i\end{pmatrix}
+%\end{align*}
+%which are listed with their representation in the actual formalism.
+%The corresponding polarizer and $\lambda/4$-plate angles so as the measured coincidence count rates are listed in table \vref{tab:mestom}.
+
