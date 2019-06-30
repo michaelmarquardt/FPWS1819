@@ -167,6 +167,44 @@ def printcomplexmatrix(name,mat,dmat=np.matrix([False]),dig=3):
             texfile.write("\n")
     texfile.write("\\end{pmatrix}}\n\n")
 
+def printMmatrix(name,mat):
+    texfile.write("\\newcommand{\\"+name+"}{\n")
+    texfile.write("\\frac{1}{2}\\begin{pmatrix}\n")
+    for k in range(mat.shape[0]):
+        for l in range(mat.shape[1]):
+            Re  = int(np.real(2*mat[k,l]))
+            Im  = int(np.imag(2*mat[k,l]))
+            if Im == 1:
+                if Re != 0:
+                    texfile.write("{:d}+i".format(Re))
+                else:
+                    texfile.write("i")
+            elif Im == -1:
+                if Re != 0:
+                    texfile.write("{:d}-i".format(Re))
+                else:
+                    texfile.write("-i")
+            elif Im != 0:
+                if Re != 0:
+                    texfile.write("{:d}{:+d}i".format(Re,Im))
+                else:
+                    texfile.write("{:d}i".format(Im))
+            else:
+                texfile.write("{:d}".format(Re))
+            if l != 3:
+                texfile.write("&")
+            elif k != 3:
+                texfile.write("\\\\\n")
+            else:
+                texfile.write("\n")
+    texfile.write("\\end{pmatrix}}\n\n")
+
+alphabet    = ['a','b','c','d','e','f','g','h','i','j','k','l','m',
+               'n','o','p','q','r','s','t','u','v','w','x','y','z']
+
+for k in range(len(f.M)):
+    printMmatrix("M"+alphabet[k],f.M[k])
+
 # Calculate density matrix
 rho     = np.matrix(
     [[0.+0.j,0.,0.,0.],
@@ -179,10 +217,15 @@ drho    = np.matrix(
      [0.,0.,0.,0.],
      [0.,0.,0.,0.]])
 for k in range(16):
-    state   = f.basis(state_key[k][0],state_key[k][1])
-    ketbra  = state*state.H
-    rho    += P[k]*ketbra
-    drho   += dP[k]*(abs(ketbra.real)+1.j*abs(ketbra.imag))
+    #state   = f.basis(state_key[k][0],state_key[k][1])
+    #ketbra  = state*state.H
+    ketbra  = f.M[k]
+    rho    += C[k]*ketbra
+    drho   += dC[k]*(abs(ketbra.real)+1.j*abs(ketbra.imag))
+rho     /= np.sum(C[:4])
+drho    /= np.sum(C[:4])
+for k in range(4):
+    drho    += rho/np.sum(C[:4])*dC[k]
 
 print("rho")
 print(rho)
