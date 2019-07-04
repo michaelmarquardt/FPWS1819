@@ -207,7 +207,12 @@ def si(name, val, err=None, unit="", dig=None, e=None):
 
 #   sitabular
 #######################################################################################
-def siline(name, varlist, paramlist):
+def siline(name, paramlist, varlist, errlist=[None]):
+    """
+    Uses a list varlist with variables and a errorlist with errors.
+    and a paramlist with the digits to round.
+    use errlist[i] = 0 for no error.
+    """
     global TEX
     global PRE
     global SILINE
@@ -217,24 +222,21 @@ def siline(name, varlist, paramlist):
         raise NameError(r"Identifier \siline"+PRE+name+" already used!")
     SILINE.append(PRE+name)
     
+    if errlist == [None]:
+        errlist = [None]*len(paramlist)
+    
     # Write to TEX
     texfile = open(TEX, "a")
     texfile.write(r"\newcommand{\siline"+PRE+name+"}{")
-    for i in range(len(paramlist)-1):
-        if varlist[2*i+1] == None:
+    for i in range(len(paramlist)):
+        if errlist[i] == None:
             prstr   = "{0:."+str(paramlist[i])+"f}"
-            texfile.write(prstr.format(round(varlist[2*i],paramlist[i])))
-            texfile.write(" &")
+            texfile.write(prstr.format(round(varlist[i],paramlist[i])))
         else:
             prstr   = "{0:."+str(paramlist[i])+"f}\\pm {1:."+str(paramlist[i])+"f}"
-            texfile.write(prstr.format(round(varlist[2*i],paramlist[i]),ceil(varlist[2*i+1],paramlist[i])))
+            texfile.write(prstr.format(round(varlist[i],paramlist[i]),ceil(errlist[i],paramlist[i])))
+        if not i==len(paramlist)-1:
             texfile.write(" &")
-    if varlist[-1] == None:
-        prstr   = "{0:."+str(paramlist[-1])+"f}"
-        texfile.write(prstr.format(round(varlist[-2],paramlist[-1])))
-    else:
-        prstr   = "{0:."+str(paramlist[-1])+"f}\\pm {1:."+str(paramlist[-1])+"f}"
-        texfile.write(prstr.format(round(varlist[-2],paramlist[-1]),ceil(varlist[-1],paramlist[-1])))
     texfile.write("}\n")
     texfile.close()
 

@@ -16,6 +16,8 @@ texfile("../report/values.tex")
 PLOT    = "../plots/"
 DAT     = "../messdaten/"
 
+texfile("../report/values.tex")
+
 # Parameter
 ###########
 actime  = {
@@ -25,7 +27,8 @@ actime  = {
     "InAs"          : 1.,
     "InP"           : 1.
     }
-naum    = [0, 20, 40, 60, 80, 100, 150, 200, 250, 300, 400, 500, 550, 600]
+#naum    = [0, 20, 40, 60, 80, 100, 150, 200, 250, 300, 400, 500, 550, 600]
+naum    = [0, 500, 550, 600]
 angles  = [0, 10, 20, 25, 30, 35, 40, 45, 50, 60, 70]
 temps   = [10, 30, 50, 70, 90, 110, 130, 150, 170]
 
@@ -34,17 +37,23 @@ temps   = [10, 30, 50, 70, 90, 110, 130, 150, 170]
 powers  = angles.copy()
 ang, I  = np.loadtxt(DAT+"umrechnung.txt",unpack=True)
 l       = 0
+nangles = []
+npowers = []
 for k in range(len(angles)):
     if angles[k]%10 != 0:
         l   += 1
         powers[k]   = (I[k-l]+I[k-l+1])*0.5
+        nangles.append(angles[k])
+        npowers.append(powers[k])
     else:
         powers[k]   = I[k-l]
 
 plt.figure("umrechnung")
-plt.plot(angles, powers, "x-")
-plt.xlabel("Polarisator Winkel [\si{\degree}]")
-plt.ylabel("$I$ [mW]")
+plt.plot(angles, powers, "x-", label="Bekannte Werte")
+plt.plot(nangles, npowers, "x", label="Berechnete Werte")
+plt.xlabel(r"$\alpha$ [\si{\degree}]")
+plt.ylabel("$P$ [mW]")
+plt.legend()
 plt.savefig(PLOT+"umrechnung.pgf")
 plt.savefig(PLOT+"umrechnung.pdf")
 
@@ -91,6 +100,8 @@ plt.close()
 
 # InAs Quantenpunkte
 ####################
+set_pre("A")
+
 # Bereite fit vor
 def multigauss(x, a0, a1, a2, a3, mu0, mu1, mu2, mu3, s0, s1, s2, s3):
     """
@@ -102,22 +113,35 @@ def multigauss(x, a0, a1, a2, a3, mu0, mu1, mu2, mu3, s0, s1, s2, s3):
         f   += ai*np.exp(-(x-mui)**2/(2.*si**2))
     return f
 
-def fitto(lam,I):
+def fitto(lam,I,T):
     # Fit
     lb  = np.where(lam>850)[0][0]
-    mu0 = [921.,902.,884.,866.]
-    s0  = [5.,5.,5.,5.]
-    a0  = []
-    for mu in mu0:
-        a0.append(I[np.where(lam>=mu)[0][0]])
-    p0  = a0+mu0+s0
-
+    
     # Disable some gaussian using bounds
     bounds  = (np.full(12,-np.inf),np.full(12,np.inf))
     # Initial bounds
     bounds[0][0:4]  = [0.,0.,0.,0.]
+    bounds[0][8:]   = [0.,0.,0.,0.]
+    bounds[1][8:]   = [9.99,9.99,9.99,9.99]
     bounds[0][4:8]  = [910.,890.,875.,860.]
-    bounds[1][4:8]  = [940.,920.,895.,880.]
+    bounds[1][4:8]  = [935.,910.,890.,870.]
+    bounds[0][4:7]  += T*2.
+    bounds[1][4:7]  += T*2.
+    bounds[0][7]    += T*1.
+    bounds[1][7]    += T*1.
+    
+    s0  = [5.,5.,5.,5.]
+    mu0 = []
+    a0  = []
+    for k in range(4):
+        lu  = np.where(bounds[0][4+k]<=lam)[0][0]
+        lo  = np.where(bounds[1][4+k]<=lam)[0][0]
+        lm  = np.argmax(I[lu:lo])
+        mu0.append(lam[lm+lu])
+        a0.append(I[lm+lu])
+    
+    p0  = a0+mu0+s0
+    
     sucess  = False
     num     = 3
     while sucess == False:
@@ -140,6 +164,10 @@ def fitto(lam,I):
     for k in range(4):
         if perr[k]  > popt[k]:
             perr[k] = popt[k]
+        if perr[4+k] > 10.:
+            perr[4+k] = 9.9
+        if perr[8+k] > popt[8+k]:
+            perr[8+k] = popt[8+k]
     return popt, perr
 
 # Prepare parameters for collection
@@ -147,16 +175,30 @@ shell   = np.zeros((4,len(angles)))
 dshell  = np.zeros((4,len(angles)))
 
 # Execute fit
-plt.figure("InAs")
+plt.figure("InAs",figsize=figsize(1.1,1.)[::-1])
 for angle, power, k in zip(angles[::-1], powers[::-1], range(len(angles))):
     print("angle = {:d}".format(angle))
     lam, I  = np.loadtxt(DAT+"InAs{:d}deg.asc".format(angle),unpack=True)
     I       /= actime["InAs"]
-    popt, perr  = fitto(lam,I)
+    popt, perr  = fitto(lam,I,0.)
     #print(popt)
     #print(perr)
     shell[:,k]  = popt[:4]
     dshell[:,k] = perr[:4]
+    
+    siline(
+        "fitP"+alphabet[k],
+        [2]+[0]*4+[1]*4,
+        [power]+list(popt[:8]),
+        [None]+list(perr[:8])
+        )
+    siline(
+        "fitPs"+alphabet[k],
+        [2]+[2]*4,
+        [power]+list(popt[8:]),
+        [None]+list(perr[8:])
+        )
+    
     p1  = plt.plot(
         lam, 
         I, 
@@ -195,18 +237,36 @@ plt.close()
 # Prepare parameters for collection
 shellt  = np.zeros((4,len(temps)))
 dshellt = np.zeros((4,len(temps)))
+mut     = np.zeros((4,len(temps)))
+dmut    = np.zeros((4,len(temps)))
 
 # Execute fit
-plt.figure("InAs_temperature")
+plt.figure("InAs_temperature",figsize=figsize(1.1,1.)[::-1])
 for temp, k in zip(temps, range(len(temps))):
     print("temp = {:d}".format(temp))
     lam, I  = np.loadtxt(DAT+"InAs{:d}K.asc".format(temp),unpack=True)
     I       /= actime["InAs"]
-    popt, perr  = fitto(lam,I)
+    popt, perr  = fitto(lam,I,k)
     #print(popt)
     #print(perr)
     shellt[:,k]     = popt[:4]
     dshellt[:,k]    = perr[:4]
+    mut[:,k]        = popt[4:8]
+    dmut[:,k]       = perr[4:8]
+    
+    siline(
+        "fitT"+alphabet[k],
+        [0]+[0]*4+[1]*4,
+        [temp]+list(popt[:8]),
+        [None]+list(perr[:8])
+        )
+    siline(
+        "fitTs"+alphabet[k],
+        [0]+[2]*4,
+        [temp]+list(popt[8:]),
+        [None]+list(perr[8:])
+        )
+    
     p1  = plt.plot(
         lam, 
         I, 
@@ -244,6 +304,8 @@ plt.close()
 
 # InP Quantenpunkte
 ###################
+set_pre("B")
+
 # Bereite fit vor
 def gauss(x, a, mu, s):
     return a*np.exp(-(x-mu)**2/(2.*s**2))
@@ -260,11 +322,12 @@ def fitto(lam,I):
     return popt, perr, lb
 
 # Prepare parameters for collection
-sInP   = np.zeros(len(angles))
-dsInP  = np.zeros(len(angles))
+sInP    = np.zeros(len(angles))
+dsInP   = np.zeros(len(angles))
+InPmax  = np.zeros(len(angles))
 
 # Execute fit
-plt.figure("InP")
+plt.figure("InP",figsize=figsize(1.1,1.)[::-1])
 for angle, power, k in zip(angles[::-1], powers[::-1], range(len(angles))):
     print("angle = {:d}".format(angle))
     lam, I  = np.loadtxt(DAT+"InP{:d}deg.asc".format(angle),unpack=True)
@@ -274,6 +337,15 @@ for angle, power, k in zip(angles[::-1], powers[::-1], range(len(angles))):
     #print(perr)
     sInP[k]   = popt[0]
     dsInP[k]  = perr[0]
+    InPmax[k] = np.max(I[:lb])
+    
+    siline(
+        "fitP"+alphabet[k],
+        [2,0,1,2],
+        [power]+list(popt),
+        [None]+list(perr)
+        )
+        
     p1  = plt.plot(
         lam, 
         I, 
@@ -289,6 +361,7 @@ for angle, power, k in zip(angles[::-1], powers[::-1], range(len(angles))):
         color   = changecolor(p1[0].get_color(),rgb=(0,0,0)),
         zorder  = 1
         )
+plt.ylim((0,8000))
 plt.xlabel("$\lambda$ [nm]")
 plt.ylabel("$I$ [counts/s]")
 plt.legend()
@@ -299,9 +372,12 @@ plt.close()
 # Prepare parameters for collection
 sInPt   = np.zeros(len(temps))
 dsInPt  = np.zeros(len(temps))
+InPtmax = np.zeros(len(temps))
+mutInP  = np.zeros(len(temps))
+dmutInP = np.zeros(len(temps))
 
 # Execute fit
-plt.figure("InP")
+plt.figure("InP_temperature",figsize=figsize(1.1,1.)[::-1])
 for temp, k in zip(temps, range(len(temps))):
     print("temp = {:d}".format(temp))
     lam, I  = np.loadtxt(DAT+"InP{:d}K.asc".format(temp),unpack=True)
@@ -311,6 +387,17 @@ for temp, k in zip(temps, range(len(temps))):
     #print(perr)
     sInPt[k]    = popt[0]
     dsInPt[k]   = perr[0]
+    InPtmax[k]  = np.max(I[:lb])
+    mutInP[k]   = popt[1]
+    dmutInP[k]  = perr[1]
+    
+    siline(
+        "fitT"+alphabet[k],
+        [0,0,1,2],
+        [temp]+list(popt),
+        [None]+list(perr)
+        )
+    
     p1  = plt.plot(
         lam, 
         I, 
@@ -326,6 +413,7 @@ for temp, k in zip(temps, range(len(temps))):
         color   = changecolor(p1[0].get_color(),rgb=(0,0,0)),
         zorder  = 1
         )
+plt.ylim((0,8000))
 plt.xlabel("$\lambda$ [nm]")
 plt.ylabel("$I$ [counts/s]")
 plt.legend()
@@ -336,11 +424,12 @@ plt.close()
 # Comparison plots
 ##################
 plt.figure("overpower")
-plt.errorbar(powers, shell[0,:], dshell[0,:], fmt="x-", label="s (InAs)")
-plt.errorbar(powers, shell[1,:], dshell[1,:], fmt="x-", label="p (InAs)")
-plt.errorbar(powers, shell[2,:], dshell[2,:], fmt="x-", label="d (InAs)")
-plt.errorbar(powers, shell[3,:], dshell[3,:], fmt="x-", label="f (InAs)")
-plt.errorbar(powers, sInP, dsInP, fmt="x-", label="s (InP)")
+plt.errorbar(powers, shell[0,:], dshell[0,:], fmt="x-", label="s (InAs)", zorder=0)
+plt.errorbar(powers, shell[1,:], dshell[1,:], fmt="x-", label="p (InAs)", zorder=1)
+plt.errorbar(powers, shell[2,:], dshell[2,:], fmt="x-", label="d (InAs)", zorder=2)
+plt.errorbar(powers, shell[3,:], dshell[3,:], fmt="x-", label="f (InAs)", zorder=3)
+plt.errorbar(powers, sInP, dsInP, fmt="x-", label="s (InP)", zorder=4)
+plt.errorbar(powers, InPmax, 0., fmt="x--", label="s (InP, max)", zorder=5)
 plt.xlabel("$P$ [mW]")
 plt.ylabel("$I$ [counts/s]")
 plt.legend()
@@ -349,14 +438,29 @@ plt.savefig(PLOT+"overpower.pdf")
 plt.close()
 
 plt.figure("overtemp")
-plt.errorbar(temps, shellt[0,:], dshellt[0,:], fmt="x-", label="s (InAs)")
-plt.errorbar(temps, shellt[1,:], dshellt[1,:], fmt="x-", label="p (InAs)")
-plt.errorbar(temps, shellt[2,:], dshellt[2,:], fmt="x-", label="d (InAs)")
-plt.errorbar(temps, shellt[3,:], dshellt[3,:], fmt="x-", label="f (InAs)")
-plt.errorbar(temps, sInPt, dsInPt, fmt="x-", label="s (InP)")
-plt.xlabel("$P$ [mW]")
+plt.errorbar(temps, shellt[0,:], dshellt[0,:], fmt="x-", label="s (InAs)", zorder=0)
+plt.errorbar(temps, shellt[1,:], dshellt[1,:], fmt="x-", label="p (InAs)", zorder=1)
+plt.errorbar(temps, shellt[2,:], dshellt[2,:], fmt="x-", label="d (InAs)", zorder=2)
+plt.errorbar(temps, shellt[3,:], dshellt[3,:], fmt="x-", label="f (InAs)", zorder=3)
+plt.errorbar(temps, sInPt, dsInPt, fmt="x-", label="s (InP)", zorder=4)
+plt.errorbar(temps, InPtmax, 0., fmt="x--", label="s (InP, max)", zorder=5)
+plt.xlabel("$T$ [K]")
 plt.ylabel("$I$ [counts/s]")
 plt.legend()
 plt.savefig(PLOT+"overtemp.pgf")
 plt.savefig(PLOT+"overtemp.pdf")
+plt.close()
+
+plt.figure("mu_overtemp")
+plt.errorbar(temps, mut[0,:], dmut[0,:], fmt="x-", label="s (InAs)", zorder=0)
+plt.errorbar(temps, mut[1,:], dmut[1,:], fmt="x-", label="p (InAs)", zorder=1)
+plt.errorbar(temps, mut[2,:], dmut[2,:], fmt="x-", label="d (InAs)", zorder=2)
+plt.errorbar(temps, mut[3,:], dmut[3,:], fmt="x-", label="f (InAs)", zorder=3)
+plt.errorbar(temps, mutInP, dmutInP, fmt="x-", label="s (InP)", zorder=4)
+plt.ylim((740,950))
+plt.xlabel("$T$ [K]")
+plt.ylabel("$\mu$ [nm]")
+plt.legend(loc='lower left', bbox_to_anchor=(0.,0.1))
+plt.savefig(PLOT+"mu_overtemp.pgf")
+plt.savefig(PLOT+"mu_overtemp.pdf")
 plt.close()
