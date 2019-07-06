@@ -6,7 +6,7 @@ from export_data import *
 texfile("../report/values.tex")
 set_dig(3)
 set_pre("")
-usepgf(size=(1.1,2.3))
+usepgf(size=(1.1,2.5))
 import matplotlib.pyplot as plt
 
 # Create folders and files
@@ -48,7 +48,7 @@ for k in range(len(angles)):
     else:
         powers[k]   = I[k-l]
 
-plt.figure("umrechnung")
+plt.figure("umrechnung",figsize=figsize(1.1,3.))
 plt.plot(angles, powers, "x-", label="Bekannte Werte")
 plt.plot(nangles, npowers, "x", label="Berechnete Werte")
 plt.xlabel(r"$\alpha$ [\si{\degree}]")
@@ -62,7 +62,7 @@ plt.savefig(PLOT+"umrechnung.pdf")
 #############
 lam, I  = np.loadtxt(DAT+"deckenlampe.asc",unpack=True)
 I       /= actime["deckenlampe"]
-plt.figure("deckenlampe")
+plt.figure("deckenlampe",figsize=figsize(1.1,3.))
 plt.plot(lam,I,"-")
 plt.xlabel("$\lambda$ [nm]")
 plt.ylabel("$I$ [counts/s]")
@@ -74,7 +74,7 @@ plt.close()
 #################
 lam, I  = np.loadtxt(DAT+"neon.asc",unpack=True)
 I       /= actime["neon"]
-plt.figure("neon")
+plt.figure("neon",figsize=figsize(1.1,3.))
 plt.plot(lam,I,"-")
 plt.xlabel("$\lambda$ [nm]")
 plt.ylabel("$I$ [counts/s]")
@@ -84,7 +84,7 @@ plt.close()
 
 # Natrium Dampflampe
 ####################
-f1  = plt.figure("na")
+f1  = plt.figure("na",figsize=figsize(1.1,3.))
 for um in naum:
     lam, I  = np.loadtxt(DAT+"na{:d}um.asc".format(um),unpack=True)
     I       /= actime["na"]
@@ -424,12 +424,12 @@ plt.close()
 # Comparison plots
 ##################
 plt.figure("overpower")
-plt.errorbar(powers, shell[0,:], dshell[0,:], fmt="x-", label="s (InAs)", zorder=0)
-plt.errorbar(powers, shell[1,:], dshell[1,:], fmt="x-", label="p (InAs)", zorder=1)
-plt.errorbar(powers, shell[2,:], dshell[2,:], fmt="x-", label="d (InAs)", zorder=2)
-plt.errorbar(powers, shell[3,:], dshell[3,:], fmt="x-", label="f (InAs)", zorder=3)
-plt.errorbar(powers, sInP, dsInP, fmt="x-", label="s (InP)", zorder=4)
-plt.errorbar(powers, InPmax, 0., fmt="x--", label="s (InP, max)", zorder=5)
+plt.errorbar(powers[::-1], shell[0,:], dshell[0,:], fmt="x-", label="s (InAs)", zorder=0)
+plt.errorbar(powers[::-1], shell[1,:], dshell[1,:], fmt="x-", label="p (InAs)", zorder=1)
+plt.errorbar(powers[::-1], shell[2,:], dshell[2,:], fmt="x-", label="d (InAs)", zorder=2)
+plt.errorbar(powers[::-1], shell[3,:], dshell[3,:], fmt="x-", label="f (InAs)", zorder=3)
+plt.errorbar(powers[::-1], sInP, dsInP, fmt="x-", label="s (InP)", zorder=4)
+#plt.errorbar(powers[::-1], InPmax, 0., fmt="x--", label="s (InP, max)", zorder=5)
 plt.xlabel("$P$ [mW]")
 plt.ylabel("$I$ [counts/s]")
 plt.legend()
@@ -443,7 +443,7 @@ plt.errorbar(temps, shellt[1,:], dshellt[1,:], fmt="x-", label="p (InAs)", zorde
 plt.errorbar(temps, shellt[2,:], dshellt[2,:], fmt="x-", label="d (InAs)", zorder=2)
 plt.errorbar(temps, shellt[3,:], dshellt[3,:], fmt="x-", label="f (InAs)", zorder=3)
 plt.errorbar(temps, sInPt, dsInPt, fmt="x-", label="s (InP)", zorder=4)
-plt.errorbar(temps, InPtmax, 0., fmt="x--", label="s (InP, max)", zorder=5)
+#plt.errorbar(temps, InPtmax, 0., fmt="x--", label="s (InP, max)", zorder=5)
 plt.xlabel("$T$ [K]")
 plt.ylabel("$I$ [counts/s]")
 plt.legend()
