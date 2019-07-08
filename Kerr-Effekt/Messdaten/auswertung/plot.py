@@ -17,7 +17,7 @@ plt.close()
 # Temperaturabhaengigkeit
 hysterese_7=np.genfromtxt("hysterese_7")
 plt.figure()
-plt.plot(hysterese_7[:,0], hysterese_7[:,1], 'x', label="hysterese_7")
+plt.plot(hysterese_7[:,0], hysterese_7[:,1], 'x',label=r'$31.4\ {}^\circ\mathrm{C}$')
 plt.ylabel(r'$\mathrm{Spannung}\   [\mathrm{V}] $')
 plt.xlabel(r'$ \mathrm{Magnetfeld}\   [\mathrm{mT}]$' )
 plt.legend()
