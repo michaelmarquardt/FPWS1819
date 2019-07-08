@@ -1,0 +1,15 @@
+#vergleichswerte: 5mm an der milimeterschraube des polarisators
+#0.024 deg per tick, value of kerr angle: 1.07
+#position drehschraube in ticks,			voltage in V
+0,	0
+10,	-0.1
+20,	-0.2
+30,	-0.3
+40,	-0.4
+50, 	-0.5
+#andere richtung drehen
+-10, 	0.5
+-20,	0.1
+-30,	0.2
+-40, 	0.25
+-50,	0.4
