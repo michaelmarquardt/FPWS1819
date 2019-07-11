@@ -10,7 +10,16 @@ Bevor der eigentlichen Messung der Hysteresekurven, soll die Kalibirerkurve für
 
 
 \subsection{Temperaturabhängigkeit der Hysteresekurven}
-Für die Berechnunug des Kerr-Winkels wird der Zusammenhang zwischen der Drehung der Mikrometerschraube mit der gemessenen Spannung benötigt. Die gemessenen Werte sind in der Tabelle \ref{tab:Mikrometerschraube} dargestellt. Aus der Stellung der Mikrometerschraube kann der Winkel berechnet werden, wobei gilt $ 1 \mathrm{Tick}\ \widehat{=}\ 0.024\ {}^\circ$. Gut erkennbar ist der erwartete lineare Zusammenhang zwischen Kerr-Winkel und Spannung.
+Für die Berechnunug des Kerr-Winkels wird der Zusammenhang zwischen der Drehung der Mikrometerschraube mit der gemessenen Spannung benötigt. Die gemessenen Werte sind in der Tabelle \ref{tab:Mikrometerschraube} dargestellt. Aus der Stellung der Mikrometerschraube kann der Winkel berechnet werden, wobei gilt $ 1 \mathrm{Tick}\ \widehat{=}\ 0.024\ {}^\circ$. Gut erkennbar ist der erwartete lineare Zusammenhang zwischen Kerr-Winkel und Spannung. Ohne das ein Fit notwendig ist, kann aufgrund der Daten aus der Tabelle \ref{tab:Mikrometerschraube} eine Geradengleichung bestimmt werden. Es gilt für alle gemessenen Spannungen
+\begin{equation}
+\frac{\mathrm{Mikrometerschraube}\ \mathrm{mm}} {\mathrm{Spannung}\ \mathrm{V}} = 10\ \frac{\mathrm{mm}}{\mathrm{V}}.
+\end{equation}
+Unter Berücksichtigung des Umrechnungsfaktors zwischen der Stellung der Mikrometerschraube und Winkel $\phi$ lautet die Geradengleichung 
+\begin{equation}
+\phi = 2.4\ \frac{{ }^\circ}{\mathrm{V}} \cdot U,
+\end{equation}
+wobei $U$ die Spannung ist. 
+
 \begin{table}[h]
     \centering
     \caption{
@@ -32,7 +41,9 @@ Für die Berechnunug des Kerr-Winkels wird der Zusammenhang zwischen der Drehung
     50 & 1.2 & 0.5 \\   
     \end{tabular}
 \end{table}
-Die unbearbeitete Hysteresekurve in der Abbildung \ref{fig:hysterese_original} ist schräg und nicht gerade. Die Ursache dafür ist, dass in der Polymerschicht die sich auf der magnetooptischen Disk befindet es auch zu einer Polarisationsänderung kommt. Diese Polarisationsänderung gibt es zusätzlich zu der Polarisationsänderung durch den Kerr-Effekt. Zur Bestimmung der Kerr-Winkel muss somit der Einfluss der Polymerschicht rausgerechnet werden.  
+Die unbearbeitete Hysteresekurve in der Abbildung \ref{fig:hysterese_original} ist schräg und nicht gerade. Die Ursache dafür ist, dass in der Polymerschicht die sich auf der magnetooptischen Disk befindet es auch zu einer Polarisationsänderung kommt. Diese Polarisationsänderung gibt es zusätzlich zu der Polarisationsänderung durch den Kerr-Effekt. Dieser Einfluss der Polymrschicht wurde aus den Hysterekurven rausgerechnet werden. Die korrigierten Hysteresekurven für unterschiedliche Temperaturen  sind in den Abbildungen \ref{fig:hysterese_temp_1} und \ref{fig:hysterese_temp_2} dargestellt. 
+
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{../Messdaten/auswertung/hysterese_7_original.pdf}
@@ -66,3 +77,30 @@ Die unbearbeitete Hysteresekurve in der Abbildung \ref{fig:hysterese_original} i
 \caption{ Hysteresekurven für unterschiedliche Temperaturen. }
 \label{fig:hysterese_temp_2}
 \end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{../Messdaten/auswertung/Kompensationstemperatur.pdf}
+\caption{Kompensationstemperatur}
+\label{fig:koerzitivfeldstaerke}
+\end{figure}
+
+Die Koerzitivfeldstärke $H_\mathrm{c}$, also die magnetische Feldstärke die für die vollständige Entmagnetisierung notwendig ist, kann den Hysterekurven entnommen werden. 
+Die Koerzitivfeldstärke entspricht der hälfte der Breite der Hysterekurven. 
+Die Koerzitivfeldstärken in Abhängigkeit der Temperatur sind in der Abbildung \ref{fig:koerzitivfeldstaerke} dargestellt. 
+Aus den Koerzitivfeldstärken kann die Kompensationstemperatur $T_\mathrm{comp}$ bestimmt  
+werden.
+Dazu muss die Funktion  
+\begin{equation}
+H_\mathrm{c} = \frac{H_0 \cdot T}{T-T_\mathrm{comp}}
+\label{eq:koerzitivfeldstaerke} 
+\end{equation}
+als Fitfunktion benutzt werden.
+Die Fitparameter sind
+\begin{align}
+H_0 & = 59.70 \pm 4.78\ \mathrm{mT}\\
+T_\mathrm{comp} & = 279.45 \pm 2.73\ \mathrm{K} .
+\label{eq:fitwerte}
+\end{align}
+
+ 
