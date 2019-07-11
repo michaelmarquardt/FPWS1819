@@ -1,0 +1,14 @@
+# auslesen der breite der hysteresekurven
+# mittelwert nehmen von wert nach rechts und nach links
+# Temperatur, linker wert, rechter wert, mittelwert
+31.4,	695,	695, 	695
+36.1,	630,	631,	630.5
+41.3,	553,	553,	553
+48.8,	462,	463,	462.5
+55.8,	462,	463,	462.5
+63.6,	360,	360,	360
+69.9,	360,	360,	360
+76.4,	247,	246,	246.5
+83.4,	247,	246,	246.5
+90.1,	217,	216,	216.5
+97.4,	217,	216,	216.5	
