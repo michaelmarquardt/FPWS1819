@@ -1,0 +1,59 @@
+\subsection{Temperaturabh"angigkeit der Photolumineszenz}
+\begin{sidewaysfigure}
+    \input{../plots/InAs_temperature.pgf}
+    \caption{
+        Spektrum der InAs QDs f"ur verschiedene Temperaturen $T$.
+        Es sind bis zu vier Peaks zu erkennen, die von rechts nach links der s, p, d und f-Schale im atom"ahnlichen Modell entsprechen.
+        Die Kreuze bezeichnen die Messpunkte, w"ahrend die durchgezogenen Linien Gau\ss-Fits nach Gleichung \eqref{eq:fit} sind.
+        Wenn die Temperatur erh"oht wird sinkt nicht nur die H"ohe der Peaks sondern sie werden auch zu h"oheren Wellenl"angen (niedrigeren Energien) verschoben.
+    }
+    \label{fig:InAs_temp}
+\end{sidewaysfigure}
+\begin{sidewaysfigure}
+    \input{../plots/InP_temperature.pgf}
+    \caption{
+        Spektrum der InP QDs f"ur verschiedene Temperaturen $T$.
+        Der linke Peak entspricht der s-Schale.
+        Die Kreuze bezeichnen die Messpunkte, w"ahrend die durchgezogenen Linien Gau\ss-Fits nach Gleichung \eqref{eq:fit} sind.
+        Beim Fit wird nur der Bereich bis \SI{780}{\nano\metre} verwendet.
+        F"ur steigende Temperaturen nehmen die Peaks ab und werden zu h"oheren Wellenl"angen (niedrigeren Energien) verschoben.
+        Die rechten Peaks verschwimmen immer mehr.
+    }
+    \label{fig:InP_temp}
+\end{sidewaysfigure}
+\begin{figure}[htbp]
+    \centering
+    \input{../plots/overtemp.pgf}
+    \caption{
+        Die Abbildung zeigt die Intensit"aten der Peaks der s, p, d und f-Schale von InAs, sowie der s-Schale von InP.
+        %Die gestrichelte Linie steht dabei f"ur die Ausgelesenen Maxima der Messdaten.
+        %Sie ist mit aufgetragen, weil die Gau\ss-Kurven die s-Schale von InP nicht besonders gut approximieren.
+        F"ur steigende Temperaturen nimmt die Intensit"at f"ur InAs ab \SI{50}{\kelvin} stark ab.
+        Die Schalen verschwinden nach und nach.
+        Bei \SI{170}{\kelvin} sind keine Schalen mehr zu erkennen.
+        F"ur InP hingegen ist die Abnahme der Intensit"at wesentlich geringer, sogar mit umgekehrter Kr"ummung.
+        Auch bei \SI{170}{\kelvin} ist noch der s-Peak zu erkennen.
+    }
+    \label{fig:overtemp}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \input{../plots/mu_overtemp.pgf}
+    \caption{
+        Die Abbildung zeigt die Zentralwellenl"angen der Peaks der s, p, d und f-Schale von InAs, sowie der s-Schale von InP.
+        F"ur h"ohere Temperaturen verschiebt sich der Peak zu h"oheren Wellenl"angen.
+        Zu beachten ist, dass die Werte f"ur die d und f-Schale bei hohen Temperaturen nicht Aussagekr"aftig sind, da die Peaks hier bereits nahezu unkenntlich sind.
+        Wenn man dies Ber"ucksichtigt, so ist die Verschiebung f"ur alle Schalen etwa gleich.
+        InAs und Inp zeigen in etwa das gleiche Verhalten.
+    }
+    \label{fig:mu_overtemp}
+\end{figure}
+F"ur diesen Versuchsteil wird die h"ochste Laserleistung (\SI{2.69}{\milli\watt}) eingestellt.
+Dann wird die K"uhlung der Probe heruntergefahren und ab \SI{10}{\kelvin} in Schritten von \SI{20}{\kelvin} das aktuelle Spektrum aufgenommen.
+Die Ergebnisse sind in den Abbildungen \vref{fig:InAs_temp} und \vref{fig:InP_temp} dargestellt.
+An die Peaks werden wieder Gau\ss-Kurven \eqref{eq:fit} gefittet.
+Die Fitparameter sind in den Tabellen \vref{tab:fitBT} und \vref{tab:fitAT} aufgetragen.
+In den Abbildungen \vref{fig:overtemp} und \vref{fig:mu_overtemp} sind die Intensit"at, beziehungsweise die Zentralwellenl"ange der Peaks in Abh"angigkeit der Temperatur aufgetragen.
+Es zeigt sich, dass nicht nur die Intensit"at f"ur steigende Temperaturen abnimmt, sondern auch die Wellenl"ange zunimmt.
+Die Wellenl"ange ist invers proportional zur Frequenz und somit zur Energie der ausgesendeten Photonen.
+Mit steigender Temperatur wird also auch die Energiel"ucke zwischen den Zust"anden kleiner, die f"ur die Emission verantwortlich sind.
