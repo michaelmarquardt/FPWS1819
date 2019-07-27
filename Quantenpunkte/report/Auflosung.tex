@@ -13,10 +13,34 @@
 \end{figure}
 Die Neon-Dampflampe wird nun durch eine Natrium-Dampflampe ersetzt.
 Die "Offnung des Spalts vor der CCD-Kamera wird dabei von \SI{0}{\micro\metre} bis \SI{600}{\micro\metre} variiert.
-Der Offset wird dabei $-20$ Pixel gestellt, um das erwartete Spektrum zu treffen.
+Der Offset wird dabei auf $-20$ Pixel gestellt, um das erwartete Spektrum zu treffen.
 Die Spektren sind in Abbildung \vref{fig:na} dargestellt.
-Es ist zu erkennen, das sich bis zu einer "Offnung von \SI{500}{\micro\metre} nichts ver"andert.
+Sie zeigen das Na-D-Liniendublett bei \SI{588,9965}{nm} und \SI{589,5932}{nm}.
+Es wird durch die Spin-Bahn-Kopplung beim "Ubergang eines Elektrons von der 3p in die 3s Schale hervorgerufen.
+\cite{NaD}
+Bei Beugung an einem Spalt gilt das Rayleigh-Kriterium
+\begin{equation}
+b = l\frac{\lambda}{d}
+\end{equation}
+f"ur das Aufl"osungsverm"ogen, wobei $\lambda$ die Wellenl"ange, $d$ die Spaltbreite und $l$ der Abstand zwischen Detektor und Spalt ist.
+Dann ist $b$ die L"angendifferenz, die am Detektor noch aufgel"ost werden kann.
+Liegen die beiden Peaks nun n"aher zusammen als $b$, so koennen sie nicht mehr aufgel"ost werden.
+Da sie aber noch aufgel"ost werden k"onnen, kann das Aufl"osungsverm"ogen der Kamera abgesch"atzt werden durch
+\begin{align}
+b = l\frac{\lambda}{d_\text{max}},
+\end{align}
+wobei $d_\text{max}$ die maximale Spalt"offnung ist, bei der noch beide Peaks zu erkennen sind.
+Der Abstand $l$ wird auf \SI{2}{cm} abgesch"atzt.
+
+In der Abbildung ist zu erkennen, dass sich bis zu einer "Offnung von \SI{500}{\micro\metre} nichts ver"andert.
 Bei \SI{600}{\micro\metre} "ubersteuert die CCD-Kamera, was nahelegt, dass der Spalt nun offen ist.
 Die Verschiebung der Position bei \SI{550}{\micro\metre} kann dadurch erkl"art werden, dass der Wert erst nach der Messung von \SI{600}{\micro\metre} aufgenommen wurde.
 Der Spalt wurde also wieder geschlossen, statt weiter ge"offnet und befindet sich nun an einer leicht anderen Position.
 Die geringere Intensit"at kann mit einer tempor"aren Beeintr"achtigung der CCD-Kamera durch die "Ubersteuerung erkl"art werde.
+Die Messung legt nahe, dass der Spalt sich nicht unter \SI{550}{\micro\metre} schlie{\ss}en l"asst.
+F"ur das Aufl"osungsverm"ogen des Detektors ergibt sich dann
+\begin{align*}
+b
+    &\approx \SI{2}{cm}\frac{\SI{589}{nm}}{\SI{550}{\micro\metre}}\\
+    &\approx\SI{21}{\micro\metre}.
+\end{align*}
