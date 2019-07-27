@@ -30,6 +30,7 @@ betas   = [0,90,0,90,-45,45,-45,45,0,90,0,90,-45,45,-45,45]
 
 
 for state, table in zip((DATA+"psi_plus/",DATA+"psi_minus/"),tables): 
+    print("new state")
     # Prepare arrays
     big_array   = np.zeros((16,5))
     E           = np.zeros(4)
@@ -51,13 +52,18 @@ for state, table in zip((DATA+"psi_plus/",DATA+"psi_minus/"),tables):
         E[k]    = (C[0]-C[1]-C[2]+C[3])/np.sum(C)
         dE[k]   = np.sum(dC)/np.sum(C)*(1.+np.abs(E[k]))
         
-        print(C)
-        print(dC)
-        print(E)
-        print(dE)
+    print(C)
+    print(dC)
+    print(E)
+    print(dE)
         
     # Calculate CHSH inequality
-    S   = E[0]-E[1]+E[2]+E[3]
+    S   = 0.
+    for k in range(4):
+        St  = np.sum(E)-2*E[k]
+        if abs(St)>abs(S):
+            S   = St
+    #S   = E[0]-E[1]+E[2]+E[3]
     dS  = np.sum(dE)
     
     print("S    = {:.3f} +- {:.3f}".format(S,dS))
@@ -78,6 +84,8 @@ for state, table in zip((DATA+"psi_plus/",DATA+"psi_minus/"),tables):
             texfile.write(r"\hline")
         texfile.write("\n")
     texfile.write("\\end{tabular}}\n\n")
+    
+    print("")
     
 #   Tomography
 ##############
@@ -253,16 +261,20 @@ drhobell    = abs(f.bellmat)*drho*abs(f.bellmat)
 printcomplexmatrix("rhobell",rhobell,dig=3)
 printcomplexmatrix("drhobell",drhobell,dig=3)
 
+print("trace")
 print(np.trace(rho))
 print(np.trace(drho))
 
 rho2    = rho*rho
 drho2   = abs(rho)*drho+drho*abs(rho)
 
+print("trace2")
 print(np.trace(rho2))
 print(np.trace(drho2))
 
-#print("S    = {} +- {}".format(f.S(f.a1,f.b1,f.a2,f.b2,rho),f.S(f.a1,f.b1,f.a2,f.b2,drho)))
+# Calculate S value of rho
+f.printS(f.a1,f.b1,f.a2,f.b2,rho)
+f.printdS(f.a1,f.b1,f.a2,f.b2,rho,drho)
 
 """
 # 2D plot of alpha and beta with a'=a-45deg b'=b-45deg

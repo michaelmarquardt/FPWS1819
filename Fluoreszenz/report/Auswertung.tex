@@ -92,7 +92,7 @@ The coincidence count rates will be measured in the experiments but they can als
 \end{align}
 as
 \begin{equation}
-C(\alpha,\beta)   = \trace{\rho \hat A(\alpha,\beta)}
+C(\alpha,\beta)   = \trace[\rho \hat A(\alpha,\beta)]
 \label{eq:a:CA}
 \end{equation}
 with the density matrix $\rho$.
@@ -106,14 +106,27 @@ For a set of angles
 \beta'&=\SI{-45}{\degree}\label{eq:a:angles:b'}
 \end{align}
 \end{subequations}
-the S values for the pure bell states become
+the $E$ values become $1/\sqrt{2}$ in absolute for a pure bell state.
+Exactly one $E$ value has a different sign than the others.
+For $\Phi^{(+)}$ they are
+\begin{subequations}
+\label{eq:a:Ebell}
+\begin{align}
+    E(\alpha,\beta)&=1/\sqrt{2}\label{eq:a:Ebell:ab}\\
+    E(\alpha,\beta')&=-1/\sqrt{2}\label{eq:a:Ebell:abs}\\
+    E(\alpha',\beta)&=1/\sqrt{2}\label{eq:a:Ebell:asb}\\
+    E(\alpha',\beta')&=1/\sqrt{2}.\label{eq:a:Ebell:asbs}
+\end{align}
+\end{subequations}
+Now $S$ is calculated using equation \eqref{eq:a:S} where one chooses the minus sign to act on the term with the different sign.
+The resulting $S$ values are
 \begin{subequations}
 \label{eq:a:Sbell}
 \begin{align}
-S(\Phi^{(+)})&=2\sqrt{2}>2\label{eq:a:sbell:phi+}\\
-S(\Phi^{(-)})&=0\label{eq:a:sbell:phi-}\\
-S(\Psi^{(+)})&=0\label{eq:a:sbell:psi+}\\
-S(\Psi^{(-)})&=-2\sqrt{2}<-2.\label{eq:a:sbell:psi-}
+S(\Phi^{(+)})&=2\sqrt{2}>2\label{eq:a:Sbell:phi+}\\
+S(\Phi^{(-)})&=2\sqrt{2}>2\label{eq:a:Sbell:phi-}\\
+S(\Psi^{(+)})&=-2\sqrt{2}<-2\label{eq:a:Sbell:psi+}\\
+S(\Psi^{(-)})&=-2\sqrt{2}<-2.\label{eq:a:Sbell:psi-}
 \end{align}
 \end{subequations}
 
@@ -172,11 +185,14 @@ with error propagation
 Finally one can calculate the $S$ value using equation \eqref{eq:a:S} like
 \begin{align*}
 S\left(\Psi^{(+)}\right)
-    &=E\left(\SI{22.5}{\degree},\SI{0}{\degree}\right)-E\left(\SI{22.5}{\degree},\SI{-45}{\degree}\right)+E\left(\SI{-22.5}{\degree},\SI{0}{\degree}\right)+E\left(\SI{-22.5}{\degree},\SI{-45}{\degree}\right)
+    &= E\left(\SI{22.5}{\degree},\SI{0}{\degree}\right)
+    + E\left(\SI{22.5}{\degree},\SI{-45}{\degree}\right)
+    + E\left(\SI{-22.5}{\degree},\SI{0}{\degree}\right)
+    - E\left(\SI{-22.5}{\degree},\SI{-45}{\degree}\right)
     \\
-    &=-0.57+0.63-0.64+0.52
+    &=-0.57-0.63-0.64-0.52
     \\
-    &=-0.06
+    &=-2.36
 \end{align*}
 with error propagation
 \begin{subequations}
@@ -197,13 +213,13 @@ with error propagation
 The final results are:
 \begin{align*}
 S\left(\Psi^{(+)}\right)
-    &=-0.06\pm 0.10
+    &=-2.36\pm 0.10
     \\
 S\left(\Psi^{(-)}\right)
     &=-2.07\pm 0.09
 \end{align*}
-The $S$ value for $\Psi^{(+)}$ is 0 like expected but the $S$ value for $\Psi^{(-)}$ is much smaller than $2\sqrt{2}=2.83$.
-In fact the value can be seen as possibly bigger than -2 within its uncertainty and is therefore no proof for the wrongness of the LHV theory.
+The $S$ value for $\Psi^{(+)}$ is not $-2\sqrt{2}=2.83$ like expected but smaller than $-2$ which proofs the violation of the CHSH inequality and therefore the wrongness of the LHV theory.
+The $S$ value for $\Psi^{(-)}$ is possibly bigger than -2 within its uncertainty and is therefore no proof for the violation of the CHSH inequality.
 
 \subsection{Tomography measurement of the density of states}
 The density matrix of the $\ket{\Psi^{(-)}}$ state is measured in this section.
@@ -331,6 +347,30 @@ But the accordance is only $0.20\pm 0.03$.
 The $\Psi^{(+)}$ state on the other hand shows an accordance of $0.73\pm0.03$.
 It may be that some angles were defined the other way around and that therefore the generated $\Psi^{(+)}$ state was measured instead of the $\Psi^{(-)}$ state.
 
+The $S$ value can be calculated using the method presented in section 4.1.
+The expectation vale $E$ is calculated using equation \eqref{eq:a:EC} and the coincidence count rates $C$ with \eqref{eq:a:CA} using the measured density matrix $\rho$ instead of the bell states.
+The resulting $E$ values are
+\begin{align*}
+    E(\alpha,\beta)&=-0.48\pm 0.02\\
+    E(\alpha,\beta')&=-0.48\pm 0.06\\
+    E(\alpha',\beta)&=-0.74\pm 0.01\\
+    E(\alpha',\beta')&=0.17\pm 0.12.
+\end{align*}
+They are indeed real although the density matrix is complex.
+The uncertainty is calculated by calculating the error of $C$ as
+\begin{align}
+\Delta C(\alpha,\beta)
+    &=\abs{\trace[\Delta\rho \hat A(\alpha,\beta)]}\label{eq:a:dCdrho}
+\end{align}
+The error $\Delta E$ is then calculated using \eqref{eq:a:dE} and $\Delta S$ with \eqref{eq:a:dS}.
+The resulting $S$ value is
+\begin{align*}
+S
+    &=-0.48-0.48-0.74-0.17\\
+    &=-1.87\pm 0.21
+\end{align*}
+which is larger than $-2$ but may be lower within its uncertainty.
+
 At last the eigenvectors $v_i$ and eigenvalues $\lambda_i$ of the density matrix are calculated (in the previous formalism, not the bell basis).
 \begin{align*}
 \lambda_1
@@ -353,6 +393,7 @@ At last the eigenvectors $v_i$ and eigenvalues $\lambda_i$ of the density matrix
     &v_4
     &=\evecd
 \end{align*}
+
 
 %The probability can be calculated from the coincidence count rates $C_k$ like
 %\begin{align}

@@ -39,8 +39,56 @@ def E(a,b,rho):
     foot    =  (C1+C2+C3+C4)
     return head/foot
 
+def dE(a,b,rho,drho):
+    C1  = C(a,b,rho)
+    C2  = C(a,b+np.pi/2.,rho)
+    C3  = C(a+np.pi/2.,b,rho)
+    C4  = C(a+np.pi/2.,b+np.pi/2.,rho)
+    dC1 = abs(C(a,b,drho))
+    dC2 = abs(C(a,b+np.pi/2.,drho))
+    dC3 = abs(C(a+np.pi/2.,b,drho))
+    dC4 = abs(C(a+np.pi/2.,b+np.pi/2.,drho))
+    head    =  (C1-C2-C3+C4)
+    foot    =  (C1+C2+C3+C4)
+    dhead   =  (dC1+dC2+dC3+dC4)
+    return dhead/foot + head*dhead/foot**2
+
 def S(a1,b1,a2,b2,rho):
     return E(a1,b1,rho)-E(a1,b2,rho)+E(a2,b1,rho)+E(a2,b2,rho)
+
+def printS(a1,b1,a2,b2,rho):
+    E11 = E(a1,b1,rho)
+    E12 = E(a1,b2,rho)
+    E21 = E(a2,b1,rho)
+    E22 = E(a2,b2,rho)
+    Es  = np.array([E11, E12, E21, E22])
+    print("E(a1,b1) = {}".format(E11))
+    print("E(a1,b2) = {}".format(E12))
+    print("E(a2,b1) = {}".format(E21))
+    print("E(a2,b2) = {}".format(E22))
+    Sf  = 0.
+    for k in range(4):
+        S   = np.sum(Es)-2*Es[k]
+        if abs(S) > abs(Sf):
+            Sf  = S
+    print("S        = {}".format(Sf))
+
+def printdS(a1,b1,a2,b2,rho,drho):
+    E11 = E(a1,b1,rho)
+    E12 = E(a1,b2,rho)
+    E21 = E(a2,b1,rho)
+    E22 = E(a2,b2,rho)
+    Es  = np.array([E11, E12, E21, E22])
+    dE11 = dE(a1,b1,rho,drho)
+    dE12 = dE(a1,b2,rho,drho)
+    dE21 = dE(a2,b1,rho,drho)
+    dE22 = dE(a2,b2,rho,drho)
+    dEs  = np.array([dE11, dE12, dE21, dE22])
+    print("dE(a1,b1) = {}".format(dE11))
+    print("dE(a1,b2) = {}".format(dE12))
+    print("dE(a2,b1) = {}".format(dE21))
+    print("dE(a2,b2) = {}".format(dE22))
+    print("dS        = {}".format(np.sum(dEs)))
 
 rad = np.pi/180.
 a1  = 22.5*rad
@@ -80,7 +128,8 @@ for k in range(4):
     rho = bell[k]*bell[k].H
     #print("rho")
     #print(rho)
-    print("S    = {}".format(S(a1,b1,a2,b2,rho)))
+    printS(a1,b1,a2,b2,rho)
+    #print("S    = {}".format(S(a1,b1,a2,b2,rho)))
     print()
 
 """
