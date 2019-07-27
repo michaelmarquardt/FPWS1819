@@ -1,0 +1,76 @@
+\subsection{Intensit"atsabh"angigkeit der Photolumineszenz}
+\begin{figure}[htbp]
+    \centering
+    \input{../plots/umrechnung.pgf}
+    \caption{
+        Die Abbildung zeigt die Umrechnung des Winkels am Polarisator $\alpha$ in die durchgehende Laserleistung $P$.
+        Die blaun Werte stehen dabei f"ur die als bekannt angegebenen Werte, w"ahrend die orangenen Werte als Mittelwert aus den beiden benachbarten Werten gebildet werden.
+        Die Abbildung zeigt, dass im fraglichen Bereich eine etwa lineare Steigung vorherrscht, weswegen dies eine gute N"ahreung ist.
+        Die vorhandenen Punkte werden alle f"ur die Messung in Abh"angigkeit der Intensit"at verwendet.
+    }
+    \label{fig:umrechnung}
+\end{figure}
+\begin{sidewaysfigure}
+    \input{../plots/InAs_power.pgf}
+    \caption{
+        Spektrum der InAs QDs f"ur verschiedene Laserleistungen $P$.
+        Es sind bis zu vier Peaks zu erkennen, die von rechts nach links der s, p, d und f-Schale im atom"ahnlichen Modell entsprechen.
+        Die Kreuze bezeichnen die Messpunkte, w"ahrend die durchgezogenen Linien Gau\ss-Fits nach Gleichung \eqref{eq:fit} sind.
+        F"ur $P=\SI{0}{\milli\watt}$ sind keine Peaks zu erkennen (da logischerweise keine Emission angeregt wird).
+        Die H"ohe der Peaks steigt f"ur steigende Laserleistungen, ihre Position aber ver"andert sich nicht.
+    }
+    \label{fig:InAs_power}
+\end{sidewaysfigure}
+\begin{sidewaysfigure}
+    \input{../plots/InP_power.pgf}
+    \caption{
+        Spektrum der InP QDs f"ur verschiedene Laserleistungen $P$.
+        Der linke Peak entspricht der s-Schale.
+        Die Kreuze bezeichnen die Messpunkte, w"ahrend die durchgezogenen Linien Gau\ss-Fits nach Gleichung \eqref{eq:fit} sind.
+        Beim Fit wird nur der Bereich bis \SI{780}{\nano\metre} verwendet.
+        %Wie zu erkennen ist, lassen sich die Peaks aber nicht besonders gut durch Gau\ss-Kurven ann"ahern.
+        Die H"ohe der Peaks steigt f"ur steigende Laserleistungen, ihre Position aber ver"andert sich nicht.
+    }
+    \label{fig:InP_power}
+\end{sidewaysfigure}
+\begin{figure}[htbp]
+    \centering
+    \input{../plots/overpower.pgf}
+    \caption{
+        Die Abbildung zeigt die Intensit"aten der Peaks der s, p, d und f-Schale von InAs, sowie der s-Schale von InP.
+        %Die gestrichelte Linie steht dabei f"ur die Ausgelesenen Maxima der Messdaten.
+        %Sie ist mit aufgetragen, weil die Gau\ss-Kurven die s-Schale von InP nicht besonders gut approximieren.
+        Die meisten Kurven zeigen eine sehr geringe Kr"ummung, also einen ann"ahrend linearen Verlauf.
+        Dabei zeigt sich, dass bei der s-Schale die Steigung bei niedrigen Leistungen gr"o\ss er ist.
+        Bei den anderen Schalen nimmt die Steigung bei st"arkeren Leistungen ein und nimmt dann zu.
+        Die Intensit"at der s-Schale von InAs ist etwa dreimal so gro\ss\ wie die von InP.
+    }
+    \label{fig:overpower}
+\end{figure}
+Der versuch wird f"ur zwei verschiedene Halbleiter-Heterostrukturen durchgef"uhrt, InAs/GaAs (InAs) und InP/InGaP (InP).
+
+Zuerst muss der Strahlengang justiert werden, indem der Laser auf den Spalt fokussiert wird.
+Anschlie\ss end werden die Linsen eingebracht und die Photolumineszenz auf den Spalt fokussiert.
+Zuletzt wird der reflektierte Laser mit einem Farbglasfilter, unmittelbar vor dem Spalt, geblockt und das Ergebnis durch weitere Feinjustage so eingestellt, dass die Peaks im gemessenen Spektrum maximiert werden.
+Aufgrund einer verstellten Grundeinstellung sind f"ur InAs nur maximal vier Peaks zu beobachten.
+
+Die Versuche wurden bei Temperaturen um die \SI{3.59}{\kelvin} bei InAs und \SI{3.85}{\kelvin} bei InP durchgef"uhrt.
+
+Die Intensit"at des anregenden Lasers wird "uber einen Polarisator eingestellt.
+Die verwendeten Leistungen $P$, und wie diese in den Polarisatorwinkel $\alpha$ umgerechnet werden, sind in Abbildung \vref{fig:umrechnung} aufgetragen.
+
+Die gemessenen Spektren sind in den Abbildungen \vref{fig:InAs_power} und \vref{fig:InP_power} gezeigt.
+An die Peaks werden Gauss-Funktionen der Form
+\begin{equation}
+f(\lambda)
+    = a\cdot\exp(-\frac{(\lambda-\mu)^2}{2\sigma^2})
+    \label{eq:fit}
+\end{equation}
+gefittet, wobei $a$, $\mu$ und $\sigma$ als Fitparameter verwendet werden.
+Die resultierenden Fitparameter sind in den Tabellen \vref{tab:fitBP} und \vref{tab:fitAP} aufgelistet.
+
+F"ur InAs sind bis zu vier Peaks zu erkennen, die von hohen zu niedrigen Wellenl"angen mit s, p, d und f bezeichnet werden, analog zu den Atomschalen im Schalenmodell.
+F"ur niedrige Eingangsleistungen verschwindet der f-Peak.
+InP zeigt einen s-Peak bei etwa \SI{750}{nm} und einen Haufen "uberlappender Peaks nahe \SI{810}{nm}.
+F"ur beide Proben steigt die Peakh"ohe mit steigender Laserleistung, die Positionen der Peaks bleiben aber, wie erwartet, unver"andert.
+Die Intensit"aten sind in Abbildung \vref{fig:overpower} "uber der Leistung dargestellt.
