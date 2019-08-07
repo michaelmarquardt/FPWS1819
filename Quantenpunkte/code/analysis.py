@@ -98,6 +98,19 @@ plt.savefig(PLOT+"na.pgf")
 plt.savefig(PLOT+"na.pdf")
 plt.close()
 
+# Find the maxima
+lam, I  = np.loadtxt(DAT+"na0um.asc",unpack=True)
+last    = 0
+state   = 0
+for i in range (len(I)):
+    if state == 0 and I[i]-last < -1000:
+        print("Maximum at {:.3f}".format(lam[i-1]))
+        state = 1
+    elif state == 1 and I[i]-last > 100:
+        state = 0
+    last    = I[i]
+        
+
 # InAs Quantenpunkte
 ####################
 set_pre("A")
