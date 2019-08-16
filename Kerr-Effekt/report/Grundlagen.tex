@@ -41,7 +41,7 @@ Die beiden zirkularen Polarisationen erhalten daher eine andere Phasendifferenz 
             (4.5,1) rectangle (6.5,5);
         \draw[color=green, fill=green]
             (10.5,4.5) node[right]{Laser};
-        \draw[color=grey, fill=grey]
+        \draw[color=gray, fill=gray]
             (0,0)--(0,1)--
             (1,1)--(1,1.5)--(3,1.5)--(3,1)--
             (5,1)--(5,1.5)--(6,1.5)--(6,1)--
@@ -72,20 +72,20 @@ Die beiden zirkularen Polarisationen erhalten daher eine andere Phasendifferenz 
         \draw[color=brown, fill=brown]
             (0,1) rectangle (7,2.5)
             (7.5,1.5) node[right]{Substrat};
-        \draw[fill=grey]
+        \draw[fill=gray]
             (0,0) rectangle (3,1)
             (4,0) rectangle (5,1)
             (6,0) rectangle (7,1);
-        \draw[fill=brightgrey]
+        \draw[fill=brightgray]
             (3,0) rectangle (4,1)
             (5,0) rectangle (6,1);
         \draw[]
             (7.5,0.5) node[right]{MO-Schicht};
-        \foreach \i in {0.25,0.75,1.25,1.75,2.25,2.75,4.25,4.75,6.25,6.75} {
+        \foreach \i in {.5,1.5,2.5,4.5,6.5} {
             \draw[fill=black, shift={(\i,0.5)}, opacity=0.8]
                 (-0.1,-0.4)--(-0.1,0.2)--(-0.2,0.2)--(0,0.4)--(0.2,0.2)--(0.1,0.2)--(0.1,-0.4)--(-0.1,-0.4);
         }
-        \foreach \i in {3.25,3.75,5.25,5.75} {
+        \foreach \i in {3.5,5.5} {
             \draw[fill=black, shift={(\i,0.5)}, opacity=0.8]
             (-0.1,0.4)--(-0.1,-0.2)--(-0.2,-0.2)--(0,-0.4)--(0.2,-0.2)--(0.1,-0.2)--(0.1,0.4)--(-0.1,0.4);
         }
@@ -114,6 +114,151 @@ Durch destruktive Interferenz wird die reflektierte Intensit"at verringert. \cit
 
 Eine weitere Form von optischen Speichermedien sind Magnetooptische Discs (MO).
 Bei diesen wird die Information, wie in Abbildung \vref{fig:MO} dargestellt, in der lokalen Magnetisierung gespeichert.
+Ausgelesen wird wiederum mit einem Laser, nur dass diesmal nicht Interferenz, sondern die Drehung der Polarisation um den Kerr-Winkel benutzt wird, um ein Bit zu speichern.
+Eine MO kann beschrieben werden, indem ein Laser benutzt wird, um eine bestimmte Speicherposition aufzuheizen.
+Dies senkt die magnetische Feldst"arke, die n"otig ist, um die Spins umzuklappen (Koerzitivfeldst"arke).
+Durch anlegen eben jenes Magnetfeldes kann das Bit neu beschrieben werden.
+Der Aufbau der Materialschichten einer MO ist in Abbildung \vref{fig:Struktur} gezeigt.
+\cite{roll}
+\begin{figure}[htbp]
+    \begin{minipage}[t][][b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+        [x=0.8\textwidth,y=.15mm]
+        \draw[fill=brown]
+            (0,100)rectangle(1,200)
+            (.5,150)node{Schutzschicht (\SI{10}{\micro\metre})};
+        \draw[fill=white]
+            (0,200)rectangle(1,260)
+            (.5,230)node{Al (\SI{60}{nm})};
+        \draw[fill=lightblue]
+            (0,260)rectangle(1,310)
+            (.5,285)node{SiN (\SI{50}{nm})};
+        \draw[fill=brightgray]
+            (0,310)rectangle(1,340)
+            (.5,322.5)node{MO-Schicht (\SI{25}{nm})};
+        \draw[fill=lightblue]
+            (0,340)rectangle(1,395)
+            (.5,365)node{SiN (\SI{110}{nm})};
+        \draw[fill=brown]
+            (0,395)rectangle(1,495)
+            (.5,445)node{Polycarbonat Substrat (\SI{1.2}{mm})};
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}[t][][t]{0.48\textwidth}
+        \caption{
+            Aufbau einer MO.
+            Das Zentrum bildet eine sehr d"unne magnetooptische Schicht, die von beiden Seiten durch SiN Schichten gegen Korrosion und Oxidation gesch"utzt wird.
+            Die MO-Schicht ist typischerweise aus TbFeCo.
+            Das Signal wird durch die reflektive Aluminiumschicht verst"arkt.
+            Zus"atzlich wird die Disc noch durch eine Polykarbonat Schicht vor Besch"adigungen besch"utzt.
+            \cite{roll}
+        }
+        \label{fig:Struktur}
+    \end{minipage}
+\end{figure}
+
+\subsection{Stabilit"at Magnetooptischer Discs}
+\begin{figure}[htbp]
+    \begin{minipage}[t][][b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/temperatur.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t][][t]{0.48\textwidth}
+        \caption{
+            Eigenschaften einer MO in Abh"angigkeit der Temperatur $T$.
+            RE steht f"ur die seltenen Erde und TM f"ur das "Ubergangsmetall.
+            Dabei ist $H_\text{c}$ die Koerzitivfeldst"arke, $M_\text{s}$ die totale Magnetisierung in Saturierung und $\theta_\text{K}$ der Kerr-Winkel.
+            Zus"atzlich sind die Kompensationstemperatur $T_\text{comp}$ und die Curie Temperatur $T_\text{c}$ eingezeichnet.
+            \cite{roll}
+            }
+        \label{fig:temperatur}
+    \end{minipage}
+\end{figure}
+Wie funktioniert es eigentlich, dass eine MO bei Raumtemperatur nicht ummagnetisiert wird, wenn ein starker Magnet in die N"ahe kommt?
+Die Antwort liegt im Material.
+Es besteht aus zwei magnetischen Metallen, eine seltene Erde (RE) und ein "Ubergangsmetall (TM), die zusammen ein ferrimagnetisches Gitter bilden.
+Zum Beispiel Tb und Fe.
+Bei der Kompensationstemperatur $T_\text{comp}$ werden die Polarisierungen der beiden Metalle gleich stark und das Material antiferromagnetisch.
+Wie in Abbildung \vref{fig:temperatur} zu sehen ist, divergiert f"ur diese Temperatur die Koerzitivfeldst"arke $H_\text{c}$ und das Material l"asst sich nicht mehr ummagnetisieren.
+Die gesamte Magnetisierung l"asst sich als die Summe zweier ferromagnetischer Magnetisierungskurven mit entgegengesetztem Vorzeichen und unterschiedlicher Curie Temperatur beschreiben.
+Wie zu erkennen ist, "andert sich der Kerr-Winkel etwa linear mit der Temperatur, aber nur schwach.
+
+Aber wenn die gesamte Magnetisierung bei Raumtemperatur null ist, wie wird dann gemessen.
+Hier macht man sich zunutze, dass die Elektronenh"ullen der seltenen Erde, die die Magnetisierung tragen, weiter innen liegen, also durch "au{\ss}ere H"ullen abgeschirmt werden.
+Das Licht wird also an nicht-magnetisierbaren Elektronenh"ullen gestreut.
+Bei einem "Ubergangsmetall hingegen tragen die "au{\ss}eren H"ullen die Magnetisierung; diese streuen das Licht und die Magnetisierung wird wahrgenommen.
+Der Laser sieht also nur das ferromagnetische Untergitter des "Ubergangsmetalls.
+\cite{roll}
+%\begin{equation}
+%H_\mathrm{c} = \frac{H_0 \cdot T}{T-T_\mathrm{comp}}
+%\label{eq:koerzitivfeldstaerke} 
+%\end{equation}
+
+\subsection{Magnetisch Induzierte Super Aufl"osung (MSR)}
+\begin{figure}[htbp]
+    \begin{minipage}[t][][b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            [x=0.1\textwidth, y=0.1\textwidth]
+            \draw[color=brown, fill=brown]
+                (0,2) rectangle (7,3.5)
+                (7.5,2.5) node[right]{Substrat};
+            \draw[fill=gray]
+                (0,0) rectangle (3,1)
+                (4,0) rectangle (5,1)
+                (6,0) rectangle (7,1);
+            \draw[fill=brightgray]
+                (3,0) rectangle (4,1)
+                (5,0) rectangle (6,1);
+            \draw[fill=darkgray]
+                (0,1) rectangle (3,2)
+                (4,1) rectangle (7,2);
+            \draw[fill=gray]
+                (3,1) rectangle (4,2);
+            \draw[]
+                (7.5,0.5) node[right]{MO-Schicht}
+                (7.5,1.5) node[right]{Lese Schicht}
+                ;
+            \foreach \i in {.5,1.5,2.5,4.5,6.5} {
+                \draw[fill=black, shift={(\i,0.5)}, opacity=0.8]
+                    (-0.1,-0.4)--(-0.1,0.2)--(-0.2,0.2)--(0,0.4)--(0.2,0.2)--(0.1,0.2)--(0.1,-0.4)--(-0.1,-0.4);
+            }
+            \foreach \i in {3.5,5.5} {
+                \draw[fill=black, shift={(\i,0.5)}, opacity=0.8]
+                    (-0.1,0.4)--(-0.1,-0.2)--(-0.2,-0.2)--(0,-0.4)--(0.2,-0.2)--(0.1,-0.2)--(0.1,0.4)--(-0.1,0.4);
+            }
+            \foreach \i in {.5,1.5,2.5,4.5,5.5,6.5} {
+                \draw[fill=black, shift={(\i,1.5)}, opacity=0.8, rotate=-90]
+                    (-0.1,-0.4)--(-0.1,0.2)--(-0.2,0.2)--(0,0.4)--(0.2,0.2)--(0.1,0.2)--(0.1,-0.4)--(-0.1,-0.4);
+            }
+            \foreach \i in {3.5} {
+                \draw[fill=black, shift={(\i,1.5)}, opacity=0.8]
+                    (-0.1,0.4)--(-0.1,-0.2)--(-0.2,-0.2)--(0,-0.4)--(0.2,-0.2)--(0.1,-0.2)--(0.1,0.4)--(-0.1,0.4);
+            }
+            \draw[color=green, fill=green, opacity=0.5]
+                (2.5,0) rectangle (4.5,4);
+            \draw[color=green]
+                (7.5,3.5) node[right]{Laser};
+        \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t][][t]{0.45\textwidth}
+        \caption{
+            Magnetisch induzierte super Aufl"osung (MSR).
+            Zus"atzlich zur MO-Schicht gibt es jetzt auch noch eine Lese Schicht.
+            Diese gleicht sich nur im AStrahlzentrum der MO-Schicht an.
+        }
+        \label{fig:MSR}
+    \end{minipage}
+\end{figure}
+
+Der Laser trifft ein bestimmtes Gebiet, was die Gr"o{\ss}e eines Bits definiert.
+Um die Aufl"osung zu erh"ohen kann ein zweites magnetooptisches Material "uber die MO-Schicht gelegt werden, wie in Abbildung \vref{fig:MSR} gezeigt wird.
+Dieses wird durch den Laser aufgeheizt und dadurch magnetisierbar.
+Allerdings geschieht dies nur im Strahlzentrum, also auf einem Bereich, der kleiner ist, als der Laser.
+Dieser kleine Bereich der Lese Schicht passt sich dann der Magnetisierung der MO-Schicht an und kann ausgelesen werden.
 \cite{roll}
 
 
