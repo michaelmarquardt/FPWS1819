@@ -17,6 +17,7 @@ Für die Berechnung des Kerr-Winkels wird der Zusammenhang zwischen der Drehung 
 Unter Berücksichtigung des Umrechnungsfaktors zwischen der Stellung der Mikrometerschraube und Winkel $\phi$ lautet die Geradengleichung 
 \begin{equation}
 \phi = 2.4\ \frac{{ }^\circ}{\mathrm{V}} \cdot U,
+\label{eq:Kerr}
 \end{equation}
 wobei $U$ die Spannung ist. 
 
@@ -81,6 +82,19 @@ Die korrigierten Hysteresekurven für unterschiedliche Temperaturen  sind in den
 \caption{ Hysteresekurven für unterschiedliche Temperaturen. }
 \label{fig:hysterese_temp_2}
 \end{figure}
+
+Aus den Hysteresekurven kann der Kerr-Winkel für die Sättigung der Magnetisierung berechnet werden.
+Dazu wird aus den Hysteresekurven die Differenz zwischen minimaler und maximaler Spannung abgelesen.
+Die Häfte dieser Differenz entspricht dem Kerr-Winkel.
+Die Spannung kann mittels der Gleichung \eqref{eq:Kerr} in den Winkel umgerechnet werden.
+Die berechneten Kerr-Winkel für unterschiedliche Temperaturen sind in der Abbildung \ref{fig:Kerr_Winkel} dargestellt.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{../Messdaten/auswertung/Kerr_Winkel.pdf}
+\caption{Der Kerr-Winkel für die Sättigung der Magnetisierung für unterschiedliche Temperaturen ermimttelt aus den Hysteresekurven.}
+\label{fig:Kerr_Winkel}
+\end{figure}
+
 
 \begin{figure}[H]
 \centering
