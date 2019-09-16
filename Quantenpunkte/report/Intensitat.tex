@@ -15,6 +15,7 @@
     \caption{
         Spektrum der InAs QDs f"ur verschiedene Laserleistungen $P$.
         Es sind bis zu vier Peaks zu erkennen, die von rechts nach links der s, p, d und f-Schale im atom"ahnlichen Modell entsprechen.
+        Der Peak ganz links geht auf "Uberg"ange im Substrat zur"uck.
         Die Kreuze bezeichnen die Messpunkte, w"ahrend die durchgezogenen Linien Gau\ss-Fits nach Gleichung \eqref{eq:fit} sind.
         F"ur $P=\SI{0}{\milli\watt}$ sind keine Peaks zu erkennen (da logischerweise keine Emission angeregt wird).
         Die H"ohe der Peaks steigt f"ur steigende Laserleistungen, ihre Position aber ver"andert sich nicht.
@@ -25,7 +26,7 @@
     \input{../plots/InP_power.pgf}
     \caption{
         Spektrum der InP QDs f"ur verschiedene Laserleistungen $P$.
-        Der linke Peak entspricht der s-Schale.
+        Der linke Peak entspricht der s-Schale, die rechten stammen von "Uberg"angen im Substrat.
         Die Kreuze bezeichnen die Messpunkte, w"ahrend die durchgezogenen Linien Gau\ss-Fits nach Gleichung \eqref{eq:fit} sind.
         Beim Fit wird nur der Bereich bis \SI{780}{\nano\metre} verwendet.
         %Wie zu erkennen ist, lassen sich die Peaks aber nicht besonders gut durch Gau\ss-Kurven ann"ahern.
@@ -70,7 +71,19 @@ gefittet, wobei $a$, $\mu$ und $\sigma$ als Fitparameter verwendet werden.
 Die resultierenden Fitparameter sind in den Tabellen \vref{tab:fitBP} und \vref{tab:fitAP} aufgelistet.
 
 F"ur InAs sind bis zu vier Peaks zu erkennen, die von hohen zu niedrigen Wellenl"angen mit s, p, d und f bezeichnet werden, analog zu den Atomschalen im Schalenmodell.
+Der kleine Peak ganz links geh"ort zu einem "Ubergang im Substrat.
 F"ur niedrige Eingangsleistungen verschwindet der f-Peak.
+Erwartet wird, dass die Zust"ande von der niedrigsten Energie an besetzt werden.
+Ist einer voll besetzt, so wird der n"achste aufgef"ullt.
+Dies erkl"art, warum der f-Peak erst bei h"oheren Leistungen sichtbar wird.
+Allerdings w"urde man erwarten, dass die Zust"ande h"oherer Energie auch h"ohere Intensit"aten aufweisen, da sie eine gr"o{\ss}ere Entartung haben.
+Dass dies nicht geschieht kann dadurch erkl"art werden, dass der Laser nicht exakt fokussiert werden konnte, da der Grundaufbau falsch eingestellt war.
+Der "Ubergang im Substrat wird kaum besetzt, da er eine h"ohere Energie als die anderen hat.
+
 InP zeigt einen s-Peak bei etwa \SI{750}{nm} und einen Haufen "uberlappender Peaks nahe \SI{810}{nm}.
+Diese gehen auch hier auf das Substrat zur"uck.
+Da sie eine niedrigere Energie als der s-Zustand haben werden sie zuerst besetzt.
+Die s-Schale wird dabei nicht ges"attigt, weswegen keine weiteren Schalen besetzt werden.
+
 F"ur beide Proben steigt die Peakh"ohe mit steigender Laserleistung, die Positionen der Peaks bleiben aber, wie erwartet, unver"andert.
 Die Intensit"aten sind in Abbildung \vref{fig:overpower} "uber der Leistung dargestellt.

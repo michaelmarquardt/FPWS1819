@@ -229,6 +229,11 @@ for angle, power, k in zip(angles[::-1], powers[::-1], range(len(angles))):
         )
 plt.xlabel("$\lambda$ [nm]")
 plt.ylabel("$I$ [counts/s]")
+plt.text(915, 3600, "s")
+plt.text(901, 2500, "p")
+plt.text(883, 700, "d")
+plt.text(865, 200, "f")
+plt.text(835, 220, "Substrat")
 plt.legend()
 plt.savefig(PLOT+"InAs_power.pgf")
 plt.savefig(PLOT+"InAs_power.pdf")
@@ -295,6 +300,11 @@ for temp, k in zip(temps, range(len(temps))):
         color   = changecolor(p1[0].get_color(),rgb=(0,0,0)),
         zorder  = 1
         )
+plt.text(915, 3600, "s")
+plt.text(901, 2500, "p")
+plt.text(883, 700, "d")
+plt.text(865, 200, "f")
+plt.text(835, 220, "Substrat")
 plt.xlabel("$\lambda$ [nm]")
 plt.ylabel("$I$ [counts/s]")
 plt.legend()
@@ -375,6 +385,8 @@ for angle, power, k in zip(angles[::-1], powers[::-1], range(len(angles))):
         zorder  = 1
         )
 plt.ylim((0,8000))
+plt.text(750, 1800, "s")
+plt.text(820, 5000, "Substrat")
 plt.xlabel("$\lambda$ [nm]")
 plt.ylabel("$I$ [counts/s]")
 plt.legend()
@@ -427,6 +439,8 @@ for temp, k in zip(temps, range(len(temps))):
         zorder  = 1
         )
 plt.ylim((0,8000))
+plt.text(750, 1800, "s")
+plt.text(820, 4100, "Substrat")
 plt.xlabel("$\lambda$ [nm]")
 plt.ylabel("$I$ [counts/s]")
 plt.legend()
