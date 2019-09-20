@@ -1,9 +1,8 @@
 \section{Grundlagen}\label{sec:Grundlagen}
 \subsection{Quantenpunkte}
 Ein Quantenpunkt \cite{quantum_dot} ist eine Materialstruktur die meistens aus Halbleitern besteht. Dabei wird die Beweglichkeit der Ladungsträger, Löcher und Elektronen, in allen drei Raumdimensionen eingeschränkt. 
-Dazu wird oft eine Halbleiterheterostruktur verwendet und an den Grenzflächen zwischen den unterschiedlichen Halbleitern das zweidimensionale Elektronengas  auf null Dimensionen eingeschränkt. Diese Einschränkung kann durch Metallelektroden gemacht werden.
-Die Materialstruktur ist also nulldiumensional, daher auch der Name Quantenpunkt.  Durch die Beschränkung sind die Energiezustände nicht mehr kontinuierlich, sondern diskret. Die Eigenschaften sind deshalb ähnlich wie bei einzelnen Atomen. 
-Die Elektronen haben dann die Möglichkeit durch Tunnelprozesse von einem Quantenpunkt zum nächsten zu gelangen. 
+Die einzelnen Halbleiter der  Halbleiterheterostruktur haben unterschiedliche Potentiale und Bandlücken. Die Elektronen sind dann in einem Potentialtopf, siehe Abbildung \ref{fig:QP_Energien}, gefangen und können diesen nur durch Energiezufuhr verlassen. 
+Die dabei entstehende Materialstruktur ist also nulldiumensional, daher auch der Name Quantenpunkt.  Durch die Beschränkung sind die Energiezustände nicht mehr kontinuierlich, sondern diskret. Die Eigenschaften sind deshalb ähnlich wie bei einzelnen Atomen.  
 Der Unterschied zu den Atomen ist, dass bei Quantenpunkten die elektronischen und optischen Eigenschaften im bedingtem Rahmen  selber festgelegt werden können. 
 Für die Herstellung von Quantenpunkten gibt es verschiedene Verfahren. Bei der Nasschemischen Methode liegen die Nanopartikel als Kolloide in einer Suspension vor. Bei der selbstorganisierten Molekularstrukturepitaxie entstehen Quantenpunkte an der Grenzfläche zwischen dünnen Schichten von unterschiedlichen Halbleitern. Die Ursache für die selbstorganisierten Quantenpunkte liegt bei den unterschiedlichen Gitterkonstanten von den unterschiedlichen Halbleitern. Daduch kommt es zu Verspannugen und es ist energetisch günstiger dass sich die  kleine Erhebungen in der Quantenpunktschicht bilden. Ein weiteres Verfahren ist die Lithographie, bei der die Quantenpunkte mittels Elektronenstrahlen oder ähnlichem auf ein Substrat   \glqq geschrieben\grqq{} werden. Danach müssen die Quantenpunkte noch \glqq freigelegt\grqq{} werden. \\
 Damit die Quantenpunkte auch quantenmechanische Eigenschaften aufweisen, muss die Grö{\ss}e der Quantenpunkte in dem Bereich der De-Broglie-Wellenlänge liegen.  Mit den Ausdrücken für die Energie $ E = \mathrm{k}_{\mathrm{B}} T$ und $ E = p^2/(2m_{\mathrm{e}}^\star)$ ergibt sich
@@ -15,13 +14,14 @@ Damit die Quantenpunkte auch quantenmechanische Eigenschaften aufweisen, muss di
  
 \subsection{Modelle für Quantenpunkte}
 Das Verhältnis von der Höhe (z-Richtung) zur lateralen Ausdehnung  (x und y Richtung) ist klein für selbstorganisiertes Wachstum. 
-Ein einfaches Modell für einen Quantenpunkt ist ein Kastenpotential. Die Energieeigenwerte sind 
+Ein einfaches Modell für das Potential in z-Richtung ist ein Kastenpotential. Die Energieeigenwerte sind 
 \begin{equation}
 E_\mathrm{n} = \frac{h^2}{8mL^2}n^2,
 \end{equation}
-wobei $L$ die Länge des Kastenpotentials ist und für die Quantenzahl gilt $n = 1,2,3, ...$.  In Gleichung \ref{eq:size} sieht man, dass $L$ sehr klein ist und dann der Zustand $n=2$ schon außerhalb des Kontinuums ist.
+wobei $L$ die Länge des Kastenpotentials ist und für die Quantenzahl gilt $n = 1,2,3, ...$.  
+Da L in z-Richtung sehr klein ist, liegt der Zustand $n=2$ schon außerhalb des Quantenpunktes im Kontinuum.
 Deshalb gibt es in dem Potential des Quantenpunktes nur einen Zustand. Die laterale Ausdehnung kann man als eine zweidiemsionales System betrachten. Die Wechselwirkung von einzelnen Quantenpunkten muss bei der Beschreibung nicht berücksichtigt werden, da der Abstand deutlich grö{\ss}er ist als die laterale Ausdehnung der Quantenpunkte. 
-Das einfachste Modell eines Quantenpunktes ist ein Potentialtopf mit unendlichen hohen Wänden. Ein verbessertes Modell ist die Verwendung von endlich hohen Wänden, die die Unterschiede zwischen dem Quantenpunkt und der Umgebung beschreiben. Ein besseres Modell ist ein zweidimensionaler harmonischer Oszillator \cite{Nolting} für die laterale Ausdehnung. Nach der Abseparierung der z-Richtung lautet der Hamiltonian
+Ein gutes Modell ist ein zweidimensionaler harmonischer Oszillator \cite{Nolting} für die laterale Ausdehnung. Nach der Abseparierung der z-Richtung lautet der Hamiltonian
 \begin{equation}  
 H = \frac{p_\mathrm{x}^2}{2 m^\star} + \frac{p_\mathrm{y}^2}{2 m^\star} + \frac{1}{2} m^\star \omega^2 x^2 + \frac{1}{2} m^\star \omega^2 y^2. 
 \end{equation} 
@@ -41,28 +41,39 @@ Für die Entartung $d$ ergibt sich
 d = 2(S+1),
 \end{equation}
 wobei der Faktor 2 von der Spinentartung kommt. Es kann gezeigt werden, das die Quantenzahlen bei den Übergängen erhalten bleiben müssen.  Es gilt somit die Auswahlregel $\Delta S =0$. 
-\subsection{Fluoreszenz}
-Durch das Bescheinen eines Quantenpunktes mit einem Laser, tritt Fluoreszenz auf. Fluoreszenz ist die spontane Emission von Licht durch einen Elektronenübergang. Dafür ist es notwendig, das die Photonen, die vom Laser emmitiert werden, ausreichend  Energie haben um ein Elektron in das Leitungsband anzuheben. Dabei entsteht ein Loch in dem Valenzband. Dabei könnte grundsätzlich  ein gebundenes oder ein ungebundenes Elektronen-Loch-Paar entstehen. 
-In einem Quantenpunkt treten nur gebundene Elektronen-Loch-Paare auf, da der zu Verfügung stehende  Raum in einem Quantenpunkt begrenzt ist.
- Das gebundene Elektronen-Loch-Paar wird als Exziton bezeichnet. Dabei können auch Multiexzitonen auftreten. Bei einem Biexziton sind zum Beispiel zwei Elektronen und zwei Löcher beteiligt. 
- Exzitonen kann man unterteilen in helle und dunkle Exzitonen. 
- Helle Exzitonen  sind optisch zugänglich und dunkle Exzitonen sind es nicht. 
- Das bedeutet, das die dunklen Exzitonen eine deutlich längere Lebensdauer haben als helle Exzitonen. 
- Das dabei von den Quantenpunkten durch Rekombination von Elektronen mit Löchern emittierte Licht, ist im Allgemeinen energieärmer als das davor absorbierte Licht. Das absorbierte Licht stammt von dem Laser. 
- Andere Verwendungsmöglichkeiten von  Quantenpunkten sind die Verwendung als Einzelphotonenquellen und als Laser.
- Ein emmitiertes Photon hat den Drehimpuls $\pm \hbar$. Bei der Emission eines Photons  mit dem Drehimpuls $+ \hbar$ muss somit der gesamte Drehimpuls um den gleichen Betrag vermindert werden und umgekehrt. Es gilt die Auswahlregel $ \Delta J = \pm 1$, wie in Abbildung \ref{fig:QP_Energien} zu sehen ist. 
- In der Abbildung ist schematisch ein Energiediagramm dargestellt. Zu sehen sind die Bänder für die Elektronen und die Löcher. Die Pfeile stellen die erlaubten Übergänge da. 
+In der Abbildung \ref{fig:QP_Energien} ist schematisch ein Energiediagramm dargestellt. Zu sehen sind die Bänder für die Elektronen und die Löcher. Die Pfeile stellen die erlaubten Übergänge da. 
  \begin{figure}[H]
 \centering
 \includegraphics[scale=0.3]{QP_Energie.PNG}
 \caption{Erlaubte Übergänge in einem Quantenpunkt, wobei HL1 und HL2 die Abkürzungen für die beiden unterschiedlichen Halbleiter sind.}
 \label{fig:QP_Energien}
 \end{figure}
+\subsection{Fluoreszenz}
+Durch das Bescheinen eines Quantenpunktes mit einem Laser, tritt Fluoreszenz auf. Fluoreszenz ist die spontane Emission von Licht durch einen Elektronenübergang. Dafür ist es notwendig, das die Photonen, die vom Laser emmitiert werden, ausreichend  Energie haben um ein Elektron in das Leitungsband anzuheben. Dabei entsteht ein Loch in dem Valenzband. 
+Dabei entsteht ein gebundenes Elektronen-Loch-Paare, da der zu Verfügung stehende  Raum in einem Quantenpunkt begrenzt ist und die Coulomb Wechselwirkung daher verhältnismäßig groß ist.
+Das gebundene Elektronen-Loch-Paar wird als Exziton bezeichnet. Dabei können auch Multiexzitonen auftreten. Bei einem Biexziton sind zum Beispiel zwei Elektronen und zwei Löcher beteiligt. 
+Die Auswahlregel für den Gesamtdrehimpuls hängt von der Art des Loches ab. Das energetisch günstigste ist das heavy hole mit Spin $\pm3/2$. Zusammen mit dem Elektron mit Spin $\pm1/2$ gibt es als Gesamtspin des Exzitons die Möglichkeiten $\pm 1$ und $\pm 2$. 
+Exzitonen mit Spin $\pm 1$ bezeichnet man als helle  und die mit Spin $\pm2$ als dunkle Exzitonen. 
+Die Ursache dafür ist, dass Photonen den Spin $\pm1$ haben und der Gesamtdrehimpuls bei der Emission eines Photons erhalten bleiben muss. 
+Es gilt somit die Auswahlregel  für den Gesamtdrehimpuls $ \Delta J = \pm 1$. 
+ Das dabei von den Quantenpunkten durch Rekombination von Elektronen mit Löchern emittierte Licht, ist im Allgemeinen energieärmer als das davor absorbierte Licht. Das absorbierte Licht stammt von dem Laser. 
+ Andere Verwendungsmöglichkeiten von  Quantenpunkten sind die Verwendung als Einzelphotonenquellen und als Laser.
+
 \subsection{Spektrum von Quantenpunkten}
-In dem Spektrum sind nicht alle erlaubten Übergänge des zweidiemsionalen harmonischen Oszillator Modells gleich strak vertreten. Die Höhe der Peaks hängt von der Entartung ab. Je grö{\ss}er die Entartung eines Zustandes ist, desto grö{\ss}er ist der Peak. Der kleinste Peak sollte deshalb von dem s-Orbital kommen. Da dies nicht der einzige auftredente Effekt ist, muss dies in einem Experiment nicht der Fall sein. Eine Ursache dafür kann die Temperatur sein. Bei höheren Temperaturen nimmt der Einfluss der Phononen zu und es sind deshalb weniger Peaks sichtbar. 
-Die Ursache dafür ist das bei der Rekombination von Elektronen und Löchern die Energie an ein weiteres Elektron bzw. Loch abgegeben wird und dann mittels einer Wechselwirkung mit Phononen an das Gitter abgegeben wird.
-Die Intensität des Lasers, der für die Fluoreszenz benötigt wird, verändert ebenfalls das Spektrum. Bei höheren Laserintensitäten sind mehr Peaks sichtbar. 
-Bei niedrigen Laserintensitäten sind nur die niedrigeren Zustände besetzt und somit können auch nur diese zum Spektrum beitragen.
+In dem Spektrum sind nicht alle erlaubten Übergänge des zweidiemsionalen harmonischen Oszillator Modells gleich strak vertreten. Die Höhe der Peaks hängt von der Entartung ab. Je grö{\ss}er die Entartung eines Zustandes ist, desto grö{\ss}er ist der Peak. 
+Der kleinste Peak sollte deshalb von dem s-Orbital kommen. 
+Da dies nicht der einzige auftredente Effekt ist, muss dies in einem Experiment nicht der Fall sein. 
+Eine Ursache dafür kann die Temperatur sein. 
+Bei höheren Temperaturen nimmt der Einfluss der Phononen zu und es sind deshalb weniger Peaks sichtbar. 
+Das Verschwinden der Peaks beginnt bei dem Peak des Zustandes mit der höchsten Energie und danach verschwinden sukzessive die anderen Peaks mit absteigender Energie. 
+Die Elektronen im energetisch höchsten Zustand brauchen nur wenig Energie um das Potential des Quantenpunktes zu verlassen, deshalb verschwinden diese als erstes. 
+Es ist dann eine Frage der Wahrscheinlichkeit, ob es höher wahrscheinlich ist das es zu einem Stoß mit einem Phonon kommt oder ein Zerfall und somit die Emission eines Photons stattfindet. 
+Bei höheren Temperaturen steigt die Wahrscheinlichkeit für einen Stoß mit einem Phonon. 
+Die Ursache dafür ist, dass mit steigender Temperatur auch die Anzahl der Phonon zunimmt.
+Die Intensität des Lasers, der für die Fluoreszenz benötigt wird, verändert ebenfalls das Spektrum. 
+Bei höheren Laserintensitäten sind mehr Peaks sichtbar. 
+Zuerst gibt es einen Peak von dem Zustand mit der niedrigsten Energie, also dem s-Orbital. 
+Sobald dieser Zustand gesättigt ist, wird der nächst höhere Zustand besetzt und ein neuer Peak im Spektrum ist sichtbar.
 Nicht alle gemessenen Peaks stammen von dem Quantenpunkt. Es gibt zum Beispiel auch einen Peak des Substrates.
 Der Laser der für die notwendigen Anregungen bei der Fluoreszenz notwendig ist, regt auch Übergänge in dem Substrat an. Nach der Lebensdauer der angeregten Zustände geht das Substrat wieder in den Zustand niedrigerer Energie über, wobei die frei werdende Energie als Photon emittiert wird. \\
 Eine Messung kann nie unter Idealbedingungen durchgeführt werden. Dadurch kommt es zu Linienverbreitungen und Linienverschiebungen. Die Peaks haben deshalb die Form einer Gau{\ss}funktion.
